@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>http://chitanda.me/2015/08/21/the-trivia-of-js-date-function/</loc>
+    <lastmod>2016-08-25T15:41:00.307Z</lastmod>
+    <data>
+        <display>
+        <title>JS原生Date类型方法的一些冷知识</title>
+        <pubTime>2015-08-21T06:49:08.000Z</pubTime>
+        
+        <tag>CSS</tag>
+         
+        <tag>javascript</tag>
+         
+        <tag>前端</tag>
+         
+        <tag>Date</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://chitanda.me/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://chitanda.me/2015/06/19/wechat-share-diy/</loc>
+    <lastmod>2016-08-25T15:39:40.098Z</lastmod>
+    <data>
+        <display>
+        <title>微信分享自定义图片和摘要</title>
+        <pubTime>2015-06-19T12:10:06.000Z</pubTime>
+        
+        <tag>微信</tag>
+         
+        <tag>前端</tag>
+         
+         
+           
+             
+              <breadCrumb title="微信" url="http://chitanda.me/categories/%E5%BE%AE%E4%BF%A1/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://chitanda.me/2015/07/03/transfer-big-file-by-digitalocean/</loc>
+    <lastmod>2016-08-25T15:39:09.660Z</lastmod>
+    <data>
+        <display>
+        <title>利用DigitalOcean中转大文件</title>
+        <pubTime>2015-07-03T03:36:54.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>vps</tag>
+         
+        <tag>ubuntu</tag>
+         
+         
+           
+             
+              <breadCrumb title="运维" url="http://chitanda.me/categories/%E8%BF%90%E7%BB%B4/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://chitanda.me/2015/06/11/tips-for-setup-hexo/</loc>
+    <lastmod>2016-08-25T15:38:26.818Z</lastmod>
+    <data>
+        <display>
+        <title>hexo博客搭建时遇到的一些问题</title>
+        <pubTime>2015-06-11T13:57:10.000Z</pubTime>
+        
+        <tag>github</tag>
+         
+        <tag>hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="blog" url="http://chitanda.me/categories/blog/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://chitanda.me/2015/07/04/the-implementation-about-CORS-achieved-by-server-and-broswer/</loc>
+    <lastmod>2016-08-25T15:37:24.206Z</lastmod>
+    <data>
+        <display>
+        <title>浏览器和服务器实现跨域（CORS）判定的原理</title>
+        <pubTime>2015-07-04T14:37:37.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>nginx</tag>
+         
+        <tag>前端</tag>
+         
+        <tag>跨域</tag>
+         
+         
+           
+             
+              <breadCrumb title="运维" url="http://chitanda.me/categories/%E8%BF%90%E7%BB%B4/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://chitanda.me/2015/11/03/multiple-git-pages-in-one-github-account/</loc>
+    <lastmod>2016-08-25T15:36:56.989Z</lastmod>
+    <data>
+        <display>
+        <title>单个GitHub帐号下添加多个GitHub Pages的相关问题</title>
+        <pubTime>2015-11-03T08:06:55.000Z</pubTime>
+        
+        <tag>github</tag>
+         
+        <tag>hexo</tag>
+         
+        <tag>博客</tag>
+         
+         
+           
+             
+              <breadCrumb title="blog" url="http://chitanda.me/categories/blog/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://chitanda.me/2016/02/13/Initial-Server-Secure-Settings-with-CentOS-6-5/</loc>
+    <lastmod>2016-08-25T15:36:41.530Z</lastmod>
+    <data>
+        <display>
+        <title>服务器初始安全设置（CentOS 6.5）</title>
+        <pubTime>2016-02-12T19:43:03.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>vps</tag>
+         
+         
+           
+             
+              <breadCrumb title="运维" url="http://chitanda.me/categories/%E8%BF%90%E7%BB%B4/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://chitanda.me/2015/06/18/hexo-sync-in-multiple-pc/</loc>
+    <lastmod>2016-08-25T15:36:30.140Z</lastmod>
+    <data>
+        <display>
+        <title>利用git解决hexo博客多PC间同步问题</title>
+        <pubTime>2015-06-18T03:27:24.000Z</pubTime>
+        
+        <tag>github</tag>
+         
+        <tag>hexo</tag>
+         
+        <tag>备份</tag>
+         
+         
+           
+             
+              <breadCrumb title="blog" url="http://chitanda.me/categories/blog/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://chitanda.me/2015/07/15/get-and-modify-pseudo-elements-value-by-javascript/</loc>
+    <lastmod>2016-08-25T15:36:11.629Z</lastmod>
+    <data>
+        <display>
+        <title>利用javascript获取并修改伪元素的值</title>
+        <pubTime>2015-07-15T07:22:16.000Z</pubTime>
+        
+        <tag>CSS</tag>
+         
+        <tag>javascript</tag>
+         
+        <tag>前端</tag>
+         
+        <tag>伪元素</tag>
+         
+        <tag>W3C</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://chitanda.me/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://chitanda.me/2016/03/24/flash-xperia-table-z-kitkat-to-lolipop-with-root/</loc>
+    <lastmod>2016-08-25T15:36:09.977Z</lastmod>
+    <data>
+        <display>
+        <title>Xperia™ Tablet Z系统升至安卓5.1.1并保留root权限</title>
+        <pubTime>2016-03-24T13:21:54.000Z</pubTime>
+        
+        <tag>刷机</tag>
+         
+        <tag>折腾</tag>
+         
+         
+           
+             
+              <breadCrumb title="折腾" url="http://chitanda.me/categories/%E6%8A%98%E8%85%BE/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://chitanda.me/2016/08/19/difference-between-deepwep-and-darkweb/</loc>
+    <lastmod>2016-08-25T15:36:08.295Z</lastmod>
+    <data>
+        <display>
+        <title>“深网”和“暗网”的区别及基础扫盲</title>
+        <pubTime>2016-08-19T12:00:00.000Z</pubTime>
+        
+        <tag>科普</tag>
+         
+         
+           
+             
+              <breadCrumb title="科普" url="http://chitanda.me/categories/%E7%A7%91%E6%99%AE/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://chitanda.me/2015/06/29/debug-wechat-website-in-pc/</loc>
+    <lastmod>2016-08-25T15:36:06.472Z</lastmod>
+    <data>
+        <display>
+        <title>绕过限制，在PC上调试微信手机页面</title>
+        <pubTime>2015-06-29T08:31:07.000Z</pubTime>
+        
+        <tag>debug</tag>
+         
+        <tag>微信</tag>
+         
+        <tag>fiddler</tag>
+         
+         
+           
+             
+              <breadCrumb title="微信" url="http://chitanda.me/categories/%E5%BE%AE%E4%BF%A1/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://chitanda.me/2015/06/16/css3-checkbox-diy-without-js/</loc>
+    <lastmod>2016-08-25T15:35:44.932Z</lastmod>
+    <data>
+        <display>
+        <title>纯CSS+HTML自定义checkbox效果</title>
+        <pubTime>2015-06-16T06:03:46.000Z</pubTime>
+        
+        <tag>html</tag>
+         
+        <tag>CSS</tag>
+         
+        <tag>demo</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://chitanda.me/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+    
+    
+    
+    
+    
+  <url>
+    <loc>http://chitanda.me/2016/01/07/use-common-software-in-PC/</loc>
+    <lastmod>2016-08-25T11:22:55.603Z</lastmod>
+    <data>
+        <display>
+        <title>个人常用一些PC软件（windows系统）</title>
+        <pubTime>2016-01-07T09:29:52.000Z</pubTime>
+        
+        <tag>技术</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://chitanda.me/2015/06/08/chinese-webfont-solution/</loc>
+    <lastmod>2016-08-25T11:22:55.459Z</lastmod>
+    <data>
+        <display>
+        <title>中文webfont解决方案</title>
+        <pubTime>2015-06-08T09:17:57.000Z</pubTime>
+        
+        <tag>CSS</tag>
+         
+        <tag>javascript</tag>
+         
+        <tag>webfont</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://chitanda.me/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://chitanda.me/2015/06/01/Centos-setup-nginx-and-php/</loc>
+    <lastmod>2016-08-25T11:22:55.447Z</lastmod>
+    <data>
+        <display>
+        <title>Centos下配置nginx和php环境</title>
+        <pubTime>2015-06-01T06:00:57.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>运维</tag>
+         
+        <tag>nginx</tag>
+         
+        <tag>php</tag>
+         
+         
+           
+             
+              <breadCrumb title="运维" url="http://chitanda.me/categories/%E8%BF%90%E7%BB%B4/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+</urlset>

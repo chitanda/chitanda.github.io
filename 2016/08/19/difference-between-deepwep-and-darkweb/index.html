@@ -1,0 +1,695 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="Zz69_TBO29kGWz1EwiPdoVvLE1hCqut6T9lcr5DYr6Y" />
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="科普," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我很好奇" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="这是篇没啥技术含量的文章，单纯面向非CS行业的普通大众。主要是前几天看到微博上谷大白话一条微博下很多人”深网””暗网”傻傻分不清楚；加上互联网上很多阴谋论的不入流科普文导致很多人把暗网无端端神话，变成了一个普通人不可能进入的”互联网地下世界”。和几个超自然爱好者交流过后发现他们的确在这件事上的认知偏差很大。为了给净化中文互联网做一点微小的工作，我决定站出来成为IDOL(科普者)。希望这篇文可以让无">
+<meta property="og:type" content="article">
+<meta property="og:title" content="“深网”和“暗网”的区别及基础扫盲">
+<meta property="og:url" content="http://chitanda.me/2016/08/19/difference-between-deepwep-and-darkweb/index.html">
+<meta property="og:site_name" content="我很好奇">
+<meta property="og:description" content="这是篇没啥技术含量的文章，单纯面向非CS行业的普通大众。主要是前几天看到微博上谷大白话一条微博下很多人”深网””暗网”傻傻分不清楚；加上互联网上很多阴谋论的不入流科普文导致很多人把暗网无端端神话，变成了一个普通人不可能进入的”互联网地下世界”。和几个超自然爱好者交流过后发现他们的确在这件事上的认知偏差很大。为了给净化中文互联网做一点微小的工作，我决定站出来成为IDOL(科普者)。希望这篇文可以让无">
+<meta property="og:image" content="http://7xiodk.com1.z0.glb.clouddn.com/static/hidden-web-category.jpg">
+<meta property="og:image" content="http://7xiodk.com1.z0.glb.clouddn.com/static/hiddenwiki.jpg">
+<meta property="og:image" content="http://7xiodk.com1.z0.glb.clouddn.com/static/hiddenwiki-list.jpg">
+<meta property="og:image" content="http://7xiodk.com1.z0.glb.clouddn.com/static/HDWIKI.jpg">
+<meta property="og:image" content="http://7xiodk.com1.z0.glb.clouddn.com/static/fake.jpg">
+<meta property="og:image" content="http://7xiodk.com1.z0.glb.clouddn.com/static/gun.jpg">
+<meta property="og:image" content="http://7xiodk.com1.z0.glb.clouddn.com/static/creditcard.jpg">
+<meta property="og:image" content="http://7xiodk.com1.z0.glb.clouddn.com/static/PS4.jpg">
+<meta property="og:updated_time" content="2016-08-25T15:36:08.295Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="“深网”和“暗网”的区别及基础扫盲">
+<meta name="twitter:description" content="这是篇没啥技术含量的文章，单纯面向非CS行业的普通大众。主要是前几天看到微博上谷大白话一条微博下很多人”深网””暗网”傻傻分不清楚；加上互联网上很多阴谋论的不入流科普文导致很多人把暗网无端端神话，变成了一个普通人不可能进入的”互联网地下世界”。和几个超自然爱好者交流过后发现他们的确在这件事上的认知偏差很大。为了给净化中文互联网做一点微小的工作，我决定站出来成为IDOL(科普者)。希望这篇文可以让无">
+<meta name="twitter:image" content="http://7xiodk.com1.z0.glb.clouddn.com/static/hidden-web-category.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 12157121,
+      author: 'ROOT'
+    }
+  };
+</script>
+
+  <title> “深网”和“暗网”的区别及基础扫盲 | 我很好奇 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70297472-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6028e1891a3d164a9d7c5707a08908ca";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">我很好奇</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">千反田家的小院子</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                “深网”和“暗网”的区别及基础扫盲
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-19T20:00:00+08:00" content="2016-08-19">
+              2016-08-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/科普/" itemprop="url" rel="index">
+                    <span itemprop="name">科普</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/19/difference-between-deepwep-and-darkweb/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/19/difference-between-deepwep-and-darkweb/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这是篇没啥技术含量的文章，单纯面向非CS行业的普通大众。主要是前几天看到微博上<code>谷大白话</code>一条<a href="http://weibo.com/1788911247/E4z4xwBrK" target="_blank" rel="external">微博</a>下很多人”深网””暗网”傻傻分不清楚；加上互联网上很多阴谋论的不入流科普文导致很多人把暗网无端端神话，变成了一个普通人不可能进入的”互联网地下世界”。和几个超自然爱好者交流过后发现他们的确在这件事上的认知偏差很大。为了给净化中文互联网做一点微小的工作，我决定站出来成为<del>IDOL</del>(科普者)。希望这篇文可以让无意点进来的读者有所收获。不喜欢概念分析的可以直接跳到后面的<a href="#谣言">谣言</a>部分。<strong>当然此文只做概念分析没有具体教程</strong></p>
+<p>PS：我不是深度暗网使用者，只是花了几个小时翻了下资料而已。所以本文也不会有啥特别的深度，主要就是驳斥几个比较常见的谣言。可能有些地方会有错误，欢迎勘误（不过前提是你在暗网上确实有实际体验过，没有进过任何一个网站只凭着别人的网帖就大言不惭地指点江山的就别怪我不客气了)<br><a id="more"></a></p>
+<h2 id="什么是深网"><a href="#什么是深网" class="headerlink" title="什么是深网"></a>什么是深网</h2><p>根据<a href="https://zh.wikipedia.org/wiki/%E6%B7%B1%E7%BD%91" target="_blank" rel="external">维基百科相关词条</a>的解释:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">深网（英语：Deep Web、Dark Web，又称：不可见网、隐藏网）是指互联网上那些不能被标准搜索引擎索引的非表面网络内容。</div></pre></td></tr></table></figure></p>
+<p>可以看出这<strong>深网</strong>并不仅仅是指网络站点，它的范围远大于一般的网站，它包括所有不能被搜索引擎抓取到的网络内容，比如：你的QQ聊天记录，你微博私信记录，MC私服，诸如SSH、VPN等非标准80或443端口且不走标准HTTP/HTTPS协议的内容等等。因此对于普通用户来说他们每时每刻都在和深网打交道，所谓”深网深不可测”自然是个笑话。而且实际上深网这个概念对用户来说毫无意义，因为不同用户”能抓取到的内容不同”，A的聊天记录被B来说就是”深网”；你女神对你屏蔽的朋友圈对你来说也是”深网”，而对她自己来说自然就是个普通的表层网络。所以讨论”深网”的时候只能取绝对参照物——搜索引擎，<strong>深网其实是一个仅针对搜索引擎的概念，表示不能被其抓取到的私有内容</strong></p>
+<h2 id="什么是暗网"><a href="#什么是暗网" class="headerlink" title="什么是暗网"></a>什么是暗网</h2><p>暗网是深网的子集，根据维基上的解释：<code>暗网（英语：Darknet或Dark Web）是指只使用非常规协议和端口以及可信节点进行连接的私有网络</code>,暗网是不能通过”常规方式”访问的——当然你用TOR浏览器就不算常规方式了。而根据wiki还有别的方式比如<code>Freenet</code>、<code>RetroShare</code>、<code>GNUnet</code>、<code>OneSwarm</code>、<code>Tribler</code>等等就不一一列举了。对普通大众来说最简单的方法还是<code>Tor浏览器</code><br>暗网的重点在于”暗”，属于网络上的黑市，这里面有很多暴力，色情，黑产等相关的东西，比如军火、假护照、信用卡、用户信息、0day等等。网络上大部分阴谋论相关的文章也都是从暗网这些阴暗点做切入点进行发散创作</p>
+<h2 id="谣言"><a href="#谣言" class="headerlink" title="谣言"></a>谣言</h2><p>由于进入暗网需要的一点点技术门槛（国外是TOR国内是VPN+TOR）导致很多文章都开始搞阴谋论和超自然分析夺人眼球。这里选几个比较经典的做下解释</p>
+<h3 id="暗网和深网是同一个东西"><a href="#暗网和深网是同一个东西" class="headerlink" title="暗网和深网是同一个东西"></a>暗网和深网是同一个东西</h3><p>这个是最常见的，往往标题里写着”深网”结果写着写着就成了”暗网”。比如这两篇，就是典型的误导人：<br>《<a href="http://www.vice.cn/read/a-brief-guide-to-deep-web" target="_blank" rel="external">一篇关于 DEEP WEB 的简易指南</a>》、《<a href="http://www.admin5.com/article/20151004/625784.shtml" target="_blank" rel="external">暗网，一个比你想象中恐怖100倍的互联网世界</a>》。<br>前面也说过，暗网是深网的子集，但深网里的绝大多数网站都是普通用户可以直接接触到的内容；和暗网这种必须借助第三方工具才能访问的不一样。</p>
+<h3 id="暗网的内容占了互联网全部内容的96"><a href="#暗网的内容占了互联网全部内容的96" class="headerlink" title="暗网的内容占了互联网全部内容的96%"></a>暗网的内容占了互联网全部内容的96%</h3><p>这个是上面那个谣言的变种。其实也是”深网””暗网”弄混了而已。这句话原话出自<a href="http://www.slate.com/articles/technology/bitwise/2014/02/house_of_cards_season_2_what_s_up_with_all_the_deep_web_stuff.html" target="_blank" rel="external">纸牌屋</a>：”Deep Web is 96 percent of the Internet, with us plebes only seeing a mere 4 percent.”,可见原文说的是”深网的内容占了互联网内容的4%”而不是”暗网”。<br>事实上这个谣言本身也是相当好反驳的：</p>
+<ol>
+<li>因为暗网本身的用户量就是相当少，可能只占网民的x万分之一，这种比例下他们的内容产出不可能超越作为大多数的普通网民所构建的普通网络</li>
+<li>Apple、Google、Facebook、Amazon、腾讯、阿里巴巴、百度等公司每年在硬件和带宽上的成本至少加起来上百亿人民币，如果暗网本身内容是表层网络的几十倍的话，那他们的成本就更可怕了。然而全部暗网的流水加起来估计都覆盖不了这里的零头<br>而深网的话这句话是没有多少问题的，这里先抛开4%这个数字是否靠谱这点（因为按照有些人的计算google收录的不只4%，然而这是个不好证伪的数字，所以姑且认为是4%吧）。因为互联网大部分用户数据对搜索引擎而言都是不公开的。<h3 id="暗网是非公开，一般人很难进去"><a href="#暗网是非公开，一般人很难进去" class="headerlink" title="暗网是非公开，一般人很难进去"></a>暗网是非公开，一般人很难进去</h3>这个其实是很难证伪的论点：因为有个”没有真正的苏格兰人”的诡辩点在：你举出的例子对方都可以用”这不是真正的暗网”来死缠烂打，所以具体不深入。<br>单纯说下”非公开”这点：这是个认知错误。其实暗网依旧是公开站点，它只是与普通的公网相隔绝而已。真正的非公开站点应该是那些纯局域网内的站点。而”普通人很难接触这点”，由于通过TOR浏览器就可以直接访问了，因此也是故意夸大难度渲染阴谋论而已。网上很多帖子只说自己看到的东西而从来不给链接可能也就是因为给了后大概立马就被打脸了。<br>事实上访问<strong>暗网真正的难点其实在于获取URL</strong>,因为很多网站都是过几天就换一个域名。对于大众来说只能依靠<strong>hidden wiki</strong>的帮助，而真正的暗网深度人士大概会有其他的获取渠道，比如IRC聊天室，另外的专门发布页面等等。（这个只是个人猜测而已）<h3 id="暗网上有相当多的血腥恐怖的内容"><a href="#暗网上有相当多的血腥恐怖的内容" class="headerlink" title="暗网上有相当多的血腥恐怖的内容"></a>暗网上有相当多的血腥恐怖的内容</h3>这个本质上其实不能算谣言。但我拿出来就是因为<strong>这部分内容被媒体渲染地太多了。</strong>暗网上确实有部分血腥暴力的站点，但是就和表站里也有很多小众站点如食人，撒旦教等等一样，这部分在暗网里也只是占了极少数。从暗网的大部分<strong>hidden wiki</strong>页面来看，暗网的主流内容还是各种交易市场：比特币、毒品、枪支、信用卡等等；再就是色情站点等，买凶相关的站点也有，但是非常血腥主题的确实基本上看不到（这里很多人大概会说这说明他们藏的更深，但是这也更证明了它们的小众，由这种极小部分人群作为暗网代表，我觉得相当缺乏说服力）<br>而根据wiki上<a href="https://en.wikipedia.org/wiki/Dark_web" target="_blank" rel="external">Dark web</a>里的相关数据表明，暗网站点里数量前三的是”Drugs”、”Market”、”Fraud”,即药品、交易、欺诈前三，可以说明那些极度血腥反人类的真的只是极少数</li>
+</ol>
+<p><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/hidden-web-category.jpg" alt="暗网网站种类数量占比。2015年一月"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>写到这里就算完成了。这文里我之所以根本没提另一个”Shadow Web”是因为找不到这个更详细的说明，而从作者把”Deep WEB”当”Dark WEB”的水准来说，我估计他可能本来就是想讲暗网。由于里面阴谋论和都市传说的内容太多，所以我就不继续深入了。<br>另外贴几张相关的暗网页面截图吧。免得被人说我根本没去过就是瞎扯淡。</p>
+<p>首先是<a href="http://uhwiki36pbooodfj.onion/wiki/index.php/Main_Page" target="_blank" rel="external">The Uncensored Hidden Wiki</a>(需要TOR。另外这种导航页其实有很多，各位可以自行挖掘)<br><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/hiddenwiki.jpg" alt="The Uncensored Hidden Wiki"></p>
+<p><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/hiddenwiki-list.jpg" alt="The Uncensored Hidden Wiki"><br>另一个导航站点：<img src="http://7xiodk.com1.z0.glb.clouddn.com/static/HDWIKI.jpg" alt="HDWIKI"></p>
+<p>其次是某些站点的截图。有军火、Drug、假护照、信用卡等</p>
+<p><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/fake.jpg" alt="假护照"><br><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/gun.jpg" alt="枪支"><br><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/creditcard.jpg" alt="信用卡"></p>
+<p>不过也不是所有站点都是违法犯罪的，也有些画风比较清奇的比如：（这说明其实你也完全可以在暗网搭个网站放动画片。不过有没有看就是另一回事了）<br><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/PS4.jpg" alt="PS4固件"></p>
+<p>本文到这里就结束了，如果能让读者对暗网有更正确的认知，那我写这文的目的就达到了，感谢各位阅读。</p>
+<p>##参考文档##<br><a href="https://zh.wikipedia.org/wiki/%E6%B7%B1%E7%BD%91" target="_blank" rel="external">深网-中文维基</a><br><a href="https://en.wikipedia.org/wiki/Darknet" target="_blank" rel="external">Darknet-Wikipedia</a><br><a href="https://en.wikipedia.org/wiki/Dark_web" target="_blank" rel="external">Dark_web</a><br><a href="http://uhwiki36pbooodfj.onion/wiki/index.php/Main_Page" target="_blank" rel="external">The Uncensored Hidden Wiki</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/科普/" rel="tag">#科普</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/24/flash-xperia-table-z-kitkat-to-lolipop-with-root/" rel="next" title="Xperia™ Tablet Z系统升至安卓5.1.1并保留root权限">
+                <i class="fa fa-chevron-left"></i> Xperia™ Tablet Z系统升至安卓5.1.1并保留root权限
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/08/19/difference-between-deepwep-and-darkweb/"
+     data-title="“深网”和“暗网”的区别及基础扫盲"
+     data-content=""
+     data-url="http://chitanda.me/2016/08/19/difference-between-deepwep-and-darkweb/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/19/difference-between-deepwep-and-darkweb/"
+           data-title="“深网”和“暗网”的区别及基础扫盲" data-url="http://chitanda.me/2016/08/19/difference-between-deepwep-and-darkweb/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Chitanda Akari" />
+          <p class="site-author-name" itemprop="name">Chitanda Akari</p>
+          <p class="site-description motion-element" itemprop="description">chitanda | 互联网 | 前端 | 宅 |动漫 | 京阿尼</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chitanda" target="_blank">
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3218616254" target="_blank">
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://segmentfault.com/u/chitanda" target="_blank">
+                  
+                  SegmentFault
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.v2ex.com/?r=TakanashiAzusa" target="_blank">
+                  
+                  V2EX
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是深网"><span class="nav-number">1.</span> <span class="nav-text">什么是深网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是暗网"><span class="nav-number">2.</span> <span class="nav-text">什么是暗网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#谣言"><span class="nav-number">3.</span> <span class="nav-text">谣言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#暗网和深网是同一个东西"><span class="nav-number">3.1.</span> <span class="nav-text">暗网和深网是同一个东西</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#暗网的内容占了互联网全部内容的96"><span class="nav-number">3.2.</span> <span class="nav-text">暗网的内容占了互联网全部内容的96%</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#暗网是非公开，一般人很难进去"><span class="nav-number">3.3.</span> <span class="nav-text">暗网是非公开，一般人很难进去</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#暗网上有相当多的血腥恐怖的内容"><span class="nav-number">3.4.</span> <span class="nav-text">暗网上有相当多的血腥恐怖的内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chitanda Akari</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+    <script>
+      var OriginTitile=document.title;
+      var st;
+      document.addEventListener('visibilitychange',function(){
+      if(document.hidden){
+        document.title="(つェ⊂)我藏好了哦";
+        clearTimeout(st);
+        console.log('hide');
+      }else{
+        document.title='(*´∇｀*)  被你发现啦~ '+OriginTitile;
+        console.log('show');
+        st=setTimeout(function(){
+            document.title=OriginTitile;
+        },4000);
+        console.log('endChange=');
+      }
+      });
+      </script>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"chitanda"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

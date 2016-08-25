@@ -1,0 +1,1622 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>我很好奇</title>
+  <subtitle>千反田家的小院子</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://chitanda.me/"/>
+  <updated>2016-08-25T15:36:08.295Z</updated>
+  <id>http://chitanda.me/</id>
+  
+  <author>
+    <name>Chitanda Akari</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>“深网”和“暗网”的区别及基础扫盲</title>
+    <link href="http://chitanda.me/2016/08/19/difference-between-deepwep-and-darkweb/"/>
+    <id>http://chitanda.me/2016/08/19/difference-between-deepwep-and-darkweb/</id>
+    <published>2016-08-19T12:00:00.000Z</published>
+    <updated>2016-08-25T15:36:08.295Z</updated>
+    
+    <content type="html"><![CDATA[<p>这是篇没啥技术含量的文章，单纯面向非CS行业的普通大众。主要是前几天看到微博上<code>谷大白话</code>一条<a href="http://weibo.com/1788911247/E4z4xwBrK" target="_blank" rel="external">微博</a>下很多人”深网””暗网”傻傻分不清楚；加上互联网上很多阴谋论的不入流科普文导致很多人把暗网无端端神话，变成了一个普通人不可能进入的”互联网地下世界”。和几个超自然爱好者交流过后发现他们的确在这件事上的认知偏差很大。为了给净化中文互联网做一点微小的工作，我决定站出来成为<del>IDOL</del>(科普者)。希望这篇文可以让无意点进来的读者有所收获。不喜欢概念分析的可以直接跳到后面的<a href="#谣言">谣言</a>部分。<strong>当然此文只做概念分析没有具体教程</strong></p>
+<p>PS：我不是深度暗网使用者，只是花了几个小时翻了下资料而已。所以本文也不会有啥特别的深度，主要就是驳斥几个比较常见的谣言。可能有些地方会有错误，欢迎勘误（不过前提是你在暗网上确实有实际体验过，没有进过任何一个网站只凭着别人的网帖就大言不惭地指点江山的就别怪我不客气了)<br><a id="more"></a></p>
+<h2 id="什么是深网"><a href="#什么是深网" class="headerlink" title="什么是深网"></a>什么是深网</h2><p>根据<a href="https://zh.wikipedia.org/wiki/%E6%B7%B1%E7%BD%91" target="_blank" rel="external">维基百科相关词条</a>的解释:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">深网（英语：Deep Web、Dark Web，又称：不可见网、隐藏网）是指互联网上那些不能被标准搜索引擎索引的非表面网络内容。</div></pre></td></tr></table></figure></p>
+<p>可以看出这<strong>深网</strong>并不仅仅是指网络站点，它的范围远大于一般的网站，它包括所有不能被搜索引擎抓取到的网络内容，比如：你的QQ聊天记录，你微博私信记录，MC私服，诸如SSH、VPN等非标准80或443端口且不走标准HTTP/HTTPS协议的内容等等。因此对于普通用户来说他们每时每刻都在和深网打交道，所谓”深网深不可测”自然是个笑话。而且实际上深网这个概念对用户来说毫无意义，因为不同用户”能抓取到的内容不同”，A的聊天记录被B来说就是”深网”；你女神对你屏蔽的朋友圈对你来说也是”深网”，而对她自己来说自然就是个普通的表层网络。所以讨论”深网”的时候只能取绝对参照物——搜索引擎，<strong>深网其实是一个仅针对搜索引擎的概念，表示不能被其抓取到的私有内容</strong></p>
+<h2 id="什么是暗网"><a href="#什么是暗网" class="headerlink" title="什么是暗网"></a>什么是暗网</h2><p>暗网是深网的子集，根据维基上的解释：<code>暗网（英语：Darknet或Dark Web）是指只使用非常规协议和端口以及可信节点进行连接的私有网络</code>,暗网是不能通过”常规方式”访问的——当然你用TOR浏览器就不算常规方式了。而根据wiki还有别的方式比如<code>Freenet</code>、<code>RetroShare</code>、<code>GNUnet</code>、<code>OneSwarm</code>、<code>Tribler</code>等等就不一一列举了。对普通大众来说最简单的方法还是<code>Tor浏览器</code><br>暗网的重点在于”暗”，属于网络上的黑市，这里面有很多暴力，色情，黑产等相关的东西，比如军火、假护照、信用卡、用户信息、0day等等。网络上大部分阴谋论相关的文章也都是从暗网这些阴暗点做切入点进行发散创作</p>
+<h2 id="谣言"><a href="#谣言" class="headerlink" title="谣言"></a>谣言</h2><p>由于进入暗网需要的一点点技术门槛（国外是TOR国内是VPN+TOR）导致很多文章都开始搞阴谋论和超自然分析夺人眼球。这里选几个比较经典的做下解释</p>
+<h3 id="暗网和深网是同一个东西"><a href="#暗网和深网是同一个东西" class="headerlink" title="暗网和深网是同一个东西"></a>暗网和深网是同一个东西</h3><p>这个是最常见的，往往标题里写着”深网”结果写着写着就成了”暗网”。比如这两篇，就是典型的误导人：<br>《<a href="http://www.vice.cn/read/a-brief-guide-to-deep-web" target="_blank" rel="external">一篇关于 DEEP WEB 的简易指南</a>》、《<a href="http://www.admin5.com/article/20151004/625784.shtml" target="_blank" rel="external">暗网，一个比你想象中恐怖100倍的互联网世界</a>》。<br>前面也说过，暗网是深网的子集，但深网里的绝大多数网站都是普通用户可以直接接触到的内容；和暗网这种必须借助第三方工具才能访问的不一样。</p>
+<h3 id="暗网的内容占了互联网全部内容的96"><a href="#暗网的内容占了互联网全部内容的96" class="headerlink" title="暗网的内容占了互联网全部内容的96%"></a>暗网的内容占了互联网全部内容的96%</h3><p>这个是上面那个谣言的变种。其实也是”深网””暗网”弄混了而已。这句话原话出自<a href="http://www.slate.com/articles/technology/bitwise/2014/02/house_of_cards_season_2_what_s_up_with_all_the_deep_web_stuff.html" target="_blank" rel="external">纸牌屋</a>：”Deep Web is 96 percent of the Internet, with us plebes only seeing a mere 4 percent.”,可见原文说的是”深网的内容占了互联网内容的4%”而不是”暗网”。<br>事实上这个谣言本身也是相当好反驳的：</p>
+<ol>
+<li>因为暗网本身的用户量就是相当少，可能只占网民的x万分之一，这种比例下他们的内容产出不可能超越作为大多数的普通网民所构建的普通网络</li>
+<li>Apple、Google、Facebook、Amazon、腾讯、阿里巴巴、百度等公司每年在硬件和带宽上的成本至少加起来上百亿人民币，如果暗网本身内容是表层网络的几十倍的话，那他们的成本就更可怕了。然而全部暗网的流水加起来估计都覆盖不了这里的零头<br>而深网的话这句话是没有多少问题的，这里先抛开4%这个数字是否靠谱这点（因为按照有些人的计算google收录的不只4%，然而这是个不好证伪的数字，所以姑且认为是4%吧）。因为互联网大部分用户数据对搜索引擎而言都是不公开的。<h3 id="暗网是非公开，一般人很难进去"><a href="#暗网是非公开，一般人很难进去" class="headerlink" title="暗网是非公开，一般人很难进去"></a>暗网是非公开，一般人很难进去</h3>这个其实是很难证伪的论点：因为有个”没有真正的苏格兰人”的诡辩点在：你举出的例子对方都可以用”这不是真正的暗网”来死缠烂打，所以具体不深入。<br>单纯说下”非公开”这点：这是个认知错误。其实暗网依旧是公开站点，它只是与普通的公网相隔绝而已。真正的非公开站点应该是那些纯局域网内的站点。而”普通人很难接触这点”，由于通过TOR浏览器就可以直接访问了，因此也是故意夸大难度渲染阴谋论而已。网上很多帖子只说自己看到的东西而从来不给链接可能也就是因为给了后大概立马就被打脸了。<br>事实上访问<strong>暗网真正的难点其实在于获取URL</strong>,因为很多网站都是过几天就换一个域名。对于大众来说只能依靠<strong>hidden wiki</strong>的帮助，而真正的暗网深度人士大概会有其他的获取渠道，比如IRC聊天室，另外的专门发布页面等等。（这个只是个人猜测而已）<h3 id="暗网上有相当多的血腥恐怖的内容"><a href="#暗网上有相当多的血腥恐怖的内容" class="headerlink" title="暗网上有相当多的血腥恐怖的内容"></a>暗网上有相当多的血腥恐怖的内容</h3>这个本质上其实不能算谣言。但我拿出来就是因为<strong>这部分内容被媒体渲染地太多了。</strong>暗网上确实有部分血腥暴力的站点，但是就和表站里也有很多小众站点如食人，撒旦教等等一样，这部分在暗网里也只是占了极少数。从暗网的大部分<strong>hidden wiki</strong>页面来看，暗网的主流内容还是各种交易市场：比特币、毒品、枪支、信用卡等等；再就是色情站点等，买凶相关的站点也有，但是非常血腥主题的确实基本上看不到（这里很多人大概会说这说明他们藏的更深，但是这也更证明了它们的小众，由这种极小部分人群作为暗网代表，我觉得相当缺乏说服力）<br>而根据wiki上<a href="https://en.wikipedia.org/wiki/Dark_web" target="_blank" rel="external">Dark web</a>里的相关数据表明，暗网站点里数量前三的是”Drugs”、”Market”、”Fraud”,即药品、交易、欺诈前三，可以说明那些极度血腥反人类的真的只是极少数</li>
+</ol>
+<p><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/hidden-web-category.jpg" alt="暗网网站种类数量占比。2015年一月"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>写到这里就算完成了。这文里我之所以根本没提另一个”Shadow Web”是因为找不到这个更详细的说明，而从作者把”Deep WEB”当”Dark WEB”的水准来说，我估计他可能本来就是想讲暗网。由于里面阴谋论和都市传说的内容太多，所以我就不继续深入了。<br>另外贴几张相关的暗网页面截图吧。免得被人说我根本没去过就是瞎扯淡。</p>
+<p>首先是<a href="http://uhwiki36pbooodfj.onion/wiki/index.php/Main_Page" target="_blank" rel="external">The Uncensored Hidden Wiki</a>(需要TOR。另外这种导航页其实有很多，各位可以自行挖掘)<br><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/hiddenwiki.jpg" alt="The Uncensored Hidden Wiki"></p>
+<p><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/hiddenwiki-list.jpg" alt="The Uncensored Hidden Wiki"><br>另一个导航站点：<img src="http://7xiodk.com1.z0.glb.clouddn.com/static/HDWIKI.jpg" alt="HDWIKI"></p>
+<p>其次是某些站点的截图。有军火、Drug、假护照、信用卡等</p>
+<p><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/fake.jpg" alt="假护照"><br><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/gun.jpg" alt="枪支"><br><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/creditcard.jpg" alt="信用卡"></p>
+<p>不过也不是所有站点都是违法犯罪的，也有些画风比较清奇的比如：（这说明其实你也完全可以在暗网搭个网站放动画片。不过有没有看就是另一回事了）<br><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/PS4.jpg" alt="PS4固件"></p>
+<p>本文到这里就结束了，如果能让读者对暗网有更正确的认知，那我写这文的目的就达到了，感谢各位阅读。</p>
+<p>##参考文档##<br><a href="https://zh.wikipedia.org/wiki/%E6%B7%B1%E7%BD%91" target="_blank" rel="external">深网-中文维基</a><br><a href="https://en.wikipedia.org/wiki/Darknet" target="_blank" rel="external">Darknet-Wikipedia</a><br><a href="https://en.wikipedia.org/wiki/Dark_web" target="_blank" rel="external">Dark_web</a><br><a href="http://uhwiki36pbooodfj.onion/wiki/index.php/Main_Page" target="_blank" rel="external">The Uncensored Hidden Wiki</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这是篇没啥技术含量的文章，单纯面向非CS行业的普通大众。主要是前几天看到微博上&lt;code&gt;谷大白话&lt;/code&gt;一条&lt;a href=&quot;http://weibo.com/1788911247/E4z4xwBrK&quot;&gt;微博&lt;/a&gt;下很多人”深网””暗网”傻傻分不清楚；加上互联网上很多阴谋论的不入流科普文导致很多人把暗网无端端神话，变成了一个普通人不可能进入的”互联网地下世界”。和几个超自然爱好者交流过后发现他们的确在这件事上的认知偏差很大。为了给净化中文互联网做一点微小的工作，我决定站出来成为&lt;del&gt;IDOL&lt;/del&gt;(科普者)。希望这篇文可以让无意点进来的读者有所收获。不喜欢概念分析的可以直接跳到后面的&lt;a href=&quot;#谣言&quot;&gt;谣言&lt;/a&gt;部分。&lt;strong&gt;当然此文只做概念分析没有具体教程&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;PS：我不是深度暗网使用者，只是花了几个小时翻了下资料而已。所以本文也不会有啥特别的深度，主要就是驳斥几个比较常见的谣言。可能有些地方会有错误，欢迎勘误（不过前提是你在暗网上确实有实际体验过，没有进过任何一个网站只凭着别人的网帖就大言不惭地指点江山的就别怪我不客气了)&lt;br&gt;
+    
+    </summary>
+    
+      <category term="科普" scheme="http://chitanda.me/categories/%E7%A7%91%E6%99%AE/"/>
+    
+    
+      <category term="科普" scheme="http://chitanda.me/tags/%E7%A7%91%E6%99%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Xperia™ Tablet Z系统升至安卓5.1.1并保留root权限</title>
+    <link href="http://chitanda.me/2016/03/24/flash-xperia-table-z-kitkat-to-lolipop-with-root/"/>
+    <id>http://chitanda.me/2016/03/24/flash-xperia-table-z-kitkat-to-lolipop-with-root/</id>
+    <published>2016-03-24T13:21:54.000Z</published>
+    <updated>2016-08-25T15:36:09.977Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>手里的平板是从基友那拿的索尼日版<code>Xperia™ Tablet Z</code>(型号<code>SO-03E</code>)，上一次刷系统都是两三年前的事了，所以系统一直停留在<code>4.1.2</code>不过实在不怎么适应UI了，所以想升级一下，然后这中间过程简直波澜壮阔九转十八弯，所以记录下，给以后手贱做参考——虽然其实这文可能不怎么适应时代了，因为<code>Xperia™ Tablet Z</code>这平板出来好久了，加上守<code>4.1.2</code>的人估计没那么多，所以遇到我这问题的人估计也不会太多，不过还是做个记录好了。（从<code>4.1.2</code>升级到<code>5.1.1</code>这个很重要，因为大法这机子<strong>4.1.2不能直升5.1.1</strong>,不知道这点的我扔进去了差不多三个晚上以及N次强刷）<br>PS：</p>
+<ol>
+<li><del>本人不是专业玩机的，所以可能概念或者过程有些认知上的错误，欢迎指正</del></li>
+<li>下文提到的都是针对日版<code>Xperia™ Tablet Z</code>(型号<code>SO-03E</code>)而言不同型号机子在具体细节上肯定有区别，注意灵活多变。</li>
+<li>本文所有提到的工具都建议去官网下，不过为了方便某些没梯子的群众，我还是做了份百度云的分流。目前可以满足我从<code>4.1.2</code>升级到<code>5.1.1</code>的需求，以后就不知道了╮(╯▽╰)╭  (<a href="http://pan.baidu.com/s/1qXLQV60" target="_blank" rel="external">传送门</a>密码: h6nn)<a id="more"></a>
+</li>
+</ol>
+<h2 id="简要流程"><a href="#简要流程" class="headerlink" title="简要流程"></a>简要流程</h2><p>这个其实是给非新手看的tips，提醒下大概流程以及相应的坑，具体流程下文会讲，另外流程其实不固定，因为不同的刷法带来的结果不一样，所以我这个并不是唯一解，但是<strong>肯定是可用解</strong>,不确定的可以完全照我的流程来.</p>
+<ol>
+<li>确定机子是否可以解BL锁（Table Z有些型号不能解BL锁，所以不能随意刷第三方系统，反正目测日版不行，所以这里以不能解锁的机子为例）</li>
+<li>将系统刷至<code>4.4.4</code>（不知道直升5.0行不行，没试过，所以这里建议升至<code>4.4.4</code>系统即可，如果已经是<code>4.4.4</code>的话就不需要动了,直接下一步即可）</li>
+<li>看机子有没有root权限，有root权限的话可以刷<code>lockeddualrecovery</code>；没有root权限的话就上<code>kingroot</code>然后清理掉残留APP。</li>
+<li>找个魔改过后的内置root的官方系统来刷，因为5.0以上root都比较麻烦</li>
+</ol>
+<h2 id="详细流程"><a href="#详细流程" class="headerlink" title="详细流程"></a>详细流程</h2><p>说是详细流程不过也不是面面俱到，有些简单的地方会略过，自行求助搜索引擎。</p>
+<h3 id="安装flashtool以及相应驱动"><a href="#安装flashtool以及相应驱动" class="headerlink" title="安装flashtool以及相应驱动"></a>安装flashtool以及相应驱动</h3><p>flashtool可以去<a href="http://www.flashtool.net/downloads.php" target="_blank" rel="external">官网</a>下载,驱动安装失败的话注意<strong>取消Windows系统的驱动数字签名认证</strong>，不同操作系统处理方法可能不一样，自行解决。需要保证这一步做完后手机连上去可以同时被flashtool的adb模式和fastmode识别到。<br>PS：<br><del>sony官方有个<code>Emma</code>,是套了壳的flashtool，但是那个工具使用还要注册帐号，比较恶心，所以就不推荐了</del></p>
+<h3 id="检测BL锁是否可解"><a href="#检测BL锁是否可解" class="headerlink" title="检测BL锁是否可解"></a>检测BL锁是否可解</h3><p>平板开USB调试然后连接电脑，之后再打开flashtool，点工具栏上的<code>My SGP3XX</code>-<code>Launch ServiceMenu</code>,然后在平板上选择<code>Service info</code>-<code>Configuration</code>;看最后那个<code>Bootloader unlock allowed</code>里的值是<code>yes</code>还是<code>no</code>。反正我估计日版都是NO，咱们继续下一步。如果你是<code>YES</code>的话，看完这条下面的PS信息就可以去官网解锁，然后走好不送，因为你完全可以去刷CM之类的第三方系统了，也不需要下面费事的折腾了。<br>PS：<br><a href="http://developer.sonymobile.com/unlockbootloader/unlock-yourboot-loader/" target="_blank" rel="external">Sony官方解BL锁申请链接</a><br>仅限是<code>Bootloader unlock allowed</code>是<code>YES</code>的朋友去申请，NO的就不要凑热闹了，无解。目前没有任何办法解。<br><del>另外这个页面其实也提供了另一个检测BL锁是否可解的方法，不过我没按出来，所以略过。诸位可以自行选择完设备后看出来的信息。</del></p>
+<h3 id="获取root权限"><a href="#获取root权限" class="headerlink" title="获取root权限"></a>获取root权限</h3><p>有root权限的话直接跳过这步。<br><code>4.1.2</code>系统的root权限获取可以直接用<code>rootkitZ</code>(<a href="http://forum.xda-developers.com/xperia-z/development/root-tool-root-10-3-1-2-67-10-3-1-2-74-t2547714" target="_blank" rel="external">XDA原帖</a>)或者<code>Root_with_Restore_by_Bin4ry</code>(<a href="http://forum.xda-developers.com/showthread.php?t=1886460" target="_blank" rel="external">XDA原帖</a>.不过后面这个工具相对复杂+作者不允许分流，所以下载速度较慢)。<br>但是，如果你是<code>4.4.4</code>需要root的话,上面两个工具都没啥鸟用，漏洞都被sony修补掉了，所以直接上<code>kingroot</code>(不过这个装完后有自带的残留，因此有洁癖的话需要后期处理。)kingroot建议用4.0版的，因为root完不会自动重启。（<a href="http://www.kingroot.net/release" target="_blank" rel="external">官网链接</a>）<br>PS：<br><code>kingroot</code>的残留文件清理方法可以参考XDA这个<a href="http://forum.xda-developers.com/xperia-tablet-z/general/how-to-root-lollipop-xperia-tablet-z-t3115107" target="_blank" rel="external">帖子</a>,不过我是直接root完后刷recovery然后卡刷的<code>supersu</code>，然后也直接清掉了。</p>
+<h3 id="刷TabZ-lockeddualrecovery"><a href="#刷TabZ-lockeddualrecovery" class="headerlink" title="刷TabZ-lockeddualrecovery"></a>刷TabZ-lockeddualrecovery</h3><p>这个是专门给未解锁BL的Sony Xperia设备刷第三方recovery的工具，<strong>只需要有root权限即可</strong>。从<a href="http://nut.xperia-files.com/path/XZDualRecovery" target="_blank" rel="external">官网</a>找到自己对应的设备的recovery，然后下载，手机连电脑后打开bat文件，按照你的root权限管理工具选择选项，中间会弹一次root权限请求，注意在手机上允许，然后会自动重启进入<code>twrp</code>.</p>
+<h3 id="升级4-4-4ROM"><a href="#升级4-4-4ROM" class="headerlink" title="升级4.4.4ROM"></a>升级4.4.4ROM</h3><p>这一步其实就是我上面<strong>简单流程</strong>里说的刷法不一样的地方。我是自己刷完后才发现我这里可能有更优解，不过没验证所以不当主方法讲，先讲我自己麻烦的方法。</p>
+<p>随便找个<code>4.4.4</code>的官方适应<code>SGP321</code>的ftf固件用flashtool刷进去（我是刷的港版），日版注意<code>Partition</code>别清，不然会丢失32G，然后重复上面两步把<code>twrp</code>刷回来。<br>PS：<br>我想到的另一个未验证的更优解法是直接找个内置root的<code>4.4.4</code>的系统然后用recovery卡刷，升到<code>4.4.4</code>后继续卡刷到<code>5.1.1</code>——这么做的好处是root不丢失，而且全程不需要kingroot参与进来（不过这个方法未验证，所以不保证一定可行）</p>
+<h3 id="卡刷5-1-1"><a href="#卡刷5-1-1" class="headerlink" title="卡刷5.1.1"></a>卡刷5.1.1</h3><p>这里ROM很多，不过不同ROM好像需要的后续处理不一样。所以推荐一个我用过的，刷完即用不需要后续刷基带之类的ROM——<a href="http://forum.xda-developers.com/xperia-tablet-z/orig-development/rom-pre-rooted-lollipop-t3115002" target="_blank" rel="external">[OFFICIAL 5.1.1] Rooted 10.7.A.0.222 / 228</a><br>刷完重启下即可。不过如果要<code>xposed</code>框架的话，建议刷完系统后不要立即重启，先把<code>xposed</code>框架装上，否则进去后又要等半天优化APP。（<code>xposed</code>选择<code>xposed-v80-sdk22-arm</code>即可)<br>注意要点：</p>
+<blockquote>
+<p>这个ROM卡刷的时候不需要<code>wipe system</code>，清理掉<code>data</code>和<code>cache</code>即可。(<a href="http://forum.xda-developers.com/showpost.php?p=60940818&amp;postcount=23" target="_blank" rel="external">作者解释</a>,另外作者这里给出了root的另一个解法，不过只刷kernel没试过，所以不评价)</p>
+</blockquote>
+<h2 id="某些你大概用得上的tips"><a href="#某些你大概用得上的tips" class="headerlink" title="某些你大概用得上的tips"></a>某些你大概用得上的tips</h2><ol>
+<li>用flashtool刷官方固件的时候需要进<code>flashmode</code>，然而这个进入的方式并不一样，可能和固件有关。根据我自己的实验，日版固件的话是<strong>长按音量-然后USB连电脑上</strong>；而国际版固件是<strong>长按音量键连上电脑后再按一下电源键</strong>，具体哪个可能要自己多试试，实在不行几个按键都按按总是可以触发的。。</li>
+<li>kingroot刷完后如果用那个帖子里的方法不好清理自带的app和授权管理工具的话，可以试试进recovery卡刷<code>superSu</code>,反正我是直接替换掉了。（建议装4.0.0版，然后root完后卸载掉另外两个无关工具后，再进recovery卡刷）</li>
+<li>如果刷完机子发现无限重启或者进不去系统了，没找到解决方法的话就flashtool刷一个可用固件吧。就我所知普通刷刷机造成的砖基本上可以靠flashtool强刷救回来</li>
+<li>如果你这里刷的系统版本和我不一样，但是刷完最后那个固件后无限自动重启，可能也是跳版本刷的缘故。反正<code>4.1.2</code>直接刷<code>5.1.1</code>是不行的。中间要是有跨度比较大的rom变动后无限重启又找不到解决方法，可以考虑下这个可能。</li>
+<li>使用各种root脚本的时候，如果adb总是报错，可以自己另起一个cmd输入<code>adb devices</code>看看状态，如果总是无法<code>start deamon</code>的话可以去任务管理器看看，若是启用了多个ADB的话记得都关掉然后重新开脚本；若是提示<code>devices offline</code>,则有可能是你的adb版本太老，直接下载我的百度云文件夹里的adb过去覆盖掉即可</li>
+</ol>
+<hr>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;手里的平板是从基友那拿的索尼日版&lt;code&gt;Xperia™ Tablet Z&lt;/code&gt;(型号&lt;code&gt;SO-03E&lt;/code&gt;)，上一次刷系统都是两三年前的事了，所以系统一直停留在&lt;code&gt;4.1.2&lt;/code&gt;不过实在不怎么适应UI了，所以想升级一下，然后这中间过程简直波澜壮阔九转十八弯，所以记录下，给以后手贱做参考——虽然其实这文可能不怎么适应时代了，因为&lt;code&gt;Xperia™ Tablet Z&lt;/code&gt;这平板出来好久了，加上守&lt;code&gt;4.1.2&lt;/code&gt;的人估计没那么多，所以遇到我这问题的人估计也不会太多，不过还是做个记录好了。（从&lt;code&gt;4.1.2&lt;/code&gt;升级到&lt;code&gt;5.1.1&lt;/code&gt;这个很重要，因为大法这机子&lt;strong&gt;4.1.2不能直升5.1.1&lt;/strong&gt;,不知道这点的我扔进去了差不多三个晚上以及N次强刷）&lt;br&gt;PS：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;del&gt;本人不是专业玩机的，所以可能概念或者过程有些认知上的错误，欢迎指正&lt;/del&gt;&lt;/li&gt;
+&lt;li&gt;下文提到的都是针对日版&lt;code&gt;Xperia™ Tablet Z&lt;/code&gt;(型号&lt;code&gt;SO-03E&lt;/code&gt;)而言不同型号机子在具体细节上肯定有区别，注意灵活多变。&lt;/li&gt;
+&lt;li&gt;本文所有提到的工具都建议去官网下，不过为了方便某些没梯子的群众，我还是做了份百度云的分流。目前可以满足我从&lt;code&gt;4.1.2&lt;/code&gt;升级到&lt;code&gt;5.1.1&lt;/code&gt;的需求，以后就不知道了╮(╯▽╰)╭  (&lt;a href=&quot;http://pan.baidu.com/s/1qXLQV60&quot;&gt;传送门&lt;/a&gt;密码: h6nn)
+    
+    </summary>
+    
+      <category term="折腾" scheme="http://chitanda.me/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+      <category term="刷机" scheme="http://chitanda.me/tags/%E5%88%B7%E6%9C%BA/"/>
+    
+      <category term="折腾" scheme="http://chitanda.me/tags/%E6%8A%98%E8%85%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>服务器初始安全设置（CentOS 6.5）</title>
+    <link href="http://chitanda.me/2016/02/13/Initial-Server-Secure-Settings-with-CentOS-6-5/"/>
+    <id>http://chitanda.me/2016/02/13/Initial-Server-Secure-Settings-with-CentOS-6-5/</id>
+    <published>2016-02-12T19:43:03.000Z</published>
+    <updated>2016-08-25T15:36:41.530Z</updated>
+    
+    <content type="html"><![CDATA[<p>VPS买来好几个月了，之前因为感觉<code>fail2ban</code> 可能会造成log爆炸就没装，然后仅仅禁了root帐号登录和换了个登录帐号——倒也相安无事，但是那天去<code>/var/log/</code>目录下看log的时候发现每天的登录日志和帐号密码错误信息能塞十几二十M——被人盯上了用机器企图暴力破解，虽然由于猜不到我用户名所以VPS本身不会出事，但是天天被人这么搞也不爽，然后就稍微折腾下。在<code>禁root登录</code>、<code>换登陆用户</code> 的基础上又加了几个安全措施：<code>换SSH端口</code> 、<code>使用ssh密钥文件登录</code>。所以写个文章做个记录——其实文章里有个关于ssh <code>config</code>文件的彩蛋才是我最想推荐的（本文以Centos 6.5为例，具体的文件路径可能不同的linux发行版会有区别。）</p>
+<a id="more"></a>
+<blockquote>
+<p>因为很重要所以写在最前面:<br>所有安全措施更新后检测是否生效的时候都不需要关闭当前的ssh term 窗口，直接另开一个就好。当前窗口不要关闭，可以用来在发生某些意外情况下做补救措施（比如换了sshd的端口但是忘记在防火墙里开放端口等）否则就只能去VPS提供商的VNC服务器里去做补救了，比较麻烦</p>
+</blockquote>
+<h2 id="禁用root登录"><a href="#禁用root登录" class="headerlink" title="禁用root登录"></a>禁用root登录</h2><ol>
+<li><p>新建一个用户并设置密码，如添加一个用户名为<code>test</code>的用户(方便行文下文都会以<code>test</code>作为例子，建议自行替换)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">adduser test #添加用户</div><div class="line">passwd test #会弹出设置密码的提示，输两遍即可</div></pre></td></tr></table></figure>
+</li>
+<li><p>添加<code>sudo</code>用户组<br>目的是为了给新添加的帐号sudo权限，不过每次都手动设置单个帐号比较麻烦，所以建议先直接添加一个免密码的<code>sudo</code>用户组，后续的用户可以一次性添加到该组（另外安全考虑不建议sudo用户组里用户过多）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">visudo</div></pre></td></tr></table></figure>
+<p>然后往下拉找到</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">## Same thing without a password</div><div class="line"># %wheel        ALL=(ALL)       NOPASSWD: ALL</div></pre></td></tr></table></figure>
+<p>去掉下面那个<code>#</code>注释让设置生效然后保存文件退出。</p>
+<blockquote>
+<p>如果没有找到该内容的话可以自己手动添加进去。另外<code>NOPASSWD:ALL</code>可以让sudo指令免密码，方便的同时<strong>降低了一定安全性</strong>，所以看个人取好自行决定</p>
+</blockquote>
+</li>
+<li><p>将新建用户添加进<code>sudo</code>组<br>这样的话后面就不需要每次都切换到root帐号了，需要sudo权限的命令都可以直接通过<code>sudo &lt;command&gt;</code>来执行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">gpasswd -a test wheel</div></pre></td></tr></table></figure>
+<blockquote>
+<p>上面两步的<code>wheel</code>可以自行替换成你喜欢的用户组名。<br>具体可参考：<a href="https://www.digitalocean.com/community/tutorials/how-to-add-and-delete-users-on-a-centos-7-server" target="_blank" rel="external">how-to-add-and-delete-users-on-a-centos-7-server</a></p>
+</blockquote>
+</li>
+</ol>
+<h2 id="设置SSH登录"><a href="#设置SSH登录" class="headerlink" title="设置SSH登录"></a>设置SSH登录</h2><ol>
+<li><p>生成ssh密钥文件</p>
+<blockquote>
+<p>Windows系统以<code>putty</code>为例，生成以及配置的图文教程可以参考此文：<a href="http://callmepeanut.blog.51cto.com/7756998/1336358" target="_blank" rel="external">Putty使用密钥自动登陆SSH</a><br>linux下的密钥生成过程和github的密钥生成过程类似，可以参考此文： <a href="http://chitanda.me/2015/06/11/tips-for-setup-hexo/#git多网站ssh部署方案">git多网站ssh部署方案</a></p>
+</blockquote>
+<hr>
+</li>
+<li><p>上传公钥到服务器</p>
+<ul>
+<li><p>客户端为Windows系统时服务器端的操作:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cd /home/test #进入test用户文件夹下</div><div class="line">mkdir .ssh #生成.ssh文件夹</div><div class="line">touch .ssh/authorized_keys #生成服务器端公钥文件</div><div class="line">vi .ssh/authorized_keys</div></pre></td></tr></table></figure>
+<p>然后将前面putty生成的公钥部分复制进去后保存文件退出。<br><strong>注意openssh需要的公钥文件格式和putty导出保存的公钥文件格式不一样，正确格式是生成框里的那部分，所以不要复制错了</strong></p>
+<blockquote>
+<p>正确格式：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAxx+1Ab3s5TB4umhxspJA91i2az0QW7JTVBR+J/OYPyjDH803Upxvo</div><div class="line">sg0lDkf7nTmL3nyE6YCBPgQMgT+HvVDDI6CQ68E/ZQOmgNpGo70k+x/C7VkPu8z+5yBXwwI1K5maHqY4B8RIKVCYon</div><div class="line">2eMLhtyLC6U/K1OXaCdz0wR8xwz+rT8REmoCv770yC/FOsgmI250bAvVlqircvLfknlTrETAgaQ8PR9e5pNuoGwX3v</div><div class="line">pCMBnuKjXKQpHvAX1MKFx4UFGC6MIB5Gcq4H9nv9aBUKnWO+m58JF8tAU7KhfkUc2wWG11ON21K3w/gL7dyHPRyLGJ</div><div class="line">yBZRFKBZGr+gzCfrhzw== rsa-key-20160331</div></pre></td></tr></table></figure>
+</blockquote>
+<hr>
+</li>
+<li><p>客户端为linux系统的话<code>ssh-copy-id</code>指令即可</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub root@123.123.123.123</div></pre></td></tr></table></figure>
+<blockquote>
+<p>虽然要设置的登录帐号不是root，不过还是建议先传到<code>root</code>用户文件夹下，然后服务器端做转移。（之前试过直接传给对应帐号好像出了点问题，可能是权限之类的）</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+</li>
+<li><p>使用密钥文件登录<br>Windows下使用putty登录的配置参考步骤1的<a href="http://callmepeanut.blog.51cto.com/7756998/1336358" target="_blank" rel="external">参考文章</a> 。<br>如果<strong>有使用其他shell登录需求</strong>的可以继续往下看，以git bash为例：<br>由于putty的私钥文件不通用，所以需要转换出<code>RSA</code>格式给其他shell用，需要在 <code>PUTTYGEN.EXE</code> 上方菜单里的 <code>Conversions</code> &gt; <code>Export OpenSSH Key</code> 转换成通用的私钥文件，假设文件名为<code>test</code><br>然后将其放到当前用户的<code>C:\Users\username\.ssh</code>目录下.(其实这里的配置过程和git的ssh登录配置过程类似)<br><strong>彩蛋:</strong>如果目录下有多个密钥网站了，还需要修改同目录下你的ssh配置文件(<code>config</code>文件)，添加下面内容:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Host test #这个名字随意</div><div class="line">HostName 123.123.123.123 #IP地址或服务器域名</div><div class="line">Port 22 #服务器端开放的ssh端口，默认22</div><div class="line">User test#登录的用户名</div><div class="line">IdentityFile ~/.ssh/test #使用的密钥文件密钥文件</div></pre></td></tr></table></figure>
+<p>上面这里是完整的ssh配置格式，这么配置后git bash里可以直接用<code>ssh test</code>的方式直接登录，省去了输域名或者ip地址以及用户名的过程，简单不少。（关于ssh config文件的配置具体可以参考此文:<a href="https://www.digitalocean.com/community/tutorials/how-to-configure-custom-connection-options-for-your-ssh-client" target="_blank" rel="external">How To Configure Custom Connection Options for your SSH Client</a>)</p>
+<blockquote>
+<p>PS:登录这个步骤是比较容易出错的，如果服务器端配置有问题的话。建议服务器端先将sshd的<code>log level</code>开到<code>debug3</code>:<br> <code>vi /etc/ssh/sshd_config</code>后修改<code>LogLevel</code>为<code>debug3</code><br>然后保存退出并<code>service sshd restart</code>重启ssh服务.接着客户端执行登录操作，如果有错误的话，<code>less /var/log/secure</code>打开登录的log文件拉到最底下查看对应问题。<br>以我个人配置经验来看，失败的话一般无外乎以下几个原因：、</p>
+<ol>
+<li>key的位置不是默认的<code>~/.ssh/</code>而是<code>./home/{username}/.ssh/</code>(这里有个细节在于即使<code>sshd_config</code>配置<code>AuthorizedKeysFile  .ssh/authorized_keys</code>，由于linux系统的<code>~</code>表示当前用户的根目录，所以非root用户的key路径依旧是对应的<code>home/username</code>文件夹下而不是root根目录)</li>
+<li>key对应的文件夹给700权限，key本身至少400权限保证可读</li>
+<li><code>authorized_keys</code>文件的用户组要设置为对应的用户组，否则读取不了 </li>
+<li>在某些服务商的 CentOS 系统里，由于开启了 <code>SELinux</code> ，默认是禁止了 .ssh 目录的权限的，可以用下面的命令解除限制：<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">restorecon -R -v /root/.ssh</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<h2 id="SSH其他配置"><a href="#SSH其他配置" class="headerlink" title="SSH其他配置"></a>SSH其他配置</h2><p>如果上面ssh密钥登录设置完成了，为了最后的安全，我们还需要做三件事：</p>
+<ol>
+<li>禁止密码登录</li>
+<li>禁止<code>root</code>用户登录</li>
+<li><p>修改SSH默认端口<br>由于以上三个都是<code>sshd_config</code>里的东西，所以合一起讲：<br>修改以下三个属性保存并重启SSH即可</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">PermitRootLogin no</div><div class="line">PasswordAuthentication no</div><div class="line">Port 65525</div></pre></td></tr></table></figure>
+<blockquote>
+<p>修改端口后需要注意，大部分VPS应该都默认开了防火墙，所以<strong>需要防火墙里把对应端口开放</strong>，否则会无法登录</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">iptables -I INPUT -p tcp --dport 65525 -j ACCEPT</div><div class="line">service iptables save</div><div class="line">service iptables restart</div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ol>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-add-and-delete-users-on-a-centos-7-server" target="_blank" rel="external">how-to-add-and-delete-users-on-a-centos-7-server</a></li>
+<li><a href="http://callmepeanut.blog.51cto.com/7756998/1336358" target="_blank" rel="external">Putty使用密钥自动登陆SSH</a></li>
+<li><a href="http://chitanda.me/2015/06/11/tips-for-setup-hexo/#git多网站ssh部署方案">git多网站ssh部署方案</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-configure-custom-connection-options-for-your-ssh-client" target="_blank" rel="external">How To Configure Custom Connection Options for your SSH Client</a></li>
+<li><a href="https://ttt.tt/104/" target="_blank" rel="external">购买 Linux VPS 服务器后简单的安全设置</a> </li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;VPS买来好几个月了，之前因为感觉&lt;code&gt;fail2ban&lt;/code&gt; 可能会造成log爆炸就没装，然后仅仅禁了root帐号登录和换了个登录帐号——倒也相安无事，但是那天去&lt;code&gt;/var/log/&lt;/code&gt;目录下看log的时候发现每天的登录日志和帐号密码错误信息能塞十几二十M——被人盯上了用机器企图暴力破解，虽然由于猜不到我用户名所以VPS本身不会出事，但是天天被人这么搞也不爽，然后就稍微折腾下。在&lt;code&gt;禁root登录&lt;/code&gt;、&lt;code&gt;换登陆用户&lt;/code&gt; 的基础上又加了几个安全措施：&lt;code&gt;换SSH端口&lt;/code&gt; 、&lt;code&gt;使用ssh密钥文件登录&lt;/code&gt;。所以写个文章做个记录——其实文章里有个关于ssh &lt;code&gt;config&lt;/code&gt;文件的彩蛋才是我最想推荐的（本文以Centos 6.5为例，具体的文件路径可能不同的linux发行版会有区别。）&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="运维" scheme="http://chitanda.me/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+    
+      <category term="运维" scheme="http://chitanda.me/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="vps" scheme="http://chitanda.me/tags/vps/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>个人常用一些PC软件（windows系统）</title>
+    <link href="http://chitanda.me/2016/01/07/use-common-software-in-PC/"/>
+    <id>http://chitanda.me/2016/01/07/use-common-software-in-PC/</id>
+    <published>2016-01-07T09:29:52.000Z</published>
+    <updated>2016-08-25T11:22:55.603Z</updated>
+    
+    <content type="html"><![CDATA[<p>前段时间正好换硬盘重装了系统，所以全部软件都要重新装一遍，趁此机会把一些常用软件以及某些有用处但是频率较低的小软件做个记录，当备份吧（只记录名字，没有链接和破解之类的）。万一哪天记不起来了可以自己翻下。<br><a id="more"></a></p>
+<h2 id="生活常用-大众向）"><a href="#生活常用-大众向）" class="headerlink" title="生活常用(大众向）"></a>生活常用(大众向）</h2><ol>
+<li><p>爬墙<br><code>Shadowsocks</code></p>
+</li>
+<li><p>浏览器<br><code>Chrome、Firefox、Eege、IE11</code></p>
+</li>
+<li><p>输入法<br><code>QQ输入法</code>（有个纯净版QQPinyin_Setup_4.7.2065.400）</p>
+</li>
+<li><p>文件搜索工具<br><strong>Everything</strong> （只搜索文件名，但是效率极高，比原生的好太多，可以当一个集合的 launcher）</p>
+</li>
+<li><p>解压缩工具<br><code>Winrar</code>(现在免费版有广告，所以体验一般，但是只有<code>rar</code>可以加恢复记录，所以大文件分包的时候不能少 )、<code>7-Zip</code>、<code>Bandizip</code>（免费，功能也很多，可以当日常解压软件用）</p>
+</li>
+<li><p>通讯软件<br><code>QQ</code></p>
+</li>
+<li><p>下载工具<br><code>迅雷（离线是大杀器）、百度云管家（网盘里目前最好）、 uTorrent（PT用）、IDM（视频嗅探是神器，不过现在不怎么当搬运工， 所以这个用的少）</code></p>
+</li>
+<li><p>视频播放器<br><code>Potplayer+LAV解码器</code></p>
+</li>
+<li><p>音乐播放器<br><code>Foorbar2000</code>、<code>网易云音乐(UWP版的功能稍微弱了点。不过好看)</code></p>
+</li>
+<li><p>图片浏览器<br><code>Honeyview(和前面的&quot;Bandizip&quot;出自同门，效果和体验比自带的好不少)</code>、<code>MangaMeeya（漫画阅读器，除了对特殊字符支持不好以外，其他都很好。虽然PC上本来看漫画的体验就一般般）</code></p>
+</li>
+<li><p>PDF/EPUB阅读器<br><strong>SumatraPDF</strong>(绿色轻量而且免费，支持的格式也不少，比Adobe家的好太多)</p>
+</li>
+<li><p>Office文档阅读器<br><code>WPS海外版</code>(Office365太贵而且没啥大用，WPS海外版除了语言是英文外没其他问题)</p>
+</li>
+<li><p>虚拟光驱<br><code>DAEMON Tools Lite</code></p>
+</li>
+<li><p>游戏客户端<br><code>STEAM</code></p>
+</li>
+<li><p>远程协助<br><code>TeamViewer</code></p>
+</li>
+<li><p>CD抓轨<br><code>Exact Audio Copy</code></p>
+</li>
+<li><p>DVD抓取<br><code>DVD Decryter</code></p>
+</li>
+<li><p>视频处理（剪辑/拼接/remux/压制等）<br><code>小丸工具箱</code>(其实一个小丸不够处理全部情况，不过大部分情况这个gui是够用了，这里细写下去太多，目前不怎么弄视频了，所以就略过了）</p>
+</li>
+<li><p>系统垃圾清理<br><code>Dism++</code>(www.chuyu.me)</p>
+</li>
+<li><p>其他小工具</p>
+<ol>
+<li>粘贴板记录 : <strong>CLIPCUE</strong>(可以记录全部的粘贴板记录，而且可以按照设置来保留N久之前的记录，哪怕重启过电脑，防手贱神器。1.2.1版还可以记录文档，类似系统自带的便签)</li>
+<li>计算文件HASH值 : <code>HASH.exe</code>(毫无辨识度的名字，搜索的话需要加个<code>Robin Keir</code>的关键词。可以计算MD5、SHA1、CRC32,比起集成到系统属性页的某些插件，这个更轻量)</li>
+<li>GIF录制 : <strong>GifCam</strong> (轻量且免费，功能强大)</li>
+<li>取色器 : <code>Takecolor</code>(全局取色器，这个其实算是工作用。)</li>
+<li>QQ表情包EIF解压 : <code>EIF解压工具 by coolslob</code>（QQ表情包现在导出后都不能直接被解压，可以利用这个工具。虽然写的很早，不过2015版的QQ表情也是可以被处理</li>
+</ol>
+</li>
+</ol>
+<p>PS : 如果不想弄太多乱七八糟的小工具，可以试试软媒魔方的工具，虽然是国产，但是基本上没啥流氓行为，而且里面也都是绿色的小工具，完全可以拆开来用</p>
+<h2 id="工作用（技术向）"><a href="#工作用（技术向）" class="headerlink" title="工作用（技术向）"></a>工作用（技术向）</h2><ol>
+<li><p>编辑器<br><code>Sublime Text</code>、<code>EmEditor</code>(可以自动切换文件编码，二进制模式很好用）</p>
+</li>
+<li><p>IDE<br>暂无在用的，前端用编辑器足够。不过有在考虑要不要用下<code>WebStorm</code></p>
+</li>
+<li><p>本地服务器环境<br><strong>phpStudy</strong> （最简单最好用的一键环境包，全版本且无捆绑，切换也极度方便，虽然现在很多Node.js的后台，不过我还是比较推荐这个）</p>
+</li>
+<li><p>抓包软件<br><code>Fiddler</code>（足够对付大部分情况，轻松上手）、<code>SRSniffer</code>(by “suprole#gmail.com”，一个全局的应用程序抓包工具)、<code>Wireshark</code>(虽然把这个写上去了，然而学习门槛太高现在还没学会怎么用）</p>
+</li>
+<li><p>版本管理</p>
+<ol>
+<li>Git :  <code>git-for-windows</code>(个人感觉比官方的<code>Github Desktop</code>好用不少)</li>
+<li>SVN :  <code>TortoiseSVN</code></li>
+</ol>
+</li>
+</ol>
+<ol>
+<li><p>远程shell管理工具<br><code>putty</code>(远程VPS管理工具。VPS已经买好，就差学shell指令了）</p>
+</li>
+<li><p>FTP管理工具<br><code>FileZilla</code></p>
+</li>
+<li><p>虚拟机<br><code>Windows XP Mode</code>（win7下，装XP的话比其他虚拟机好很多。WIN10下取消了）、<code>VirtualBox</code>、<code>Hyper-V</code>(WIN10自带虚拟机管理工具）</p>
+<p>​</p>
+</li>
+</ol>
+<hr>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;前段时间正好换硬盘重装了系统，所以全部软件都要重新装一遍，趁此机会把一些常用软件以及某些有用处但是频率较低的小软件做个记录，当备份吧（只记录名字，没有链接和破解之类的）。万一哪天记不起来了可以自己翻下。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://chitanda.me/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>单个GitHub帐号下添加多个GitHub Pages的相关问题</title>
+    <link href="http://chitanda.me/2015/11/03/multiple-git-pages-in-one-github-account/"/>
+    <id>http://chitanda.me/2015/11/03/multiple-git-pages-in-one-github-account/</id>
+    <published>2015-11-03T08:06:55.000Z</published>
+    <updated>2016-08-25T15:36:56.989Z</updated>
+    
+    <content type="html"><![CDATA[<p>好久没更新文章了，这边都快成荒地了。今天想到一个比较简单的问题，所以先处理了写篇文章上来，好给blog加点生机（<del>其实post里躺着不少草稿，不过一直没办法写完╮(╯▽╰)╭</del>）</p>
+<p>很早之前我就记得某篇讲hexo的文章里提到<strong>每个GitHub只能拥有一个GitHub Pages页面</strong>，所以后来一直不敢在自己的帐号底下添加除blog外的其他GitHub Pages项目。直到今天仔细研究了下GitHub的规则，才发现上面那句话有很大的问题。</p>
+<p>这篇文章主要是讲github下多个GitHub Pages项目相关以及自定义域名访问的问题，没太多技术上的东西，基本上都是属于GitHub的文档意译和解释，英语好的可以直接看这官网这两篇FAQ：</p>
+<ol>
+<li><a href="https://help.github.com/articles/about-custom-domains-for-github-pages-sites/" target="_blank" rel="external">About custom domains for GitHub Pages sites</a></li>
+<li><a href="https://help.github.com/articles/user-organization-and-project-pages/" target="_blank" rel="external">User, Organization, and Project Pages</a></li>
+</ol>
+<a id="more"></a>
+<hr>
+<blockquote>
+<p>注：虽然全文基本上都在讲GitHub Pages，<strong>但我个人亲测这些规则也都适用于GitCafe Pages,两者没有本质区别。</strong> 所以像我一样双线部署blog的可以安心地把GitHub的东西搬到GitCafe来。不过为了行文方便，下文不再特意强调GitCafe Page，均以<code>GitHub Pages</code>代指(“Coding”的是否也如此并不清楚，有心人可以自测)</p>
+</blockquote>
+<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>以我个人为例，我在GitHub上已经有了一个和用户名同名的<a href="https://github.com/chitanda/chitanda.github.io" target="_blank" rel="external">GitHub Pages项目</a>当作个人主页(<a href="http://chitanda.github.io" target="_blank" rel="external">chitanda.github.io</a>),但是我现在又有了几个想法:</p>
+<ol>
+<li>再在GitHub上弄一个GitHub Pages项目当作我的demo页面展示,而不是在原先的blog项目下加子目录(一来访问url不好看，二来很多主题会强制对所有项目内的文件添加样式，影响展示效果)</li>
+<li>同时demo页面的访问链接是我自定义的一个域名(如：是<code>demo.chitanda.me</code>或者<code>demo.chitanda.github.io</code>而不是<code>chitanda.github.io/demo</code>)</li>
+</ol>
+<p>那么上面两个要求，GitHub能否都满足呢？卖个关子先，结论放在<a href="#总结">下文</a>。</p>
+<h2 id="GitHub-Pages的分类及区别"><a href="#GitHub-Pages的分类及区别" class="headerlink" title="GitHub Pages的分类及区别"></a>GitHub Pages的分类及区别</h2><p>根据<a href="https://help.github.com/articles/user-organization-and-project-pages/" target="_blank" rel="external">官方文档</a>，GitHub Pages分为两类:<strong>个人/组织主页</strong>以及<strong>项目主页</strong>，两者基本上没啥区别，但是有以下几点不同:（该文场景下个人和组织帐号没什么区别，所以下文为了行文方便将统一用<strong>个人主页</strong>代指）</p>
+<ol>
+<li><strong>个人主页</strong>必须要和用户的GitHub帐号同名，所以每个用户有且只能有一个repo作为个人主页，且必须是<code>&lt;username&gt;/&lt;username&gt;.github.io</code>的形式；而<strong>项目主页</strong>的命名则没有这种限制，且数量有任意多个。</li>
+<li>不考虑绑定的自定义域名的前提下，<strong>个人主页</strong>的GitHub二级域名为<code>&lt;username&gt;.github.io</code>;<strong>项目主页</strong>的GitHub二级域名为<code>&lt;username&gt;.github.io/&lt;projectname&gt;</code>,没有<code>&lt;projectname&gt;.&lt;username&gt;.github.io</code>这种方式</li>
+<li><strong>个人主页</strong>的展示内容以<code>master</code>分支里的文件为准；而<strong>项目主页</strong>的展示内容以<code>gh-pages</code>分支内的文件为准</li>
+</ol>
+<blockquote>
+<p>从上面的分析可以发现两个问题已经解决掉一个半了。那么剩下来的问题就是如何配置一个项目主页并绑定自定义域名了。</p>
+</blockquote>
+<h2 id="项目主页的建立和自定义域名配置"><a href="#项目主页的建立和自定义域名配置" class="headerlink" title="项目主页的建立和自定义域名配置"></a>项目主页的建立和自定义域名配置</h2><p><strong>注：配置过程和个人主页一模一样，如果之前配置过个人主页的，可以跳过这部分内容了</strong></p>
+<h3 id="建立项目主页"><a href="#建立项目主页" class="headerlink" title="建立项目主页"></a>建立项目主页</h3><ol>
+<li>新建一个repo，repo名字随意。</li>
+<li>点进repo主页然后点击右面的<code>Settings</code>，页面往下拉到<strong>GitHub Pages</strong>部分，选择<code>Launch automatic page generator</code>&gt;<code>Continue to layouts</code>&gt;<code>Publish page</code>即可.（由于大部分情况下并不用默认的页面和样式，所以这里不需要太纠结于内容编辑）</li>
+</ol>
+<blockquote>
+<p>这样一个项目主页就建立完成了，此时可以用<code>&lt;username&gt;.github.io/&lt;projectname&gt;</code>访问到了。</p>
+</blockquote>
+<h3 id="绑定自定义域名"><a href="#绑定自定义域名" class="headerlink" title="绑定自定义域名"></a>绑定自定义域名</h3><ol>
+<li>在项目的repo里新建一个<code>CNAME</code>文件，并将不带协议名的裸域名写进去(<code>demo.chitanda.me</code>而不是<code>http://demo.chitanda.me/</code>)<blockquote>
+<p>这一步可以参考<a href="https://help.github.com/articles/adding-a-cname-file-to-your-repository/" target="_blank" rel="external">官方文档</a></p>
+</blockquote>
+</li>
+<li>到你域名的DNS服务商里给对应的二级域名添加<code>CNAME</code>解析到<code>&lt;username&gt;.github.io</code>(和个人主页的配置相同)</li>
+<li>等待DNS生效，具体时间和服务商有关（十几分钟到几小时都有可能）。<blockquote>
+<p>如果不确定自己的解析是否生效了，可以在linux系统下用<code>dig</code>命令来检测.参考<a href="https://help.github.com/articles/tips-for-configuring-a-cname-record-with-your-dns-provider/#configuring-a-custom-subdomain-with-your-dns-provider" target="_blank" rel="external">官方文档</a></p>
+</blockquote>
+</li>
+</ol>
+<h2 id="GitHub和GitCafe双线部署的小tips"><a href="#GitHub和GitCafe双线部署的小tips" class="headerlink" title="GitHub和GitCafe双线部署的小tips"></a>GitHub和GitCafe双线部署的小tips</h2><p>上面的配置对于单线部署的来说已经完成了，不过对于双线部署的用户而言，有几个小问题需要注意下</p>
+<ol>
+<li>DNS服务商里要按照来源对对应的二级域名做分流配置。（具体过程可以参考<a href="/2015/06/11/tips-for-setup-hexo/#单域名多线路解析">此处</a></li>
+<li>如果想要所有用户都可以用<code>example.com/project</code>的方式访问到repo，GitHub和GitCafe的repo名字必须相同，否则会导致有一边跳404<blockquote>
+<p>可以参考我这里的例子:GitHub上的<a href="https://github.com/chitanda/demo" target="_blank" rel="external">项目主页</a>名字为<code>demo</code>,GitCafe上的<a href="https://gitcafe.com/chitanda/demos" target="_blank" rel="external">项目主页</a>名字为<code>demos</code>,则不翻墙的情况下国内用户访问<a href="http://chitanda.me/demo/">chitanda.me/demo</a>会跳404,而用<a href="http://demo.chitanda.me/" target="_blank" rel="external">demo.chitanda.me</a>则正常(另外同个链接在翻墙和不翻墙的情况下看到的页面不同，也是分线部署的功劳)</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>聊胜于无的总结。对于上面提到的几个问题，也有了答案：</p>
+<ol>
+<li>每个GitHub帐号下只能有<code>1</code>个<strong>个人主页</strong>repo，但是可以有<code>不限数量</code>的<strong>项目主页</strong>repo。</li>
+<li>没有自定义域名的情况下，<strong>项目主页</strong>的访问链接只能是<code>&lt;username&gt;.github.io/&lt;projectname&gt;</code>而不是<code>&lt;projectname&gt;.&lt;username&gt;.github.io</code></li>
+<li>GitCafe添加GitHub Pages后必须要自己本地同步文件上去，而不能像GitHub那样一键建站，GitCafe每个repo初始化页面的代码是有步骤略过去的，新手的话一开始可能同步不了。建议看他们的<a href="https://gitcafe.com/GitCafe/Help/wiki/Pages-%E7%9B%B8%E5%85%B3%E5%B8%AE%E5%8A%A9#wiki" target="_blank" rel="external">帮助</a></li>
+</ol>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
+<li><a href="https://help.github.com/articles/about-custom-domains-for-github-pages-sites/" target="_blank" rel="external">About custom domains for GitHub Pages sites</a></li>
+<li><a href="https://help.github.com/articles/user-organization-and-project-pages/" target="_blank" rel="external">User, Organization, and Project Pages</a></li>
+<li><a href="https://help.github.com/articles/adding-a-cname-file-to-your-repository/" target="_blank" rel="external">Adding a CNAME file to your repository</a></li>
+<li><a href="https://help.github.com/articles/tips-for-configuring-a-cname-record-with-your-dns-provider/#configuring-a-custom-subdomain-with-your-dns-provider" target="_blank" rel="external">Tips for configuring a CNAME record with your DNS provider</a></li>
+<li><a href="https://gitcafe.com/GitCafe/Help/wiki/Pages-%E7%9B%B8%E5%85%B3%E5%B8%AE%E5%8A%A9" target="_blank" rel="external">GitCage Pages-相关帮助</a></li>
+<li><a href="/2015/06/11/tips-for-setup-hexo/#单域名多线路解析">单域名多线路解析</a></li>
+</ol>
+<hr>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;好久没更新文章了，这边都快成荒地了。今天想到一个比较简单的问题，所以先处理了写篇文章上来，好给blog加点生机（&lt;del&gt;其实post里躺着不少草稿，不过一直没办法写完╮(╯▽╰)╭&lt;/del&gt;）&lt;/p&gt;
+&lt;p&gt;很早之前我就记得某篇讲hexo的文章里提到&lt;strong&gt;每个GitHub只能拥有一个GitHub Pages页面&lt;/strong&gt;，所以后来一直不敢在自己的帐号底下添加除blog外的其他GitHub Pages项目。直到今天仔细研究了下GitHub的规则，才发现上面那句话有很大的问题。&lt;/p&gt;
+&lt;p&gt;这篇文章主要是讲github下多个GitHub Pages项目相关以及自定义域名访问的问题，没太多技术上的东西，基本上都是属于GitHub的文档意译和解释，英语好的可以直接看这官网这两篇FAQ：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/articles/about-custom-domains-for-github-pages-sites/&quot;&gt;About custom domains for GitHub Pages sites&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/articles/user-organization-and-project-pages/&quot;&gt;User, Organization, and Project Pages&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="blog" scheme="http://chitanda.me/categories/blog/"/>
+    
+    
+      <category term="github" scheme="http://chitanda.me/tags/github/"/>
+    
+      <category term="hexo" scheme="http://chitanda.me/tags/hexo/"/>
+    
+      <category term="博客" scheme="http://chitanda.me/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JS原生Date类型方法的一些冷知识</title>
+    <link href="http://chitanda.me/2015/08/21/the-trivia-of-js-date-function/"/>
+    <id>http://chitanda.me/2015/08/21/the-trivia-of-js-date-function/</id>
+    <published>2015-08-21T06:49:08.000Z</published>
+    <updated>2016-08-25T15:41:00.307Z</updated>
+    
+    <content type="html"><![CDATA[<p>一个多月没更新了- -偷懒中。这个东西其实很早之前就在整理了，不过后来发现自己不少地方没弄明白，然后就一直卡那边了（其实就是不想写吧），想了下反正是给自己熟悉js的原生API而已，所以也没必要太钻牛角尖，也不一定要多完整，因此就当是<code>Date()</code>函数的一个冷门知识点小补充吧。这篇文章主要讲Date()的字符串与时间戳转换以及用户时间本地化,可能内容上比较乱（不然也不会卡我一个月时间了），见谅<br><a id="more"></a><br>ps：由于<code>Date()</code>是js原生函数，不同浏览器的解析器对其实现方式并不同，所以返回值也会有所区别。本文测试未特别申明浏览器的情况下，均是指<code>win7 x64</code>+<code>chrome 44.0.2403.155 (正式版本) m （32 位）</code>版本</p>
+<h2 id="Date-与new-Date-的区别"><a href="#Date-与new-Date-的区别" class="headerlink" title="Date()与new Date()的区别"></a>Date()与new Date()的区别</h2><p><code>Date()</code>直接返回当前时间字符串，<strong>不管参数是number还是任何string</strong><br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">Date</span>();</div><div class="line"><span class="built_in">Date</span>(<span class="string">'sssss'</span>);</div><div class="line"><span class="built_in">Date</span>(<span class="number">1000</span>);</div><div class="line"><span class="comment">//Fri Aug 21 2015 15:46:21 GMT+0800 (中国标准时间)</span></div></pre></td></tr></table></figure></p>
+<p>而<code>new Date()</code>则是会根据参数来返回对应的值，无参数的时候，返回当前时间的字符串形式；有参数的时候返回参数所对应时间的字符串。<strong><code>new Date()</code>对参数不管是格式还是内容都要求,且只返回字符串</strong>,</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line"><span class="comment">//Fri Aug 21 2015 15:51:55 GMT+0800 (中国标准时间)</span></div><div class="line"></div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">1293879600000</span>);</div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2011-01-01T11:00:00'</span>)</div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2011/01/01 11:00:00'</span>)</div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2011</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">11</span>,<span class="number">0</span>,<span class="number">0</span>)</div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'jan 01 2011,11 11:00:00'</span>)</div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'Sat Jan 01 2011 11:00:00'</span>)</div><div class="line"><span class="comment">//Sat Jan 01 2011 11:00:00 GMT+0800 (中国标准时间)</span></div><div class="line"></div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'sss'</span>);</div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2011/01/01T11:00:00'</span>);</div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2011-01-01-11:00:00'</span>)</div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'1293879600000'</span>);</div><div class="line"><span class="comment">//Invalid Date</span></div><div class="line"></div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2011-01-01T11:00:00'</span>)-<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'1992/02/11 12:00:12'</span>)</div><div class="line"><span class="comment">//596069988000</span></div></pre></td></tr></table></figure>
+<p>从上面几个测试结果可以很容易发现</p>
+<ol>
+<li><code>new Date()</code>在参数正常的情况只会返回当前时间的字符串(且是当前时区的时间)</li>
+<li><code>new Date()</code>在解析一个具体的时间的时候，对参数有较严格的格式要求，格式不正确的时候会直接返回<code>Invalid Date</code>，比如将<code>number</code>类的时间戳转换成<code>string</code>类的时候也会导致解析出错</li>
+<li>虽然<code>new Date()</code>的返回值是字符串，然而两个<code>new Date()</code>的结果字符串是可以直接相减的，结果为相差的毫秒数。</li>
+</ol>
+<p>那么，<code>new Date()</code>能接受的参数格式到底是什么标准呢?（相对于严格要求的多参数传值方法。非严格的单参数(数字日期表示格式)更常用且更容易出错，所以下文只考虑单参数数字时间字符串转换的情况)</p>
+<hr>
+<h2 id="new-Date-解析所支持的参数格式标准"><a href="#new-Date-解析所支持的参数格式标准" class="headerlink" title="new Date()解析所支持的参数格式标准"></a>new Date()解析所支持的参数格式标准</h2><h3 id="时间戳格式"><a href="#时间戳格式" class="headerlink" title="时间戳格式"></a>时间戳格式</h3><p>这个是最简单的也是最不容易出错的。当然唯一的缺点大概就是对开发者不直观，无法一眼看出具体日期。<br>需要注意的以下两点:</p>
+<blockquote>
+<ol>
+<li>js内的时间戳指的是当前时间到<code>1970年1月1日00:00:00 UTC</code>对应的<strong>毫秒数</strong>，和unix时间戳不是一个概念，后者表示秒数，差了1000倍</li>
+<li><code>new Date(timestamp)</code>中的时间戳必须是<code>number</code>格式，<code>string</code>会返回<code>Invalid Date</code>。所以比如<code>new Date(&#39;11111111&#39;)</code>这种写法是错的</li>
+</ol>
+</blockquote>
+<h3 id="时间数字字符串格式"><a href="#时间数字字符串格式" class="headerlink" title="时间数字字符串格式"></a>时间数字字符串格式</h3><p>不大清楚这种该怎么描述，就是类似<code>YYYY/MM/DD HH:mm:SS</code>这种。下文以<code>dateString</code>代指。<br><code>new Date(dateString)</code>所支持的字符串格式需要满足<a href="http://tools.ietf.org/html/rfc2822#page-14" target="_blank" rel="external">RFC2822标准</a>或者<a href="http://www.w3.org/TR/NOTE-datetime" target="_blank" rel="external">ISO 8601标准</a><br>这两种标准对应的格式分别如下:</p>
+<ol>
+<li><p>RFC2822 标准日期字符串</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">YYYY/MM/DD HH:MM:SS ± timezon(时区用4位数字表示)</div><div class="line">// eg 1992/02/12 12:23:22+0800</div></pre></td></tr></table></figure>
+<blockquote>
+<p>RFC2822还有别的格式，不过上面这个是比较常用的（另外这标准太难啃了，实在没耐心啃完，所以也就没太深入)。RFC2822标准本身还有其他的非数字日期表达方式，不过不在这个话题讨论范围内了,略过</p>
+</blockquote>
+</li>
+<li><p>ISO 8601标准日期字符串</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">YYYY-MM-DDThh:mm:ss ± timezone(时区用HH:MM表示)</div><div class="line"></div><div class="line">1997-07-16T08:20:30Z</div><div class="line">// “Z”表示UTC标准时区，即&quot;00:00&quot;,所以这里表示零时区的`1997年7月16日08时20分30秒`</div><div class="line">//转换成位于东八区的北京时间则为`1997年7月17日16时20分30秒`</div><div class="line"></div><div class="line">1997-07-16T19:20:30+01:00</div><div class="line">// 表示东一区的1997年7月16日19时20秒30分，转换成UTC标准时间的话是1997-07-16T18:20:30Z</div></pre></td></tr></table></figure>
+<blockquote>
+<ol>
+<li>日期和时间中间的<code>T</code>不可以被省略，一省略就出错。</li>
+<li>虽然在chrome浏览器上时区也可以用<code>+0100</code>这种RFC2822的形式来表示，然而IE上不支持这种混搭写法，所以用ISO8601标准形式表示的时候时区要用<code>+HH:MM</code></li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<p>单单从格式上来说，两者的区别主要在于分隔符的不同。不过需要注意的是，ISO 8601标准的兼容性比RFC2822差得多（比如IE8和iOS均不支持前者。<del>我知道IE8很多人会无视，不过iOS也有这个坑的话，各位或多或少会谨慎点了吧？</del>)，所以一般情况下建议用<code>RFC 2822</code>格式的。<br>不过需要注意的是，在未指定时区的前提下，对于只精确到<code>day</code>的日期字符串，<code>RFC 2822</code>返回结果是以<code>当前时区的零点</code>为准，而<code>ISO8601</code>返回结果则会以<code>UTC时间</code>的零点为标准进行解析。<br>例如：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">//RFC2822：</span></div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'1992/02/13'</span>) <span class="comment">//Thu Feb 13 1992 00:00:00 GMT+0800 (中国标准时间)</span></div><div class="line"><span class="comment">//ISO8601:</span></div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'1992-02-13'</span>) <span class="comment">//Thu Feb 13 1992 08:00:00 GMT+0800 (中国标准时间)</span></div></pre></td></tr></table></figure></p>
+<p>然而上面这个只是ES5的标准而已，在ES6里这两种形式都会变成<code>当前时区的零点</code>为基准<sup><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse#Differences_in_assumed_time_zone" target="_blank" rel="external">1</a></sup><br><del><em>不管你们崩溃没，反正我是已经想死了</em></del><br>关于跨浏览器的dataString解析情况，还可以参考这个页面:<br><a href="http://dygraphs.com/date-formats.html" target="_blank" rel="external">JavaScript and Dates, What a Mess!</a></p>
+<p><strong>所以对于时间字符串对象，个人意见是要么用<code>RFC2822</code>形式，要么自己写个解析函数然后随便你传啥格式进来。</strong></p>
+<hr>
+<h2 id="时间格式化函数的效率"><a href="#时间格式化函数的效率" class="headerlink" title="时间格式化函数的效率"></a>时间格式化函数的效率</h2><p>这里的<code>时间格式化</code>值得是将时间字符串转换成毫秒数的过程。js原生的时间格式化函数有<code>Date.parse</code>、<code>Date.prototype.valueOf</code>、<code>Date.prototype.getTime</code>、<code>Number(Date)</code>、<code>+Date</code>（还有个<code>Date.UTC</code>方法，然而对参数要求严格，不能直接解析日期字符串，所以略过)<br>这5个函数从功能上来说一模一样，但是具体的效率如何呢？我写了个检测页面，诸位也可以自己测试下。</p>
+<p></p><p data-height="268" data-theme-id="0" data-slug-hash="NqeZag" data-default-tab="result" data-user="chitanda" class="codepen">See the Pen <a href="http://codepen.io/chitanda/pen/NqeZag/" target="_blank" rel="external">efficiency-of-time-format-function</a> by chitanda (<a href="http://codepen.io/chitanda" target="_blank" rel="external">@chitanda</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+<h3 id="核心测试函数："><a href="#核心测试函数：" class="headerlink" title="核心测试函数："></a>核心测试函数：</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">dateString,times,func</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> startTime=<span class="built_in">window</span>.performance.now();</div><div class="line">    <span class="comment">// console.log('start='+startTime.getTime());</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; times; i++) &#123;</div><div class="line">        func(dateString);<span class="comment">//这里填写具体的解析函数</span></div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">var</span> endTime=<span class="built_in">window</span>.performance.now();</div><div class="line">    <span class="comment">// console.log('endTime='+endTime.getTime());</span></div><div class="line">    <span class="keyword">var</span> gapTime=endTime-startTime;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'一共耗时:'</span>+gapTime+<span class="string">'ms'</span>);</div><div class="line">    <span class="comment">// console.log('时间字符串'+dateString);</span></div><div class="line">    <span class="keyword">return</span> gapTime;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>之所以这里用<code>window.performance.now()</code>而不用<code>new Date()</code>,是因为前者精确度远比后者高。后者只能精确到ms。会对结果造成较大影响</p>
+</blockquote>
+<h3 id="测试结果："><a href="#测试结果：" class="headerlink" title="测试结果："></a>测试结果：</h3><p>单次执行50W次时间格式化函数，并重复测试100次，最后的结果如下:<br>（表格中的数字为单次执行50W次函数的平均结果。单位为毫秒)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">chrome</th>
+<th style="text-align:center">IE</th>
+<th style="text-align:center">Firefox</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Date.parse()</td>
+<td style="text-align:center">151.2087</td>
+<td style="text-align:center">55.5811</td>
+<td style="text-align:center">315.0446</td>
+</tr>
+<tr>
+<td style="text-align:center">Date.prototype.getTime()</td>
+<td style="text-align:center">19.5452</td>
+<td style="text-align:center">21.3423</td>
+<td style="text-align:center">14.0169</td>
+</tr>
+<tr>
+<td style="text-align:center">Date.prototype.valueOf()</td>
+<td style="text-align:center">20.1696</td>
+<td style="text-align:center">21.7192</td>
+<td style="text-align:center">13.8096</td>
+</tr>
+<tr>
+<td style="text-align:center">+Date()</td>
+<td style="text-align:center">20.0044</td>
+<td style="text-align:center">31.3511</td>
+<td style="text-align:center">22.7861</td>
+</tr>
+<tr>
+<td style="text-align:center">Number(Date)</td>
+<td style="text-align:center">23.0900</td>
+<td style="text-align:center">24.8838</td>
+<td style="text-align:center">23.3775</td>
+</tr>
+</tbody>
+</table>
+<p>从这个表格可以很容易得出以下结论：</p>
+<blockquote>
+<ol>
+<li>从计算效率上来说，<code>Date.prototype.getTime()</code>≈<code>Date.prototype.valueOf()</code>&gt;<br><code>+Date</code>≈<code>Number(Date)</code>&gt;&gt;<code>Date.parse()</code></li>
+<li>从代码书写效率上来说，对于少量的时间格式化计算，用<code>+Date()</code>或者<code>Number(Date)</code>即可。而若页面内有大量该处理，则建议用Date原生的函数<code>Date.prototype.getTime()</code>或者<code>Date.prototype.valueOf()</code>.只有<code>Date.parse</code>,找不到任何使用的理由。</li>
+<li>这个结果和计算机的计算性能以及浏览器有关，所以具体数字可能会有较大偏差，很正常。然而几个函数结果的时间差大小顺序并不会变。</li>
+<li>codepen的在线demo限制比较大，对于这个测验个人建议最好将源代码复制到本地文件然后进行测试</li>
+</ol>
+</blockquote>
+<hr>
+<h2 id="UTC，GMT时间的区别"><a href="#UTC，GMT时间的区别" class="headerlink" title="UTC，GMT时间的区别"></a>UTC，GMT时间的区别</h2><p>这个不是啥重要东西，单纯当课外知识吧。</p>
+<h3 id="格林威治标准时间GMT"><a href="#格林威治标准时间GMT" class="headerlink" title="格林威治标准时间GMT"></a>格林威治标准时间GMT</h3><p>GMT即「格林威治标准时间」(Greenwich Mean Time，简称G.M.T.)，指位于英国伦敦郊区的皇家格林威治天文台的标准时间，因为本初子午线被定义为通过那里的经线。<strong>然而由于地球的不规则自转，导致GMT时间有误差，因此目前已不被当作标准时间使用。</strong></p>
+<h3 id="世界协调时间UTC"><a href="#世界协调时间UTC" class="headerlink" title="世界协调时间UTC"></a>世界协调时间UTC</h3><p>UTC是最主要的世界时间标准，是经过平均太阳时(以格林威治时间GMT为准)、地轴运动修正后的新时标以及以「秒」为单位的国际原子时所综合精算而成的时间。UTC比GMT来得更加精准。其误差值必须保持在0.9秒以内，若大于0.9秒则由位于巴黎的国际地球自转事务中央局发布闰秒，使UTC与地球自转周期一致。<strong>不过日常使用中，GMT与UTC的功能与精确度是没有差别的。</strong><br>协调世界时区会使用“Z”来表示。而在航空上，所有使用的时间划一规定是协调世界时。而且Z在无线电中应读作“Zulu”（可参见北约音标字母），协调世界时也会被称为“Zulu time”。</p>
+<h2 id="浏览器获取用户当前时间以及喜好语言"><a href="#浏览器获取用户当前时间以及喜好语言" class="headerlink" title="浏览器获取用户当前时间以及喜好语言"></a>浏览器获取用户当前时间以及喜好语言</h2><p>首先需要注意一点，浏览器获取当前用户所在的时区等信息只和系统的<code>日期和时间</code>设置里的时区以及时间有关。<code>区域和语言</code>设置影响的是浏览器默认时间函数(Date.prototype.toLocaleString等)显示的格式，不会对时区等有影响。以window为例，<code>控制面板\时钟、语言和区域</code>中的两个子设置项目的区别如下：</p>
+<blockquote>
+<p><code>日期和时间</code>:设置当前用户所处的时间和时区，浏览器获取到的结果以此为准，哪怕用户的设置时间和时区是完全错误的。比如若东八区的用户将自己的时区设置为东9区，浏览器就会将视为东9区;时间数据上同理。这里的设置会影响<code>Date.prototype.getTimezoneOffset</code>、<code>new Date()</code>的值<br><code>区域和语言</code>:主要是设置系统默认的时间显示方式。其子设置的<code>格式</code>会影响<code>Date.prototype.toLocaleString</code>方法返回的字符串结果</p>
+</blockquote>
+<h3 id="浏览器判断用户本地字符串格式"><a href="#浏览器判断用户本地字符串格式" class="headerlink" title="浏览器判断用户本地字符串格式"></a>浏览器判断用户本地字符串格式</h3><p>Date有个<code>Date.prototype.toLocaleString()</code>方法可以将时间字符串返回用户本地字符串格式，这个方法还有两个子方法<code>Date.prototype.toLocaleDateString</code>和<code>Date.prototype.toLocaleTimeString</code>，这两个方法返回值分别表示<code>日期</code>和<code>时间</code>，加一起就是<code>Date.prototype.toLocaleString</code>的结果。<br>这个方法的默认参数会对时间字符串做一次转换，将其转换成用户当前所在时区的时间，并按照对应的系统设置时间格式返回字符串结果。<strong>然而不同浏览器对用户本地所使用的语言格式的判断依据是不同的。</strong><br>IE:获取系统当前的<code>区域和语言</code>-<code>格式</code>中设置的格式，依照其对应的格式来显示当前时间结果;<strong>IE浏览器实时查询该系统设置</strong>（即你在浏览器窗口打开后去更改系统设置也会引起返回格式变化）<br>FF：获取方式和结果与IE浏览器相同，区别在于FF只会在浏览器进程第一次启动的时候获取一次系统设置，中间不管怎么系统设置怎么变化，FF都无法获取到当前系统设置。除非重启FF浏览器。<br>Chrome:获取方式和以上两个都不同。chrome无视系统的<code>区域和语言</code>-<code>格式</code>格式，只依照自己浏览器的界面设置的菜单语言来处理。(比如英文界面则按系统’en-US’格式返回字符串，中文界面则按系统’zh-CN’格式返回结果)<br>综上可得：</p>
+<blockquote>
+<p>chrome下<strong>浏览器语言设置优先系统语言设置。</strong>而IE和FF则是<strong>系统语言设置优先浏览器语言设置</strong>,不管浏览器界面语言是什么，他们只依照系统设置来返回格式。（没有MAC，所以不知道safari是啥情况，等以后看情况补充吧)<br>另外，不同浏览器对<code>toLocaleString</code>返回的结果也是不同的，IE浏览器严格遵守系统设置，而chrome和FF会有自己内置的格式来替换。</p>
+</blockquote>
+<h3 id="浏览器界面语言设置和语言设置的区别"><a href="#浏览器界面语言设置和语言设置的区别" class="headerlink" title="浏览器界面语言设置和语言设置的区别"></a>浏览器界面语言设置和语言设置的区别</h3><p>这小节貌似有点跑题，然而不说明下的很容易和上面提到的浏览器设置的语言混淆，所以也拿出来说一下。<br>需要注意<strong>浏览器的语言设置和界面语言设置不是一回事</strong>。<br><code>浏览器的语言设置</code>设置的是浏览器发送给服务器的<code>Request Header</code>里的<code>Accept-Language</code>的值，这个值可以告诉服务器用户的喜好语言，对于某些跨国网站，服务器可以以此为依旧来返回对应语言的页面（不过实际应用上这个限制比较大，大部分网站还是根据IP来判断用户来源的，或者直接让用户自己选择）<br>对于各大浏览器而言，这个设置的更改也是比较显性，容易找到的。<br>IE： <code>Internet选项</code>-<code>语言</code><br>FF： <code>选项</code>-<code>内容</code>-<code>语言</code><br>chrome:<code>设置</code>-<code>显示高级设置</code>-<code>语言</code>-<code>语言和输入设置...</code><br>上面这里的设置不会影响到浏览器的界面语言设置，以国内大部分用户而言，即不管你怎么设置这里的语言选项，浏览器菜单等默认都会是以中文显示的.<br>而<code>浏览器的界面语言设置</code>一般来说则藏的深得多，没那么容易找到。<br>IE：<br>卸载前面安装过的浏览器语言包，去微软官网下载对应的<a href="http://www.microsoft.com/en-us/download/details.aspx?id=40904" target="_blank" rel="external">IE浏览器语言包</a>安装。（和安装的语言包有关。系统界面语言和该语言包相同的情况下，变为该语言。否则以安装的语言包为准。）<br>FF：地址栏输入<code>about:config</code>，然后找到<code>general.useragent.locale</code>字段，修改对应字段即可。<br>chrome：<code>设置</code>-<code>显示高级设置</code>-<code>语言</code>-<code>语言和输入设置...</code></p>
+<h3 id="利用js获取用户浏览器语言喜好"><a href="#利用js获取用户浏览器语言喜好" class="headerlink" title="利用js获取用户浏览器语言喜好"></a>利用js获取用户浏览器语言喜好</h3><p>对于获取这两种设置，js原生方法支持度都比较一般:<br>IE下的<code>navigator</code>方法有四种和<code>language</code>有关的方法，区别如下:<br>假设系统语言为 <code>ja-JP</code>，系统unicode语言为<code>zh-CN</code>日期格式为<code>nl-NL</code>,浏览器语言设置（accept-language)为<code>de</code>,浏览器界面语言为<code>en-US</code>（其他条件不变，浏览器界面语言改为<code>zh-CN</code>的时候结果也是一样)，<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">window</span>.navigator.language</div><div class="line"><span class="comment">//"nl-NL"</span></div><div class="line"><span class="built_in">window</span>.navigator.systemLanguage</div><div class="line"><span class="comment">//"zh-CN"(设置中的非unicode程序所使用语言选项)</span></div><div class="line"><span class="built_in">window</span>.navigator.userLanguage</div><div class="line"><span class="comment">//"nl-NL"</span></div><div class="line"><span class="built_in">window</span>.navigator.browserLanguage</div><div class="line"><span class="comment">//"ja-JP"（系统菜单界面语言）</span></div><div class="line"><span class="built_in">window</span>.navigator.languages</div><div class="line"><span class="comment">//undefined</span></div></pre></td></tr></table></figure></p>
+<p>chrome下，当浏览器界面语言为<code>zh-CN</code>,<code>accept-language</code>首位为<code>en-US</code>的时候：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">window</span>.navigator.language</div><div class="line"><span class="comment">//'zh-CN'</span></div><div class="line"><span class="built_in">window</span>.navigator.languages</div><div class="line"><span class="comment">//["en-US", "en", "zh-CN", "zh", "ja", "zh-TW", "de-LI", "de", "pl"]</span></div><div class="line"><span class="comment">//当界面语言改为"en-US"时</span></div><div class="line"><span class="built_in">window</span>.navigator.language</div><div class="line"><span class="comment">//'en-US'（浏览器界面语言)</span></div></pre></td></tr></table></figure></p>
+<p>FF下，当浏览器界面语言为<code>zh-CN</code>,<code>accept-language</code>首位为<code>en-US</code>的时候：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">window</span>.navigator.language</div><div class="line"><span class="comment">//'en-US'</span></div><div class="line"><span class="built_in">window</span>.navigator.languages</div><div class="line"><span class="comment">//["en-US", "zh-CN", "de", "zh", "en"]</span></div><div class="line"><span class="comment">//当界面语言改为"en-US",`accept-language`首位为`zh-CN`的时候</span></div><div class="line"><span class="built_in">window</span>.navigator.language</div><div class="line"><span class="comment">//'zh-CN'（`accept-language`首选值)</span></div><div class="line"><span class="built_in">window</span>.navigator.languages</div><div class="line"><span class="comment">//["zh-CN", "de", "zh", "en-US", "en"]</span></div></pre></td></tr></table></figure></p>
+<blockquote>
+<ol>
+<li>从上面的测试结果可以很明显的发现IE浏览器的这几个函数都是获取系统信息的，无法获取到前面提到的两个浏览器层面上的设置。<br>这几个函数具体含义还有疑问的可以参考<a href="https://msdn.microsoft.com/en-us/library/ms535867.aspx" target="_blank" rel="external">MSDN官方文档</a></li>
+<li><code>window.navigator.language</code>这个函数虽然三个浏览器都可以兼容，然而代表的意义完全不同。IE下该函数返回系统设置的时间显示格式所遵守的标准的地区代码；chrome下返回浏览器界面语言；FF下返回<code>accept-language</code>的首选语言值</li>
+</ol>
+</blockquote>
+<p>由此:</p>
+<blockquote>
+<ol>
+<li><code>浏览器设置的语言</code>即<code>accept-language</code>值，IE浏览器无法利用JS获取。chrome和FF浏览器都可以利用<code>window.navigator.languages</code>来获取，而FF还可以直接用<code>window.navigator.language</code>直接获取<code>accept-language</code>的首选语言值。<br>所以对于<code>accept-language</code>，兼容性最好的获取方法应该是利用后端，发起一个ajax请求，分析header。而不是直接js来处理。</li>
+<li><code>浏览器界面语言</code>，IE和FF都无法利用js来获取，chrome可以用<code>window.navigator.language</code>来获取</li>
+<li>系统级别的语言设置（系统菜单界面语言，系统设置的时间显示格式），chrome和FF都无法用JS获取到</li>
+</ol>
+</blockquote>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这篇文章断断续续地写了一个多月，不过由于对<code>Date()</code>函数的掌握不足因此个人感觉其实还是思路有点乱，所以文章看起来可能稍微有点跳跃性。不过用户本地化那块内容确实用了不少心思去写，希望对看到这篇文章的人有点帮助。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
+<li><a href="http://www.w3.org/TR/NOTE-datetime" target="_blank" rel="external">Date and Time Formats</a></li>
+<li><a href="http://tools.ietf.org/html/rfc2822#page-14" target="_blank" rel="external">Date and Time Specification(RFC2822)</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse#Differences_in_assumed_time_zone" target="_blank" rel="external">Date.parse()-Differences in assumed time zone</a></li>
+<li><a href="http://blog.dygraphs.com/2012/03/javascript-and-dates-what-mess.html" target="_blank" rel="external">JavaScript and Dates, What a Mess!</a></li>
+<li><a href="https://msdn.microsoft.com/en-us/library/ms535867.aspx" target="_blank" rel="external">navigator object(IE浏览器私有language函数的解析)</a></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一个多月没更新了- -偷懒中。这个东西其实很早之前就在整理了，不过后来发现自己不少地方没弄明白，然后就一直卡那边了（其实就是不想写吧），想了下反正是给自己熟悉js的原生API而已，所以也没必要太钻牛角尖，也不一定要多完整，因此就当是&lt;code&gt;Date()&lt;/code&gt;函数的一个冷门知识点小补充吧。这篇文章主要讲Date()的字符串与时间戳转换以及用户时间本地化,可能内容上比较乱（不然也不会卡我一个月时间了），见谅&lt;br&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://chitanda.me/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="CSS" scheme="http://chitanda.me/tags/CSS/"/>
+    
+      <category term="javascript" scheme="http://chitanda.me/tags/javascript/"/>
+    
+      <category term="前端" scheme="http://chitanda.me/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="Date" scheme="http://chitanda.me/tags/Date/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用javascript获取并修改伪元素的值</title>
+    <link href="http://chitanda.me/2015/07/15/get-and-modify-pseudo-elements-value-by-javascript/"/>
+    <id>http://chitanda.me/2015/07/15/get-and-modify-pseudo-elements-value-by-javascript/</id>
+    <published>2015-07-15T07:22:16.000Z</published>
+    <updated>2016-08-25T15:36:11.629Z</updated>
+    
+    <content type="html"><![CDATA[<p>虽然标题里写的是<code>伪元素</code>,不过这篇文章主要是说<code>::before</code>和<code>::after</code>，其余几个伪元素（<code>::first-letter</code>、<code>::first-line</code>、<code>::selection</code>等)由于没有<code>content</code>属性，所以本文一笔带过，其实方法是一样的。<br>伪元素的重点在于一个<strong>伪</strong>，虽然它们可以被浏览器渲染引擎识别并正确渲染，然而<strong>伪元素本身并不是DOM元素,</strong>所以无法被js直接操作——因此任何基于JS直接选取DOM元素的CSS更改方法对伪元素都不起作用。（JQ看似万能，这个问题上是直接就栽了。因为JQ的选择符都是基于DOM元素）关于JS和JQ选择器，可以参考这两篇文档： <a href="http://www.w3.org/TR/selectors-api/" target="_blank" rel="external">Selectors API Level 1</a>、<a href="http://api.jquery.com/category/selectors/" target="_blank" rel="external">jQuery Selectors</a><br><a id="more"></a></p>
+<h2 id="获取伪元素的属性值"><a href="#获取伪元素的属性值" class="headerlink" title="获取伪元素的属性值"></a>获取伪元素的属性值</h2><p>虽然JS里没有可以直接操作伪元素的选择符，然而获取其CSS属性的方法还是有的。</p>
+<h3 id="window-getComputedStyle"><a href="#window-getComputedStyle" class="headerlink" title="window.getComputedStyle"></a>window.getComputedStyle</h3><p>利用<code>window.getComputedStyle</code>方法选择到伪元素，然后利用<code>getPropertyValue</code>方法获取对应的属性的值。<br>根据<a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle" target="_blank" rel="external">MDN的文档</a>，<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">window.getComputedStyle(element[, pseudoElt]);</div></pre></td></tr></table></figure></p>
+<p>此方法包含两个参数，一个是元素本身另一个是元素的伪元素。<br>js语法实例（<a href="http://codepen.io/chitanda/full/mJKZPK/" target="_blank" rel="external">完整DEMO在线链接</a>）：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> div=<span class="built_in">document</span>.querySelector(<span class="string">'div'</span>);</div><div class="line"><span class="keyword">var</span> fontSize=<span class="built_in">window</span>.getComputedStyle(div,<span class="string">'::before'</span>).getPropertyValue(<span class="string">'font-size'</span>);<span class="comment">//获取before伪元素的字号大小</span></div></pre></td></tr></table></figure></p>
+<p>关于这个方法，详解可以参考这篇文章：<br><a href="http://www.zhangxinxu.com/wordpress/2012/05/getcomputedstyle-js-getpropertyvalue-currentstyle/" target="_blank" rel="external">获取元素CSS值之getComputedStyle方法熟悉</a></p>
+<hr>
+<h2 id="更改伪元素的属性值"><a href="#更改伪元素的属性值" class="headerlink" title="更改伪元素的属性值"></a>更改伪元素的属性值</h2><p><code>window.getComputedStyle</code>方法虽然可以获取到伪元素的属性值，然而根据该方法名字也知道其只能获取CSS样式，并无法更改css属性，那么如果想要用js动态更改伪元素属性值的话，该怎么处理呢？<br>思路有以下几个：</p>
+<ol>
+<li>js更改<code>data-*</code>属性值来更改伪元素的<code>content</code>值</li>
+<li>创建多个<code>class</code>，通过切换<code>class</code>来达到改变样式的目的</li>
+<li>利用CSSStyleSheet的<code>insertRule</code>方法来添加样式</li>
+<li>利用内部css样式的高优先级来覆盖外部css<blockquote>
+<p>以上实现思路的推荐程度<strong>依次递减</strong></p>
+</blockquote>
+</li>
+</ol>
+<h3 id="利用DOM的data-属性来更改content的值"><a href="#利用DOM的data-属性来更改content的值" class="headerlink" title="利用DOM的data-*属性来更改content的值"></a>利用DOM的<code>data-*</code>属性来更改<code>content</code>的值</h3><p><code>data-*</code>是HTML5新增的DOM元素属性，作用大致可以理解为标记。具体用法可以参考MDN的<a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes" target="_blank" rel="external">这篇文章</a>.而伪元素的<code>content</code>属性值除了常规赋值外，还有一种特殊的<code>attr()</code>方法来获取。<br>HTML：<br><figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test"</span> <span class="attr">data-text</span>=<span class="string">"TEXT"</span> <span class="attr">data-color</span>=<span class="string">"red"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>CSS:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">.test::before&#123;</div><div class="line">    content: attr(data-text);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>结果:</p>
+<p><pre><br>    <div class="test" data-text="TEXT"></div><br>    <style>.test::before{content: attr(data-text);}</style><br></pre><br>另外<code>content</code>其实可以多个<strong>attr</strong>连写，而且attr()内的可以是DOM元素的任意属性（比如<code>class</code>等，甚至非W3C标准属性也支持，不过不推荐这么做)所以很方便凑一些模版文字。像下面这种写法也是完全没问题的。<strong>注意用空格连接，不要用”+”号。</strong><br>EXAM：<br><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.test</span><span class="selector-pseudo">::before</span> &#123;</div><div class="line">  <span class="attribute">content</span>: <span class="string">'我的类是'</span> <span class="built_in">attr</span>(class) <span class="string">'想要变成'</span> <span class="built_in">attr</span>(data-color);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>虽然W3C给<code>attr()</code>赋予了<a href="http://www.w3.org/TR/css3-values/#attr-notation" target="_blank" rel="external">无限可能性</a>,包括<code>color</code>,<code>width</code>等属性在未来都有希望用这个方法更改，然而<strong>目前只有<code>content</code>支持该方法</strong>，其余的都还是草稿状态，尚未有浏览器支持。之所以把这个方法放在第一位只是因为相比别的实现手法来说，这个方法真的太简单太优雅。</p>
+</blockquote>
+<hr>
+<p>但是如果真的想要改伪元素里的<code>color</code>等元素呢？</p>
+<h3 id="更改class来实现伪元素样式的更改"><a href="#更改class来实现伪元素样式的更改" class="headerlink" title="更改class来实现伪元素样式的更改"></a>更改<code>class</code>来实现伪元素样式的更改</h3><p>把这个方法放到推荐位第二位估计会被很多人骂我：“卧槽，这么简单又没逼格的办法你竟然放到第二位！太没水平了”。不过再看完后面两种方法后或许你会对这种看法有所改观。<br>这个方法的优点是简单好用且无兼容性问题。缺点是多了一些其实用处不大的<code>class</code>,很像是jQuery类选择器中毒患者的做法；另外不适合多状态的场景（比如实时改变伪元素文字大小等）。<br>实现过于简单就不贴代码了。</p>
+<hr>
+<p>前面的<code>class切换大法</code>可能让人感觉不痛快，这里来个高大上(伪)点的方法：</p>
+<h3 id="利用CSSStyleSheet的insertRule方法来添加样式"><a href="#利用CSSStyleSheet的insertRule方法来添加样式" class="headerlink" title="利用CSSStyleSheet的insertRule方法来添加样式"></a>利用CSSStyleSheet的<code>insertRule</code>方法来添加样式</h3><blockquote>
+<p>这部分内容和W3C标准牵连比较多，加上较冷门，没多少人关注，个人目前啃不动标准，所以这部分内容不会做深入分析，理解可能也会有问题，望斧正。</p>
+</blockquote>
+<p>CSSStyleSheet是浏览器存放页面内所有css样式表的对象方法（不包括行内样式)，每个<code>link</code>和<code>style</code>标签都代表一个CSSStyleSheet对象，获取他们可以用<code>document.styleSheets</code>方法。(需要注意的是虽然<code>styleSheets</code>方法返回的结果把<code>link</code>标签引进的外部样式也算进去了，但是非IE浏览器没办法获取到他们的<code>cssRules</code>属性，只有内嵌的<code>style</code>标签内的元素可以被获取到)</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">document</span>.styleSheets[<span class="number">0</span>].insertRule(<span class="string">'.test::before&#123;color:green&#125;'</span>,<span class="number">0</span>)<span class="comment">//chrome,firefox等非IE浏览器使用</span></div><div class="line"><span class="built_in">document</span>.styleSheets[<span class="number">0</span>].addRule(<span class="string">'.test::before&#123;color:green&#125;'</span>,<span class="number">0</span>)<span class="comment">//IE系列浏览器使用</span></div><div class="line"><span class="comment">/* 虽然部分浏览器也可以通过id来指定,'document.styleSheets.id.insertRule()'这种写法在chrome和IE下都行得通，但是firefox会返回'undefined',所以建议还是使用index值来获取stylesheet */</span></div></pre></td></tr></table></figure>
+<p>.<code>insertRule</code>的语法是<code>stylesheet.insertRule(rule, index)</code>,另一个参数是<code>index</code>，意思是在对应的styleSheets里的<code>cssRules</code>样式表中的位置，这个值越大则样式优先级越高，但是值不能超过当前样式表规则（<code>cssRules</code>）长度（CSS中先定义的样式总是会被后定义的覆盖就是这个缘故。），当值小于<code>cssRules</code>长度时，添加的样式规则会插入到<code>index</code>值定义的位置，之前其余的规则依次顺延。</p>
+<blockquote>
+<p><code>addrule</code>和<code>insertRule</code>方法本质上没区别，只是后者不被IE浏览器识别，所以前者作为浏览器兼容方法存在。（下文为节省篇幅，以<code>insertRule</code>方法指代此两种方法。)<br>上面的代码看似简单一行，然而却不是每次都有效的。原因有以下几点：</p>
+<pre><code>1. `document.styleSheets`虽然按照`style`和`link`的顺序返回对应的`StyleSheetList`，然而第一个如果是`link`而不是`style`,前面讲过此时无法获取对应的`cssRules`，则`document.styleSheets[0].cssRules`为`null`，`insertRule`方法不起作用。（此情况只针对非IE浏览器，IE浏览器正常，但是定义的早往往意味着被后面的样式覆盖，所以意义不大）
+2. 同上，如果页面内没有内嵌样式的`style`标签，则`insertRule`方法也无法发挥作用。
+3. `index`值不够大的话很有可能会早于css文件开始的定义位置，导致被覆盖。因此有个折衷办法就是给添加的样式增加`!important`，虽然我个人比较反感这么做。
+</code></pre></blockquote>
+<p>由此可见此方法的局限性，但是这种方法的优雅之处在于避免了直接写内嵌样式，而是通过css api来做更改。相比下面的方法来说，稍微好点。</p>
+<hr>
+<p>但是这种方法好像局限性有点大啊？</p>
+<h3 id="HEAD中添加style标签强制覆盖初始属性"><a href="#HEAD中添加style标签强制覆盖初始属性" class="headerlink" title="HEAD中添加style标签强制覆盖初始属性"></a><code>HEAD</code>中添加<code>style</code>标签强制覆盖初始属性</h3><p>这个方法是利用内部css样式的高优先级来覆盖外部css，好处是简单易理解，实现简单。坏处就是吃相太难看，过于粗暴。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> style=<span class="built_in">document</span>.createElement(<span class="string">'style'</span>);</div><div class="line">style.innerHTML=<span class="string">".test::before&#123;color:green&#125;"</span>;<span class="comment">//添加样式内容的话也可以用上面提到过的`insertRule`,相对例子里的硬编码会更优雅点。</span></div><div class="line"><span class="built_in">document</span>.head.appendChild(style);</div></pre></td></tr></table></figure></p>
+<p>看到这里可能有些人反应过来了，其实加<code>style</code>标签这种方法可以是<code>insertRule</code>实现方法的大前提——因为不是所有页面一开始都有内嵌的<code>style</code>样式的。这种方法虽然不是很好，但是有时候却又确确实实是必须的——比如“拖动滑块改变伪元素内文字大小”这个需求。</p>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><h3 id="功能需求"><a href="#功能需求" class="headerlink" title="功能需求"></a>功能需求</h3><ol>
+<li>拖动滑块改变伪元素内的文字大小</li>
+<li>且伪元素内随时显示当前字号</li>
+<li>通过一个按钮可以改变伪元素内文字颜色</li>
+</ol>
+<p>这个需求可以将本文前面提到的四种改变伪元素样式的方法都塞进去。具体实现参照DEMO，不再做具体分析：</p>
+<p></p><p data-height="268" data-theme-id="0" data-slug-hash="OVBJEw" data-default-tab="result" data-user="chitanda" class="codepen">See the Pen <a href="http://codepen.io/chitanda/pen/OVBJEw/" target="_blank" rel="external">js-edit-pseudo-element-stylesheet-rules</a> by chitanda (<a href="http://codepen.io/chitanda" target="_blank" rel="external">@chitanda</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+<hr>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
+<li><p>getComputedStyle()</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle" target="_blank" rel="external">Window.getComputedStyle()</a></li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/05/getcomputedstyle-js-getpropertyvalue-currentstyle/" target="_blank" rel="external">获取元素CSS值之getComputedStyle方法熟悉</a></li>
+</ol>
+</li>
+<li><p>attr-notation</p>
+<ol>
+<li><a href="http://www.w3.org/TR/css3-values/#attr-notation" target="_blank" rel="external">W3C CSS3-Attribute References: ‘attr()’</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/attr" target="_blank" rel="external">MDN ATTR()</a></li>
+</ol>
+</li>
+<li>CSSRules<ol>
+<li><a href="http://help.dottoro.com/ljdxvksd.php" target="_blank" rel="external">CSSRule object</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/insertRule" target="_blank" rel="external">MDN insertRule</a></li>
+<li><a href="http://www.w3.org/wiki/Dynamic_style_-_manipulating_CSS_with_JavaScript" target="_blank" rel="external">Dynamic style - manipulating CSS with JavaScript</a></li>
+<li><a href="http://davidwalsh.name/add-rules-stylesheets" target="_blank" rel="external">Add Rules to Stylesheets with JavaScript</a></li>
+<li><a href="http://pankajparashar.com/posts/modify-pseudo-elements-css/" target="_blank" rel="external">Modify pseudo element styles with JavaScript</a></li>
+<li><a href="https://gist.github.com/yckart/5563717" target="_blank" rel="external">Add css-rules to an existing stylesheet</a></li>
+</ol>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;虽然标题里写的是&lt;code&gt;伪元素&lt;/code&gt;,不过这篇文章主要是说&lt;code&gt;::before&lt;/code&gt;和&lt;code&gt;::after&lt;/code&gt;，其余几个伪元素（&lt;code&gt;::first-letter&lt;/code&gt;、&lt;code&gt;::first-line&lt;/code&gt;、&lt;code&gt;::selection&lt;/code&gt;等)由于没有&lt;code&gt;content&lt;/code&gt;属性，所以本文一笔带过，其实方法是一样的。&lt;br&gt;伪元素的重点在于一个&lt;strong&gt;伪&lt;/strong&gt;，虽然它们可以被浏览器渲染引擎识别并正确渲染，然而&lt;strong&gt;伪元素本身并不是DOM元素,&lt;/strong&gt;所以无法被js直接操作——因此任何基于JS直接选取DOM元素的CSS更改方法对伪元素都不起作用。（JQ看似万能，这个问题上是直接就栽了。因为JQ的选择符都是基于DOM元素）关于JS和JQ选择器，可以参考这两篇文档： &lt;a href=&quot;http://www.w3.org/TR/selectors-api/&quot;&gt;Selectors API Level 1&lt;/a&gt;、&lt;a href=&quot;http://api.jquery.com/category/selectors/&quot;&gt;jQuery Selectors&lt;/a&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://chitanda.me/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="CSS" scheme="http://chitanda.me/tags/CSS/"/>
+    
+      <category term="javascript" scheme="http://chitanda.me/tags/javascript/"/>
+    
+      <category term="前端" scheme="http://chitanda.me/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="伪元素" scheme="http://chitanda.me/tags/%E4%BC%AA%E5%85%83%E7%B4%A0/"/>
+    
+      <category term="W3C" scheme="http://chitanda.me/tags/W3C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浏览器和服务器实现跨域（CORS）判定的原理</title>
+    <link href="http://chitanda.me/2015/07/04/the-implementation-about-CORS-achieved-by-server-and-broswer/"/>
+    <id>http://chitanda.me/2015/07/04/the-implementation-about-CORS-achieved-by-server-and-broswer/</id>
+    <published>2015-07-04T14:37:37.000Z</published>
+    <updated>2016-08-25T15:37:24.206Z</updated>
+    
+    <content type="html"><![CDATA[<p>前端对Cross-Origin Resource Sharing 问题(CORS，中文又称’跨域’)应该很熟悉了。众所周知出于安全的考虑，浏览器有个<code>同源策略</code>，对于不同源的站点之间的相互请求会做限制（<strong>跨域限制是浏览器行为，不是服务器行为。</strong>）。不过下午想到了一个略无趣的问题：浏览器和服务器到底是如何判定有没有跨域呢？本文主要分两个部分，一是对这个问题的总结，二是nginx下如何配置服务器允许跨域。<br><a id="more"></a></p>
+<h2 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h2><blockquote>
+<p>同源指的是域名（或IP），协议，端口都相同，不同源的客户端脚本(javascript、ActionScript)在没明确授权的情况下，不能读写对方的资源。</p>
+</blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Same-origin_policy" target="_blank" rel="external">同源的判定：</a><br>以<code>http://www.example.com/dir/page.html</code>为例，以下表格指出了不同形式的链接是否与其同源：（原因里未申明不同的属性即说明其与例子里的原链接对应的属性相同）</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">链接</th>
+<th style="text-align:center">结果</th>
+<th style="text-align:left">原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="1">http:// <strong><code>www.example.com</code></strong> /dir/page2.html</a></td>
+<td style="text-align:center"><strong><code>是</code></strong></td>
+<td style="text-align:left">同协议同域名同端口</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="1">http:// <strong><code>www.example.com</code></strong> /dir2/other.html</a></td>
+<td style="text-align:center"><strong><code>是</code></strong></td>
+<td style="text-align:left">同协议同域名同端口</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="1">http://user:pwd@ <strong><code>www.example.com</code></strong>/dir2/other.html</a></td>
+<td style="text-align:center"><strong><code>是</code></strong></td>
+<td style="text-align:left">同协议同域名同端口</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="1">http://www.example.com: <strong><code>81</code></strong>/dir/other.html</a></td>
+<td style="text-align:center">否</td>
+<td style="text-align:left">端口不同</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="1"> <strong><code>https</code></strong>://www.example.com/dir/other.html</a></td>
+<td style="text-align:center">否</td>
+<td style="text-align:left">协议不同端口不同</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="1">http:// <strong><code>en.example.com</code></strong>/dir/other.html</a></td>
+<td style="text-align:center">否</td>
+<td style="text-align:left">域名不同</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="1">http:// <strong><code>example.com</code></strong>/dir/other.html</a></td>
+<td style="text-align:center">否</td>
+<td style="text-align:left">域名不同（要求精确匹配）</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="1">http:// <strong><code>v2.www.example.com</code></strong>/dir/other.html</a></td>
+<td style="text-align:center">否</td>
+<td style="text-align:left">域名不同（要求精确匹配）</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="1">http://www.example.com: <strong><code>80</code></strong>/dir/other.html</a></td>
+<td style="text-align:center"><strong><code>不确定</code></strong></td>
+<td style="text-align:left">取决于浏览器的实现方式</td>
+</tr>
+</tbody>
+</table>
+<h2 id="是否允许跨域的判定"><a href="#是否允许跨域的判定" class="headerlink" title="是否允许跨域的判定"></a>是否允许跨域的判定</h2><p>前文提到了同源策略的判定，然而同源策略在加强了安全的同时，对开发却是极大的不便利。因此开发者们又发明了很多办法来允许数据的跨域传输（常见的办法有<code>JSONP</code>、<code>CORS</code>)。当域名不同源的时候，由于跨域实现的存在，浏览器不能直接根据域名来判定跨域限制。那么浏览器具体又是如何实现判定的呢？看下面的例子。</p>
+<h3 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h3><ol>
+<li>参与实验的前端域名三个有：<code>http://www.zhihu.com</code>、<code>http://segmentfault.com</code>、<br><code>http://localhost</code>。</li>
+<li>请求的服务器端地址为<code>http://localhost/city.json</code>,服务器解析引擎使用的<code>nginx</code>,且服务器只配置了允许来自<code>http://segmentfault.com</code>的跨域请求</li>
+<li>检测方法：在各个域名下利用chrome浏览器的<code>console</code>界面模拟发送ajax请求，代码如下： <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">xhr.open(<span class="string">'GET'</span>, <span class="string">'http://localhost/city.json'</span>,<span class="literal">true</span>);</div><div class="line">xhr.send();</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="实验过程"><a href="#实验过程" class="headerlink" title="实验过程"></a>实验过程</h3><ol>
+<li><p>在<code>http://localhost</code>域名下,<strong>请求成功。</strong><br> 服务器回应的http文件头如下：</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">HTTP/1.1 200 OK</div><div class="line">Server: nginx/1.6.2</div><div class="line">Date: Sun, 05 Jul 2015 17:44:06 GMT</div><div class="line">Content-Type: application/octet-stream</div><div class="line">Content-Length: 2084</div><div class="line">Last-Modified: Sat, 18 Apr 2015 06:20:12 GMT</div><div class="line">Connection: keep-alive</div><div class="line">ETag: &quot;5531f79c-824&quot;</div><div class="line">Access-Control-Allow-Credentials: true</div><div class="line">Access-Control-Allow-Methods: GET, POST, OPTIONS</div><div class="line">Accept-Ranges: bytes</div></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>http://segmentfault.com</code>域名下，<strong>请求成功</strong><br> 服务器回应的http文件头如下：</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">HTTP/1.1 200 OK</div><div class="line">Server: nginx/1.6.2</div><div class="line">Date: Sun, 05 Jul 2015 18:17:27 GMT</div><div class="line">Content-Type: application/octet-stream</div><div class="line">Content-Length: 2084</div><div class="line">Last-Modified: Sat, 18 Apr 2015 06:20:12 GMT</div><div class="line">Connection: keep-alive</div><div class="line">ETag: &quot;5531f79c-824&quot;</div><div class="line">**Access-Control-Allow-origin: http://segmentfault.com**</div><div class="line">Access-Control-Allow-Credentials: true</div><div class="line">Access-Control-Allow-Methods: GET, POST, OPTIONS</div><div class="line">Accept-Ranges: bytes</div></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>http://www.zhihu.com</code>下，<strong>请求失败</strong><br><strong>虽然都是失败，但是返回的HTTP文件头内容会视服务器是否有配置跨域请求而发生变化</strong><br> ####服务器允许跨域请求####<br> (仅允许来自<code>http://segmentfault.com</code>的跨域请求)<br> console.log窗口提示：</p>
+<blockquote>
+<p> XMLHttpRequest cannot load <a href="http://localhost/city.json" target="_blank" rel="external">http://localhost/city.json</a>. The ‘Access-Control-Allow-Origin’ header has a value     ‘<a href="http://segmentfault.com" target="_blank" rel="external">http://segmentfault.com</a>‘ that is not equal to the supplied origin. Origin ‘<a href="http://www.zhihu.com" target="_blank" rel="external">http://www.zhihu.com</a>‘ is therefore notallowed access.</p>
+</blockquote>
+<p> 服务器回应的http文件头如下：</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">HTTP/1.1 200 OK</div><div class="line">Server: nginx/1.6.2</div><div class="line">Date: Sun, 05 Jul 2015 17:59:25 GMT</div><div class="line">Content-Type: application/octet-stream</div><div class="line">Content-Length: 2084</div><div class="line">Last-Modified: Sat, 18 Apr 2015 06:20:12 GMT</div><div class="line">Connection: keep-alive</div><div class="line">ETag: &quot;5531f79c-824&quot;</div><div class="line">Access-Control-Allow-origin: http://segmentfault.com</div><div class="line">Access-Control-Allow-Credentials: true</div><div class="line">Access-Control-Allow-Methods: GET, POST, OPTIONS</div><div class="line">Accept-Ranges: bytes</div></pre></td></tr></table></figure>
+<p> ####服务器不允许任何跨域请求####<br> console.log窗口提示:</p>
+<blockquote>
+<p>XMLHttpRequest cannot load <a href="http://localhost/city.json" target="_blank" rel="external">http://localhost/city.json</a>. No ‘Access-Control-Allow-Origin’ header is present on the requested resource. Origin ‘<a href="http://www.zhihu.com" target="_blank" rel="external">http://www.zhihu.com</a>‘ is therefore not allowed access.</p>
+</blockquote>
+<p> 服务器回应的http文件头如下：</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">HTTP/1.1 200 OK</div><div class="line">Server: nginx/1.6.2</div><div class="line">Date: Sun, 05 Jul 2015 17:51:29 GMT</div><div class="line">Content-Type: application/octet-stream</div><div class="line">Content-Length: 2084</div><div class="line">Last-Modified: Sat, 18 Apr 2015 06:20:12 GMT</div><div class="line">Connection: keep-alive</div><div class="line">ETag: &quot;5531f79c-824&quot;</div><div class="line">Access-Control-Allow-Credentials: true</div><div class="line">Access-Control-Allow-Methods: GET, POST, OPTIONS</div><div class="line">Accept-Ranges: bytes</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>###跨域的判定流程###<br>从<code>zhihu</code>页面的两次浏览器报错以及<code>segmentfault</code>的成功返回值来看，可以很容易得出浏览器和服务器的合作判定步骤如下：</p>
+<blockquote>
+<ol>
+<li>浏览器先根据同源策略对前端页面和后台交互地址做匹配，若同源，则直接发送数据请求；若不同源，则发送跨域请求。</li>
+<li>服务器解析程序收到浏览器跨域请求后，根据自身配置返回对应文件头。若未配置过任何允许跨域，则文件头里不包含<code>Access-Control-Allow-origin</code>字段，若配置过域名，则返回<code>Access-Control-Allow-origin</code>+ <code>对应配置规则里的域名的方式</code>。</li>
+<li>浏览器根据接受到的http文件头里的<code>Access-Control-Allow-origin</code>字段做匹配，若无该字段，说明不允许跨域；若有该字段，则对字段内容和当前域名做比对，如果同源，则说明可以跨域，浏览器发送该请求；若不同源，则说明该域名不可跨域，不发送请求<br>（但是不能仅仅根据服务器返回的文件头里是否包含<code>Access-Control-Allow-origin</code>来判断其是否允许跨域，因为服务器端配置多域名跨域的时候，也会出现不能跨域的域名返回包里没有<code>Access-Control-Allow-origin</code>字段的情况。下文配置说明里会讲。)</li>
+</ol>
+</blockquote>
+<h2 id="配置服务器实现跨域传输"><a href="#配置服务器实现跨域传输" class="headerlink" title="配置服务器实现跨域传输"></a>配置服务器实现跨域传输</h2><p>前面讲到了同源策略的基本判定，以及浏览器实现跨域判断的方式，那么，如何在服务器端做配置来允许跨域传输呢？下文将以Nginx为例，讲一下三种情况下的配置。</p>
+<h3 id="配置项解析"><a href="#配置项解析" class="headerlink" title="配置项解析"></a>配置项解析</h3><p>CORS常用的配置项有以下几个：</p>
+<blockquote>
+<ul>
+<li><strong>Access-Control-Allow-Origin</strong>（必含） – 允许的域名，<strong>只能填通配符或者单域名</strong></li>
+<li><strong>Access-Control-Allow-Methods</strong>（必含） – 这允许跨域请求的http方法（常见有<code>POST</code>、<code>GET</code>、<code>OPTIONS</code>）</li>
+<li><strong>Access-Control-Allow-Headers</strong>（当预请求中包含Access-Control-Request-Headers时必须包含） – 这是对预请求当中Access-Control-Request-Headers的回复，和上面一样是以逗号分隔的列表，可以返回所有支持的头部。</li>
+<li><strong>Access-Control-Allow-Credentials</strong>（可选） – 该项标志着请求当中是否包含cookies信息，只有一个可选值：true（必为小写）。如果不包含cookies，请略去该项，而不是填写false。这一项与XmlHttpRequest2对象当中的withCredentials属性应保持一致，即withCredentials为true时该项也为true；withCredentials为false时，省略该项不写。反之则导致请求失败。</li>
+<li><strong>Access-Control-Max-Age</strong>（可选） – 以秒为单位的缓存时间。预请求的的发送并非免费午餐，允许时应当尽可能缓存。</li>
+</ul>
+</blockquote>
+<h3 id="具体配置举例"><a href="#具体配置举例" class="headerlink" title="具体配置举例"></a>具体配置举例</h3><h4 id="全域名或者单域名允许跨域"><a href="#全域名或者单域名允许跨域" class="headerlink" title="全域名或者单域名允许跨域"></a>全域名或者单域名允许跨域</h4><p>这个最省心<br>打开Nginx的配置文件（默认为<code>nginx.conf</code>）。找到对应域名设置的<code>local</code>配置部分。<br>添加以下内容：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">add_header &apos;Access-Control-Allow-origin&apos; &apos;http://www.example.com&apos;;</div><div class="line">add_header &apos;Access-Control-Allow-Methods&apos; &apos;GET, POST, OPTIONS&apos;;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>添加的域名必须带<code>http://</code>协议头（否则服务器无法区分是http还是https），如果接受所有域名的跨域请求，则可以用<code>*</code>(安全性有问题，不推荐)</p>
+</blockquote>
+<h4 id="添加多域名跨域配置"><a href="#添加多域名跨域配置" class="headerlink" title="添加多域名跨域配置"></a>添加多域名跨域配置</h4><p>如果允许跨域的域名有多个但出于安全问题又不想配置全域名通配的时候，就可以用到nginx里的<code>if</code>判断了。<br>添加如下内容：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">if ($http_origin = &apos;http://segmentfault.com&apos; ) &#123;  </div><div class="line"> add_header &apos;Access-Control-Allow-Origin&apos; &quot;$http_origin&quot;;</div><div class="line"> &#125;</div><div class="line">if ($http_origin = &apos;http://localhost:4000&apos; ) &#123;  </div><div class="line"> add_header &apos;Access-Control-Allow-Origin&apos; &quot;$http_origin&quot;;</div><div class="line"> &#125;</div><div class="line"> add_header &apos;Access-Control-Allow-Methods&apos; &apos;GET, POST, OPTIONS&apos;;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<ul>
+<li>如果对正则比较熟悉的，可以直接用正则来匹配条件判断，不需要用if这么麻烦的方式。</li>
+<li>‘Access-Control-Allow-Methods’ 允许多参数，’Access-Control-Allow-origin’不允许多参数，所以只能是条件语句判断要不要加这个。这也是我前面提到的为什么即使HTTP文件头返回值里没有’Access-Control-Allow-origin’,也不能说明它就是不允许跨域的。</li>
+<li>nginx配置文件的<code>http</code>配置部分不能用<code>if</code>条件语句，所以多域名的时候必须加在<code>local</code>部分内。另外加在<code>local</code>内的只对对应的服务器域名做跨域请求的配置，加在<code>http</code>里会让跑在该nginx下的所有网站都统一采取这种配置。</li>
+<li><code>Access-Control-Allow-Origin</code>也可以改成全小写的形式，不影响结果.(<code>access-control-allow-origin</code>也可以)</li>
+</ul>
+</blockquote>
+<p>PS：<br>这篇文章写的可能有点绕，另外由于运维方面和WEB安全方面不是特别熟悉，所以后面配置那里未必是最优解，恳请看到的各位指点。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
+<li><a href="https://en.wikipedia.org/wiki/Same-origin_policy" target="_blank" rel="external">Same-origin policy</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="external">HTTP access control (CORS)</a></li>
+<li><a href="http://www.html5rocks.com/en/tutorials/cors/" target="_blank" rel="external">Using CORS</a></li>
+<li><a href="http://newhtml.net/using-cors/" target="_blank" rel="external">利用CORS实现跨域请求</a> (是参考文献2的中译版，配置参数解析那里有所参考)</li>
+<li><a href="http://enable-cors.org/" target="_blank" rel="external">enable cross-origin resource sharing</a></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;前端对Cross-Origin Resource Sharing 问题(CORS，中文又称’跨域’)应该很熟悉了。众所周知出于安全的考虑，浏览器有个&lt;code&gt;同源策略&lt;/code&gt;，对于不同源的站点之间的相互请求会做限制（&lt;strong&gt;跨域限制是浏览器行为，不是服务器行为。&lt;/strong&gt;）。不过下午想到了一个略无趣的问题：浏览器和服务器到底是如何判定有没有跨域呢？本文主要分两个部分，一是对这个问题的总结，二是nginx下如何配置服务器允许跨域。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="运维" scheme="http://chitanda.me/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+    
+      <category term="运维" scheme="http://chitanda.me/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="nginx" scheme="http://chitanda.me/tags/nginx/"/>
+    
+      <category term="前端" scheme="http://chitanda.me/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="跨域" scheme="http://chitanda.me/tags/%E8%B7%A8%E5%9F%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用DigitalOcean中转大文件</title>
+    <link href="http://chitanda.me/2015/07/03/transfer-big-file-by-digitalocean/"/>
+    <id>http://chitanda.me/2015/07/03/transfer-big-file-by-digitalocean/</id>
+    <published>2015-07-03T03:36:54.000Z</published>
+    <updated>2016-08-25T15:39:09.660Z</updated>
+    
+    <content type="html"><![CDATA[<p>声明：本文基于<strong>Ubuntu 14.04 x64</strong>，由于本人自身对linux的掌握仅仅是初级阶段，所以本文只记录操作指令流程，不做具体分析。其中大部分操作指令来自google搜索结果，所以这篇文章些地方理解或有错误，恳请指正。</p>
+<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>昨天有朋友让他帮他从海外ftp拖一个16G的文件，由于国内直连速度实在太渣，加上ftp网站那边权限限制较严格，无法使用目前已有的大部分公网离线服务，也不能用第三方FTP客户端下载，只能通过浏览器下载。所以我就自己用DO转了下，上传到国内的百度云，做个记录。方便下次使用。<br><strong>本文适用场景：下载链接不固定且只能通过浏览器下载的文件。</strong><br><a id="more"></a></p>
+<hr>
+<h2 id="需要的软件"><a href="#需要的软件" class="headerlink" title="需要的软件"></a>需要的软件</h2><ol>
+<li>xrdp(假设文件所在站点权限验证严格，无法用curl直接下载，必须通过浏览器)</li>
+<li>Firefox浏览器（chrome浏览器默认不能在root下运行，配置较比较麻烦）</li>
+<li>rar（其他压缩软件都没有<strong>恢复记录</strong>功能。当然这里如果对网速和RP有信心的话也可以直接FTP传回来。不过有一定几率坏档,所以不推荐）</li>
+<li>bcloud（linux下百度云的非官方客户端。也可以用<a href="https://github.com/houtianze/bypy" target="_blank" rel="external">bypy</a>,不过后者没有gui，配置相对麻烦）</li>
+</ol>
+<hr>
+<p>##操作过程##<br>DO上建立VPS并利用终端连接等前略过程省略。从进入VPS系统开始。</p>
+<p>###安装远程桌面###<br>中间可能要输密码，确认等，自行根据shell显示的指令输入即可,这段内容参考了<a href="http://c-nergy.be/blog/?p=5305" target="_blank" rel="external">Ubuntu 14.04 – How to install xrdp in Ubuntu 14.04</a>。以下命令均在本机shell终端下执行(putty等)</p>
+<ol>
+<li><p>安装XRDP包</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo apt-get install xrdp</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装xfce4桌面环境</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install xfce4</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置xrdp使用xfce桌面</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">echo xfce4-session &gt;~/.xsession</div><div class="line">sudo service xrdp restart</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>此时远程桌面已经可以用了，windows打开<strong>远程桌面连接</strong>，输入ip和linux的用户名（DO默认是<code>root</code>)然后登录即可。</p>
+</blockquote>
+<h3 id="安装Firefox"><a href="#安装Firefox" class="headerlink" title="安装Firefox"></a>安装Firefox</h3><p>由于DO的vps默认是root帐户登录，而出于安装考虑，chrome不能在root账户下运行，所以改用Firefox。</p>
+<ol>
+<li>apt源安装Firefox <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get --purge --reinstall install firefox</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>安装完成后可以切换到远程桌面，在左上角的<code>Applications Menu</code>&gt;<code>Internet</code>下可以看到Firefox了。打开之后即可使用。（这里的Firefox对非拉丁文的支持不好，不会显示字符。猜测是xfce的问题，不过不是很影响使用，所以略过不提）</p>
+</blockquote>
+<h3 id="打包文件"><a href="#打包文件" class="headerlink" title="打包文件"></a>打包文件</h3><p>略过在远程桌面内用Firefox下载等一系列过程，现在假设文件已经下载到vps了，需要压缩了。</p>
+<blockquote>
+<p>上传之前建议用rar打包，理由如下：</p>
+<ol>
+<li><strong>文件大，直接传容易坏档。</strong>压缩包可以保证文件不坏（能解压出来就证明和源文件一样，解压不了的话就说明压缩包坏了，重下一部分即可)</li>
+<li><strong>rar可以加恢复记录。</strong> 之所以用rar而不是zip、7z等，主要原因在于出现部分压缩包坏档的情况下，恢复记录有很大的可能可以避免重复下载。而目前流行的压缩软件里，<strong>只有rar可以加恢复记录</strong>（当然要是网速快硬盘大那当我没说。你随意）<br>DO自带ubuntu源可能不是很多，无法用<code>apt</code>方式安装，所以下文用比较原始的编译安装方法。以<code>WinRAR 5.21 64位</code>为例</li>
+</ol>
+</blockquote>
+<ol>
+<li><p>下载安装包</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">wget http://www.rarlab.com/rar/rarlinux-x64-5.2.1.tar.gz</div></pre></td></tr></table></figure>
+</li>
+<li><p>解压</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">tar -xzvf rarlinux-x64-5.2.1.tar.gz</div></pre></td></tr></table></figure>
+</li>
+<li><p>编译安装</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cd rar</div><div class="line">make</div><div class="line">sudo make install</div></pre></td></tr></table></figure>
+</li>
+<li><p>压缩文件<br> 进入文件下载目录（默认为<code>~/Downloads</code>），并执行以下代码</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">rar a -v1000m -m3  -rr3% -t &apos;output&apos;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>linux下的rar的语法和windows下的一样。上面的指令意思是`将当前文件夹下的全部文件以默认压缩比添加到“output.rar”文件下，1000M每个分卷，并设置恢复记录为3%，压缩完成后测试文件。<strong>outpu文件不需要加’.rar’后缀</strong><br>由于默认Downloads文件夹下只有一个下载文件，所以上面的指令一般情况下也是可以的，但是如果文件夹下文件比较多的情况，可能需要排除或者指定只添加某个文件，所以贴两个可能用处较大的指令，其余的可以自行借助搜索引擎</p>
+<ol>
+<li><p>只添加文件夹下指定文件。</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">rar a -n&apos;你要压缩的文件1&apos; -n&apos;你要压缩的文件2&apos; &apos;output&apos;</div></pre></td></tr></table></figure>
+</li>
+<li><p>排除文件夹下的指定文件</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">rar a -x&apos;你要排除的文件1&apos; -x&apos;你要排除的文件2&apos; &apos;output&apos;</div></pre></td></tr></table></figure>
+</li>
+<li><p>列出压缩包内的文件</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">rar l &apos;你要查看的rar文件&apos;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<h3 id="上传文件到百度云"><a href="#上传文件到百度云" class="headerlink" title="上传文件到百度云"></a>上传文件到百度云</h3><ol>
+<li><p>下载bcloud</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">wget https://github.com/LiuLang/bcloud-packages/blob/master/bcloud_3.7.1-3_all.deb</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装<br> 由于bcloud需要很多依赖，所以需要强制更新安装依赖环境</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo dpkg -i bcloud_3.7.1-3_all.deb</div><div class="line">sudo apt-get -f install</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置并上传文件。<br>回到远程桌面，在左上角的<code>Applications Menu</code>&gt;<code>Internet</code>里找到<code>bcloud</code>，并打开，将弹出的默认设置窗口，即可登录使用。gui使用较简单，过程省略。</p>
+</li>
+</ol>
+<hr>
+<p>到此，整个中转过程完成，之后就是等上传完去DO删droplet之类的事了。很简单，略过。<br>PS:<br>DO的机子resize上去后就不可以下来了。所以如果是空间不够的话，请另开一个Droplet，DO以小时计费，并不贵。否则升级了使用完后想降下来的话，就有得折腾了。<br>PSP:<br>你如果真的不小心将DO升上去了，想降下来，也可以参考官方这个文档。过程虽然多，但是不难。<br><a href="https://www.digitalocean.com/community/tutorials/how-to-downgrade-digitalocean-droplets" target="_blank" rel="external">How To Downgrade DigitalOcean Droplets</a><br>PSV:<br><strong>DO的droplet即使关机状态下也是计费的。</strong>但是你可以做个快照备份（snapshot)，然后后面每次需要中转的时候都可以直接从这个快照里快速建立一个新的droplet，不需要每次都重新设置。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;声明：本文基于&lt;strong&gt;Ubuntu 14.04 x64&lt;/strong&gt;，由于本人自身对linux的掌握仅仅是初级阶段，所以本文只记录操作指令流程，不做具体分析。其中大部分操作指令来自google搜索结果，所以这篇文章些地方理解或有错误，恳请指正。&lt;/p&gt;
+&lt;h2 id=&quot;场景&quot;&gt;&lt;a href=&quot;#场景&quot; class=&quot;headerlink&quot; title=&quot;场景&quot;&gt;&lt;/a&gt;场景&lt;/h2&gt;&lt;p&gt;昨天有朋友让他帮他从海外ftp拖一个16G的文件，由于国内直连速度实在太渣，加上ftp网站那边权限限制较严格，无法使用目前已有的大部分公网离线服务，也不能用第三方FTP客户端下载，只能通过浏览器下载。所以我就自己用DO转了下，上传到国内的百度云，做个记录。方便下次使用。&lt;br&gt;&lt;strong&gt;本文适用场景：下载链接不固定且只能通过浏览器下载的文件。&lt;/strong&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="运维" scheme="http://chitanda.me/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+    
+      <category term="运维" scheme="http://chitanda.me/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="vps" scheme="http://chitanda.me/tags/vps/"/>
+    
+      <category term="ubuntu" scheme="http://chitanda.me/tags/ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>绕过限制，在PC上调试微信手机页面</title>
+    <link href="http://chitanda.me/2015/06/29/debug-wechat-website-in-pc/"/>
+    <id>http://chitanda.me/2015/06/29/debug-wechat-website-in-pc/</id>
+    <published>2015-06-29T08:31:07.000Z</published>
+    <updated>2016-08-25T15:36:06.472Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>假设一个手机页面，开发者对其做了限制，导致只能在微信客户端中打开。而众所周知手机上非常不利于调试页面，所以需要能在电脑上打开并进行调试。这里针对常见的三种页面做一下分析，一一绕过其限制，（当然不要拿去干坏事）<br><a id="more"></a></p>
+<hr>
+<h3 id="工具准备"><a href="#工具准备" class="headerlink" title="工具准备"></a>工具准备</h3><ol>
+<li>方便调试的浏览器。个人喜欢<strong>Chrome</strong>，本文基于<strong>Chrome 43.0.2357.130 (正式版本) m （32 位）</strong>环境。</li>
+<li>抓包工具，推荐<strong>fiddler4</strong>,当然你比较喜欢Wireshark的话也可以，反正只要是能抓到cookies就都可以</li>
+<li>能编辑cookies的浏览器插件。Chrome下我推荐<strong><a href="https://chrome.google.com/webstore/detail/editthiscookie/fngmhnnpilhplaeedifhccceomclgfbg" target="_blank" rel="external">EditThisCookie</a></strong>,Firefox的话试用<strong>Firebug</strong>自带的编辑功能即可</li>
+</ol>
+<hr>
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><p>更新于2016-04-05，针对第三种要openid验证的页面<br>没想到这文竟然会是我blog的最大流量来源= =<br>由于时间进入2016年，调试工具已经大大升级，所以我更新下个人比较推荐的更具有普适性也更简单的方法：</p>
+<ol>
+<li>安装微信的<a href="http://weixin.qq.com/cgi-bin/readtemplate?uin=&amp;stype=&amp;promote=&amp;fr=&amp;lang=zh_CN&amp;ADTAG=&amp;check=false&amp;nav=download&amp;t=weixin_download_list&amp;loc=readtemplate,weixin,body,3" target="_blank" rel="external">PC版</a></li>
+<li>打开<code>fiddler</code>,然后在微信PC版里打开要调试的页面（一般会弹出授权窗口，确定即可），接着在fiddler里找到进入后的实际页面的cookies</li>
+<li>打开要调试页面的任意主页，如要调试<code>www.aaa.com/mobile/xxx.php</code>的页面的话，就跳转到<code>www.aaa.com</code>首页，然后按照第二步抓到的页面的cookies，一个个填给chrome即可。（<strong>之所以要跳到首页去填是因为该域名下没有其他更容易编辑cookies的页面了</strong>)</li>
+</ol>
+<p>PS:<strong>复制以及更改cookies</strong>的具体步骤可以参照下文<a href="#绕过方法-3">第三部分</a>的<code>第3-6</code>几个步骤（虽然有些人推荐<a href="https://mp.weixin.qq.com/wiki/10/e5f772f4521da17fa0d7304f68b97d7e.html" target="_blank" rel="external">微信官方调试工具</a>,但是个人认为对非开发者来说这个工具不是必须的，而微信的PC端、fiddler和chrome浏览器则是可以常备的。另外加上内置的chrome调试工具远低于正常版本，所以推荐度不如微信PC客户端）</p>
+<p><del>更新于2015-10-12，针对第三种要openid验证的页面：<br>除了原先上文提到的抓包取cookies方法外，现在其实还有更简单的办法，利用微信官方的tbs调试。<br>最简单的办法就是安装QQ浏览器最新版，然后利用内置的<a href="http://blog.qqbrowser.cc/wei-xin-gong-zhong-hao-ben-di-diao-shi/" target="_blank" rel="external">微信调试工具</a>，可以省掉很多麻烦。具体步骤省略。<br>不喜欢用QQ浏览器的话，可以利用官方的tbs插件加上本地inspect的办法，可以参考此文:<br><a href="http://bbs.mb.qq.com/thread-243399-1-1.html" target="_blank" rel="external">微信、手Q、Qzone之x5内核inspect调试解决方案</a><br>不过这个方法我个人并没有尝试过，因为感觉配置过程过于麻烦。</del></p>
+<hr>
+<h2 id="绕过方法"><a href="#绕过方法" class="headerlink" title="绕过方法"></a>绕过方法</h2><p>这里针对常见的三种限制方法做了分类（不过我感觉应该也没有第四类了），其绕过方法难度也是逐渐递增的。下文将从<code>确认限制方法</code>以及<code>绕过限制</code>两个角度一一分析。</p>
+<h3 id="未做明显限制"><a href="#未做明显限制" class="headerlink" title="未做明显限制"></a>未做明显限制</h3><p>例子：<a href="http://event.adsl.cn/index.php?s=/addon/rollover/Index/index/id/45.html&amp;from=singlemessage&amp;isappinstalled=0" target="_blank" rel="external">翻滚吧小洛克</a><br>这种页面最多，基本上就是相当于啥也没做。</p>
+<h4 id="检验方法"><a href="#检验方法" class="headerlink" title="检验方法"></a>检验方法</h4><blockquote>
+<p>手机里其他浏览器也可以打开页面并正常进行页面浏览<br> 这种页面在PC上调试<strong>只需要开Chrome的模拟器</strong>即可。</p>
+</blockquote>
+<h4 id="绕过方法-1"><a href="#绕过方法-1" class="headerlink" title="绕过方法"></a>绕过方法</h4><ol>
+<li><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>打开chrome的<code>开发者中心</code> </li>
+<li>点击开发者中心工具条右上角的手机小图标，如图：<img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/no-limit.jpg" alt="img"><br>3.如果发现不能模拟触屏，则是因为设置里没开，点击开发者中心工具条右上角的箭头小图标，然后<code>Emulation</code>&gt;<code>Sensors</code>&gt;<code>Emulate touch screen</code> ，将该选项勾上即可。如图所示：<img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/emulate-touch-screen.jpg" alt="img"></li>
+</ol>
+<p>轻松过关。</p>
+<hr>
+<h3 id="检查UA来限制"><a href="#检查UA来限制" class="headerlink" title="检查UA来限制"></a>检查UA来限制</h3><p>例子：<a href="http://resource.duopao.com/duopao/games1/doNotTouchWhite/doNotTouchWhite.html?game_code=g20140429164254538845&amp;cc=duopao" target="_blank" rel="external">多泡游戏-doNotTouchWhite</a><br>由于这个站点游戏需要登录，所以放个公共号测试用，勿滥用。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">user:duopaotestdada</div><div class="line">pwd：duopaotest</div></pre></td></tr></table></figure></p>
+<h4 id="检测方法"><a href="#检测方法" class="headerlink" title="检测方法"></a>检测方法</h4><blockquote>
+<p>手机浏览器打开后会跳转到开发者自己的其余页面，或者有弹窗提示，但是不会跳到<code>open.weixin.qq.com</code>域名去。</p>
+</blockquote>
+<p>看着这种就可以肯定十有八九是基于UA（UserAgent）检测了。所以破解方法很简单，模拟UA就好。chrome内置了这个功能。</p>
+<h4 id="绕过方法-2"><a href="#绕过方法-2" class="headerlink" title="绕过方法"></a>绕过方法</h4><ol>
+<li>开启浏览器的模拟器（方法见上）</li>
+<li><p>在模拟器右上角的<code>UA</code>处将以下UA贴进去并重新进入原页面（不直接刷新是因为有些页面会根据UA做跳转）</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Mozilla/5.0 (Linux; U; Android 4.1.2; zh-cn; Chitanda/Akari) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30 MicroMessenger/6.0.0.58_r884092.501 NetType/WIFI</div></pre></td></tr></table></figure>
+<blockquote>
+<p> 如图：<img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/emulate-UA.jpg" alt="img"><br> 以上是安卓手机微信的UA，另附一个iOS下的UA</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12A365   MicroMessenger/5.4.1 NetType/WIFI</div></pre></td></tr></table></figure>
+</code></pre><p> 一般情况下这两个用处都一样，没啥区别，实际上根据大部分前端的习惯，哪怕UA里只填一个<code>MicroMessenger</code>字段都是可以绕过去的。</p>
+</blockquote>
+</li>
+<li>上面的方法虽然可以绕过限制了，但是终究不方便，每次都要手动改一次UA。实际上较新版的Chrome浏览器是可以自定义<code>Device</code>的。点击开发者中心右上角的齿轮图标，然后<code>Devices</code>&gt;<code>Add custom device</code>,即可自行添加一个带微信UA的模拟器，然后之后在模拟器界面的<code>Device</code>里切换即可。如图：<br><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/add-device.jpg" alt="img"><br><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/switch-device.jpg" alt="img"></li>
+</ol>
+<hr>
+<h3 id="利用微信oauth做限制"><a href="#利用微信oauth做限制" class="headerlink" title="利用微信oauth做限制"></a>利用微信oauth做限制</h3><p><del>例子：<a href="http://wxoauth.wucai.com/taiping_normal" target="_blank" rel="external">拯救太平轮</a></del><br><strong> 由于上面的游戏链接已经失效，所以换个页面，类型一致，可供各位测试用：<a href="http://www.weijuju.com/mobile/game/miraclepan/pan.jsp?panId=2881&amp;wuid=243430" target="_blank" rel="external">幸运大转盘</a> </strong><br>上面两种都是比较常见而且简单就能绕过限制的，而有些对用户身份验证要求比较高的页面，则会利用微信的<code>OAUTH</code>来拉取<code>openid</code>做验证，这种就不仅仅是改UA这么容易绕过去了。好在也不是无解。因为身份验证一般都是存在<code>cookies</code>里的，所以我们可以直接给PC模拟器伪造cookies来让页面误以为我们是在微信内做的验证。</p>
+<p>PS：<br><strong>这里是通用方法，不过目前针对微信内的页面，微信官方有提供调试支持，可以查看<a href="#更新">更新</a>的内容</strong></p>
+<h4 id="检测方法-1"><a href="#检测方法-1" class="headerlink" title="检测方法"></a>检测方法</h4><p>手机浏览器打开后会跳转到<code>open.weixin.qq.com</code>域名，且页面提示<code>请在微信客户端打开链接</code>.<br>如图： <img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/open-in-wechat.jpg" alt="img"></p>
+<h4 id="绕过方法-3"><a href="#绕过方法-3" class="headerlink" title="绕过方法"></a>绕过方法</h4><ol>
+<li>将浏览器UA改为微信的，然后刷新页面，会发现这个时候不再提示<code>请在微信客户端打开链接</code>了，但是整个页面一片空白。</li>
+<li><p>打开fiddler，并设置手机wifi连接，确保手机数据都经过了fiddler。</p>
+<blockquote>
+<ol>
+<li>fiddler的配置可以参考<a href="http://www.cnblogs.com/findyou/p/3491014.html" target="_blank" rel="external">这篇文章</a>,https的两个配置必须要做，不然抓不了微信的包，另外如果确定手机连上了fiddler了但是微信的数据包都没被抓到，可以先把微信app强行关闭，然后重新开一下即可</li>
+<li>以上用手机操作虽然也还可以用，但是由于微信推出了官方PC客户端,加上手机连fiddler操作比较麻烦，从<strong>简单操作</strong>的角度考虑建议该步骤参考<a href="#更新">更新</a>内容，改为<strong>用微信PC段打开链接</strong>较好</li>
+</ol>
+</blockquote>
+</li>
+<li><p>在微信里点击页面链接，使其正常进入页面，然后fiddler上注意相关域名的记录，找到<code>Tunnel to open.weixin.qq.com</code>后面那条记录。会发现这时候原来的链接带上了<code>oauth</code>参数。复制这时候的链接<br>如图：<br><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/wxoauth.jpg" alt="img"></p>
+</li>
+<li><p>在浏览器中打开前面复制的链接，会发现还是白屏，然后右键页面，选择<code>EditThisCookies</code>，会发现这个页面下有两条cookies了。</p>
+<blockquote>
+<p>也可以在开发者工具的<code>Resources</code>&gt;<code>cookies</code>&gt;<code>wxoauth.wucai.com</code>里查看当前页面拥有的cookies数量。之所以前面不自己直接创建cookies就是因为cookies除了<code>Value</code>这个属性外，还有<code>Domain</code>、<code>Path</code>、<code>Expires/Max-Age</code>等等其余属性需要设置，而这些属性自己是摸不出来的，只能先依靠页面服务器创建，然后直接更改<code>Value</code>即可</p>
+</blockquote>
+</li>
+<li><p>回到fiddler，还是刚刚选择的链接，右边窗口选择<code>Headers</code>，然后会看到下面有两条cookies，以及对应的数值。选中一条，然后右键<code>Copy Value only</code>,将值复制到前面浏览器里打开的<code>EditThisCookies</code>页面中去。如图：<br><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/copy-cookies-value.jpg" alt="img"></p>
+<blockquote>
+<p>需要的注意的是，这里复制出来的是<code>cookies名称</code>+<code>cookies值</code>的方式，而<code>EditThisCookies</code>里只需要填cookies值即可，所以复制进去后记得将<code>cookies Name =</code>这一部分删掉。如下图所示，绿框里的<code>PHPSESSID=</code>是不需要的，删掉即可.如图：<img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/delete-cookies-value-name.jpg" alt="img"></p>
+</blockquote>
+</li>
+<li><p>重复第五步，将全部cookies值都改完之后，回到之前的浏览器页面，输入最初的主页链接，成功。</p>
+<blockquote>
+<p>在微信里的话，认证页面完成后一般是有跳转的，不过由于这里是手动更改的，所以没办法触发跳转，需要我们手动模拟一次。而前面的cookies在的缘故，页面服务器也会当我们已经认证过，所以就直接跳过了。最后成功的截图：<br><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/success-pages.jpg" alt="img"></p>
+</blockquote>
+</li>
+</ol>
+<p>完成，看起来很复杂，其实也很简单。个人感觉这个过程最麻烦的地方其实在于第2步：手机连fiddler需要先断开之前的无线，手动输一次代理设置到wifi，然后再连接下。所以我觉得现在最需要一个安卓下可以存储wifi代理链接设置的工具= =</p>
+<hr>
+<h2 id="某些小问题"><a href="#某些小问题" class="headerlink" title="某些小问题"></a>某些小问题</h2><h3 id="进去后有部分功能无法正常使用"><a href="#进去后有部分功能无法正常使用" class="headerlink" title="进去后有部分功能无法正常使用"></a>进去后有部分功能无法正常使用</h3><p>有时候会发现即使页面正常进去了，也有些功能不能触发，比如上传图片之类的，但是浏览器也没有报错。这种情况下一般多是由于对方使用了微信的jssdk内置方法（<code>wx.xx</code>之类的）。因为微信内置的方法不是纯webview可以完成的，很多功能都需要微信客户端的配合，因此达不到预期的效果也是很正常的。可以看微信jssdk的<a href="http://demo.open.weixin.qq.com/jssdk" target="_blank" rel="external">官方demo</a>，你会发现基本上没一个可以在PC上用。</p>
+<!-- ###完全按照教程来但是就是过不了验证###
+今天收到个求助说是有个页面按照教程来怎么也搞不定，后来看了下是这样的：（具体哪个页面我就不说啦，免得他们又改）
+这个页面进去的时候会依次请求两个api，第一次服务器返回一次`Set-Cookie`头，进行一次**伪cookies赋值**；然后之后利用**ajax**再次发送一个`GET`请求重新进行一次`Set-Cookie`操作并返回**真实的cookies值**来覆盖前面的cookies，这个操作在他们的页面跳转过程中来回反复——所以就会造成*你如果完全按照我这个教程从fiddler里看到的第一个相关域名来复制cookies的话只能复制到假的cookies值，会造成验证失败*，不过破解之法很简单：
+**多点几次页面让他进行跳转并观察cookies变化规律，然后找到真正的cookies**
+（当然这个可能稍微需要点web开发经验。~~另外感觉这么折腾的页面有点在钦点我这个教程的意思啊。我一个写教程的，怎么就被你们后台针对了呢~~）
+ -->
+<p>其他的，想到再补充吧。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;场景&quot;&gt;&lt;a href=&quot;#场景&quot; class=&quot;headerlink&quot; title=&quot;场景&quot;&gt;&lt;/a&gt;场景&lt;/h2&gt;&lt;p&gt;假设一个手机页面，开发者对其做了限制，导致只能在微信客户端中打开。而众所周知手机上非常不利于调试页面，所以需要能在电脑上打开并进行调试。这里针对常见的三种页面做一下分析，一一绕过其限制，（当然不要拿去干坏事）&lt;br&gt;
+    
+    </summary>
+    
+      <category term="微信" scheme="http://chitanda.me/categories/%E5%BE%AE%E4%BF%A1/"/>
+    
+    
+      <category term="debug" scheme="http://chitanda.me/tags/debug/"/>
+    
+      <category term="微信" scheme="http://chitanda.me/tags/%E5%BE%AE%E4%BF%A1/"/>
+    
+      <category term="fiddler" scheme="http://chitanda.me/tags/fiddler/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微信分享自定义图片和摘要</title>
+    <link href="http://chitanda.me/2015/06/19/wechat-share-diy/"/>
+    <id>http://chitanda.me/2015/06/19/wechat-share-diy/</id>
+    <published>2015-06-19T12:10:06.000Z</published>
+    <updated>2016-08-25T15:39:40.098Z</updated>
+    
+    <content type="html"><![CDATA[<p>微信现在是众多公司营销的重点。遍布朋友圈和消息群组里的html5各位可能也是天天见了，不过自从微信更新了官方api后，对整个微信内的页面管控都严格了不少。而官方的分享卡片，是众多在微信生态中传播的html5静态页面的一个重点。不过很多人会发现分享的图片和摘要达不到预期。这篇文章就讲下这个，供初次接触微信开发的前端参考。（其实<a href="http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html#.E5.88.86.E4.BA.AB.E6.8E.A5.E5.8F.A3" target="_blank" rel="external">官方的文档</a>也蛮详细的了，不过有些地方官方没忽略了，容易给新人造成坑）<br><a id="more"></a></p>
+<h3 id="必要的前提准备"><a href="#必要的前提准备" class="headerlink" title="必要的前提准备"></a>必要的前提准备</h3><p>PS：本文的方法只适合<code>6.0.2.58</code>以及更高版本的微信客户端。旧版参考这个<a href="https://github.com/weui/weui/wiki/%E5%BE%AE%E4%BF%A1JSAPI" target="_blank" rel="external">非官方的API</a><br>这几个是超越代码之上的存在，没有这几个认证，即使配置全正确也不能获得正常的分享卡片：</p>
+<ol>
+<li>微信认证过的公共号<blockquote>
+<p>必须是认证过的，未认证或者认证过期都不行</p>
+</blockquote>
+</li>
+<li>一个域名<blockquote>
+<p>需要备案过的</p>
+</blockquote>
+</li>
+<li>一台服务器<blockquote>
+<p><strong>因为前端页面需要的<code>appId</code>、<code>signature</code>是需要后台传递过来的。</strong>官方默认后台程序有<code>PHP</code>、<code>Python</code>、<code>Node</code>、<code>Java</code>版本，不过我这里以<code>PHP</code>作为演示（后台其实不在本文的解释范围内，超纲了╮(╯▽╰)╭）</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h3><h4 id="1-绑定域名"><a href="#1-绑定域名" class="headerlink" title="1. 绑定域名"></a>1. 绑定域名</h4><p>先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”（就是发布用的那个域名）</p>
+<h4 id="2-获取access-token"><a href="#2-获取access-token" class="headerlink" title="2. 获取access_token"></a>2. 获取<code>access_token</code></h4><p>这部分工作属于后台开发，主要功能是利用公共号<code>APPID</code>、<code>APPSECRET</code>从微信服务器获取对应的<code>access_token</code>。由于这部分代码官方有demo，所以直接用官方的sample例子做演示。<br>下载<a href="http://demo.open.weixin.qq.com/jssdk/sample.zip" target="_blank" rel="external">官方示例代码</a>后，根据自己的情况选择对应的后台语言(这里以<code>PHP</code>为例)。</p>
+<ol>
+<li>将下载得到的压缩包解压后复制<code>php</code>文件夹到网站根目录，然后将需要分享出去的html文件的后缀名改为<code>.php</code>（必须。因为后台不完善所以不能直接ajax获得<code>access_token</code>的值，这里假设需要分享的html页面是<code>index.php</code>）</li>
+<li>打开<code>index.php</code>，在html的<code>DOCTYPE</code>声明之前添加一段PHP代码： <figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">require_once</span> <span class="string">"../php/jssdk.php"</span>;<span class="comment">/* 这里的文件路径视`php`文件夹所在路径而定。不一定都要一样，个人建议扔到一个所有html文件夹都可以引用的目录*/</span></div><div class="line">$jssdk = <span class="keyword">new</span> JSSDK(<span class="string">"你的APPID"</span>, <span class="string">"你的APPSECRET"</span>);</div><div class="line">$signPackage = $jssdk-&gt;GetSignPackage();</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>这里的后台代码都是直接拿的官方，小站点可以直接利用，但是大站点请勿直接使用，因为官方的后台代码没有缓存<code>access_token</code>，<strong>很容易触发每日的2k次API调用上限</strong>，一旦到了上限，当天就无法继续认证。所以建议有能力的不要直接用官方的示例代码。AppID和AppSecret可在微信公众平台官网-开发者中心页中获得（需要已经成为开发者，且帐号没有异常状态）</p>
+</blockquote>
+<h4 id="3-前端配置验证权限"><a href="#3-前端配置验证权限" class="headerlink" title="3. 前端配置验证权限"></a>3. 前端配置验证权限</h4><p>这里是前端的工作，主要是利用前一步得到的<code>access_token</code>来获取签名等认证信息，只有正确的配置才可以正常获取到使用官方js-sdk的权限。<br>1.引入JS文件<br>    在<code>index.php</code>文件里添加一个<code>script</code>标签，引用官方js：<br>    <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;script src=&quot;http://res.wx.qq.com/open/js/jweixin-1.0.0.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<ol>
+<li><p>通过config接口注入权限验证配置</p>
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">    wx.config(&#123;</div><div class="line">        debug: <span class="literal">false</span>,<span class="comment">// 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。移动端会通过弹窗来提示相关信息。如果分享信息配置不正确的话，可以开了看对应报错信息</span></div><div class="line">        appId: <span class="string">'&lt;?php echo $signPackage["appId"];?&gt;'</span>,</div><div class="line">        timestamp: <span class="string">'&lt;?php echo $signPackage["timestamp"];?&gt;'</span>,</div><div class="line">        nonceStr: <span class="string">'&lt;?php echo $signPackage["nonceStr"];?&gt;'</span>,</div><div class="line">        signature: <span class="string">'&lt;?php echo $signPackage["signature"];?&gt;'</span>,</div><div class="line">        jsApiList: [<span class="comment">//需要使用的JS接口列表,分享默认这几个，如果有其他的功能比如图片上传之类的，需要添加对应api进来</span></div><div class="line">            <span class="string">'checkJsApi'</span>,</div><div class="line">            <span class="string">'onMenuShareTimeline'</span>,<span class="comment">//</span></div><div class="line">            <span class="string">'onMenuShareAppMessage'</span>,</div><div class="line">            <span class="string">'onMenuShareQQ'</span>,</div><div class="line">            <span class="string">'onMenuShareWeibo'</span></div><div class="line">        ]</div><div class="line">    &#125;);</div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>上面的属性都是必须的，不过都不需要自行填写。这里只使用了几个分享相关的<code>jsApiList</code>，完整列表见<a href="http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html#.E9.99.84.E5.BD.952-.E6.89.80.E6.9C.89JS.E6.8E.A5.E5.8F.A3.E5.88.97.E8.A1.A8" target="_blank" rel="external">官网说明</a></p>
+</blockquote>
+</li>
+<li><p>配置分享信息并通过ready接口处理</p>
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line"><span class="built_in">window</span>.share_config = &#123;</div><div class="line">     <span class="string">"share"</span>: &#123;</div><div class="line">        <span class="string">"imgUrl"</span>: <span class="string">"http://www.yourwebsite.com/share.png"</span>,<span class="comment">//分享图，默认当相对路径处理，所以使用绝对路径的的话，“http://”协议前缀必须在。</span></div><div class="line">        <span class="string">"desc"</span> : <span class="string">"你对页面的描述"</span>,<span class="comment">//摘要,如果分享到朋友圈的话，不显示摘要。</span></div><div class="line">        <span class="string">"title"</span> : <span class="string">'分享卡片的标题'</span>,<span class="comment">//分享卡片标题</span></div><div class="line">        <span class="string">"link"</span>: <span class="built_in">window</span>.location.href,<span class="comment">//分享出去后的链接，这里可以将链接设置为另一个页面。</span></div><div class="line">        <span class="string">"success"</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">//分享成功后的回调函数</span></div><div class="line">        &#125;,</div><div class="line">        <span class="string">'cancel'</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; </div><div class="line">            <span class="comment">// 用户取消分享后执行的回调函数</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;  </div><div class="line">    wx.ready(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    wx.onMenuShareAppMessage(share_config.share);<span class="comment">//分享给好友</span></div><div class="line">    wx.onMenuShareTimeline(share_config.share);<span class="comment">//分享到朋友圈</span></div><div class="line">    wx.onMenuShareQQ(share_config.share);<span class="comment">//分享给手机QQ</span></div><div class="line">&#125;);</div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<blockquote>
+<p><code>share_config</code>里的四个属性在分享卡片里代表的含义如下图所示：<br> img: <img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/wechat-appshare.jpg" alt="img"></p>
+</blockquote>
+</li>
+</ol>
+<p>到这里配置完成。正常情况下的话分享出去是会有摘要和分享图的。</p>
+<h3 id="分享信息配置失败的调试方法"><a href="#分享信息配置失败的调试方法" class="headerlink" title="分享信息配置失败的调试方法"></a>分享信息配置失败的调试方法</h3><p>有时候设置好之后发现分享出去只有标题和一张和设置不一样的图片，摘要变成了页面链接。这就说明配置失败了。对于没有正确配置的页面，微信默认抓取网页标题和页面内第一张分辨率大于<code>300*300</code>的图片做分享图，而摘要则是替换成页面链接——这种情况从用户的角度看来并不友好。所幸对于配置失败的页面，微信也给了调试接口，官方也有<a href="http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html#.E9.99.84.E5.BD.955-.E5.B8.B8.E8.A7.81.E9.94.99.E8.AF.AF.E5.8F.8A.E8.A7.A3.E5.86.B3.E6.96.B9.E6.B3.95" target="_blank" rel="external">部分说明</a>。</p>
+<ol>
+<li>打开<code>wx.config</code>里的<code>debug</code><br> 将<code>debug</code>设置为<code>true</code>之后，手机进入页面，会弹出错误信息(PC不管有没有配置正确都会在开发者工具中打印出对应的分享信息，参考意义不是很大——不过可以拿来查看链接是否有误)。<br> 如果正确的话，会提示<code>{&quot;errMsg&quot;：&quot;config:ok&quot;}</code>。</li>
+<li><h4 id="提示-quot-errMsg-quot-：-quot-config-invalid-url-domain-quot"><a href="#提示-quot-errMsg-quot-：-quot-config-invalid-url-domain-quot" class="headerlink" title="提示{&quot;errMsg&quot;：&quot;config:invalid url domain&quot;}"></a>提示<code>{&quot;errMsg&quot;：&quot;config:invalid url domain&quot;}</code></h4> 这个最常见，主要是域名没有被添加为<code>js接口安全域名</code>。官方的说明里是要域名和使用的<code>APPID</code>对应的公共号绑定，不过我实际使用中发现应该也可以分离。另外如果使用了端口号，则配置的绑定域名也要加上端口号（一个appid可以绑定三个有效域名)</li>
+<li><h4 id="提示-quot-errMsg-quot-：-quot-config-invalid-signature-quot"><a href="#提示-quot-errMsg-quot-：-quot-config-invalid-signature-quot" class="headerlink" title="提示{&quot;errMsg&quot;：&quot;config:invalid signature&quot;}"></a>提示<code>{&quot;errMsg&quot;：&quot;config:invalid signature&quot;}</code></h4><p> 造成这个情况的可能性比较多。不过主要有以下三个原因：</p>
+<ol>
+<li><code>APPID</code>和<code>APPSECRET</code>填错了。<br>可以到官方的调试页面获取access_token看看是否是正确的</li>
+<li>超过了每日的access_token获取上限<br>官方限定每日2k次请求。所以如果没有缓存access_token的话，还是比较容易过限的。</li>
+<li>微信公共号状态不正常。<br>比如验证过期了，被封禁了等等。</li>
+</ol>
+</li>
+<li><p>####常用的接口调试链接以及说明文档：####<br> 获取access_token<br> <a href="https://mp.weixin.qq.com/debug/cgi-bin/apiinfo?t=index&amp;type=%E5%9F%BA%E7%A1%80%E6%94%AF%E6%8C%81&amp;form=%E8%8E%B7%E5%8F%96access_token%E6%8E%A5%E5%8F%A3%20/token" target="_blank" rel="external">https://mp.weixin.qq.com/debug/cgi-bin/apiinfo?t=index&amp;type=%E5%9F%BA%E7%A1%80%E6%94%AF%E6%8C%81&amp;form=%E8%8E%B7%E5%8F%96access_token%E6%8E%A5%E5%8F%A3%20/token</a></p>
+<blockquote>
+<p>根据返回的结果可以判断页面内的<code>APPID</code>和<code>APPSECRET</code>有没有出错 </p>
+</blockquote>
+<p> 获取jsapi_ticket<br> <a href="https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=ACCESS_TOKEN&amp;type=jsapi" target="_blank" rel="external">https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=ACCESS_TOKEN&amp;type=jsapi</a></p>
+<blockquote>
+<p>利用前面拿到的access_token 采用http GET方式请求获得jsapi_ticket，如果出错的话会返回对应的说明。 </p>
+</blockquote>
+<p> 全局返回码说明<br> <a href="http://mp.weixin.qq.com/wiki/17/fa4e1434e57290788bde25603fa2fcbd.html" target="_blank" rel="external">http://mp.weixin.qq.com/wiki/17/fa4e1434e57290788bde25603fa2fcbd.html</a></p>
+<p> 接口频率限制说明<br> <a href="http://mp.weixin.qq.com/wiki/0/2e2239fa5f49388d5b5136ecc8e0e440.html" target="_blank" rel="external">http://mp.weixin.qq.com/wiki/0/2e2239fa5f49388d5b5136ecc8e0e440.html</a></p>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;微信现在是众多公司营销的重点。遍布朋友圈和消息群组里的html5各位可能也是天天见了，不过自从微信更新了官方api后，对整个微信内的页面管控都严格了不少。而官方的分享卡片，是众多在微信生态中传播的html5静态页面的一个重点。不过很多人会发现分享的图片和摘要达不到预期。这篇文章就讲下这个，供初次接触微信开发的前端参考。（其实&lt;a href=&quot;http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html#.E5.88.86.E4.BA.AB.E6.8E.A5.E5.8F.A3&quot;&gt;官方的文档&lt;/a&gt;也蛮详细的了，不过有些地方官方没忽略了，容易给新人造成坑）&lt;br&gt;
+    
+    </summary>
+    
+      <category term="微信" scheme="http://chitanda.me/categories/%E5%BE%AE%E4%BF%A1/"/>
+    
+    
+      <category term="微信" scheme="http://chitanda.me/tags/%E5%BE%AE%E4%BF%A1/"/>
+    
+      <category term="前端" scheme="http://chitanda.me/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用git解决hexo博客多PC间同步问题</title>
+    <link href="http://chitanda.me/2015/06/18/hexo-sync-in-multiple-pc/"/>
+    <id>http://chitanda.me/2015/06/18/hexo-sync-in-multiple-pc/</id>
+    <published>2015-06-18T03:27:24.000Z</published>
+    <updated>2016-08-25T15:36:30.140Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><p>本文只是给类似我这样的git新人做参考，对git比较熟悉的话可以无视了。由于自身对git的了解就不是特别深，所以可能有些地方会有错误，欢迎各位指正。（本文有在微博上接受<a href="http://weibo.com/geekrainy" target="_blank" rel="external">geekrainy</a>的帮助，对此表示谢意)<br>ps：建议git相关操作都在bash上进行操作。不依赖windows下gui</p>
+<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>单位和家里两PC，同时都想更新blog。而由于hexo没有后台，而且全部文件都在本地生成，所以如果公司电脑上发表了A文章后回家又写了篇B文章，在家里上传后你会发现只有B文章而A文章没了（因为家里的PC上没有A文章的md文件），所以多台电脑同时用来写文章的时候，需要解决备份问题。<br><a id="more"></a><br>而常用的备份方案无非两种：</p>
+<h3 id="百度云，Dropbox等网盘云备份"><a href="#百度云，Dropbox等网盘云备份" class="headerlink" title="百度云，Dropbox等网盘云备份"></a>百度云，Dropbox等网盘云备份</h3><p>（不清楚Dropbox，仅以百度云为例）<br>优点：免费且操作简单<br>不足：</p>
+<ol>
+<li>备份后同步比较麻烦，每次另一台电脑上都需要手动下载备份文件夹手动覆盖。</li>
+<li>开启云端自动备份的时候，写blog的过程中如果保存了文件，会触发百度云的上传，而上传过程中产生的<code>xxx.cfg</code>文件会让hexo解析失败，导致<code>hexo s</code>生成的本地服务器进程停止，不方便边写边预览 </li>
+</ol>
+<p>因此此方案作废</p>
+<h3 id="利用第三方的git服务备份"><a href="#利用第三方的git服务备份" class="headerlink" title="利用第三方的git服务备份"></a>利用第三方的git服务备份</h3><p>优点：部署完成后更新方便，hexo 更新完后只需要再更新全站到git即可<br>缺点：部署过程相对比较麻烦，对新手不友好（其实是由于对git的理解不深导致的）<br>国内外现在知名的git服务提供商主要有：<br>github、gitcafe、bitbucket、oschina、coding等</p>
+<p>由于blog文件夹里有些插件配置文件会涉及比较敏感的隐私数据（云服务商的appsecret key之类的），所以建议放<strong>私有仓库</strong>（当然也可以把配置文件单独拿出来然后其余的全部扔到git的公众仓库，这个看人，本文重点也不在于git服务商的选择或者公有私有库之争）<br>上面提及的5家服务商里，<code>github</code>、<code>gitcafe</code>的私有库是收费的，而另外三家的私有库目前免费。各位可以自行选择，我个人选择了<a href="http://git.oschina.net" target="_blank" rel="external">oschina</a></p>
+<h2 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h2><p>git多网站多账户部署过程可以参考<a href="/2015/06/11/tips-for-setup-hexo/#git多网站ssh部署方案">git多网站ssh部署方案</a></p>
+<h3 id="上传blog到git"><a href="#上传blog到git" class="headerlink" title="上传blog到git"></a>上传blog到git</h3><p><em>这个操作建议在blog进度最新的PC上进行的，否则后面解决冲突会比较麻烦</em><br>在osc上添加公钥，建立新respo等过程略过不讲。</p>
+<ol>
+<li><p>删除文件夹内原有的<code>.git</code>缓存文件夹并编辑<code>.gitignore</code>文件</p>
+<blockquote>
+<ul>
+<li>有些插件或者主题是git上下过来安装的话，每个文件夹下都会有对应的<code>.git</code> 文件夹，记得先删掉，否则会和blog仓库冲突<br>（<code>.git</code>默认是隐藏文件夹，需要先开启显示隐藏文件夹。##<code>.git</code>文件夹被删除后整个文件对应的git仓库状态也会被清空##)</li>
+</ul>
+<hr>
+<ul>
+<li><code>.gitignore</code>文件作用是声明不被git记录的文件，blog根目录下的<code>.gitignore</code>是hexo初始化带来的，可以先删除或者直接编辑，对hexo不会有影响。建议<code>.gitignore</code>内添加以下内容：<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">/.deploy_git</div><div class="line">/public  </div><div class="line">/_config.yml</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol>
+<li><code>.deploy_git</code>是hexo默认的.git配置文件夹，不需要同步 </li>
+<li><code>public</code>内文件是根据<code>source</code>文件夹内容自动生成，不需要备份，不然每次改动内容太多</li>
+<li>即使是私有仓库，除去在线服务商员工可以看到的风险外，还有云服务商被攻击造成泄漏等可能，所以不建议将配置文件传上去</li>
+</ol>
+</blockquote>
+</li>
+<li><p>初始化仓库<br>blog根目录下执行以下代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">git init</div><div class="line">git remote add origin &lt;server&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p><code>&lt;server&gt;</code>是指在线仓库的地址。<code>origin</code>是本地分支,<code>remote add</code>操作会将本地仓库映射到云端 </p>
+</blockquote>
+</li>
+<li><p>添加本地文件到仓库并同步到git上</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">git add .  <span class="comment">#添加blog目录下所有文件，注意有个`.`（`.gitignore`声明过的文件不包含在内)</span></div><div class="line">git commit -m <span class="string">"first commit"</span> <span class="comment">#添加更新说明</span></div><div class="line">git push -u origin master <span class="comment">#推送更新到云端服务器</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>在执行这步之前一定要注意检查下<code>.gitignore</code>文件的内容，看看是否正确的把一些文件夹忽略掉了。如果加错了的话可以用</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git rm -r --cached .</div></pre></td></tr></table></figure>
+<p>撤销添加操作。</p>
+</blockquote>
+</li>
+</ol>
+<p>到这里的时候，云端备份已经完成</p>
+<h3 id="将git的内容同步到本地"><a href="#将git的内容同步到本地" class="headerlink" title="将git的内容同步到本地"></a>将git的内容同步到本地</h3><p>假设之前将A电脑里的内容备份到git了，现在B电脑准备同步内容。<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">git init</div><div class="line">git remote add origin &lt;server&gt; <span class="comment">#将本地文件和云端仓库映射起来。这步不可以跳过</span></div><div class="line">git fetch --all</div><div class="line">git reset --hard origin/master</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p><code>fetch</code>是将云端所有内容拉取下来。<code>reset</code>则是不做任何合并处理，强制将本地内容指向刚刚同步下来的云端内容（正常pull的话需要考虑不少冲突的问题，比较麻烦。）</p>
+</blockquote>
+<h3 id="更新文章后的同步操作"><a href="#更新文章后的同步操作" class="headerlink" title="更新文章后的同步操作"></a>更新文章后的同步操作</h3><p>假设在B电脑上写完了文章，也<code>hexo d -g</code>发布完了，这时候需要将新文章的md文件更新上去。（其实就是提交更新给git，会的可以无视了）<br>同一个bash界面下：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">git add .</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>这时候可以用<code>git status</code>查看状态，一般会显示刚刚更改过的文件状态。如：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">On branch master</div><div class="line">Changes to be committed:</div><div class="line">  (use <span class="string">"git reset HEAD &lt;file&gt;..."</span> to unstage)</div><div class="line"></div><div class="line">        modified:   db.json</div><div class="line">        new file:   <span class="built_in">source</span>/_posts/test.md</div></pre></td></tr></table></figure></p>
+<p>上面的输出状态即说明’db.json’文件做了更改，<code>source/_posts</code>目录下新增了’test.md’文件。</p>
+</blockquote>
+<p>然后对更改添加说明并推送到远程仓库.<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">git commit -m <span class="string">'更新信息'</span></div><div class="line">git push</div></pre></td></tr></table></figure></p>
+<p>当显示类似如下提示的时候，即表示备份成功<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">To git@git.oschina.net:xxxx/blog-backup.git</div><div class="line"> + 2c77e1e...5616bc6 master -&gt; master (forced update)</div></pre></td></tr></table></figure></p>
+<p>再到A电脑上的时候，只需要<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git pull</div></pre></td></tr></table></figure></p>
+<p>即可同步更新</p>
+<h2 id="给git配置sock5代理"><a href="#给git配置sock5代理" class="headerlink" title="给git配置sock5代理"></a>给git配置sock5代理</h2><p>由于某些众所周知的缘故，所以github时不时的有时候速度会很慢，这种情况下本地代理就派上用场了。<br>这里以给git的SSH传输方式配置本地SS代理为例说下配置过程：</p>
+<ol>
+<li>打开<code>~/.ssh/config</code>文件。</li>
+<li>在<code>Host github *.github.com</code>下添加以下字段：<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Proxycommand ssh -S 127.0.0.1:1080 %h %p</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>3.测试连接<br>保存退出后重启git bash。<br>输入<code>ssh -vT git@github.com</code>，当返回<code>Hi username! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</code>的时候即说明配置成功<br>之后github的所有流量都会走本地的ss代理。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;声明&quot;&gt;&lt;a href=&quot;#声明&quot; class=&quot;headerlink&quot; title=&quot;声明&quot;&gt;&lt;/a&gt;声明&lt;/h2&gt;&lt;p&gt;本文只是给类似我这样的git新人做参考，对git比较熟悉的话可以无视了。由于自身对git的了解就不是特别深，所以可能有些地方会有错误，欢迎各位指正。（本文有在微博上接受&lt;a href=&quot;http://weibo.com/geekrainy&quot;&gt;geekrainy&lt;/a&gt;的帮助，对此表示谢意)&lt;br&gt;ps：建议git相关操作都在bash上进行操作。不依赖windows下gui&lt;/p&gt;
+&lt;h2 id=&quot;场景&quot;&gt;&lt;a href=&quot;#场景&quot; class=&quot;headerlink&quot; title=&quot;场景&quot;&gt;&lt;/a&gt;场景&lt;/h2&gt;&lt;p&gt;单位和家里两PC，同时都想更新blog。而由于hexo没有后台，而且全部文件都在本地生成，所以如果公司电脑上发表了A文章后回家又写了篇B文章，在家里上传后你会发现只有B文章而A文章没了（因为家里的PC上没有A文章的md文件），所以多台电脑同时用来写文章的时候，需要解决备份问题。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="blog" scheme="http://chitanda.me/categories/blog/"/>
+    
+    
+      <category term="github" scheme="http://chitanda.me/tags/github/"/>
+    
+      <category term="hexo" scheme="http://chitanda.me/tags/hexo/"/>
+    
+      <category term="备份" scheme="http://chitanda.me/tags/%E5%A4%87%E4%BB%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>纯CSS+HTML自定义checkbox效果</title>
+    <link href="http://chitanda.me/2015/06/16/css3-checkbox-diy-without-js/"/>
+    <id>http://chitanda.me/2015/06/16/css3-checkbox-diy-without-js/</id>
+    <published>2015-06-16T06:03:46.000Z</published>
+    <updated>2016-08-25T15:35:44.932Z</updated>
+    
+    <content type="html"><![CDATA[<p>checkbox应该是一个比较常用的html功能了，不过浏览器自带的checkbox往往样式不怎么好看，而且不同浏览器效果也不一样。出于美化和统一视觉效果的需求，checkbox的自定义就被提出来了。这里对实现方法做个总结<br><a id="more"></a></p>
+<h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><p>纯css实现的主要手段是利用<code>label</code>标签的模拟功能。<code>label</code>的<code>for</code>属性可以关联一个具体的<code>input</code>元素，即使这个<code>input</code>本身不可被用户可见，有个与它对应的<code>label</code>后，用户可以直接通过和<code>label</code>标签交互来替代原生的<code>input</code>——而这给我们的样式模拟留下了空间。简而言之就是</p>
+<blockquote>
+<p>隐藏原生input，样式定义的过程留给<code>label</code> （那为什么不直接改变checkbox的样式？因为checkbox作为浏览器默认组件，样式更改上并没有label那么方便，很多属性对<code>checkbox</code>都是不起作用的，比如<code>background</code>,而<code>label</code>在样式上基本和div一样’任人宰割’)</p>
+</blockquote>
+<p>而在选择事件上，由于css的“<a href="http://css.doyoe.com/selectors/relationship/e-adjacent-f.htm" target="_blank" rel="external">相邻选择符(E+F)</a>”的存在，让我们可以直接利用html的默认checkbox，免去了js模拟选择的麻烦。</p>
+<h2 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h2><p><strong>DEMO的部分CSS3属性只写了webkit前缀，所以建议用webkit内核的浏览器查看本页</strong><br>HTML代码：<br><figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wrap"</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- `input`的id必须有，这个是label进行元素匹配所必需的 --&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 可以看到每个input的id和label的“for”属性对应同一字符串 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"checkbox01"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"checkbox01"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"checkbox02"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"checkbox02"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"checkbox03"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"checkbox03"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"checkbox04"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"checkbox04"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>HTML构建完成，接下来是对应的css。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.wrap</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">500px</span>;</div><div class="line">  <span class="attribute">background-color</span>: <span class="number">#EEE</span>;</div><div class="line">  <span class="attribute">border</span>: <span class="number">2px</span> solid <span class="number">#DEF</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/* 隐藏所有checkbox */</span></div><div class="line"><span class="selector-tag">input</span><span class="selector-attr">[type='checkbox']</span> &#123;</div><div class="line">  <span class="attribute">display</span>: none;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/* 对label进行模拟.背景图片随便拼凑的，不要吐槽品味*/</span></div><div class="line"><span class="comment">/*   transition效果是做个背景切换效果，这里单纯演示而已，实际上这个过渡不加更自然*/</span></div><div class="line"><span class="selector-tag">label</span> &#123;</div><div class="line">  <span class="attribute">display</span>: inline-block;</div><div class="line">  <span class="attribute">width</span>: <span class="number">60px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">60px</span>;</div><div class="line">  <span class="attribute">position</span>: relative;</div><div class="line">  <span class="attribute">background</span>: <span class="built_in">url</span>(//www.chitanda.me/images/blank.png);</div><div class="line">  <span class="attribute">background-position</span>: <span class="number">0</span> <span class="number">0px</span>;</div><div class="line">  <span class="attribute">-webkit-transition</span>: background <span class="number">0.5s</span> linear;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*  利用相邻选择符和checkbox`:checked`的状态伪类来模拟默认选中效果（就是点击后那个勾号的效果）  */</span></div><div class="line"><span class="comment">/*如果这段代码注释，点击后将没有任何反馈给用户*/</span></div><div class="line"><span class="comment">/*因为label本身是没有点击后被选中的状态的，checkbox被隐藏后，这个状态只能手动模拟*/</span></div><div class="line"><span class="selector-tag">input</span><span class="selector-attr">[type='checkbox']</span><span class="selector-pseudo">:checked+label</span> &#123;</div><div class="line">  <span class="attribute">background-position</span>: <span class="number">0</span> -<span class="number">60px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面代码的效果如下所示，看起来好像也可以了。</p>
+<p></p><p data-height="268" data-theme-id="0" data-slug-hash="OVjarB" data-default-tab="result" data-user="chitanda" class="codepen">See the Pen <a href="http://codepen.io/chitanda/pen/OVjarB/" target="_blank" rel="external">OVjarB</a> by chitanda (<a href="http://codepen.io/chitanda" target="_blank" rel="external">@chitanda</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+<p>不过仔细想想，貌似缺了点什么：<strong>选项对应的提示文字</strong><br>对css不了解的新人可能这时候第一反应就是在<code>label</code>后面用<code>p</code>标签或者<code>span</code>标签来添加文字。不过这种方式都不怎么优雅。个人建议用css的<code>::before</code>和<code>::after</code>伪元素（<code>::before</code>和<code>:before</code>是一个东西。不过为了把“伪元素”和“伪类”区分出来，W3C建议的写法是伪元素用<code>::</code>而伪类用<code>:</code>）<br>伪元素的具体内容这里不多说，(其实是我也对它们的掌握就仅限于用用而已，对这个谈不上理解，就不误人子弟了)</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="comment">/* 伪元素的生效很简单，定义`content`就好，其余的属性和普通div一样 */</span></div><div class="line"><span class="selector-tag">label</span><span class="selector-pseudo">::after</span> &#123;</div><div class="line"> <span class="attribute">content</span>: <span class="built_in">attr</span>(data-name);</div><div class="line"> <span class="comment">/*利用attr可以减少css代码量,data-name写在html部分的label属性里*/</span></div><div class="line">  <span class="attribute">display</span>: inline-block;</div><div class="line">  <span class="attribute">position</span>: relative;</div><div class="line">  <span class="attribute">width</span>: <span class="number">120px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">60px</span>;</div><div class="line">  <span class="attribute">left</span>: <span class="number">100%</span>;</div><div class="line">  <span class="attribute">vertical-align</span>: middle;</div><div class="line">  <span class="attribute">margin</span>: <span class="number">10px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最终效果如下：</p>
+<p></p><p data-height="268" data-theme-id="0" data-slug-hash="KpvRWz" data-default-tab="result" data-user="chitanda" class="codepen">See the Pen <a href="http://codepen.io/chitanda/pen/KpvRWz/" target="_blank" rel="external">KpvRWz</a> by chitanda (<a href="http://codepen.io/chitanda" target="_blank" rel="external">@chitanda</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+<p>当然既然可以用<code>::after</code>模拟label的文字，那也就可以用<code>::before</code>模拟<code>label</code>的checkbox样式，这里就不做解析了，贴个我之前的demo,有兴趣的可以自己做下：</p>
+<p></p><p data-height="268" data-theme-id="0" data-slug-hash="XbNBKE" data-default-tab="result" data-user="chitanda" class="codepen">See the Pen <a href="http://codepen.io/chitanda/pen/XbNBKE/" target="_blank" rel="external">checkbox-diy(CSS,HTML only)</a> by chitanda (<a href="http://codepen.io/chitanda" target="_blank" rel="external">@chitanda</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;checkbox应该是一个比较常用的html功能了，不过浏览器自带的checkbox往往样式不怎么好看，而且不同浏览器效果也不一样。出于美化和统一视觉效果的需求，checkbox的自定义就被提出来了。这里对实现方法做个总结&lt;br&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://chitanda.me/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="html" scheme="http://chitanda.me/tags/html/"/>
+    
+      <category term="CSS" scheme="http://chitanda.me/tags/CSS/"/>
+    
+      <category term="demo" scheme="http://chitanda.me/tags/demo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo博客搭建时遇到的一些问题</title>
+    <link href="http://chitanda.me/2015/06/11/tips-for-setup-hexo/"/>
+    <id>http://chitanda.me/2015/06/11/tips-for-setup-hexo/</id>
+    <published>2015-06-11T13:57:10.000Z</published>
+    <updated>2016-08-25T15:38:26.818Z</updated>
+    
+    <content type="html"><![CDATA[<p>之前的WP博客荒废了好久之后终于感觉该做点正事了，所以这几天花了点时间重新弄了下hexo，毕竟是比较符合前端的一个博客框架。比起wp来说，hexo轻量级的多，而且易部署（指速度优化方面），也不需要一个专门的服务器来放置（这个其实是我选择hexo的最终原因。手里虽然有vps，但是因为跑着ss加上国内ping值太高，最终肯定影响国内速度，所以就一直没用来放blog）当然没有后台也就意味着不能随时随地写了就发，这个相对WP来说是弱势，但我感觉还好，毕竟不会常常在外面跑，而且写博客基本都是在电脑前，再不济也可以先把MD文件写完后拷回去发布。<br><a id="more"></a></p>
+<hr>
+<p>先大概说下我目前blog的部署方式：</p>
+<ul>
+<li>github和coding双线路部署，国内线路解析到coding，国外线路解析到github。</li>
+<li>自己的域名且未备案（个人博客不建议备案）</li>
+<li>域名解析采用dnspod国际版（<strong>这个很重要，后面会解释</strong>）</li>
+<li>使用QQ的自定义域名邮箱</li>
+<li>图片采用七牛存储分流</li>
+<li>多说评论有一定优化（显UA以及自定义样式等）</li>
+</ul>
+<p>然后下面说下我部署过程中遇到的部分问题以及相应的解决方法,由于我自己是<code>Windows 7</code>环境，所以下面很多解决方法可能对*nix党不适用，还请注意。问题的排列按照最基础的node安装，git配置，域名配置，hexo安装，hexo优化美化的顺序来，不过会跳过很多可以直接百度到的内容，所以建议参考<a href="http://xuanwo.org/2014/08/14/hexo-usual-problem/" target="_blank" rel="external">Hexo常见问题解决方案</a>以及<a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">hexo你的博客</a>如果你遇到的问题我这里没提到的话，你可以去这两篇文章搜下解决方案。</p>
+<hr>
+<h2 id="npm安装hexo速度过慢"><a href="#npm安装hexo速度过慢" class="headerlink" title="npm安装hexo速度过慢"></a>npm安装hexo速度过慢</h2><p>由于某些大家都知道的缘故，npm官方源在国内的下载速度极其慢，用官网的<code>npm install hexo-cli -g</code>速度非常感人，所以不推荐这种方式。这里我推荐用淘宝的npm分流——<strong><a href="https://npm.taobao.org/" target="_blank" rel="external">cnpm</a></strong><br>安装过程很简单：<br><code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code><br>然后等着装完即可，之后的用法和npm一样，无非是把<code>npm install</code>改成<code>cnpm install</code>,但是速度比之前快了不止一个数量级(不过下文为了方便理解，还是会用默认的npm安装，如果你发现速度不好的话，请自行替换成’cnpm’)</p>
+<h3 id="npm安装tips"><a href="#npm安装tips" class="headerlink" title="npm安装tips"></a>npm安装tips</h3><ol>
+<li>npm安装的时候有时候会出各种错，而最常见的无非是权限问题、网络连接、包名输错。注意看cmd窗口的报错信息即可。<br><strong>windows党请注意安装的时候将cmd用管理员方式打开（这个是我见过报错最多的）</strong>，想必<code>npm ERR! Please try running this command again as root/Administrator.</code>各位也不是第一次见了</li>
+<li>hexo插件安装的时候先<code>cd</code>到blog根目录，并且安装参数不要带<code>-g</code>。 （即不要全局安装，因为全局安装的时候插件会被装到node的根目录下去，而不是blog目录），<strong>hexo的插件需要在blog目录下才能工作</strong></li>
+<li>有部分hexo插件用普通的<code>install</code>可能会出现安装完的版本和最新版本有区别，而且怎么也升级不上去的情况(<code>npm update</code>无效)，这种情况下请手动指定版本安装：<br>语法：<br><code>npm install [@&lt;scope&gt;/]&lt;name&gt;@&lt;version&gt;</code><br>例子：<br><code>npm install hexo@3.1.1 --save</code></li>
+</ol>
+<h2 id="git多网站ssh部署方案"><a href="#git多网站ssh部署方案" class="headerlink" title="git多网站ssh部署方案"></a>git多网站ssh部署方案</h2><p>因为是coding和github多线路部署，加上不想每次更新的时候都输帐号密码，所以https传输肯定不行了，只能是ssh传输。不过大部分教程都是单网站部署。所以特地把这个单独拿出来。建议参考coding的这篇部署<a href="https://coding.net/help/doc/git/ssh-key.html" target="_blank" rel="external">教程</a>，一般人看完应该就不需要看我这底下的内容了，我这里步骤都复制以上教程，仅对部分地方加点我个人感觉比较重要的注释<br>git客户端安装的时候可以选择要不要集成到cmd里，有些人可能和我一样没有集成，导致cmd对部分linux下的命令无法解析（比如<code>~</code>)<br><strong>强烈建议以下操作在git bash里进行。不要在cmd里敲git命令！</strong><br><strong>强烈建议以下操作在git bash里进行。不要在cmd里敲git命令！</strong>x2<br><strong>强烈建议以下操作在git bash里进行。不要在cmd里敲git命令！</strong>x3<br>因为很重要所以说三遍</p>
+<ol>
+<li><p>生成新的 SSH 秘钥<br>记得把以下命令中的 YOUR_EMAIL@YOUREMAIL.COM 改为你的 Email 地址<br><code>ssh-keygen -t rsa -C &quot;YOUR_EMAIL@YOUREMAIL.COM&quot; -f ~/.ssh/coding</code></p>
+<blockquote>
+<p><strong>上面最末尾的./ssh/coding中的’coding’即为存在本地的密钥文件名，所以这里是可以自定义的。</strong><br><strong>密钥文件本地存放路径为git的home参数对应路径下的.ssh文件夹，一般是”C:/Users/[username]/.ssh”，如果没有找到的话到git bash里输入<code>$HOME</code>回车然后自行去对应目录查找即可</strong></p>
+</blockquote>
+</li>
+<li><p>生成过程中会出现以下信息，按屏幕提示操作，并记得输入 passphrase 口令。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C <span class="string">"YOUR_EMAIL@YOUREMAIL.COM"</span> <span class="_">-f</span> ~/.ssh/coding</div><div class="line">Generating public/private rsa key pair.</div><div class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):</div><div class="line">Enter same passphrase again:</div><div class="line">Your identification has been saved <span class="keyword">in</span> /c/Users/username/.ssh/coding.</div><div class="line">Your public key has been saved <span class="keyword">in</span> /c/Users/username/.ssh/coding.pub.</div><div class="line">The key fingerprint is:</div><div class="line">15:81:d2:7a:c6:6c:0f:ec:b0:b6:d4:18:b8:d1:41:48 YOUR_EMAIL@YOUREMAIL.COM</div></pre></td></tr></table></figure>
+<p> 这将在 ~/.ssh/ 目录下生成 coding 和 coding.pub 文件，记住千万不要把私钥文件 coding 透露给任何人。</p>
+<blockquote>
+<p><strong>passphrase的作用是在密钥传输的过程中加一个解密钥的过程，使得即使密钥文件不小心泄露了，别人也不能直接利用密钥操作你的git帐号，但是由于我个人处理不了ssh-agent自动填充的问题，导致每次更新git都要输passphrase，所以我就没加了，上面的过程里是直接两次回车过去了。</strong></p>
+</blockquote>
+</li>
+<li><p>在 SSH 用户配置文件 ~/.ssh/config 中指定对应服务所使用的公秘钥名称(<strong>config文件的作用就是告诉git程序在同步认证的时候该使用哪个密钥</strong>），如果没有 config 文件的话就新建一个，并输入以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Host coding.net git.coding.net</div><div class="line">  IdentityFile ~/.ssh/coding</div></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>由于是coding和github双站，所以这里需要再参考上面的语法另外建立一个github的规则(贴下我个人的config文件内容供参考)</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Host coding.net</div><div class="line">IdentityFile ~/.ssh/coding</div><div class="line"></div><div class="line">Host github.com</div><div class="line">IdentityFile ~/.ssh/id_rsa</div><div class="line"></div><div class="line">Host git.oschina.net</div><div class="line">IdentityFile ~/.ssh/chitanda_osc</div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>添加 coding.pub 中的内容到 Coding 网站。<br> 具体请参考<a href="https://coding.net/help/doc/git/ssh-key.html#ssh-" target="_blank" rel="external">如何安装和设置 Git</a>中的第三节。</p>
+</li>
+<li><p>最后测试配置文件是否正常工作</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ssh -T git@git.coding.net</div></pre></td></tr></table></figure>
+<p> 如果连接成功的话，会出现以下信息。</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Hi USERNAME! You&apos;ve successfully authenticated, but Coding does not provide shell access.</div></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>对于这一步，我的建议是测试命令里再加个<code>-v</code>参数</strong>,即</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ssh -vT git@coding.net</div></pre></td></tr></table></figure>
+<p>因为比起”ssh -T”返回的模糊信息相比，”-v”会把整个传输过程中的操作都显示出来，哪一步出错很明显就可以看出来，利于出现问题的调试</p>
+</blockquote>
+</li>
+<li><p>完成<br> 测试通过后，你就可以使用独立的一套公秘钥来使用 Coding 了。Enjoy！</p>
+</li>
+</ol>
+<h2 id="单域名多线路解析"><a href="#单域名多线路解析" class="headerlink" title="单域名多线路解析"></a>单域名多线路解析</h2><p>这个解决方法来自<a href="http://v2ex.com/t/196256" target="_blank" rel="external">v2ex</a>的”wy315700”,感谢指点<br>由于网站未备案，所以不能直接放在七牛上（不过如果全部放在七牛，也就失去了双线路的部署意义，所以我个人感觉没必要全站七牛)<br>先科普一些域名相关的小知识：</p>
+<ol>
+<li>关于A解析和CNAME解析的区别：<blockquote>
+<p>A解析：只能填IP地址，IP地址如果换了的话就需要换解析记录<br>CNAME解析：解析到另一个域名，即使被指向的域名的ip发生变化，也不需要更改解析记录。CNAME优先级高于A解析（至少在DNSPOD是这样的）</p>
+</blockquote>
+</li>
+<li>域名的nameserver（一般简称”NS”）<blockquote>
+<p>nameserver的作用是指定域名的dns解析服务商，比如同时在万网和dnspod给”www.a.com”做了解析，那么哪个解析起作用，就是由NS来决定的。这个在域名注册商的域名管理的里可以更改。NS记录建议只写一个dns解析商的，多NS可能会有问题，可以参考<a href="http://wangye.org/blog/archives/196/" target="_blank" rel="external">这篇文章</a><br><strong>DNSPOD国内版本目前只对国内线路做细分，没有海外线路的选择，所以不推荐，建议用dnspod的<a href="http://www.dnspod.com" target="_blank" rel="external">国际版</a></strong></p>
+</blockquote>
+</li>
+</ol>
+<p>操作流程：</p>
+<ol>
+<li>注册dnspod国际帐号</li>
+<li><p>域名服务商那里更改ns记录为dnspod国际版的nameserver，默认为</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">a.dnspod.com.</div><div class="line">b.dnspod.com.</div><div class="line">c.dnspod.com.</div></pre></td></tr></table></figure>
+</li>
+<li><p>在dnspod添加域名解析：<br> 先加一条cname解析国内线路给coding，然后再加一条默认线路的cname给github即可完成双线路解析</p>
+</li>
+<li><p>github自定义域名需要在项目根目录下添加一个<code>CNAME</code>文件，文件内容为自定义域名。CNAME文件创建完之后扔到blog/source目录下即可 (不能直接扔到public下，理由见下文)<br>coding需要在项目做设置，具体参考<a href="https://coding.net/help/doc/pages/index.html#section" target="_blank" rel="external">官方wiki</a></p>
+</li>
+</ol>
+<h3 id="自定义域名邮箱"><a href="#自定义域名邮箱" class="headerlink" title="自定义域名邮箱"></a>自定义域名邮箱</h3><p>比如<code>i@chitanda.me</code>这种邮箱，目前我用的QQ的<a href="http://domain.mail.qq.com/" target="_blank" rel="external">域名邮箱</a>，免费，不过我这边会遇到有时候gmail丢件的问题，所以准备看看过段时间转zoho。<br>具体实现很简单，就是域名解析里加条mx记录，不做详细解释，可以参考QQ域名邮箱的帮助（由于通配的mx记录和cname会有语法冲突，有些dns解析商是不支持这种写法的，但是dnspod对语法要求不严格，可以这么写。所以这也是我推荐dnspod的另一个缘故）<br><em>另外有些域名服务商可能免费送了mail服务，也可以用自带的那个。我由于域名注册在name.com上，它们没送，所以只能另外想办法</em></p>
+<h2 id="hexo部署相关问题"><a href="#hexo部署相关问题" class="headerlink" title="hexo部署相关问题"></a>hexo部署相关问题</h2><p>首先需要明确一点，<strong>public目录下的文件每次’hexo -g’的时候就会被重新生成</strong>，所以不要往这里面放任何东西，不然每次都要另外加。<br>而blog/source和blog/theme/[theme-name]/source里的文件是不会被另外处理的，所以有些需要添加在网站根目录的文件（如favicon，谷歌百度的站点认证文件之类的）可以直接扔到这两个文件夹底下，具体选哪个路径要视情况而定</p>
+<h3 id="config-yml编译不通过"><a href="#config-yml编译不通过" class="headerlink" title="_config.yml编译不通过"></a>_config.yml编译不通过</h3><p>yml语法极度严格，不通过往往是空格问题，记得所有设置参数属性末尾都要加空格</p>
+<h3 id="给网站添加favicon"><a href="#给网站添加favicon" class="headerlink" title="给网站添加favicon"></a>给网站添加favicon</h3><p>这个和主题有关，默认可能没有，浏览器打开后根据开发者工具里可以看到当前主题下’favicon’的具体路径和要求文件格式，对应做一个就可以了。有时候是’png’但也有时候强制要求’.ico’，可以去<a href="http://www.bitbug.net/" target="_blank" rel="external">比特虫</a>d等网站在线制作。</p>
+<h3 id="github和coding双线路解析"><a href="#github和coding双线路解析" class="headerlink" title="github和coding双线路解析"></a>github和coding双线路解析</h3><p><strong>安装hexo-deployer-git的0.0.4版！</strong><br><strong>安装hexo-deployer-git的0.0.4版！</strong><br><strong>安装hexo-deployer-git的0.0.4版！</strong><br>很重要所以说三次。我之前安装的时候默认都是0.0.3版，哪怕其实0.0.4已经出来了。而即使是完全正常的配置，0.0.3版都会提示”fatal: Unable to create ‘XXXXXX/.git/index.lock’: File e<br>xists.”（固定版本安装办法可以看上文）<br>查看当前已安装版本：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm ls hexo-deployer-git</div></pre></td></tr></table></figure></p>
+<p>附正确配置：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git </div><div class="line">  message: &quot;xxxxx&quot;</div><div class="line">  repo: </div><div class="line">    github: git@github.com:chitanda/chitanda.github.io.git,master</div><div class="line">    coding: git@coding.net:chitanda/chitanda.git,coding-pages</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>跟在”,”后面的是分支名字。注意传输地址应该是ssh格式的，不要弄成了https的地址 </p>
+</blockquote>
+<h3 id="多说评论框自定义"><a href="#多说评论框自定义" class="headerlink" title="多说评论框自定义"></a>多说评论框自定义</h3><p>其实从评论质量来说的话，disqus可能更好点（毕竟是gfw认证网站，相比多说门槛稍微高一点，可以过滤部分人群），不过拖累网页加载速度，所以我就换成多说了。<br>多说样式可以后台自定义css，本站的多说css来自Next.Mist主题制作者的<a href="https://github.com/iissnan/hexo-theme-next/blob/master/source/css/_component/duoshuo.styl" target="_blank" rel="external">样式</a><br>显UA功能需要改多说的js，具体参考<a href="http://ssk.91txh.com/209" target="_blank" rel="external">此文</a><br>单说”Next”主题下改完embed.js后需要做的事情：<br>“Next”主题内嵌多说，所以需要更改主题文件:<br>打开<code>/themes/next/layout/_scripts/comments/duoshuo.swig</code>，更改”embed.js”的文件路径即可。这里我是把js扔到7牛上去了，你也可以直接放到主题里然后更新到gitpage上去。</p>
+<h3 id="图片资源利用七牛分流"><a href="#图片资源利用七牛分流" class="headerlink" title="图片资源利用七牛分流"></a>图片资源利用七牛分流</h3><p>由于git-page自带空间只有300M，看起来博客够用了，但是总觉得憋得慌，对于全图片直接扔上去这种事个人没太大信心，所以决定图片用七牛分流（虽然这样某种意义上对双线路部署的做法产生了消极影响，不过考虑到七牛的CDN速度以及资本主义国家的网速加上未雨绸缪的300M空间，最终还是决定图片传到七牛上去）</p>
+<blockquote>
+<p>我最初的办法是用hexo的一个插件(<a href="https://github.com/gyk001/hexo-qiniu-sync" target="_blank" rel="external">hexo-qiniu-sync</a>)<br>但是后来发现这个插件效率不高，一开整个hexo的反应都慢了，而且最主要一点是失去了MD文件的通用性，所以最终弃用该方法。<br>另外<strong>采用了一个本地同步文件到七牛的插件</strong>：<a href="https://github.com/wzyuliyang/qiniu4blog" target="_blank" rel="external">qiniu4blog</a>，使用很简单，具体可以看文档。</p>
+</blockquote>
+<h3 id="多PC的情况下blog备份问题"><a href="#多PC的情况下blog备份问题" class="headerlink" title="多PC的情况下blog备份问题"></a>多PC的情况下blog备份问题</h3><p><del>本来想用网盘的自动备份工具，但是考虑到blog的posts文件夹在写文章时的更新频率，我又放弃了这种做法。<br>另外由于”_config.yml”里有七牛的密钥数据，所以整个blog文件扔到git上也是不可取的。个人建议还是打个包直接另一台电脑解压吧(一般来说拷贝source文件夹，theme文件夹，静态资源文件夹以及站点配置文件即可)。</del><br>上面删除线内的是我对备份的最初想法，然后实际使用后发现有至少两个缺点：</p>
+<ol>
+<li>麻烦，每次另一台电脑上都要从百度云下载更新文件夹手动覆盖</li>
+<li><code>hexo s</code>开启本地服务器状态的时候，会对文件夹进行监视，动态编译生成的文件，而百度云的自动备份会在你每次保存文件的时候都生成一个.cfg文件，导致hexo编译失败，然后就会停止本地服务器解析，又要手动开启一次（写文章的时候随时顺手<kbd>CTRL</kbd>+<kbd>S</kbd>是个好习惯）</li>
+</ol>
+<p><strong>以上两个原因导致了”百度云备份”这个方案被否决，所以最终还是回到了git备份的路子</strong>。由于blog全站备份，所以建议放私有仓库，另外根目录下<code>_config.yml</code>尽量不要放上去（有些插件比如我现在在用的”hexo-qiniu-sync”就有七牛的key，所以不建议同步到git上）<br>这里写起来篇幅可能比较长，所以我另外写了一篇文章单独来讲同步：<br><a href="/2015/06/18/hexo-sync-in-multiple-pc/">hexo博客多PC间同步解决方案</a></p>
+<p>可以参考。</p>
+<p>需要注意的事，不管这台电脑上之前有没有安装过hexo，安装完成后都是不需要<code>hexo init</code>的——这个操作会把config初始化。。<br>直接在复制过来的blog文件里运行hexo的命令即可。不过hexo插件都需要重新安装下。</p>
+<h3 id="给github添加README"><a href="#给github添加README" class="headerlink" title="给github添加README"></a>给github添加README</h3><p>众所周知hexo会把文件夹内的所有md文件解析成html，而github的readme只支持MD格式。（所以想在这里直接插html绕过限制的就只能说残念了）<br>网上之前很多方法，不过都没有说到点子上，因为即使把README.MD文件放到source或者theme对应的source文件夹下，再加上<code>layout:false</code>，hexo还是会把文件解析掉。<br>另外有一种不怎么优雅的解决方法是<code>把&#39;README.MD&#39;的后缀去掉，改成&#39;README&#39;</code>,不过这样的话github只能支持部分解析，不会当做一个完整的MD文件来处理，样式上和期待值有差别</p>
+<p>正确的解决方法其实很简单：</p>
+<blockquote>
+<p>**把’README.MD’文件的后缀名改成”MDOWN”然后扔到blog/source文件夹下即可，这样hexo不会解析，github也会将其作为MD文件解析</p>
+</blockquote>
+<p>效果可参考我这个<a href="https://github.com/chitanda/chitanda.github.io" target="_blank" rel="external">github的主页</a></p>
+<h3 id="文章添加代码块有注释时的高亮"><a href="#文章添加代码块有注释时的高亮" class="headerlink" title="文章添加代码块有注释时的高亮"></a>文章添加代码块有注释时的高亮</h3><p>建议对应代码块语法选择相应的注释符号。比如<code>html</code>用<code>&lt;!-- --&gt;</code>,<code>css</code>用<code>/* */</code>，否则可能会出现代码不高亮或者高亮有问题的情况。</p>
+<h3 id="MarkDown里-table-的语法"><a href="#MarkDown里-table-的语法" class="headerlink" title="MarkDown里 table 的语法"></a>MarkDown里 <code>table</code> 的语法</h3><p>MD写法：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"></div><div class="line">| 链接 | 结果 | 原因 |</div><div class="line">|:-----|:---:|----------:|</div><div class="line">|文本内容| **`是`** |同协议同域名同端口|</div><div class="line">|文本内容| **`是`** |同协议同域名同端口|</div><div class="line">|文本内容| **`是`** |同协议同域名同端口|</div></pre></td></tr></table></figure></p>
+<blockquote>
+<ol>
+<li>最上面一行是表格第一列的值。<strong>第二行的冒号位置决定表格内文本的对齐方式</strong>。有<code>水平居中</code>、<code>水平靠左对齐</code>、<code>水平靠右对齐</code>三种.</li>
+<li><strong>切记表格要与上面的文本内容空一行。否则解析不出来</strong></li>
+<li>每列的宽度是根据对应列里最长的文本来决定的</li>
+</ol>
+</blockquote>
+<p>输出结果：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">链接</th>
+<th style="text-align:center">结果</th>
+<th style="text-align:right">原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">文本内容</td>
+<td style="text-align:center"><strong><code>是</code></strong></td>
+<td style="text-align:right">同协议同域名同端口</td>
+</tr>
+<tr>
+<td style="text-align:left">文本内容</td>
+<td style="text-align:center"><strong><code>是</code></strong></td>
+<td style="text-align:right">同协议同域名同端口</td>
+</tr>
+<tr>
+<td style="text-align:left">文本内容</td>
+<td style="text-align:center"><strong><code>是</code></strong></td>
+<td style="text-align:right">同协议同域名同端口</td>
+</tr>
+</tbody>
+</table>
+<p>以上是之前我之前部署的时候有遇到过的一些问题，后面会视情况再不定时更新下。希望对看到这篇文章的人有所帮助</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;之前的WP博客荒废了好久之后终于感觉该做点正事了，所以这几天花了点时间重新弄了下hexo，毕竟是比较符合前端的一个博客框架。比起wp来说，hexo轻量级的多，而且易部署（指速度优化方面），也不需要一个专门的服务器来放置（这个其实是我选择hexo的最终原因。手里虽然有vps，但是因为跑着ss加上国内ping值太高，最终肯定影响国内速度，所以就一直没用来放blog）当然没有后台也就意味着不能随时随地写了就发，这个相对WP来说是弱势，但我感觉还好，毕竟不会常常在外面跑，而且写博客基本都是在电脑前，再不济也可以先把MD文件写完后拷回去发布。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="blog" scheme="http://chitanda.me/categories/blog/"/>
+    
+    
+      <category term="github" scheme="http://chitanda.me/tags/github/"/>
+    
+      <category term="hexo" scheme="http://chitanda.me/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>中文webfont解决方案</title>
+    <link href="http://chitanda.me/2015/06/08/chinese-webfont-solution/"/>
+    <id>http://chitanda.me/2015/06/08/chinese-webfont-solution/</id>
+    <published>2015-06-08T09:17:57.000Z</published>
+    <updated>2016-08-25T11:22:55.459Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>css3的<code>font-face</code>让网页的字体多样性有了很大的提升（该属性的语法使用可参考大漠的<a href="http://www.w3cplus.com/content/css3-font-face/" target="_blank" rel="external">这篇文章</a>，本文重点不在于此，不对该属性做太多解释）有了<code>font-face</code>之后，网页上的特殊字体也都可以不再通过切图来解决，完美地解放了切图仔的工作——但是，万恶的但是出现了。<br><strong>当你的页面里有特殊字体的中文的时候，你会发现直接用<code>font-face</code>引用中文字体是极其不现实的。</strong><br><a id="more"></a></p>
+<h1 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h1><p>假设我们现在手里有这样的一个设计稿，先想下你会怎么做，切图还是？（字体是”<a href="http://www.touwenzi.com/font/133.htm" target="_blank" rel="external">汉仪黑棋体简</a>“）：</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/chinese-webfont-1.png" alt="chinese-webfont"></h2><p>不想切图的小C拿到了稿子后想当然地准备用<code>font-face</code>，然后当他找到这个字体的时候,发现字体有整整4M多，而之前接触到的英文字体基本上都是几十K。现在我们知道问题出在哪里了：<strong>由于中文字库远比英文庞大，导致中文字体文件大小往往是英文字体的几十倍大小，直接页面上引用的话，不论是对服务器带宽资源，还是用户加载速度，都是极大的挑战。</strong><br>那么，只能切图了么？</p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>英雄总是姗姗来迟，不过好在中文webfont的优秀解决方案现在已经出现了:<code>字体子集化</code><br>讲人话的话就是<pre>把需要的中文文字单独从字体中提取出来做成一个新的字体文件，由于字库小了很多，所以字体文件自然也就小了</pre><br>本来这是件很繁琐的事情，需要手动去编辑字体文件。不过好在BAT三家都出了自己对应的一体化工具，使得我们的工作量小了很多。<br>腾讯：<a href="http://font-spider.org/" target="_blank" rel="external">font-spider</a>（核心使用的font-min）<br>百度：<a href="http://ecomfe.github.io/fontmin" target="_blank" rel="external">font-min</a><br>阿里巴巴：<a href="http://iconfont.cn/webfont/#!/webfont/index" target="_blank" rel="external">icon-font</a> <a href="http://purplebamboo.github.io/font-carrier/" target="_blank" rel="external">font-carrier</a><br>以上三家各有优劣，其中腾讯的font-spider的优化核心是用的百度的font-min，可以根据网页内的中文文本自动生成对应字体文件，操作简洁，但依赖node.js且只支持ttf，不支持oft字体；font-min有windows客户端，生成字体的文字需要自行指定；iconfont可以在线生成字体，但是字体有限，开源的核心font-carrier支持的字体方式较多，但是操作较繁琐。<strong>所以个人推荐腾讯的font-spider</strong></p>
+<hr>
+<p>###DEMO###<br>font-spider安装过程略过不提，node.js安装之类的百度下即可。<br>现在回到前面的设计图，做一下演示。（其实官网的例子足够简单了，不过以防万一吧。虽然我也不觉得万一真的有看不懂官网例子的人他可以看得懂我这里的demo。。。）<br>以上面的端午节为例，我们先新建一个’index.html’文件，然后同级目录下创建一个’font’文件，将字体文件放进去,<br>然后在html里定义好需要的文字<br><figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"font"</span>&gt;</span>端午节快乐<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>然后css（主要是<code>font-face</code>）<br><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*先声明 WebFont*/</span></div><div class="line">@<span class="keyword">font-face</span> &#123;</div><div class="line">  <span class="attribute">font-family</span>: <span class="string">'hanyi'</span>;</div><div class="line">  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'font/hanyi.eot'</span>);</div><div class="line">  <span class="attribute">src</span>:</div><div class="line">  <span class="comment">/*文件夹里只需要有ttf字体即可，其余字体文件可以为空，font-spider会自动生成*/</span></div><div class="line">  <span class="comment">/*这里的代码需要注意字体文件的路径，直接复制不一定完全有效*/</span></div><div class="line">    <span class="built_in">url</span>(<span class="string">'font/hanyi.eot?#font-spider'</span>) <span class="built_in">format</span>(<span class="string">'embedded-opentype'</span>),</div><div class="line">    <span class="built_in">url</span>(<span class="string">'font/hanyi.woff'</span>) <span class="built_in">format</span>(<span class="string">'woff'</span>),</div><div class="line">    <span class="built_in">url</span>(<span class="string">'font/hanyi.ttf'</span>) <span class="built_in">format</span>(<span class="string">'truetype'</span>),</div><div class="line">    <span class="built_in">url</span>(<span class="string">'font/hanyi.svg'</span>) <span class="built_in">format</span>(<span class="string">'svg'</span>);</div><div class="line">  <span class="attribute">font-weight</span>: normal;</div><div class="line">  <span class="attribute">font-style</span>: normal;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*使用选择器指定字体*/</span></div><div class="line"><span class="selector-class">.font</span>&#123;</div><div class="line">    <span class="attribute">font-family</span>: <span class="string">'hanyi'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后<kbd>win</kbd>+<kbd>R</kbd>输入<code>cmd</code>打开命令行界面，<code>cd</code>到index.html所在文件夹，输入<code>font-spider index.html</code>回车即可（windows用户有个小窍门可以使用：先打开index.html所在文件夹，然后按着shift键，右键，即可选择’在此处打开命令窗口’，可以节省cmd里敲路径的时间）<br>出现如图所示结果就说明字体子集化完成<br><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/font-spider-result.jpg" alt="font"><br>这时可以看到’font’文件夹下已经自动生成了需要的字体文件，且文件大小都很小(.backup文件是原字体备份，项目上线的时候可以删掉)<br><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/get-font.jpg" alt="font"></p>
+<p>不做子集化和子集化两次网页请求资源大小：<br>原字体：<br><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/webfont-1.jpg" alt="font"><br>处理后：<br><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/webfont-2.jpg" alt="font"></p>
+<p>####result####</p>
+<pre>
+    <style>
+    @font-face {
+      font-family: 'hanyi';
+      src: url('../../../../fonts/hanyi.eot');
+      src:
+      /*文件夹里只需要有ttf字体即可，其余字体文件可以为空，font-spider会自动生成*/
+      /*这里的代码需要注意字体文件的路径，直接复制不一定完全有效*/
+        url('../../../../fonts/hanyi.eot?#font-spider') format('embedded-opentype'),
+        url('../../../../fonts/hanyi.woff') format('woff'),
+        url('../../../../fonts/hanyi.ttf') format('truetype'),
+        url('../../../../fonts/hanyi.svg') format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+    /*使用选择器指定字体*/
+    .font{
+        font-family: 'hanyi';
+        text-align: center;
+        font-size:50px;
+        color: #000
+    }
+    input{
+      margin: 3px;
+    }
+    </style>
+    <div class="font" id="font-test">端午节快乐</div>
+    <input type="color" id="font-color" value="#00ffff"><button id="changeColor">改变文字颜色</button>
+    <input type="range" id="font-size"><span>拖动滑块改变文字大小</span>
+    <script>
+        var fontColor=document.getElementById('font-color');
+        var fontTest=document.getElementById('font-test');
+        changeColor=document.getElementById('changeColor');
+        changeColor.addEventListener('click',function(){
+          var color=fontColor.value;
+          fontTest.style.color=color;
+          console.log('color='+color);
+        });
+        function addListenerMulti(el, s, fn) {
+          var evts = s.split(' ');
+          for (var i=0, iLen=evts.length; i<iLen; i++) {
+            el.addEventListener(evts[i], fn, false);
+          }
+        }
+        var fontSize=document.getElementById('font-size');
+/*        addListenerMulti(fontSize, 'mouseup touchend', function(){*/
+    fontSize.addEventListener('input',function(){
+          var size=fontSize.value+'px';
+          fontTest.style.fontSize=size;
+          console.log('size='+size);
+        });
+    </script>
+</pre>
+
+<p>###tips###<br>1.由于字体子集化是按需所取，所以如果更改了文字的话，记得重新生成一次字体，否则会出现部分文字没有被该字体渲染的情况<br>2.虽然font-spider目前只支持ttf的字体，而很多字体官方只发布otf的，这时可以利用fontlab先将其转化成ttf。（虽然其他工具也可以转，但是fontlab是我个人最推荐的，比其余的好用不少）</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;css3的&lt;code&gt;font-face&lt;/code&gt;让网页的字体多样性有了很大的提升（该属性的语法使用可参考大漠的&lt;a href=&quot;http://www.w3cplus.com/content/css3-font-face/&quot;&gt;这篇文章&lt;/a&gt;，本文重点不在于此，不对该属性做太多解释）有了&lt;code&gt;font-face&lt;/code&gt;之后，网页上的特殊字体也都可以不再通过切图来解决，完美地解放了切图仔的工作——但是，万恶的但是出现了。&lt;br&gt;&lt;strong&gt;当你的页面里有特殊字体的中文的时候，你会发现直接用&lt;code&gt;font-face&lt;/code&gt;引用中文字体是极其不现实的。&lt;/strong&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://chitanda.me/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="CSS" scheme="http://chitanda.me/tags/CSS/"/>
+    
+      <category term="javascript" scheme="http://chitanda.me/tags/javascript/"/>
+    
+      <category term="webfont" scheme="http://chitanda.me/tags/webfont/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Centos下配置nginx和php环境</title>
+    <link href="http://chitanda.me/2015/06/01/Centos-setup-nginx-and-php/"/>
+    <id>http://chitanda.me/2015/06/01/Centos-setup-nginx-and-php/</id>
+    <published>2015-06-01T06:00:57.000Z</published>
+    <updated>2016-08-25T11:22:55.447Z</updated>
+    
+    <content type="html"><![CDATA[<p>yum安装<br>1.安装EPEL插件<br>2.安装mysql，完成后’service mysqld start’然后’mysqladmin -u root password “这里输入新密码”‘来添加密码（mysql默认无密码）然后’service mysqld restart’重启<br>3.让nginx和php-fpm相关联<br>‘service nginx configtest’然后<br>‘cat /etc/nginx/nginx.conf’<br>获取nginx默认配置文件的位置。<br>vi /etc/nginx/conf.d/default.conf<br>webroot要给777权限<br> sudo chmod 777 /usr/share/nginx/html</p>
+<a id="more"></a>
+<p>添加防火墙规则：<br> iptables -A INPUT -m state –state NEW -m tcp -p tcp –dport 80 -j ACCEPT<br> iptables -A INPUT -m state –state NEW -m tcp -p tcp –dport 9000 -j ACCEPT<br>service iptables restart</p>
+<p>4.安装php依赖<br> yum install php-gd php-mysql php-mbstring php-xml php-mcrypt  </p>
+<p>更改默认的apache用户组为nginx<br> vi /etc/php-fpm.d/*.conf</p>
+<p>5.多域名绑定设置(默认文件夹下的话，需要注意有个index.html的优先级在index.php之前)<br>virtul.conf下添加server设置。<br>‘’’<br>server {<br>    listen       80;<br>    listen      ww1.example.com:80;<br>    server_name  ww1.example.com  alias  another.alias;</p>
+<pre><code>location / {
+    root   html/web;
+    index  index.html index.htm index.php;
+}
+
+location ~ \.php$ {
+    root           html/web;
+    fastcgi_pass   127.0.0.1:9000;
+    fastcgi_index  index.php;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    include        fastcgi_params;
+}
+</code></pre><p>}<br>‘’’<br>两个root文件夹下的路径需要注意。</p>
+<p>mysql编译安装：<br><a href="http://www.cnblogs.com/xiongpq/p/3384681.html" target="_blank" rel="external">http://www.cnblogs.com/xiongpq/p/3384681.html</a><br>php：</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;yum安装&lt;br&gt;1.安装EPEL插件&lt;br&gt;2.安装mysql，完成后’service mysqld start’然后’mysqladmin -u root password “这里输入新密码”‘来添加密码（mysql默认无密码）然后’service mysqld restart’重启&lt;br&gt;3.让nginx和php-fpm相关联&lt;br&gt;‘service nginx configtest’然后&lt;br&gt;‘cat /etc/nginx/nginx.conf’&lt;br&gt;获取nginx默认配置文件的位置。&lt;br&gt;vi /etc/nginx/conf.d/default.conf&lt;br&gt;webroot要给777权限&lt;br&gt; sudo chmod 777 /usr/share/nginx/html&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="运维" scheme="http://chitanda.me/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+    
+      <category term="linux" scheme="http://chitanda.me/tags/linux/"/>
+    
+      <category term="运维" scheme="http://chitanda.me/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="nginx" scheme="http://chitanda.me/tags/nginx/"/>
+    
+      <category term="php" scheme="http://chitanda.me/tags/php/"/>
+    
+  </entry>
+  
+</feed>

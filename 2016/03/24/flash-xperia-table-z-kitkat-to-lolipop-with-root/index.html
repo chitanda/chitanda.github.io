@@ -1,0 +1,704 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="Zz69_TBO29kGWz1EwiPdoVvLE1hCqut6T9lcr5DYr6Y" />
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="刷机,折腾," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我很好奇" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="前言手里的平板是从基友那拿的索尼日版Xperia™ Tablet Z(型号SO-03E)，上一次刷系统都是两三年前的事了，所以系统一直停留在4.1.2不过实在不怎么适应UI了，所以想升级一下，然后这中间过程简直波澜壮阔九转十八弯，所以记录下，给以后手贱做参考——虽然其实这文可能不怎么适应时代了，因为Xperia™ Tablet Z这平板出来好久了，加上守4.1.2的人估计没那么多，所以遇到我这问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Xperia™ Tablet Z系统升至安卓5.1.1并保留root权限">
+<meta property="og:url" content="http://chitanda.me/2016/03/24/flash-xperia-table-z-kitkat-to-lolipop-with-root/index.html">
+<meta property="og:site_name" content="我很好奇">
+<meta property="og:description" content="前言手里的平板是从基友那拿的索尼日版Xperia™ Tablet Z(型号SO-03E)，上一次刷系统都是两三年前的事了，所以系统一直停留在4.1.2不过实在不怎么适应UI了，所以想升级一下，然后这中间过程简直波澜壮阔九转十八弯，所以记录下，给以后手贱做参考——虽然其实这文可能不怎么适应时代了，因为Xperia™ Tablet Z这平板出来好久了，加上守4.1.2的人估计没那么多，所以遇到我这问题">
+<meta property="og:updated_time" content="2016-08-25T15:36:09.977Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Xperia™ Tablet Z系统升至安卓5.1.1并保留root权限">
+<meta name="twitter:description" content="前言手里的平板是从基友那拿的索尼日版Xperia™ Tablet Z(型号SO-03E)，上一次刷系统都是两三年前的事了，所以系统一直停留在4.1.2不过实在不怎么适应UI了，所以想升级一下，然后这中间过程简直波澜壮阔九转十八弯，所以记录下，给以后手贱做参考——虽然其实这文可能不怎么适应时代了，因为Xperia™ Tablet Z这平板出来好久了，加上守4.1.2的人估计没那么多，所以遇到我这问题">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 12157121,
+      author: 'ROOT'
+    }
+  };
+</script>
+
+  <title> Xperia™ Tablet Z系统升至安卓5.1.1并保留root权限 | 我很好奇 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70297472-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6028e1891a3d164a9d7c5707a08908ca";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">我很好奇</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">千反田家的小院子</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Xperia™ Tablet Z系统升至安卓5.1.1并保留root权限
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-24T21:21:54+08:00" content="2016-03-24">
+              2016-03-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/折腾/" itemprop="url" rel="index">
+                    <span itemprop="name">折腾</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/24/flash-xperia-table-z-kitkat-to-lolipop-with-root/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/24/flash-xperia-table-z-kitkat-to-lolipop-with-root/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>手里的平板是从基友那拿的索尼日版<code>Xperia™ Tablet Z</code>(型号<code>SO-03E</code>)，上一次刷系统都是两三年前的事了，所以系统一直停留在<code>4.1.2</code>不过实在不怎么适应UI了，所以想升级一下，然后这中间过程简直波澜壮阔九转十八弯，所以记录下，给以后手贱做参考——虽然其实这文可能不怎么适应时代了，因为<code>Xperia™ Tablet Z</code>这平板出来好久了，加上守<code>4.1.2</code>的人估计没那么多，所以遇到我这问题的人估计也不会太多，不过还是做个记录好了。（从<code>4.1.2</code>升级到<code>5.1.1</code>这个很重要，因为大法这机子<strong>4.1.2不能直升5.1.1</strong>,不知道这点的我扔进去了差不多三个晚上以及N次强刷）<br>PS：</p>
+<ol>
+<li><del>本人不是专业玩机的，所以可能概念或者过程有些认知上的错误，欢迎指正</del></li>
+<li>下文提到的都是针对日版<code>Xperia™ Tablet Z</code>(型号<code>SO-03E</code>)而言不同型号机子在具体细节上肯定有区别，注意灵活多变。</li>
+<li>本文所有提到的工具都建议去官网下，不过为了方便某些没梯子的群众，我还是做了份百度云的分流。目前可以满足我从<code>4.1.2</code>升级到<code>5.1.1</code>的需求，以后就不知道了╮(╯▽╰)╭  (<a href="http://pan.baidu.com/s/1qXLQV60" target="_blank" rel="external">传送门</a>密码: h6nn)<a id="more"></a>
+</li>
+</ol>
+<h2 id="简要流程"><a href="#简要流程" class="headerlink" title="简要流程"></a>简要流程</h2><p>这个其实是给非新手看的tips，提醒下大概流程以及相应的坑，具体流程下文会讲，另外流程其实不固定，因为不同的刷法带来的结果不一样，所以我这个并不是唯一解，但是<strong>肯定是可用解</strong>,不确定的可以完全照我的流程来.</p>
+<ol>
+<li>确定机子是否可以解BL锁（Table Z有些型号不能解BL锁，所以不能随意刷第三方系统，反正目测日版不行，所以这里以不能解锁的机子为例）</li>
+<li>将系统刷至<code>4.4.4</code>（不知道直升5.0行不行，没试过，所以这里建议升至<code>4.4.4</code>系统即可，如果已经是<code>4.4.4</code>的话就不需要动了,直接下一步即可）</li>
+<li>看机子有没有root权限，有root权限的话可以刷<code>lockeddualrecovery</code>；没有root权限的话就上<code>kingroot</code>然后清理掉残留APP。</li>
+<li>找个魔改过后的内置root的官方系统来刷，因为5.0以上root都比较麻烦</li>
+</ol>
+<h2 id="详细流程"><a href="#详细流程" class="headerlink" title="详细流程"></a>详细流程</h2><p>说是详细流程不过也不是面面俱到，有些简单的地方会略过，自行求助搜索引擎。</p>
+<h3 id="安装flashtool以及相应驱动"><a href="#安装flashtool以及相应驱动" class="headerlink" title="安装flashtool以及相应驱动"></a>安装flashtool以及相应驱动</h3><p>flashtool可以去<a href="http://www.flashtool.net/downloads.php" target="_blank" rel="external">官网</a>下载,驱动安装失败的话注意<strong>取消Windows系统的驱动数字签名认证</strong>，不同操作系统处理方法可能不一样，自行解决。需要保证这一步做完后手机连上去可以同时被flashtool的adb模式和fastmode识别到。<br>PS：<br><del>sony官方有个<code>Emma</code>,是套了壳的flashtool，但是那个工具使用还要注册帐号，比较恶心，所以就不推荐了</del></p>
+<h3 id="检测BL锁是否可解"><a href="#检测BL锁是否可解" class="headerlink" title="检测BL锁是否可解"></a>检测BL锁是否可解</h3><p>平板开USB调试然后连接电脑，之后再打开flashtool，点工具栏上的<code>My SGP3XX</code>-<code>Launch ServiceMenu</code>,然后在平板上选择<code>Service info</code>-<code>Configuration</code>;看最后那个<code>Bootloader unlock allowed</code>里的值是<code>yes</code>还是<code>no</code>。反正我估计日版都是NO，咱们继续下一步。如果你是<code>YES</code>的话，看完这条下面的PS信息就可以去官网解锁，然后走好不送，因为你完全可以去刷CM之类的第三方系统了，也不需要下面费事的折腾了。<br>PS：<br><a href="http://developer.sonymobile.com/unlockbootloader/unlock-yourboot-loader/" target="_blank" rel="external">Sony官方解BL锁申请链接</a><br>仅限是<code>Bootloader unlock allowed</code>是<code>YES</code>的朋友去申请，NO的就不要凑热闹了，无解。目前没有任何办法解。<br><del>另外这个页面其实也提供了另一个检测BL锁是否可解的方法，不过我没按出来，所以略过。诸位可以自行选择完设备后看出来的信息。</del></p>
+<h3 id="获取root权限"><a href="#获取root权限" class="headerlink" title="获取root权限"></a>获取root权限</h3><p>有root权限的话直接跳过这步。<br><code>4.1.2</code>系统的root权限获取可以直接用<code>rootkitZ</code>(<a href="http://forum.xda-developers.com/xperia-z/development/root-tool-root-10-3-1-2-67-10-3-1-2-74-t2547714" target="_blank" rel="external">XDA原帖</a>)或者<code>Root_with_Restore_by_Bin4ry</code>(<a href="http://forum.xda-developers.com/showthread.php?t=1886460" target="_blank" rel="external">XDA原帖</a>.不过后面这个工具相对复杂+作者不允许分流，所以下载速度较慢)。<br>但是，如果你是<code>4.4.4</code>需要root的话,上面两个工具都没啥鸟用，漏洞都被sony修补掉了，所以直接上<code>kingroot</code>(不过这个装完后有自带的残留，因此有洁癖的话需要后期处理。)kingroot建议用4.0版的，因为root完不会自动重启。（<a href="http://www.kingroot.net/release" target="_blank" rel="external">官网链接</a>）<br>PS：<br><code>kingroot</code>的残留文件清理方法可以参考XDA这个<a href="http://forum.xda-developers.com/xperia-tablet-z/general/how-to-root-lollipop-xperia-tablet-z-t3115107" target="_blank" rel="external">帖子</a>,不过我是直接root完后刷recovery然后卡刷的<code>supersu</code>，然后也直接清掉了。</p>
+<h3 id="刷TabZ-lockeddualrecovery"><a href="#刷TabZ-lockeddualrecovery" class="headerlink" title="刷TabZ-lockeddualrecovery"></a>刷TabZ-lockeddualrecovery</h3><p>这个是专门给未解锁BL的Sony Xperia设备刷第三方recovery的工具，<strong>只需要有root权限即可</strong>。从<a href="http://nut.xperia-files.com/path/XZDualRecovery" target="_blank" rel="external">官网</a>找到自己对应的设备的recovery，然后下载，手机连电脑后打开bat文件，按照你的root权限管理工具选择选项，中间会弹一次root权限请求，注意在手机上允许，然后会自动重启进入<code>twrp</code>.</p>
+<h3 id="升级4-4-4ROM"><a href="#升级4-4-4ROM" class="headerlink" title="升级4.4.4ROM"></a>升级4.4.4ROM</h3><p>这一步其实就是我上面<strong>简单流程</strong>里说的刷法不一样的地方。我是自己刷完后才发现我这里可能有更优解，不过没验证所以不当主方法讲，先讲我自己麻烦的方法。</p>
+<p>随便找个<code>4.4.4</code>的官方适应<code>SGP321</code>的ftf固件用flashtool刷进去（我是刷的港版），日版注意<code>Partition</code>别清，不然会丢失32G，然后重复上面两步把<code>twrp</code>刷回来。<br>PS：<br>我想到的另一个未验证的更优解法是直接找个内置root的<code>4.4.4</code>的系统然后用recovery卡刷，升到<code>4.4.4</code>后继续卡刷到<code>5.1.1</code>——这么做的好处是root不丢失，而且全程不需要kingroot参与进来（不过这个方法未验证，所以不保证一定可行）</p>
+<h3 id="卡刷5-1-1"><a href="#卡刷5-1-1" class="headerlink" title="卡刷5.1.1"></a>卡刷5.1.1</h3><p>这里ROM很多，不过不同ROM好像需要的后续处理不一样。所以推荐一个我用过的，刷完即用不需要后续刷基带之类的ROM——<a href="http://forum.xda-developers.com/xperia-tablet-z/orig-development/rom-pre-rooted-lollipop-t3115002" target="_blank" rel="external">[OFFICIAL 5.1.1] Rooted 10.7.A.0.222 / 228</a><br>刷完重启下即可。不过如果要<code>xposed</code>框架的话，建议刷完系统后不要立即重启，先把<code>xposed</code>框架装上，否则进去后又要等半天优化APP。（<code>xposed</code>选择<code>xposed-v80-sdk22-arm</code>即可)<br>注意要点：</p>
+<blockquote>
+<p>这个ROM卡刷的时候不需要<code>wipe system</code>，清理掉<code>data</code>和<code>cache</code>即可。(<a href="http://forum.xda-developers.com/showpost.php?p=60940818&amp;postcount=23" target="_blank" rel="external">作者解释</a>,另外作者这里给出了root的另一个解法，不过只刷kernel没试过，所以不评价)</p>
+</blockquote>
+<h2 id="某些你大概用得上的tips"><a href="#某些你大概用得上的tips" class="headerlink" title="某些你大概用得上的tips"></a>某些你大概用得上的tips</h2><ol>
+<li>用flashtool刷官方固件的时候需要进<code>flashmode</code>，然而这个进入的方式并不一样，可能和固件有关。根据我自己的实验，日版固件的话是<strong>长按音量-然后USB连电脑上</strong>；而国际版固件是<strong>长按音量键连上电脑后再按一下电源键</strong>，具体哪个可能要自己多试试，实在不行几个按键都按按总是可以触发的。。</li>
+<li>kingroot刷完后如果用那个帖子里的方法不好清理自带的app和授权管理工具的话，可以试试进recovery卡刷<code>superSu</code>,反正我是直接替换掉了。（建议装4.0.0版，然后root完后卸载掉另外两个无关工具后，再进recovery卡刷）</li>
+<li>如果刷完机子发现无限重启或者进不去系统了，没找到解决方法的话就flashtool刷一个可用固件吧。就我所知普通刷刷机造成的砖基本上可以靠flashtool强刷救回来</li>
+<li>如果你这里刷的系统版本和我不一样，但是刷完最后那个固件后无限自动重启，可能也是跳版本刷的缘故。反正<code>4.1.2</code>直接刷<code>5.1.1</code>是不行的。中间要是有跨度比较大的rom变动后无限重启又找不到解决方法，可以考虑下这个可能。</li>
+<li>使用各种root脚本的时候，如果adb总是报错，可以自己另起一个cmd输入<code>adb devices</code>看看状态，如果总是无法<code>start deamon</code>的话可以去任务管理器看看，若是启用了多个ADB的话记得都关掉然后重新开脚本；若是提示<code>devices offline</code>,则有可能是你的adb版本太老，直接下载我的百度云文件夹里的adb过去覆盖掉即可</li>
+</ol>
+<hr>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/刷机/" rel="tag">#刷机</a>
+          
+            <a href="/tags/折腾/" rel="tag">#折腾</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/13/Initial-Server-Secure-Settings-with-CentOS-6-5/" rel="next" title="服务器初始安全设置（CentOS 6.5）">
+                <i class="fa fa-chevron-left"></i> 服务器初始安全设置（CentOS 6.5）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/19/difference-between-deepwep-and-darkweb/" rel="prev" title="“深网”和“暗网”的区别及基础扫盲">
+                “深网”和“暗网”的区别及基础扫盲 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/03/24/flash-xperia-table-z-kitkat-to-lolipop-with-root/"
+     data-title="Xperia™ Tablet Z系统升至安卓5.1.1并保留root权限"
+     data-content=""
+     data-url="http://chitanda.me/2016/03/24/flash-xperia-table-z-kitkat-to-lolipop-with-root/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/24/flash-xperia-table-z-kitkat-to-lolipop-with-root/"
+           data-title="Xperia™ Tablet Z系统升至安卓5.1.1并保留root权限" data-url="http://chitanda.me/2016/03/24/flash-xperia-table-z-kitkat-to-lolipop-with-root/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Chitanda Akari" />
+          <p class="site-author-name" itemprop="name">Chitanda Akari</p>
+          <p class="site-description motion-element" itemprop="description">chitanda | 互联网 | 前端 | 宅 |动漫 | 京阿尼</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chitanda" target="_blank">
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3218616254" target="_blank">
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://segmentfault.com/u/chitanda" target="_blank">
+                  
+                  SegmentFault
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.v2ex.com/?r=TakanashiAzusa" target="_blank">
+                  
+                  V2EX
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简要流程"><span class="nav-number">2.</span> <span class="nav-text">简要流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#详细流程"><span class="nav-number">3.</span> <span class="nav-text">详细流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装flashtool以及相应驱动"><span class="nav-number">3.1.</span> <span class="nav-text">安装flashtool以及相应驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检测BL锁是否可解"><span class="nav-number">3.2.</span> <span class="nav-text">检测BL锁是否可解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取root权限"><span class="nav-number">3.3.</span> <span class="nav-text">获取root权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#刷TabZ-lockeddualrecovery"><span class="nav-number">3.4.</span> <span class="nav-text">刷TabZ-lockeddualrecovery</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#升级4-4-4ROM"><span class="nav-number">3.5.</span> <span class="nav-text">升级4.4.4ROM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#卡刷5-1-1"><span class="nav-number">3.6.</span> <span class="nav-text">卡刷5.1.1</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#某些你大概用得上的tips"><span class="nav-number">4.</span> <span class="nav-text">某些你大概用得上的tips</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chitanda Akari</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+    <script>
+      var OriginTitile=document.title;
+      var st;
+      document.addEventListener('visibilitychange',function(){
+      if(document.hidden){
+        document.title="(つェ⊂)我藏好了哦";
+        clearTimeout(st);
+        console.log('hide');
+      }else{
+        document.title='(*´∇｀*)  被你发现啦~ '+OriginTitile;
+        console.log('show');
+        st=setTimeout(function(){
+            document.title=OriginTitile;
+        },4000);
+        console.log('endChange=');
+      }
+      });
+      </script>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"chitanda"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

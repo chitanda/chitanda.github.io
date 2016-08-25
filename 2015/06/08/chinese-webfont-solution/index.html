@@ -1,0 +1,744 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="Zz69_TBO29kGWz1EwiPdoVvLE1hCqut6T9lcr5DYr6Y" />
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="CSS,javascript,webfont," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我很好奇" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="前言css3的font-face让网页的字体多样性有了很大的提升（该属性的语法使用可参考大漠的这篇文章，本文重点不在于此，不对该属性做太多解释）有了font-face之后，网页上的特殊字体也都可以不再通过切图来解决，完美地解放了切图仔的工作——但是，万恶的但是出现了。当你的页面里有特殊字体的中文的时候，你会发现直接用font-face引用中文字体是极其不现实的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="中文webfont解决方案">
+<meta property="og:url" content="http://chitanda.me/2015/06/08/chinese-webfont-solution/index.html">
+<meta property="og:site_name" content="我很好奇">
+<meta property="og:description" content="前言css3的font-face让网页的字体多样性有了很大的提升（该属性的语法使用可参考大漠的这篇文章，本文重点不在于此，不对该属性做太多解释）有了font-face之后，网页上的特殊字体也都可以不再通过切图来解决，完美地解放了切图仔的工作——但是，万恶的但是出现了。当你的页面里有特殊字体的中文的时候，你会发现直接用font-face引用中文字体是极其不现实的。">
+<meta property="og:image" content="http://7xiodk.com1.z0.glb.clouddn.com/static/images/chinese-webfont-1.png">
+<meta property="og:image" content="http://7xiodk.com1.z0.glb.clouddn.com/static/images/font-spider-result.jpg">
+<meta property="og:image" content="http://7xiodk.com1.z0.glb.clouddn.com/static/images/get-font.jpg">
+<meta property="og:image" content="http://7xiodk.com1.z0.glb.clouddn.com/static/images/webfont-1.jpg">
+<meta property="og:image" content="http://7xiodk.com1.z0.glb.clouddn.com/static/images/webfont-2.jpg">
+<meta property="og:updated_time" content="2016-08-25T11:22:55.459Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="中文webfont解决方案">
+<meta name="twitter:description" content="前言css3的font-face让网页的字体多样性有了很大的提升（该属性的语法使用可参考大漠的这篇文章，本文重点不在于此，不对该属性做太多解释）有了font-face之后，网页上的特殊字体也都可以不再通过切图来解决，完美地解放了切图仔的工作——但是，万恶的但是出现了。当你的页面里有特殊字体的中文的时候，你会发现直接用font-face引用中文字体是极其不现实的。">
+<meta name="twitter:image" content="http://7xiodk.com1.z0.glb.clouddn.com/static/images/chinese-webfont-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 12157121,
+      author: 'ROOT'
+    }
+  };
+</script>
+
+  <title> 中文webfont解决方案 | 我很好奇 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70297472-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6028e1891a3d164a9d7c5707a08908ca";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">我很好奇</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">千反田家的小院子</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                中文webfont解决方案
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-06-08T17:17:57+08:00" content="2015-06-08">
+              2015-06-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/06/08/chinese-webfont-solution/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/08/chinese-webfont-solution/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>css3的<code>font-face</code>让网页的字体多样性有了很大的提升（该属性的语法使用可参考大漠的<a href="http://www.w3cplus.com/content/css3-font-face/" target="_blank" rel="external">这篇文章</a>，本文重点不在于此，不对该属性做太多解释）有了<code>font-face</code>之后，网页上的特殊字体也都可以不再通过切图来解决，完美地解放了切图仔的工作——但是，万恶的但是出现了。<br><strong>当你的页面里有特殊字体的中文的时候，你会发现直接用<code>font-face</code>引用中文字体是极其不现实的。</strong><br><a id="more"></a></p>
+<h1 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h1><p>假设我们现在手里有这样的一个设计稿，先想下你会怎么做，切图还是？（字体是”<a href="http://www.touwenzi.com/font/133.htm" target="_blank" rel="external">汉仪黑棋体简</a>“）：</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/chinese-webfont-1.png" alt="chinese-webfont"></h2><p>不想切图的小C拿到了稿子后想当然地准备用<code>font-face</code>，然后当他找到这个字体的时候,发现字体有整整4M多，而之前接触到的英文字体基本上都是几十K。现在我们知道问题出在哪里了：<strong>由于中文字库远比英文庞大，导致中文字体文件大小往往是英文字体的几十倍大小，直接页面上引用的话，不论是对服务器带宽资源，还是用户加载速度，都是极大的挑战。</strong><br>那么，只能切图了么？</p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>英雄总是姗姗来迟，不过好在中文webfont的优秀解决方案现在已经出现了:<code>字体子集化</code><br>讲人话的话就是<pre>把需要的中文文字单独从字体中提取出来做成一个新的字体文件，由于字库小了很多，所以字体文件自然也就小了</pre><br>本来这是件很繁琐的事情，需要手动去编辑字体文件。不过好在BAT三家都出了自己对应的一体化工具，使得我们的工作量小了很多。<br>腾讯：<a href="http://font-spider.org/" target="_blank" rel="external">font-spider</a>（核心使用的font-min）<br>百度：<a href="http://ecomfe.github.io/fontmin" target="_blank" rel="external">font-min</a><br>阿里巴巴：<a href="http://iconfont.cn/webfont/#!/webfont/index" target="_blank" rel="external">icon-font</a> <a href="http://purplebamboo.github.io/font-carrier/" target="_blank" rel="external">font-carrier</a><br>以上三家各有优劣，其中腾讯的font-spider的优化核心是用的百度的font-min，可以根据网页内的中文文本自动生成对应字体文件，操作简洁，但依赖node.js且只支持ttf，不支持oft字体；font-min有windows客户端，生成字体的文字需要自行指定；iconfont可以在线生成字体，但是字体有限，开源的核心font-carrier支持的字体方式较多，但是操作较繁琐。<strong>所以个人推荐腾讯的font-spider</strong></p>
+<hr>
+<p>###DEMO###<br>font-spider安装过程略过不提，node.js安装之类的百度下即可。<br>现在回到前面的设计图，做一下演示。（其实官网的例子足够简单了，不过以防万一吧。虽然我也不觉得万一真的有看不懂官网例子的人他可以看得懂我这里的demo。。。）<br>以上面的端午节为例，我们先新建一个’index.html’文件，然后同级目录下创建一个’font’文件，将字体文件放进去,<br>然后在html里定义好需要的文字<br><figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"font"</span>&gt;</span>端午节快乐<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>然后css（主要是<code>font-face</code>）<br><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*先声明 WebFont*/</span></div><div class="line">@<span class="keyword">font-face</span> &#123;</div><div class="line">  <span class="attribute">font-family</span>: <span class="string">'hanyi'</span>;</div><div class="line">  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'font/hanyi.eot'</span>);</div><div class="line">  <span class="attribute">src</span>:</div><div class="line">  <span class="comment">/*文件夹里只需要有ttf字体即可，其余字体文件可以为空，font-spider会自动生成*/</span></div><div class="line">  <span class="comment">/*这里的代码需要注意字体文件的路径，直接复制不一定完全有效*/</span></div><div class="line">    <span class="built_in">url</span>(<span class="string">'font/hanyi.eot?#font-spider'</span>) <span class="built_in">format</span>(<span class="string">'embedded-opentype'</span>),</div><div class="line">    <span class="built_in">url</span>(<span class="string">'font/hanyi.woff'</span>) <span class="built_in">format</span>(<span class="string">'woff'</span>),</div><div class="line">    <span class="built_in">url</span>(<span class="string">'font/hanyi.ttf'</span>) <span class="built_in">format</span>(<span class="string">'truetype'</span>),</div><div class="line">    <span class="built_in">url</span>(<span class="string">'font/hanyi.svg'</span>) <span class="built_in">format</span>(<span class="string">'svg'</span>);</div><div class="line">  <span class="attribute">font-weight</span>: normal;</div><div class="line">  <span class="attribute">font-style</span>: normal;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*使用选择器指定字体*/</span></div><div class="line"><span class="selector-class">.font</span>&#123;</div><div class="line">    <span class="attribute">font-family</span>: <span class="string">'hanyi'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后<kbd>win</kbd>+<kbd>R</kbd>输入<code>cmd</code>打开命令行界面，<code>cd</code>到index.html所在文件夹，输入<code>font-spider index.html</code>回车即可（windows用户有个小窍门可以使用：先打开index.html所在文件夹，然后按着shift键，右键，即可选择’在此处打开命令窗口’，可以节省cmd里敲路径的时间）<br>出现如图所示结果就说明字体子集化完成<br><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/font-spider-result.jpg" alt="font"><br>这时可以看到’font’文件夹下已经自动生成了需要的字体文件，且文件大小都很小(.backup文件是原字体备份，项目上线的时候可以删掉)<br><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/get-font.jpg" alt="font"></p>
+<p>不做子集化和子集化两次网页请求资源大小：<br>原字体：<br><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/webfont-1.jpg" alt="font"><br>处理后：<br><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/webfont-2.jpg" alt="font"></p>
+<p>####result####</p>
+<pre>
+    <style>
+    @font-face {
+      font-family: 'hanyi';
+      src: url('../../../../fonts/hanyi.eot');
+      src:
+      /*文件夹里只需要有ttf字体即可，其余字体文件可以为空，font-spider会自动生成*/
+      /*这里的代码需要注意字体文件的路径，直接复制不一定完全有效*/
+        url('../../../../fonts/hanyi.eot?#font-spider') format('embedded-opentype'),
+        url('../../../../fonts/hanyi.woff') format('woff'),
+        url('../../../../fonts/hanyi.ttf') format('truetype'),
+        url('../../../../fonts/hanyi.svg') format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+    /*使用选择器指定字体*/
+    .font{
+        font-family: 'hanyi';
+        text-align: center;
+        font-size:50px;
+        color: #000
+    }
+    input{
+      margin: 3px;
+    }
+    </style>
+    <div class="font" id="font-test">端午节快乐</div>
+    <input type="color" id="font-color" value="#00ffff"><button id="changeColor">改变文字颜色</button>
+    <input type="range" id="font-size"><span>拖动滑块改变文字大小</span>
+    <script>
+        var fontColor=document.getElementById('font-color');
+        var fontTest=document.getElementById('font-test');
+        changeColor=document.getElementById('changeColor');
+        changeColor.addEventListener('click',function(){
+          var color=fontColor.value;
+          fontTest.style.color=color;
+          console.log('color='+color);
+        });
+        function addListenerMulti(el, s, fn) {
+          var evts = s.split(' ');
+          for (var i=0, iLen=evts.length; i<iLen; i++) {
+            el.addEventListener(evts[i], fn, false);
+          }
+        }
+        var fontSize=document.getElementById('font-size');
+/*        addListenerMulti(fontSize, 'mouseup touchend', function(){*/
+    fontSize.addEventListener('input',function(){
+          var size=fontSize.value+'px';
+          fontTest.style.fontSize=size;
+          console.log('size='+size);
+        });
+    </script>
+</pre>
+
+<p>###tips###<br>1.由于字体子集化是按需所取，所以如果更改了文字的话，记得重新生成一次字体，否则会出现部分文字没有被该字体渲染的情况<br>2.虽然font-spider目前只支持ttf的字体，而很多字体官方只发布otf的，这时可以利用fontlab先将其转化成ttf。（虽然其他工具也可以转，但是fontlab是我个人最推荐的，比其余的好用不少）</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag">#CSS</a>
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/webfont/" rel="tag">#webfont</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/06/01/Centos-setup-nginx-and-php/" rel="next" title="Centos下配置nginx和php环境">
+                <i class="fa fa-chevron-left"></i> Centos下配置nginx和php环境
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/06/11/tips-for-setup-hexo/" rel="prev" title="hexo博客搭建时遇到的一些问题">
+                hexo博客搭建时遇到的一些问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2015/06/08/chinese-webfont-solution/"
+     data-title="中文webfont解决方案"
+     data-content=""
+     data-url="http://chitanda.me/2015/06/08/chinese-webfont-solution/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/06/08/chinese-webfont-solution/"
+           data-title="中文webfont解决方案" data-url="http://chitanda.me/2015/06/08/chinese-webfont-solution/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Chitanda Akari" />
+          <p class="site-author-name" itemprop="name">Chitanda Akari</p>
+          <p class="site-description motion-element" itemprop="description">chitanda | 互联网 | 前端 | 宅 |动漫 | 京阿尼</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chitanda" target="_blank">
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3218616254" target="_blank">
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://segmentfault.com/u/chitanda" target="_blank">
+                  
+                  SegmentFault
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.v2ex.com/?r=TakanashiAzusa" target="_blank">
+                  
+                  V2EX
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#场景"><span class="nav-number">2.</span> <span class="nav-text">场景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">2.1.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方案"><span class="nav-number">3.</span> <span class="nav-text">解决方案</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chitanda Akari</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+    <script>
+      var OriginTitile=document.title;
+      var st;
+      document.addEventListener('visibilitychange',function(){
+      if(document.hidden){
+        document.title="(つェ⊂)我藏好了哦";
+        clearTimeout(st);
+        console.log('hide');
+      }else{
+        document.title='(*´∇｀*)  被你发现啦~ '+OriginTitile;
+        console.log('show');
+        st=setTimeout(function(){
+            document.title=OriginTitile;
+        },4000);
+        console.log('endChange=');
+      }
+      });
+      </script>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"chitanda"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

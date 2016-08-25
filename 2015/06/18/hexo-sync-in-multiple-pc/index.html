@@ -1,0 +1,742 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="Zz69_TBO29kGWz1EwiPdoVvLE1hCqut6T9lcr5DYr6Y" />
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="github,hexo,备份," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我很好奇" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="声明本文只是给类似我这样的git新人做参考，对git比较熟悉的话可以无视了。由于自身对git的了解就不是特别深，所以可能有些地方会有错误，欢迎各位指正。（本文有在微博上接受geekrainy的帮助，对此表示谢意)ps：建议git相关操作都在bash上进行操作。不依赖windows下gui
+场景单位和家里两PC，同时都想更新blog。而由于hexo没有后台，而且全部文件都在本地生成，所以如果公司电脑">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用git解决hexo博客多PC间同步问题">
+<meta property="og:url" content="http://chitanda.me/2015/06/18/hexo-sync-in-multiple-pc/index.html">
+<meta property="og:site_name" content="我很好奇">
+<meta property="og:description" content="声明本文只是给类似我这样的git新人做参考，对git比较熟悉的话可以无视了。由于自身对git的了解就不是特别深，所以可能有些地方会有错误，欢迎各位指正。（本文有在微博上接受geekrainy的帮助，对此表示谢意)ps：建议git相关操作都在bash上进行操作。不依赖windows下gui
+场景单位和家里两PC，同时都想更新blog。而由于hexo没有后台，而且全部文件都在本地生成，所以如果公司电脑">
+<meta property="og:updated_time" content="2016-08-25T15:36:30.140Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="利用git解决hexo博客多PC间同步问题">
+<meta name="twitter:description" content="声明本文只是给类似我这样的git新人做参考，对git比较熟悉的话可以无视了。由于自身对git的了解就不是特别深，所以可能有些地方会有错误，欢迎各位指正。（本文有在微博上接受geekrainy的帮助，对此表示谢意)ps：建议git相关操作都在bash上进行操作。不依赖windows下gui
+场景单位和家里两PC，同时都想更新blog。而由于hexo没有后台，而且全部文件都在本地生成，所以如果公司电脑">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 12157121,
+      author: 'ROOT'
+    }
+  };
+</script>
+
+  <title> 利用git解决hexo博客多PC间同步问题 | 我很好奇 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70297472-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6028e1891a3d164a9d7c5707a08908ca";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">我很好奇</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">千反田家的小院子</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                利用git解决hexo博客多PC间同步问题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-06-18T11:27:24+08:00" content="2015-06-18">
+              2015-06-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/blog/" itemprop="url" rel="index">
+                    <span itemprop="name">blog</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/06/18/hexo-sync-in-multiple-pc/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/18/hexo-sync-in-multiple-pc/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><p>本文只是给类似我这样的git新人做参考，对git比较熟悉的话可以无视了。由于自身对git的了解就不是特别深，所以可能有些地方会有错误，欢迎各位指正。（本文有在微博上接受<a href="http://weibo.com/geekrainy" target="_blank" rel="external">geekrainy</a>的帮助，对此表示谢意)<br>ps：建议git相关操作都在bash上进行操作。不依赖windows下gui</p>
+<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>单位和家里两PC，同时都想更新blog。而由于hexo没有后台，而且全部文件都在本地生成，所以如果公司电脑上发表了A文章后回家又写了篇B文章，在家里上传后你会发现只有B文章而A文章没了（因为家里的PC上没有A文章的md文件），所以多台电脑同时用来写文章的时候，需要解决备份问题。<br><a id="more"></a><br>而常用的备份方案无非两种：</p>
+<h3 id="百度云，Dropbox等网盘云备份"><a href="#百度云，Dropbox等网盘云备份" class="headerlink" title="百度云，Dropbox等网盘云备份"></a>百度云，Dropbox等网盘云备份</h3><p>（不清楚Dropbox，仅以百度云为例）<br>优点：免费且操作简单<br>不足：</p>
+<ol>
+<li>备份后同步比较麻烦，每次另一台电脑上都需要手动下载备份文件夹手动覆盖。</li>
+<li>开启云端自动备份的时候，写blog的过程中如果保存了文件，会触发百度云的上传，而上传过程中产生的<code>xxx.cfg</code>文件会让hexo解析失败，导致<code>hexo s</code>生成的本地服务器进程停止，不方便边写边预览 </li>
+</ol>
+<p>因此此方案作废</p>
+<h3 id="利用第三方的git服务备份"><a href="#利用第三方的git服务备份" class="headerlink" title="利用第三方的git服务备份"></a>利用第三方的git服务备份</h3><p>优点：部署完成后更新方便，hexo 更新完后只需要再更新全站到git即可<br>缺点：部署过程相对比较麻烦，对新手不友好（其实是由于对git的理解不深导致的）<br>国内外现在知名的git服务提供商主要有：<br>github、gitcafe、bitbucket、oschina、coding等</p>
+<p>由于blog文件夹里有些插件配置文件会涉及比较敏感的隐私数据（云服务商的appsecret key之类的），所以建议放<strong>私有仓库</strong>（当然也可以把配置文件单独拿出来然后其余的全部扔到git的公众仓库，这个看人，本文重点也不在于git服务商的选择或者公有私有库之争）<br>上面提及的5家服务商里，<code>github</code>、<code>gitcafe</code>的私有库是收费的，而另外三家的私有库目前免费。各位可以自行选择，我个人选择了<a href="http://git.oschina.net" target="_blank" rel="external">oschina</a></p>
+<h2 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h2><p>git多网站多账户部署过程可以参考<a href="/2015/06/11/tips-for-setup-hexo/#git多网站ssh部署方案">git多网站ssh部署方案</a></p>
+<h3 id="上传blog到git"><a href="#上传blog到git" class="headerlink" title="上传blog到git"></a>上传blog到git</h3><p><em>这个操作建议在blog进度最新的PC上进行的，否则后面解决冲突会比较麻烦</em><br>在osc上添加公钥，建立新respo等过程略过不讲。</p>
+<ol>
+<li><p>删除文件夹内原有的<code>.git</code>缓存文件夹并编辑<code>.gitignore</code>文件</p>
+<blockquote>
+<ul>
+<li>有些插件或者主题是git上下过来安装的话，每个文件夹下都会有对应的<code>.git</code> 文件夹，记得先删掉，否则会和blog仓库冲突<br>（<code>.git</code>默认是隐藏文件夹，需要先开启显示隐藏文件夹。##<code>.git</code>文件夹被删除后整个文件对应的git仓库状态也会被清空##)</li>
+</ul>
+<hr>
+<ul>
+<li><code>.gitignore</code>文件作用是声明不被git记录的文件，blog根目录下的<code>.gitignore</code>是hexo初始化带来的，可以先删除或者直接编辑，对hexo不会有影响。建议<code>.gitignore</code>内添加以下内容：<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">/.deploy_git</div><div class="line">/public  </div><div class="line">/_config.yml</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol>
+<li><code>.deploy_git</code>是hexo默认的.git配置文件夹，不需要同步 </li>
+<li><code>public</code>内文件是根据<code>source</code>文件夹内容自动生成，不需要备份，不然每次改动内容太多</li>
+<li>即使是私有仓库，除去在线服务商员工可以看到的风险外，还有云服务商被攻击造成泄漏等可能，所以不建议将配置文件传上去</li>
+</ol>
+</blockquote>
+</li>
+<li><p>初始化仓库<br>blog根目录下执行以下代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">git init</div><div class="line">git remote add origin &lt;server&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p><code>&lt;server&gt;</code>是指在线仓库的地址。<code>origin</code>是本地分支,<code>remote add</code>操作会将本地仓库映射到云端 </p>
+</blockquote>
+</li>
+<li><p>添加本地文件到仓库并同步到git上</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">git add .  <span class="comment">#添加blog目录下所有文件，注意有个`.`（`.gitignore`声明过的文件不包含在内)</span></div><div class="line">git commit -m <span class="string">"first commit"</span> <span class="comment">#添加更新说明</span></div><div class="line">git push -u origin master <span class="comment">#推送更新到云端服务器</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>在执行这步之前一定要注意检查下<code>.gitignore</code>文件的内容，看看是否正确的把一些文件夹忽略掉了。如果加错了的话可以用</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git rm -r --cached .</div></pre></td></tr></table></figure>
+<p>撤销添加操作。</p>
+</blockquote>
+</li>
+</ol>
+<p>到这里的时候，云端备份已经完成</p>
+<h3 id="将git的内容同步到本地"><a href="#将git的内容同步到本地" class="headerlink" title="将git的内容同步到本地"></a>将git的内容同步到本地</h3><p>假设之前将A电脑里的内容备份到git了，现在B电脑准备同步内容。<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">git init</div><div class="line">git remote add origin &lt;server&gt; <span class="comment">#将本地文件和云端仓库映射起来。这步不可以跳过</span></div><div class="line">git fetch --all</div><div class="line">git reset --hard origin/master</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p><code>fetch</code>是将云端所有内容拉取下来。<code>reset</code>则是不做任何合并处理，强制将本地内容指向刚刚同步下来的云端内容（正常pull的话需要考虑不少冲突的问题，比较麻烦。）</p>
+</blockquote>
+<h3 id="更新文章后的同步操作"><a href="#更新文章后的同步操作" class="headerlink" title="更新文章后的同步操作"></a>更新文章后的同步操作</h3><p>假设在B电脑上写完了文章，也<code>hexo d -g</code>发布完了，这时候需要将新文章的md文件更新上去。（其实就是提交更新给git，会的可以无视了）<br>同一个bash界面下：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">git add .</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>这时候可以用<code>git status</code>查看状态，一般会显示刚刚更改过的文件状态。如：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">On branch master</div><div class="line">Changes to be committed:</div><div class="line">  (use <span class="string">"git reset HEAD &lt;file&gt;..."</span> to unstage)</div><div class="line"></div><div class="line">        modified:   db.json</div><div class="line">        new file:   <span class="built_in">source</span>/_posts/test.md</div></pre></td></tr></table></figure></p>
+<p>上面的输出状态即说明’db.json’文件做了更改，<code>source/_posts</code>目录下新增了’test.md’文件。</p>
+</blockquote>
+<p>然后对更改添加说明并推送到远程仓库.<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">git commit -m <span class="string">'更新信息'</span></div><div class="line">git push</div></pre></td></tr></table></figure></p>
+<p>当显示类似如下提示的时候，即表示备份成功<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">To git@git.oschina.net:xxxx/blog-backup.git</div><div class="line"> + 2c77e1e...5616bc6 master -&gt; master (forced update)</div></pre></td></tr></table></figure></p>
+<p>再到A电脑上的时候，只需要<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git pull</div></pre></td></tr></table></figure></p>
+<p>即可同步更新</p>
+<h2 id="给git配置sock5代理"><a href="#给git配置sock5代理" class="headerlink" title="给git配置sock5代理"></a>给git配置sock5代理</h2><p>由于某些众所周知的缘故，所以github时不时的有时候速度会很慢，这种情况下本地代理就派上用场了。<br>这里以给git的SSH传输方式配置本地SS代理为例说下配置过程：</p>
+<ol>
+<li>打开<code>~/.ssh/config</code>文件。</li>
+<li>在<code>Host github *.github.com</code>下添加以下字段：<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Proxycommand ssh -S 127.0.0.1:1080 %h %p</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>3.测试连接<br>保存退出后重启git bash。<br>输入<code>ssh -vT git@github.com</code>，当返回<code>Hi username! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</code>的时候即说明配置成功<br>之后github的所有流量都会走本地的ss代理。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/github/" rel="tag">#github</a>
+          
+            <a href="/tags/hexo/" rel="tag">#hexo</a>
+          
+            <a href="/tags/备份/" rel="tag">#备份</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/06/16/css3-checkbox-diy-without-js/" rel="next" title="纯CSS+HTML自定义checkbox效果">
+                <i class="fa fa-chevron-left"></i> 纯CSS+HTML自定义checkbox效果
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/06/19/wechat-share-diy/" rel="prev" title="微信分享自定义图片和摘要">
+                微信分享自定义图片和摘要 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2015/06/18/hexo-sync-in-multiple-pc/"
+     data-title="利用git解决hexo博客多PC间同步问题"
+     data-content=""
+     data-url="http://chitanda.me/2015/06/18/hexo-sync-in-multiple-pc/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/06/18/hexo-sync-in-multiple-pc/"
+           data-title="利用git解决hexo博客多PC间同步问题" data-url="http://chitanda.me/2015/06/18/hexo-sync-in-multiple-pc/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Chitanda Akari" />
+          <p class="site-author-name" itemprop="name">Chitanda Akari</p>
+          <p class="site-description motion-element" itemprop="description">chitanda | 互联网 | 前端 | 宅 |动漫 | 京阿尼</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chitanda" target="_blank">
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3218616254" target="_blank">
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://segmentfault.com/u/chitanda" target="_blank">
+                  
+                  SegmentFault
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.v2ex.com/?r=TakanashiAzusa" target="_blank">
+                  
+                  V2EX
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#声明"><span class="nav-number">1.</span> <span class="nav-text">声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#场景"><span class="nav-number">2.</span> <span class="nav-text">场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#百度云，Dropbox等网盘云备份"><span class="nav-number">2.1.</span> <span class="nav-text">百度云，Dropbox等网盘云备份</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用第三方的git服务备份"><span class="nav-number">2.2.</span> <span class="nav-text">利用第三方的git服务备份</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置过程"><span class="nav-number">3.</span> <span class="nav-text">配置过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#上传blog到git"><span class="nav-number">3.1.</span> <span class="nav-text">上传blog到git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将git的内容同步到本地"><span class="nav-number">3.2.</span> <span class="nav-text">将git的内容同步到本地</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新文章后的同步操作"><span class="nav-number">3.3.</span> <span class="nav-text">更新文章后的同步操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给git配置sock5代理"><span class="nav-number">4.</span> <span class="nav-text">给git配置sock5代理</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chitanda Akari</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+    <script>
+      var OriginTitile=document.title;
+      var st;
+      document.addEventListener('visibilitychange',function(){
+      if(document.hidden){
+        document.title="(つェ⊂)我藏好了哦";
+        clearTimeout(st);
+        console.log('hide');
+      }else{
+        document.title='(*´∇｀*)  被你发现啦~ '+OriginTitile;
+        console.log('show');
+        st=setTimeout(function(){
+            document.title=OriginTitile;
+        },4000);
+        console.log('endChange=');
+      }
+      });
+      </script>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"chitanda"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

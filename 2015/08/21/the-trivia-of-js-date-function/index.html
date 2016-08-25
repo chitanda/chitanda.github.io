@@ -1,0 +1,815 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="Zz69_TBO29kGWz1EwiPdoVvLE1hCqut6T9lcr5DYr6Y" />
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="CSS,javascript,前端,Date," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我很好奇" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="一个多月没更新了- -偷懒中。这个东西其实很早之前就在整理了，不过后来发现自己不少地方没弄明白，然后就一直卡那边了（其实就是不想写吧），想了下反正是给自己熟悉js的原生API而已，所以也没必要太钻牛角尖，也不一定要多完整，因此就当是Date()函数的一个冷门知识点小补充吧。这篇文章主要讲Date()的字符串与时间戳转换以及用户时间本地化,可能内容上比较乱（不然也不会卡我一个月时间了），见谅">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS原生Date类型方法的一些冷知识">
+<meta property="og:url" content="http://chitanda.me/2015/08/21/the-trivia-of-js-date-function/index.html">
+<meta property="og:site_name" content="我很好奇">
+<meta property="og:description" content="一个多月没更新了- -偷懒中。这个东西其实很早之前就在整理了，不过后来发现自己不少地方没弄明白，然后就一直卡那边了（其实就是不想写吧），想了下反正是给自己熟悉js的原生API而已，所以也没必要太钻牛角尖，也不一定要多完整，因此就当是Date()函数的一个冷门知识点小补充吧。这篇文章主要讲Date()的字符串与时间戳转换以及用户时间本地化,可能内容上比较乱（不然也不会卡我一个月时间了），见谅">
+<meta property="og:updated_time" content="2016-08-25T15:41:00.307Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS原生Date类型方法的一些冷知识">
+<meta name="twitter:description" content="一个多月没更新了- -偷懒中。这个东西其实很早之前就在整理了，不过后来发现自己不少地方没弄明白，然后就一直卡那边了（其实就是不想写吧），想了下反正是给自己熟悉js的原生API而已，所以也没必要太钻牛角尖，也不一定要多完整，因此就当是Date()函数的一个冷门知识点小补充吧。这篇文章主要讲Date()的字符串与时间戳转换以及用户时间本地化,可能内容上比较乱（不然也不会卡我一个月时间了），见谅">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 12157121,
+      author: 'ROOT'
+    }
+  };
+</script>
+
+  <title> JS原生Date类型方法的一些冷知识 | 我很好奇 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70297472-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6028e1891a3d164a9d7c5707a08908ca";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">我很好奇</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">千反田家的小院子</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JS原生Date类型方法的一些冷知识
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-08-21T14:49:08+08:00" content="2015-08-21">
+              2015-08-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/08/21/the-trivia-of-js-date-function/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/21/the-trivia-of-js-date-function/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>一个多月没更新了- -偷懒中。这个东西其实很早之前就在整理了，不过后来发现自己不少地方没弄明白，然后就一直卡那边了（其实就是不想写吧），想了下反正是给自己熟悉js的原生API而已，所以也没必要太钻牛角尖，也不一定要多完整，因此就当是<code>Date()</code>函数的一个冷门知识点小补充吧。这篇文章主要讲Date()的字符串与时间戳转换以及用户时间本地化,可能内容上比较乱（不然也不会卡我一个月时间了），见谅<br><a id="more"></a><br>ps：由于<code>Date()</code>是js原生函数，不同浏览器的解析器对其实现方式并不同，所以返回值也会有所区别。本文测试未特别申明浏览器的情况下，均是指<code>win7 x64</code>+<code>chrome 44.0.2403.155 (正式版本) m （32 位）</code>版本</p>
+<h2 id="Date-与new-Date-的区别"><a href="#Date-与new-Date-的区别" class="headerlink" title="Date()与new Date()的区别"></a>Date()与new Date()的区别</h2><p><code>Date()</code>直接返回当前时间字符串，<strong>不管参数是number还是任何string</strong><br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">Date</span>();</div><div class="line"><span class="built_in">Date</span>(<span class="string">'sssss'</span>);</div><div class="line"><span class="built_in">Date</span>(<span class="number">1000</span>);</div><div class="line"><span class="comment">//Fri Aug 21 2015 15:46:21 GMT+0800 (中国标准时间)</span></div></pre></td></tr></table></figure></p>
+<p>而<code>new Date()</code>则是会根据参数来返回对应的值，无参数的时候，返回当前时间的字符串形式；有参数的时候返回参数所对应时间的字符串。<strong><code>new Date()</code>对参数不管是格式还是内容都要求,且只返回字符串</strong>,</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line"><span class="comment">//Fri Aug 21 2015 15:51:55 GMT+0800 (中国标准时间)</span></div><div class="line"></div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">1293879600000</span>);</div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2011-01-01T11:00:00'</span>)</div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2011/01/01 11:00:00'</span>)</div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2011</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">11</span>,<span class="number">0</span>,<span class="number">0</span>)</div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'jan 01 2011,11 11:00:00'</span>)</div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'Sat Jan 01 2011 11:00:00'</span>)</div><div class="line"><span class="comment">//Sat Jan 01 2011 11:00:00 GMT+0800 (中国标准时间)</span></div><div class="line"></div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'sss'</span>);</div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2011/01/01T11:00:00'</span>);</div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2011-01-01-11:00:00'</span>)</div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'1293879600000'</span>);</div><div class="line"><span class="comment">//Invalid Date</span></div><div class="line"></div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2011-01-01T11:00:00'</span>)-<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'1992/02/11 12:00:12'</span>)</div><div class="line"><span class="comment">//596069988000</span></div></pre></td></tr></table></figure>
+<p>从上面几个测试结果可以很容易发现</p>
+<ol>
+<li><code>new Date()</code>在参数正常的情况只会返回当前时间的字符串(且是当前时区的时间)</li>
+<li><code>new Date()</code>在解析一个具体的时间的时候，对参数有较严格的格式要求，格式不正确的时候会直接返回<code>Invalid Date</code>，比如将<code>number</code>类的时间戳转换成<code>string</code>类的时候也会导致解析出错</li>
+<li>虽然<code>new Date()</code>的返回值是字符串，然而两个<code>new Date()</code>的结果字符串是可以直接相减的，结果为相差的毫秒数。</li>
+</ol>
+<p>那么，<code>new Date()</code>能接受的参数格式到底是什么标准呢?（相对于严格要求的多参数传值方法。非严格的单参数(数字日期表示格式)更常用且更容易出错，所以下文只考虑单参数数字时间字符串转换的情况)</p>
+<hr>
+<h2 id="new-Date-解析所支持的参数格式标准"><a href="#new-Date-解析所支持的参数格式标准" class="headerlink" title="new Date()解析所支持的参数格式标准"></a>new Date()解析所支持的参数格式标准</h2><h3 id="时间戳格式"><a href="#时间戳格式" class="headerlink" title="时间戳格式"></a>时间戳格式</h3><p>这个是最简单的也是最不容易出错的。当然唯一的缺点大概就是对开发者不直观，无法一眼看出具体日期。<br>需要注意的以下两点:</p>
+<blockquote>
+<ol>
+<li>js内的时间戳指的是当前时间到<code>1970年1月1日00:00:00 UTC</code>对应的<strong>毫秒数</strong>，和unix时间戳不是一个概念，后者表示秒数，差了1000倍</li>
+<li><code>new Date(timestamp)</code>中的时间戳必须是<code>number</code>格式，<code>string</code>会返回<code>Invalid Date</code>。所以比如<code>new Date(&#39;11111111&#39;)</code>这种写法是错的</li>
+</ol>
+</blockquote>
+<h3 id="时间数字字符串格式"><a href="#时间数字字符串格式" class="headerlink" title="时间数字字符串格式"></a>时间数字字符串格式</h3><p>不大清楚这种该怎么描述，就是类似<code>YYYY/MM/DD HH:mm:SS</code>这种。下文以<code>dateString</code>代指。<br><code>new Date(dateString)</code>所支持的字符串格式需要满足<a href="http://tools.ietf.org/html/rfc2822#page-14" target="_blank" rel="external">RFC2822标准</a>或者<a href="http://www.w3.org/TR/NOTE-datetime" target="_blank" rel="external">ISO 8601标准</a><br>这两种标准对应的格式分别如下:</p>
+<ol>
+<li><p>RFC2822 标准日期字符串</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">YYYY/MM/DD HH:MM:SS ± timezon(时区用4位数字表示)</div><div class="line">// eg 1992/02/12 12:23:22+0800</div></pre></td></tr></table></figure>
+<blockquote>
+<p>RFC2822还有别的格式，不过上面这个是比较常用的（另外这标准太难啃了，实在没耐心啃完，所以也就没太深入)。RFC2822标准本身还有其他的非数字日期表达方式，不过不在这个话题讨论范围内了,略过</p>
+</blockquote>
+</li>
+<li><p>ISO 8601标准日期字符串</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">YYYY-MM-DDThh:mm:ss ± timezone(时区用HH:MM表示)</div><div class="line"></div><div class="line">1997-07-16T08:20:30Z</div><div class="line">// “Z”表示UTC标准时区，即&quot;00:00&quot;,所以这里表示零时区的`1997年7月16日08时20分30秒`</div><div class="line">//转换成位于东八区的北京时间则为`1997年7月17日16时20分30秒`</div><div class="line"></div><div class="line">1997-07-16T19:20:30+01:00</div><div class="line">// 表示东一区的1997年7月16日19时20秒30分，转换成UTC标准时间的话是1997-07-16T18:20:30Z</div></pre></td></tr></table></figure>
+<blockquote>
+<ol>
+<li>日期和时间中间的<code>T</code>不可以被省略，一省略就出错。</li>
+<li>虽然在chrome浏览器上时区也可以用<code>+0100</code>这种RFC2822的形式来表示，然而IE上不支持这种混搭写法，所以用ISO8601标准形式表示的时候时区要用<code>+HH:MM</code></li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<p>单单从格式上来说，两者的区别主要在于分隔符的不同。不过需要注意的是，ISO 8601标准的兼容性比RFC2822差得多（比如IE8和iOS均不支持前者。<del>我知道IE8很多人会无视，不过iOS也有这个坑的话，各位或多或少会谨慎点了吧？</del>)，所以一般情况下建议用<code>RFC 2822</code>格式的。<br>不过需要注意的是，在未指定时区的前提下，对于只精确到<code>day</code>的日期字符串，<code>RFC 2822</code>返回结果是以<code>当前时区的零点</code>为准，而<code>ISO8601</code>返回结果则会以<code>UTC时间</code>的零点为标准进行解析。<br>例如：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">//RFC2822：</span></div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'1992/02/13'</span>) <span class="comment">//Thu Feb 13 1992 00:00:00 GMT+0800 (中国标准时间)</span></div><div class="line"><span class="comment">//ISO8601:</span></div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'1992-02-13'</span>) <span class="comment">//Thu Feb 13 1992 08:00:00 GMT+0800 (中国标准时间)</span></div></pre></td></tr></table></figure></p>
+<p>然而上面这个只是ES5的标准而已，在ES6里这两种形式都会变成<code>当前时区的零点</code>为基准<sup><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse#Differences_in_assumed_time_zone" target="_blank" rel="external">1</a></sup><br><del><em>不管你们崩溃没，反正我是已经想死了</em></del><br>关于跨浏览器的dataString解析情况，还可以参考这个页面:<br><a href="http://dygraphs.com/date-formats.html" target="_blank" rel="external">JavaScript and Dates, What a Mess!</a></p>
+<p><strong>所以对于时间字符串对象，个人意见是要么用<code>RFC2822</code>形式，要么自己写个解析函数然后随便你传啥格式进来。</strong></p>
+<hr>
+<h2 id="时间格式化函数的效率"><a href="#时间格式化函数的效率" class="headerlink" title="时间格式化函数的效率"></a>时间格式化函数的效率</h2><p>这里的<code>时间格式化</code>值得是将时间字符串转换成毫秒数的过程。js原生的时间格式化函数有<code>Date.parse</code>、<code>Date.prototype.valueOf</code>、<code>Date.prototype.getTime</code>、<code>Number(Date)</code>、<code>+Date</code>（还有个<code>Date.UTC</code>方法，然而对参数要求严格，不能直接解析日期字符串，所以略过)<br>这5个函数从功能上来说一模一样，但是具体的效率如何呢？我写了个检测页面，诸位也可以自己测试下。</p>
+<p></p><p data-height="268" data-theme-id="0" data-slug-hash="NqeZag" data-default-tab="result" data-user="chitanda" class="codepen">See the Pen <a href="http://codepen.io/chitanda/pen/NqeZag/" target="_blank" rel="external">efficiency-of-time-format-function</a> by chitanda (<a href="http://codepen.io/chitanda" target="_blank" rel="external">@chitanda</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+<h3 id="核心测试函数："><a href="#核心测试函数：" class="headerlink" title="核心测试函数："></a>核心测试函数：</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">dateString,times,func</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> startTime=<span class="built_in">window</span>.performance.now();</div><div class="line">    <span class="comment">// console.log('start='+startTime.getTime());</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; times; i++) &#123;</div><div class="line">        func(dateString);<span class="comment">//这里填写具体的解析函数</span></div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">var</span> endTime=<span class="built_in">window</span>.performance.now();</div><div class="line">    <span class="comment">// console.log('endTime='+endTime.getTime());</span></div><div class="line">    <span class="keyword">var</span> gapTime=endTime-startTime;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'一共耗时:'</span>+gapTime+<span class="string">'ms'</span>);</div><div class="line">    <span class="comment">// console.log('时间字符串'+dateString);</span></div><div class="line">    <span class="keyword">return</span> gapTime;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>之所以这里用<code>window.performance.now()</code>而不用<code>new Date()</code>,是因为前者精确度远比后者高。后者只能精确到ms。会对结果造成较大影响</p>
+</blockquote>
+<h3 id="测试结果："><a href="#测试结果：" class="headerlink" title="测试结果："></a>测试结果：</h3><p>单次执行50W次时间格式化函数，并重复测试100次，最后的结果如下:<br>（表格中的数字为单次执行50W次函数的平均结果。单位为毫秒)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">chrome</th>
+<th style="text-align:center">IE</th>
+<th style="text-align:center">Firefox</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Date.parse()</td>
+<td style="text-align:center">151.2087</td>
+<td style="text-align:center">55.5811</td>
+<td style="text-align:center">315.0446</td>
+</tr>
+<tr>
+<td style="text-align:center">Date.prototype.getTime()</td>
+<td style="text-align:center">19.5452</td>
+<td style="text-align:center">21.3423</td>
+<td style="text-align:center">14.0169</td>
+</tr>
+<tr>
+<td style="text-align:center">Date.prototype.valueOf()</td>
+<td style="text-align:center">20.1696</td>
+<td style="text-align:center">21.7192</td>
+<td style="text-align:center">13.8096</td>
+</tr>
+<tr>
+<td style="text-align:center">+Date()</td>
+<td style="text-align:center">20.0044</td>
+<td style="text-align:center">31.3511</td>
+<td style="text-align:center">22.7861</td>
+</tr>
+<tr>
+<td style="text-align:center">Number(Date)</td>
+<td style="text-align:center">23.0900</td>
+<td style="text-align:center">24.8838</td>
+<td style="text-align:center">23.3775</td>
+</tr>
+</tbody>
+</table>
+<p>从这个表格可以很容易得出以下结论：</p>
+<blockquote>
+<ol>
+<li>从计算效率上来说，<code>Date.prototype.getTime()</code>≈<code>Date.prototype.valueOf()</code>&gt;<br><code>+Date</code>≈<code>Number(Date)</code>&gt;&gt;<code>Date.parse()</code></li>
+<li>从代码书写效率上来说，对于少量的时间格式化计算，用<code>+Date()</code>或者<code>Number(Date)</code>即可。而若页面内有大量该处理，则建议用Date原生的函数<code>Date.prototype.getTime()</code>或者<code>Date.prototype.valueOf()</code>.只有<code>Date.parse</code>,找不到任何使用的理由。</li>
+<li>这个结果和计算机的计算性能以及浏览器有关，所以具体数字可能会有较大偏差，很正常。然而几个函数结果的时间差大小顺序并不会变。</li>
+<li>codepen的在线demo限制比较大，对于这个测验个人建议最好将源代码复制到本地文件然后进行测试</li>
+</ol>
+</blockquote>
+<hr>
+<h2 id="UTC，GMT时间的区别"><a href="#UTC，GMT时间的区别" class="headerlink" title="UTC，GMT时间的区别"></a>UTC，GMT时间的区别</h2><p>这个不是啥重要东西，单纯当课外知识吧。</p>
+<h3 id="格林威治标准时间GMT"><a href="#格林威治标准时间GMT" class="headerlink" title="格林威治标准时间GMT"></a>格林威治标准时间GMT</h3><p>GMT即「格林威治标准时间」(Greenwich Mean Time，简称G.M.T.)，指位于英国伦敦郊区的皇家格林威治天文台的标准时间，因为本初子午线被定义为通过那里的经线。<strong>然而由于地球的不规则自转，导致GMT时间有误差，因此目前已不被当作标准时间使用。</strong></p>
+<h3 id="世界协调时间UTC"><a href="#世界协调时间UTC" class="headerlink" title="世界协调时间UTC"></a>世界协调时间UTC</h3><p>UTC是最主要的世界时间标准，是经过平均太阳时(以格林威治时间GMT为准)、地轴运动修正后的新时标以及以「秒」为单位的国际原子时所综合精算而成的时间。UTC比GMT来得更加精准。其误差值必须保持在0.9秒以内，若大于0.9秒则由位于巴黎的国际地球自转事务中央局发布闰秒，使UTC与地球自转周期一致。<strong>不过日常使用中，GMT与UTC的功能与精确度是没有差别的。</strong><br>协调世界时区会使用“Z”来表示。而在航空上，所有使用的时间划一规定是协调世界时。而且Z在无线电中应读作“Zulu”（可参见北约音标字母），协调世界时也会被称为“Zulu time”。</p>
+<h2 id="浏览器获取用户当前时间以及喜好语言"><a href="#浏览器获取用户当前时间以及喜好语言" class="headerlink" title="浏览器获取用户当前时间以及喜好语言"></a>浏览器获取用户当前时间以及喜好语言</h2><p>首先需要注意一点，浏览器获取当前用户所在的时区等信息只和系统的<code>日期和时间</code>设置里的时区以及时间有关。<code>区域和语言</code>设置影响的是浏览器默认时间函数(Date.prototype.toLocaleString等)显示的格式，不会对时区等有影响。以window为例，<code>控制面板\时钟、语言和区域</code>中的两个子设置项目的区别如下：</p>
+<blockquote>
+<p><code>日期和时间</code>:设置当前用户所处的时间和时区，浏览器获取到的结果以此为准，哪怕用户的设置时间和时区是完全错误的。比如若东八区的用户将自己的时区设置为东9区，浏览器就会将视为东9区;时间数据上同理。这里的设置会影响<code>Date.prototype.getTimezoneOffset</code>、<code>new Date()</code>的值<br><code>区域和语言</code>:主要是设置系统默认的时间显示方式。其子设置的<code>格式</code>会影响<code>Date.prototype.toLocaleString</code>方法返回的字符串结果</p>
+</blockquote>
+<h3 id="浏览器判断用户本地字符串格式"><a href="#浏览器判断用户本地字符串格式" class="headerlink" title="浏览器判断用户本地字符串格式"></a>浏览器判断用户本地字符串格式</h3><p>Date有个<code>Date.prototype.toLocaleString()</code>方法可以将时间字符串返回用户本地字符串格式，这个方法还有两个子方法<code>Date.prototype.toLocaleDateString</code>和<code>Date.prototype.toLocaleTimeString</code>，这两个方法返回值分别表示<code>日期</code>和<code>时间</code>，加一起就是<code>Date.prototype.toLocaleString</code>的结果。<br>这个方法的默认参数会对时间字符串做一次转换，将其转换成用户当前所在时区的时间，并按照对应的系统设置时间格式返回字符串结果。<strong>然而不同浏览器对用户本地所使用的语言格式的判断依据是不同的。</strong><br>IE:获取系统当前的<code>区域和语言</code>-<code>格式</code>中设置的格式，依照其对应的格式来显示当前时间结果;<strong>IE浏览器实时查询该系统设置</strong>（即你在浏览器窗口打开后去更改系统设置也会引起返回格式变化）<br>FF：获取方式和结果与IE浏览器相同，区别在于FF只会在浏览器进程第一次启动的时候获取一次系统设置，中间不管怎么系统设置怎么变化，FF都无法获取到当前系统设置。除非重启FF浏览器。<br>Chrome:获取方式和以上两个都不同。chrome无视系统的<code>区域和语言</code>-<code>格式</code>格式，只依照自己浏览器的界面设置的菜单语言来处理。(比如英文界面则按系统’en-US’格式返回字符串，中文界面则按系统’zh-CN’格式返回结果)<br>综上可得：</p>
+<blockquote>
+<p>chrome下<strong>浏览器语言设置优先系统语言设置。</strong>而IE和FF则是<strong>系统语言设置优先浏览器语言设置</strong>,不管浏览器界面语言是什么，他们只依照系统设置来返回格式。（没有MAC，所以不知道safari是啥情况，等以后看情况补充吧)<br>另外，不同浏览器对<code>toLocaleString</code>返回的结果也是不同的，IE浏览器严格遵守系统设置，而chrome和FF会有自己内置的格式来替换。</p>
+</blockquote>
+<h3 id="浏览器界面语言设置和语言设置的区别"><a href="#浏览器界面语言设置和语言设置的区别" class="headerlink" title="浏览器界面语言设置和语言设置的区别"></a>浏览器界面语言设置和语言设置的区别</h3><p>这小节貌似有点跑题，然而不说明下的很容易和上面提到的浏览器设置的语言混淆，所以也拿出来说一下。<br>需要注意<strong>浏览器的语言设置和界面语言设置不是一回事</strong>。<br><code>浏览器的语言设置</code>设置的是浏览器发送给服务器的<code>Request Header</code>里的<code>Accept-Language</code>的值，这个值可以告诉服务器用户的喜好语言，对于某些跨国网站，服务器可以以此为依旧来返回对应语言的页面（不过实际应用上这个限制比较大，大部分网站还是根据IP来判断用户来源的，或者直接让用户自己选择）<br>对于各大浏览器而言，这个设置的更改也是比较显性，容易找到的。<br>IE： <code>Internet选项</code>-<code>语言</code><br>FF： <code>选项</code>-<code>内容</code>-<code>语言</code><br>chrome:<code>设置</code>-<code>显示高级设置</code>-<code>语言</code>-<code>语言和输入设置...</code><br>上面这里的设置不会影响到浏览器的界面语言设置，以国内大部分用户而言，即不管你怎么设置这里的语言选项，浏览器菜单等默认都会是以中文显示的.<br>而<code>浏览器的界面语言设置</code>一般来说则藏的深得多，没那么容易找到。<br>IE：<br>卸载前面安装过的浏览器语言包，去微软官网下载对应的<a href="http://www.microsoft.com/en-us/download/details.aspx?id=40904" target="_blank" rel="external">IE浏览器语言包</a>安装。（和安装的语言包有关。系统界面语言和该语言包相同的情况下，变为该语言。否则以安装的语言包为准。）<br>FF：地址栏输入<code>about:config</code>，然后找到<code>general.useragent.locale</code>字段，修改对应字段即可。<br>chrome：<code>设置</code>-<code>显示高级设置</code>-<code>语言</code>-<code>语言和输入设置...</code></p>
+<h3 id="利用js获取用户浏览器语言喜好"><a href="#利用js获取用户浏览器语言喜好" class="headerlink" title="利用js获取用户浏览器语言喜好"></a>利用js获取用户浏览器语言喜好</h3><p>对于获取这两种设置，js原生方法支持度都比较一般:<br>IE下的<code>navigator</code>方法有四种和<code>language</code>有关的方法，区别如下:<br>假设系统语言为 <code>ja-JP</code>，系统unicode语言为<code>zh-CN</code>日期格式为<code>nl-NL</code>,浏览器语言设置（accept-language)为<code>de</code>,浏览器界面语言为<code>en-US</code>（其他条件不变，浏览器界面语言改为<code>zh-CN</code>的时候结果也是一样)，<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">window</span>.navigator.language</div><div class="line"><span class="comment">//"nl-NL"</span></div><div class="line"><span class="built_in">window</span>.navigator.systemLanguage</div><div class="line"><span class="comment">//"zh-CN"(设置中的非unicode程序所使用语言选项)</span></div><div class="line"><span class="built_in">window</span>.navigator.userLanguage</div><div class="line"><span class="comment">//"nl-NL"</span></div><div class="line"><span class="built_in">window</span>.navigator.browserLanguage</div><div class="line"><span class="comment">//"ja-JP"（系统菜单界面语言）</span></div><div class="line"><span class="built_in">window</span>.navigator.languages</div><div class="line"><span class="comment">//undefined</span></div></pre></td></tr></table></figure></p>
+<p>chrome下，当浏览器界面语言为<code>zh-CN</code>,<code>accept-language</code>首位为<code>en-US</code>的时候：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">window</span>.navigator.language</div><div class="line"><span class="comment">//'zh-CN'</span></div><div class="line"><span class="built_in">window</span>.navigator.languages</div><div class="line"><span class="comment">//["en-US", "en", "zh-CN", "zh", "ja", "zh-TW", "de-LI", "de", "pl"]</span></div><div class="line"><span class="comment">//当界面语言改为"en-US"时</span></div><div class="line"><span class="built_in">window</span>.navigator.language</div><div class="line"><span class="comment">//'en-US'（浏览器界面语言)</span></div></pre></td></tr></table></figure></p>
+<p>FF下，当浏览器界面语言为<code>zh-CN</code>,<code>accept-language</code>首位为<code>en-US</code>的时候：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">window</span>.navigator.language</div><div class="line"><span class="comment">//'en-US'</span></div><div class="line"><span class="built_in">window</span>.navigator.languages</div><div class="line"><span class="comment">//["en-US", "zh-CN", "de", "zh", "en"]</span></div><div class="line"><span class="comment">//当界面语言改为"en-US",`accept-language`首位为`zh-CN`的时候</span></div><div class="line"><span class="built_in">window</span>.navigator.language</div><div class="line"><span class="comment">//'zh-CN'（`accept-language`首选值)</span></div><div class="line"><span class="built_in">window</span>.navigator.languages</div><div class="line"><span class="comment">//["zh-CN", "de", "zh", "en-US", "en"]</span></div></pre></td></tr></table></figure></p>
+<blockquote>
+<ol>
+<li>从上面的测试结果可以很明显的发现IE浏览器的这几个函数都是获取系统信息的，无法获取到前面提到的两个浏览器层面上的设置。<br>这几个函数具体含义还有疑问的可以参考<a href="https://msdn.microsoft.com/en-us/library/ms535867.aspx" target="_blank" rel="external">MSDN官方文档</a></li>
+<li><code>window.navigator.language</code>这个函数虽然三个浏览器都可以兼容，然而代表的意义完全不同。IE下该函数返回系统设置的时间显示格式所遵守的标准的地区代码；chrome下返回浏览器界面语言；FF下返回<code>accept-language</code>的首选语言值</li>
+</ol>
+</blockquote>
+<p>由此:</p>
+<blockquote>
+<ol>
+<li><code>浏览器设置的语言</code>即<code>accept-language</code>值，IE浏览器无法利用JS获取。chrome和FF浏览器都可以利用<code>window.navigator.languages</code>来获取，而FF还可以直接用<code>window.navigator.language</code>直接获取<code>accept-language</code>的首选语言值。<br>所以对于<code>accept-language</code>，兼容性最好的获取方法应该是利用后端，发起一个ajax请求，分析header。而不是直接js来处理。</li>
+<li><code>浏览器界面语言</code>，IE和FF都无法利用js来获取，chrome可以用<code>window.navigator.language</code>来获取</li>
+<li>系统级别的语言设置（系统菜单界面语言，系统设置的时间显示格式），chrome和FF都无法用JS获取到</li>
+</ol>
+</blockquote>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这篇文章断断续续地写了一个多月，不过由于对<code>Date()</code>函数的掌握不足因此个人感觉其实还是思路有点乱，所以文章看起来可能稍微有点跳跃性。不过用户本地化那块内容确实用了不少心思去写，希望对看到这篇文章的人有点帮助。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
+<li><a href="http://www.w3.org/TR/NOTE-datetime" target="_blank" rel="external">Date and Time Formats</a></li>
+<li><a href="http://tools.ietf.org/html/rfc2822#page-14" target="_blank" rel="external">Date and Time Specification(RFC2822)</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse#Differences_in_assumed_time_zone" target="_blank" rel="external">Date.parse()-Differences in assumed time zone</a></li>
+<li><a href="http://blog.dygraphs.com/2012/03/javascript-and-dates-what-mess.html" target="_blank" rel="external">JavaScript and Dates, What a Mess!</a></li>
+<li><a href="https://msdn.microsoft.com/en-us/library/ms535867.aspx" target="_blank" rel="external">navigator object(IE浏览器私有language函数的解析)</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag">#CSS</a>
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/前端/" rel="tag">#前端</a>
+          
+            <a href="/tags/Date/" rel="tag">#Date</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/07/15/get-and-modify-pseudo-elements-value-by-javascript/" rel="next" title="利用javascript获取并修改伪元素的值">
+                <i class="fa fa-chevron-left"></i> 利用javascript获取并修改伪元素的值
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/03/multiple-git-pages-in-one-github-account/" rel="prev" title="单个GitHub帐号下添加多个GitHub Pages的相关问题">
+                单个GitHub帐号下添加多个GitHub Pages的相关问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2015/08/21/the-trivia-of-js-date-function/"
+     data-title="JS原生Date类型方法的一些冷知识"
+     data-content=""
+     data-url="http://chitanda.me/2015/08/21/the-trivia-of-js-date-function/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/08/21/the-trivia-of-js-date-function/"
+           data-title="JS原生Date类型方法的一些冷知识" data-url="http://chitanda.me/2015/08/21/the-trivia-of-js-date-function/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Chitanda Akari" />
+          <p class="site-author-name" itemprop="name">Chitanda Akari</p>
+          <p class="site-description motion-element" itemprop="description">chitanda | 互联网 | 前端 | 宅 |动漫 | 京阿尼</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chitanda" target="_blank">
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3218616254" target="_blank">
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://segmentfault.com/u/chitanda" target="_blank">
+                  
+                  SegmentFault
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.v2ex.com/?r=TakanashiAzusa" target="_blank">
+                  
+                  V2EX
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Date-与new-Date-的区别"><span class="nav-number">1.</span> <span class="nav-text">Date()与new Date()的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#new-Date-解析所支持的参数格式标准"><span class="nav-number">2.</span> <span class="nav-text">new Date()解析所支持的参数格式标准</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#时间戳格式"><span class="nav-number">2.1.</span> <span class="nav-text">时间戳格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间数字字符串格式"><span class="nav-number">2.2.</span> <span class="nav-text">时间数字字符串格式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间格式化函数的效率"><span class="nav-number">3.</span> <span class="nav-text">时间格式化函数的效率</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#核心测试函数："><span class="nav-number">3.1.</span> <span class="nav-text">核心测试函数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试结果："><span class="nav-number">3.2.</span> <span class="nav-text">测试结果：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UTC，GMT时间的区别"><span class="nav-number">4.</span> <span class="nav-text">UTC，GMT时间的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#格林威治标准时间GMT"><span class="nav-number">4.1.</span> <span class="nav-text">格林威治标准时间GMT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#世界协调时间UTC"><span class="nav-number">4.2.</span> <span class="nav-text">世界协调时间UTC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器获取用户当前时间以及喜好语言"><span class="nav-number">5.</span> <span class="nav-text">浏览器获取用户当前时间以及喜好语言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器判断用户本地字符串格式"><span class="nav-number">5.1.</span> <span class="nav-text">浏览器判断用户本地字符串格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器界面语言设置和语言设置的区别"><span class="nav-number">5.2.</span> <span class="nav-text">浏览器界面语言设置和语言设置的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用js获取用户浏览器语言喜好"><span class="nav-number">5.3.</span> <span class="nav-text">利用js获取用户浏览器语言喜好</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">7.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chitanda Akari</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+    <script>
+      var OriginTitile=document.title;
+      var st;
+      document.addEventListener('visibilitychange',function(){
+      if(document.hidden){
+        document.title="(つェ⊂)我藏好了哦";
+        clearTimeout(st);
+        console.log('hide');
+      }else{
+        document.title='(*´∇｀*)  被你发现啦~ '+OriginTitile;
+        console.log('show');
+        st=setTimeout(function(){
+            document.title=OriginTitile;
+        },4000);
+        console.log('endChange=');
+      }
+      });
+      </script>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"chitanda"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

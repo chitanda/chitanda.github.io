@@ -1,0 +1,757 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="Zz69_TBO29kGWz1EwiPdoVvLE1hCqut6T9lcr5DYr6Y" />
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="运维,vps," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我很好奇" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="VPS买来好几个月了，之前因为感觉fail2ban 可能会造成log爆炸就没装，然后仅仅禁了root帐号登录和换了个登录帐号——倒也相安无事，但是那天去/var/log/目录下看log的时候发现每天的登录日志和帐号密码错误信息能塞十几二十M——被人盯上了用机器企图暴力破解，虽然由于猜不到我用户名所以VPS本身不会出事，但是天天被人这么搞也不爽，然后就稍微折腾下。在禁root登录、换登陆用户 的基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="服务器初始安全设置（CentOS 6.5）">
+<meta property="og:url" content="http://chitanda.me/2016/02/13/Initial-Server-Secure-Settings-with-CentOS-6-5/index.html">
+<meta property="og:site_name" content="我很好奇">
+<meta property="og:description" content="VPS买来好几个月了，之前因为感觉fail2ban 可能会造成log爆炸就没装，然后仅仅禁了root帐号登录和换了个登录帐号——倒也相安无事，但是那天去/var/log/目录下看log的时候发现每天的登录日志和帐号密码错误信息能塞十几二十M——被人盯上了用机器企图暴力破解，虽然由于猜不到我用户名所以VPS本身不会出事，但是天天被人这么搞也不爽，然后就稍微折腾下。在禁root登录、换登陆用户 的基础">
+<meta property="og:updated_time" content="2016-08-25T15:36:41.530Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="服务器初始安全设置（CentOS 6.5）">
+<meta name="twitter:description" content="VPS买来好几个月了，之前因为感觉fail2ban 可能会造成log爆炸就没装，然后仅仅禁了root帐号登录和换了个登录帐号——倒也相安无事，但是那天去/var/log/目录下看log的时候发现每天的登录日志和帐号密码错误信息能塞十几二十M——被人盯上了用机器企图暴力破解，虽然由于猜不到我用户名所以VPS本身不会出事，但是天天被人这么搞也不爽，然后就稍微折腾下。在禁root登录、换登陆用户 的基础">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 12157121,
+      author: 'ROOT'
+    }
+  };
+</script>
+
+  <title> 服务器初始安全设置（CentOS 6.5） | 我很好奇 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70297472-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6028e1891a3d164a9d7c5707a08908ca";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">我很好奇</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">千反田家的小院子</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                服务器初始安全设置（CentOS 6.5）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-13T03:43:03+08:00" content="2016-02-13">
+              2016-02-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/运维/" itemprop="url" rel="index">
+                    <span itemprop="name">运维</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/13/Initial-Server-Secure-Settings-with-CentOS-6-5/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/13/Initial-Server-Secure-Settings-with-CentOS-6-5/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>VPS买来好几个月了，之前因为感觉<code>fail2ban</code> 可能会造成log爆炸就没装，然后仅仅禁了root帐号登录和换了个登录帐号——倒也相安无事，但是那天去<code>/var/log/</code>目录下看log的时候发现每天的登录日志和帐号密码错误信息能塞十几二十M——被人盯上了用机器企图暴力破解，虽然由于猜不到我用户名所以VPS本身不会出事，但是天天被人这么搞也不爽，然后就稍微折腾下。在<code>禁root登录</code>、<code>换登陆用户</code> 的基础上又加了几个安全措施：<code>换SSH端口</code> 、<code>使用ssh密钥文件登录</code>。所以写个文章做个记录——其实文章里有个关于ssh <code>config</code>文件的彩蛋才是我最想推荐的（本文以Centos 6.5为例，具体的文件路径可能不同的linux发行版会有区别。）</p>
+<a id="more"></a>
+<blockquote>
+<p>因为很重要所以写在最前面:<br>所有安全措施更新后检测是否生效的时候都不需要关闭当前的ssh term 窗口，直接另开一个就好。当前窗口不要关闭，可以用来在发生某些意外情况下做补救措施（比如换了sshd的端口但是忘记在防火墙里开放端口等）否则就只能去VPS提供商的VNC服务器里去做补救了，比较麻烦</p>
+</blockquote>
+<h2 id="禁用root登录"><a href="#禁用root登录" class="headerlink" title="禁用root登录"></a>禁用root登录</h2><ol>
+<li><p>新建一个用户并设置密码，如添加一个用户名为<code>test</code>的用户(方便行文下文都会以<code>test</code>作为例子，建议自行替换)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">adduser test #添加用户</div><div class="line">passwd test #会弹出设置密码的提示，输两遍即可</div></pre></td></tr></table></figure>
+</li>
+<li><p>添加<code>sudo</code>用户组<br>目的是为了给新添加的帐号sudo权限，不过每次都手动设置单个帐号比较麻烦，所以建议先直接添加一个免密码的<code>sudo</code>用户组，后续的用户可以一次性添加到该组（另外安全考虑不建议sudo用户组里用户过多）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">visudo</div></pre></td></tr></table></figure>
+<p>然后往下拉找到</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">## Same thing without a password</div><div class="line"># %wheel        ALL=(ALL)       NOPASSWD: ALL</div></pre></td></tr></table></figure>
+<p>去掉下面那个<code>#</code>注释让设置生效然后保存文件退出。</p>
+<blockquote>
+<p>如果没有找到该内容的话可以自己手动添加进去。另外<code>NOPASSWD:ALL</code>可以让sudo指令免密码，方便的同时<strong>降低了一定安全性</strong>，所以看个人取好自行决定</p>
+</blockquote>
+</li>
+<li><p>将新建用户添加进<code>sudo</code>组<br>这样的话后面就不需要每次都切换到root帐号了，需要sudo权限的命令都可以直接通过<code>sudo &lt;command&gt;</code>来执行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">gpasswd -a test wheel</div></pre></td></tr></table></figure>
+<blockquote>
+<p>上面两步的<code>wheel</code>可以自行替换成你喜欢的用户组名。<br>具体可参考：<a href="https://www.digitalocean.com/community/tutorials/how-to-add-and-delete-users-on-a-centos-7-server" target="_blank" rel="external">how-to-add-and-delete-users-on-a-centos-7-server</a></p>
+</blockquote>
+</li>
+</ol>
+<h2 id="设置SSH登录"><a href="#设置SSH登录" class="headerlink" title="设置SSH登录"></a>设置SSH登录</h2><ol>
+<li><p>生成ssh密钥文件</p>
+<blockquote>
+<p>Windows系统以<code>putty</code>为例，生成以及配置的图文教程可以参考此文：<a href="http://callmepeanut.blog.51cto.com/7756998/1336358" target="_blank" rel="external">Putty使用密钥自动登陆SSH</a><br>linux下的密钥生成过程和github的密钥生成过程类似，可以参考此文： <a href="http://chitanda.me/2015/06/11/tips-for-setup-hexo/#git多网站ssh部署方案">git多网站ssh部署方案</a></p>
+</blockquote>
+<hr>
+</li>
+<li><p>上传公钥到服务器</p>
+<ul>
+<li><p>客户端为Windows系统时服务器端的操作:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cd /home/test #进入test用户文件夹下</div><div class="line">mkdir .ssh #生成.ssh文件夹</div><div class="line">touch .ssh/authorized_keys #生成服务器端公钥文件</div><div class="line">vi .ssh/authorized_keys</div></pre></td></tr></table></figure>
+<p>然后将前面putty生成的公钥部分复制进去后保存文件退出。<br><strong>注意openssh需要的公钥文件格式和putty导出保存的公钥文件格式不一样，正确格式是生成框里的那部分，所以不要复制错了</strong></p>
+<blockquote>
+<p>正确格式：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAxx+1Ab3s5TB4umhxspJA91i2az0QW7JTVBR+J/OYPyjDH803Upxvo</div><div class="line">sg0lDkf7nTmL3nyE6YCBPgQMgT+HvVDDI6CQ68E/ZQOmgNpGo70k+x/C7VkPu8z+5yBXwwI1K5maHqY4B8RIKVCYon</div><div class="line">2eMLhtyLC6U/K1OXaCdz0wR8xwz+rT8REmoCv770yC/FOsgmI250bAvVlqircvLfknlTrETAgaQ8PR9e5pNuoGwX3v</div><div class="line">pCMBnuKjXKQpHvAX1MKFx4UFGC6MIB5Gcq4H9nv9aBUKnWO+m58JF8tAU7KhfkUc2wWG11ON21K3w/gL7dyHPRyLGJ</div><div class="line">yBZRFKBZGr+gzCfrhzw== rsa-key-20160331</div></pre></td></tr></table></figure>
+</blockquote>
+<hr>
+</li>
+<li><p>客户端为linux系统的话<code>ssh-copy-id</code>指令即可</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub root@123.123.123.123</div></pre></td></tr></table></figure>
+<blockquote>
+<p>虽然要设置的登录帐号不是root，不过还是建议先传到<code>root</code>用户文件夹下，然后服务器端做转移。（之前试过直接传给对应帐号好像出了点问题，可能是权限之类的）</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+</li>
+<li><p>使用密钥文件登录<br>Windows下使用putty登录的配置参考步骤1的<a href="http://callmepeanut.blog.51cto.com/7756998/1336358" target="_blank" rel="external">参考文章</a> 。<br>如果<strong>有使用其他shell登录需求</strong>的可以继续往下看，以git bash为例：<br>由于putty的私钥文件不通用，所以需要转换出<code>RSA</code>格式给其他shell用，需要在 <code>PUTTYGEN.EXE</code> 上方菜单里的 <code>Conversions</code> &gt; <code>Export OpenSSH Key</code> 转换成通用的私钥文件，假设文件名为<code>test</code><br>然后将其放到当前用户的<code>C:\Users\username\.ssh</code>目录下.(其实这里的配置过程和git的ssh登录配置过程类似)<br><strong>彩蛋:</strong>如果目录下有多个密钥网站了，还需要修改同目录下你的ssh配置文件(<code>config</code>文件)，添加下面内容:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Host test #这个名字随意</div><div class="line">HostName 123.123.123.123 #IP地址或服务器域名</div><div class="line">Port 22 #服务器端开放的ssh端口，默认22</div><div class="line">User test#登录的用户名</div><div class="line">IdentityFile ~/.ssh/test #使用的密钥文件密钥文件</div></pre></td></tr></table></figure>
+<p>上面这里是完整的ssh配置格式，这么配置后git bash里可以直接用<code>ssh test</code>的方式直接登录，省去了输域名或者ip地址以及用户名的过程，简单不少。（关于ssh config文件的配置具体可以参考此文:<a href="https://www.digitalocean.com/community/tutorials/how-to-configure-custom-connection-options-for-your-ssh-client" target="_blank" rel="external">How To Configure Custom Connection Options for your SSH Client</a>)</p>
+<blockquote>
+<p>PS:登录这个步骤是比较容易出错的，如果服务器端配置有问题的话。建议服务器端先将sshd的<code>log level</code>开到<code>debug3</code>:<br> <code>vi /etc/ssh/sshd_config</code>后修改<code>LogLevel</code>为<code>debug3</code><br>然后保存退出并<code>service sshd restart</code>重启ssh服务.接着客户端执行登录操作，如果有错误的话，<code>less /var/log/secure</code>打开登录的log文件拉到最底下查看对应问题。<br>以我个人配置经验来看，失败的话一般无外乎以下几个原因：、</p>
+<ol>
+<li>key的位置不是默认的<code>~/.ssh/</code>而是<code>./home/{username}/.ssh/</code>(这里有个细节在于即使<code>sshd_config</code>配置<code>AuthorizedKeysFile  .ssh/authorized_keys</code>，由于linux系统的<code>~</code>表示当前用户的根目录，所以非root用户的key路径依旧是对应的<code>home/username</code>文件夹下而不是root根目录)</li>
+<li>key对应的文件夹给700权限，key本身至少400权限保证可读</li>
+<li><code>authorized_keys</code>文件的用户组要设置为对应的用户组，否则读取不了 </li>
+<li>在某些服务商的 CentOS 系统里，由于开启了 <code>SELinux</code> ，默认是禁止了 .ssh 目录的权限的，可以用下面的命令解除限制：<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">restorecon -R -v /root/.ssh</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<h2 id="SSH其他配置"><a href="#SSH其他配置" class="headerlink" title="SSH其他配置"></a>SSH其他配置</h2><p>如果上面ssh密钥登录设置完成了，为了最后的安全，我们还需要做三件事：</p>
+<ol>
+<li>禁止密码登录</li>
+<li>禁止<code>root</code>用户登录</li>
+<li><p>修改SSH默认端口<br>由于以上三个都是<code>sshd_config</code>里的东西，所以合一起讲：<br>修改以下三个属性保存并重启SSH即可</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">PermitRootLogin no</div><div class="line">PasswordAuthentication no</div><div class="line">Port 65525</div></pre></td></tr></table></figure>
+<blockquote>
+<p>修改端口后需要注意，大部分VPS应该都默认开了防火墙，所以<strong>需要防火墙里把对应端口开放</strong>，否则会无法登录</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">iptables -I INPUT -p tcp --dport 65525 -j ACCEPT</div><div class="line">service iptables save</div><div class="line">service iptables restart</div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ol>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-add-and-delete-users-on-a-centos-7-server" target="_blank" rel="external">how-to-add-and-delete-users-on-a-centos-7-server</a></li>
+<li><a href="http://callmepeanut.blog.51cto.com/7756998/1336358" target="_blank" rel="external">Putty使用密钥自动登陆SSH</a></li>
+<li><a href="http://chitanda.me/2015/06/11/tips-for-setup-hexo/#git多网站ssh部署方案">git多网站ssh部署方案</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-configure-custom-connection-options-for-your-ssh-client" target="_blank" rel="external">How To Configure Custom Connection Options for your SSH Client</a></li>
+<li><a href="https://ttt.tt/104/" target="_blank" rel="external">购买 Linux VPS 服务器后简单的安全设置</a> </li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/运维/" rel="tag">#运维</a>
+          
+            <a href="/tags/vps/" rel="tag">#vps</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/07/use-common-software-in-PC/" rel="next" title="个人常用一些PC软件（windows系统）">
+                <i class="fa fa-chevron-left"></i> 个人常用一些PC软件（windows系统）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/24/flash-xperia-table-z-kitkat-to-lolipop-with-root/" rel="prev" title="Xperia™ Tablet Z系统升至安卓5.1.1并保留root权限">
+                Xperia™ Tablet Z系统升至安卓5.1.1并保留root权限 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/02/13/Initial-Server-Secure-Settings-with-CentOS-6-5/"
+     data-title="服务器初始安全设置（CentOS 6.5）"
+     data-content=""
+     data-url="http://chitanda.me/2016/02/13/Initial-Server-Secure-Settings-with-CentOS-6-5/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/02/13/Initial-Server-Secure-Settings-with-CentOS-6-5/"
+           data-title="服务器初始安全设置（CentOS 6.5）" data-url="http://chitanda.me/2016/02/13/Initial-Server-Secure-Settings-with-CentOS-6-5/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Chitanda Akari" />
+          <p class="site-author-name" itemprop="name">Chitanda Akari</p>
+          <p class="site-description motion-element" itemprop="description">chitanda | 互联网 | 前端 | 宅 |动漫 | 京阿尼</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chitanda" target="_blank">
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3218616254" target="_blank">
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://segmentfault.com/u/chitanda" target="_blank">
+                  
+                  SegmentFault
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.v2ex.com/?r=TakanashiAzusa" target="_blank">
+                  
+                  V2EX
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#禁用root登录"><span class="nav-number">1.</span> <span class="nav-text">禁用root登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置SSH登录"><span class="nav-number">2.</span> <span class="nav-text">设置SSH登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH其他配置"><span class="nav-number">3.</span> <span class="nav-text">SSH其他配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chitanda Akari</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+    <script>
+      var OriginTitile=document.title;
+      var st;
+      document.addEventListener('visibilitychange',function(){
+      if(document.hidden){
+        document.title="(つェ⊂)我藏好了哦";
+        clearTimeout(st);
+        console.log('hide');
+      }else{
+        document.title='(*´∇｀*)  被你发现啦~ '+OriginTitile;
+        console.log('show');
+        st=setTimeout(function(){
+            document.title=OriginTitile;
+        },4000);
+        console.log('endChange=');
+      }
+      });
+      </script>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"chitanda"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

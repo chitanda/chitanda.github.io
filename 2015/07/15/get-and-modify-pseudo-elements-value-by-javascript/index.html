@@ -1,0 +1,755 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="Zz69_TBO29kGWz1EwiPdoVvLE1hCqut6T9lcr5DYr6Y" />
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="CSS,javascript,前端,伪元素,W3C," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我很好奇" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="虽然标题里写的是伪元素,不过这篇文章主要是说::before和::after，其余几个伪元素（::first-letter、::first-line、::selection等)由于没有content属性，所以本文一笔带过，其实方法是一样的。伪元素的重点在于一个伪，虽然它们可以被浏览器渲染引擎识别并正确渲染，然而伪元素本身并不是DOM元素,所以无法被js直接操作——因此任何基于JS直接选取DOM元素">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用javascript获取并修改伪元素的值">
+<meta property="og:url" content="http://chitanda.me/2015/07/15/get-and-modify-pseudo-elements-value-by-javascript/index.html">
+<meta property="og:site_name" content="我很好奇">
+<meta property="og:description" content="虽然标题里写的是伪元素,不过这篇文章主要是说::before和::after，其余几个伪元素（::first-letter、::first-line、::selection等)由于没有content属性，所以本文一笔带过，其实方法是一样的。伪元素的重点在于一个伪，虽然它们可以被浏览器渲染引擎识别并正确渲染，然而伪元素本身并不是DOM元素,所以无法被js直接操作——因此任何基于JS直接选取DOM元素">
+<meta property="og:updated_time" content="2016-08-25T15:36:11.629Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="利用javascript获取并修改伪元素的值">
+<meta name="twitter:description" content="虽然标题里写的是伪元素,不过这篇文章主要是说::before和::after，其余几个伪元素（::first-letter、::first-line、::selection等)由于没有content属性，所以本文一笔带过，其实方法是一样的。伪元素的重点在于一个伪，虽然它们可以被浏览器渲染引擎识别并正确渲染，然而伪元素本身并不是DOM元素,所以无法被js直接操作——因此任何基于JS直接选取DOM元素">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 12157121,
+      author: 'ROOT'
+    }
+  };
+</script>
+
+  <title> 利用javascript获取并修改伪元素的值 | 我很好奇 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70297472-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6028e1891a3d164a9d7c5707a08908ca";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">我很好奇</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">千反田家的小院子</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                利用javascript获取并修改伪元素的值
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-07-15T15:22:16+08:00" content="2015-07-15">
+              2015-07-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/07/15/get-and-modify-pseudo-elements-value-by-javascript/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/15/get-and-modify-pseudo-elements-value-by-javascript/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>虽然标题里写的是<code>伪元素</code>,不过这篇文章主要是说<code>::before</code>和<code>::after</code>，其余几个伪元素（<code>::first-letter</code>、<code>::first-line</code>、<code>::selection</code>等)由于没有<code>content</code>属性，所以本文一笔带过，其实方法是一样的。<br>伪元素的重点在于一个<strong>伪</strong>，虽然它们可以被浏览器渲染引擎识别并正确渲染，然而<strong>伪元素本身并不是DOM元素,</strong>所以无法被js直接操作——因此任何基于JS直接选取DOM元素的CSS更改方法对伪元素都不起作用。（JQ看似万能，这个问题上是直接就栽了。因为JQ的选择符都是基于DOM元素）关于JS和JQ选择器，可以参考这两篇文档： <a href="http://www.w3.org/TR/selectors-api/" target="_blank" rel="external">Selectors API Level 1</a>、<a href="http://api.jquery.com/category/selectors/" target="_blank" rel="external">jQuery Selectors</a><br><a id="more"></a></p>
+<h2 id="获取伪元素的属性值"><a href="#获取伪元素的属性值" class="headerlink" title="获取伪元素的属性值"></a>获取伪元素的属性值</h2><p>虽然JS里没有可以直接操作伪元素的选择符，然而获取其CSS属性的方法还是有的。</p>
+<h3 id="window-getComputedStyle"><a href="#window-getComputedStyle" class="headerlink" title="window.getComputedStyle"></a>window.getComputedStyle</h3><p>利用<code>window.getComputedStyle</code>方法选择到伪元素，然后利用<code>getPropertyValue</code>方法获取对应的属性的值。<br>根据<a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle" target="_blank" rel="external">MDN的文档</a>，<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">window.getComputedStyle(element[, pseudoElt]);</div></pre></td></tr></table></figure></p>
+<p>此方法包含两个参数，一个是元素本身另一个是元素的伪元素。<br>js语法实例（<a href="http://codepen.io/chitanda/full/mJKZPK/" target="_blank" rel="external">完整DEMO在线链接</a>）：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> div=<span class="built_in">document</span>.querySelector(<span class="string">'div'</span>);</div><div class="line"><span class="keyword">var</span> fontSize=<span class="built_in">window</span>.getComputedStyle(div,<span class="string">'::before'</span>).getPropertyValue(<span class="string">'font-size'</span>);<span class="comment">//获取before伪元素的字号大小</span></div></pre></td></tr></table></figure></p>
+<p>关于这个方法，详解可以参考这篇文章：<br><a href="http://www.zhangxinxu.com/wordpress/2012/05/getcomputedstyle-js-getpropertyvalue-currentstyle/" target="_blank" rel="external">获取元素CSS值之getComputedStyle方法熟悉</a></p>
+<hr>
+<h2 id="更改伪元素的属性值"><a href="#更改伪元素的属性值" class="headerlink" title="更改伪元素的属性值"></a>更改伪元素的属性值</h2><p><code>window.getComputedStyle</code>方法虽然可以获取到伪元素的属性值，然而根据该方法名字也知道其只能获取CSS样式，并无法更改css属性，那么如果想要用js动态更改伪元素属性值的话，该怎么处理呢？<br>思路有以下几个：</p>
+<ol>
+<li>js更改<code>data-*</code>属性值来更改伪元素的<code>content</code>值</li>
+<li>创建多个<code>class</code>，通过切换<code>class</code>来达到改变样式的目的</li>
+<li>利用CSSStyleSheet的<code>insertRule</code>方法来添加样式</li>
+<li>利用内部css样式的高优先级来覆盖外部css<blockquote>
+<p>以上实现思路的推荐程度<strong>依次递减</strong></p>
+</blockquote>
+</li>
+</ol>
+<h3 id="利用DOM的data-属性来更改content的值"><a href="#利用DOM的data-属性来更改content的值" class="headerlink" title="利用DOM的data-*属性来更改content的值"></a>利用DOM的<code>data-*</code>属性来更改<code>content</code>的值</h3><p><code>data-*</code>是HTML5新增的DOM元素属性，作用大致可以理解为标记。具体用法可以参考MDN的<a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes" target="_blank" rel="external">这篇文章</a>.而伪元素的<code>content</code>属性值除了常规赋值外，还有一种特殊的<code>attr()</code>方法来获取。<br>HTML：<br><figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test"</span> <span class="attr">data-text</span>=<span class="string">"TEXT"</span> <span class="attr">data-color</span>=<span class="string">"red"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>CSS:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">.test::before&#123;</div><div class="line">    content: attr(data-text);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>结果:</p>
+<p><pre><br>    <div class="test" data-text="TEXT"></div><br>    <style>.test::before{content: attr(data-text);}</style><br></pre><br>另外<code>content</code>其实可以多个<strong>attr</strong>连写，而且attr()内的可以是DOM元素的任意属性（比如<code>class</code>等，甚至非W3C标准属性也支持，不过不推荐这么做)所以很方便凑一些模版文字。像下面这种写法也是完全没问题的。<strong>注意用空格连接，不要用”+”号。</strong><br>EXAM：<br><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.test</span><span class="selector-pseudo">::before</span> &#123;</div><div class="line">  <span class="attribute">content</span>: <span class="string">'我的类是'</span> <span class="built_in">attr</span>(class) <span class="string">'想要变成'</span> <span class="built_in">attr</span>(data-color);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>虽然W3C给<code>attr()</code>赋予了<a href="http://www.w3.org/TR/css3-values/#attr-notation" target="_blank" rel="external">无限可能性</a>,包括<code>color</code>,<code>width</code>等属性在未来都有希望用这个方法更改，然而<strong>目前只有<code>content</code>支持该方法</strong>，其余的都还是草稿状态，尚未有浏览器支持。之所以把这个方法放在第一位只是因为相比别的实现手法来说，这个方法真的太简单太优雅。</p>
+</blockquote>
+<hr>
+<p>但是如果真的想要改伪元素里的<code>color</code>等元素呢？</p>
+<h3 id="更改class来实现伪元素样式的更改"><a href="#更改class来实现伪元素样式的更改" class="headerlink" title="更改class来实现伪元素样式的更改"></a>更改<code>class</code>来实现伪元素样式的更改</h3><p>把这个方法放到推荐位第二位估计会被很多人骂我：“卧槽，这么简单又没逼格的办法你竟然放到第二位！太没水平了”。不过再看完后面两种方法后或许你会对这种看法有所改观。<br>这个方法的优点是简单好用且无兼容性问题。缺点是多了一些其实用处不大的<code>class</code>,很像是jQuery类选择器中毒患者的做法；另外不适合多状态的场景（比如实时改变伪元素文字大小等）。<br>实现过于简单就不贴代码了。</p>
+<hr>
+<p>前面的<code>class切换大法</code>可能让人感觉不痛快，这里来个高大上(伪)点的方法：</p>
+<h3 id="利用CSSStyleSheet的insertRule方法来添加样式"><a href="#利用CSSStyleSheet的insertRule方法来添加样式" class="headerlink" title="利用CSSStyleSheet的insertRule方法来添加样式"></a>利用CSSStyleSheet的<code>insertRule</code>方法来添加样式</h3><blockquote>
+<p>这部分内容和W3C标准牵连比较多，加上较冷门，没多少人关注，个人目前啃不动标准，所以这部分内容不会做深入分析，理解可能也会有问题，望斧正。</p>
+</blockquote>
+<p>CSSStyleSheet是浏览器存放页面内所有css样式表的对象方法（不包括行内样式)，每个<code>link</code>和<code>style</code>标签都代表一个CSSStyleSheet对象，获取他们可以用<code>document.styleSheets</code>方法。(需要注意的是虽然<code>styleSheets</code>方法返回的结果把<code>link</code>标签引进的外部样式也算进去了，但是非IE浏览器没办法获取到他们的<code>cssRules</code>属性，只有内嵌的<code>style</code>标签内的元素可以被获取到)</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">document</span>.styleSheets[<span class="number">0</span>].insertRule(<span class="string">'.test::before&#123;color:green&#125;'</span>,<span class="number">0</span>)<span class="comment">//chrome,firefox等非IE浏览器使用</span></div><div class="line"><span class="built_in">document</span>.styleSheets[<span class="number">0</span>].addRule(<span class="string">'.test::before&#123;color:green&#125;'</span>,<span class="number">0</span>)<span class="comment">//IE系列浏览器使用</span></div><div class="line"><span class="comment">/* 虽然部分浏览器也可以通过id来指定,'document.styleSheets.id.insertRule()'这种写法在chrome和IE下都行得通，但是firefox会返回'undefined',所以建议还是使用index值来获取stylesheet */</span></div></pre></td></tr></table></figure>
+<p>.<code>insertRule</code>的语法是<code>stylesheet.insertRule(rule, index)</code>,另一个参数是<code>index</code>，意思是在对应的styleSheets里的<code>cssRules</code>样式表中的位置，这个值越大则样式优先级越高，但是值不能超过当前样式表规则（<code>cssRules</code>）长度（CSS中先定义的样式总是会被后定义的覆盖就是这个缘故。），当值小于<code>cssRules</code>长度时，添加的样式规则会插入到<code>index</code>值定义的位置，之前其余的规则依次顺延。</p>
+<blockquote>
+<p><code>addrule</code>和<code>insertRule</code>方法本质上没区别，只是后者不被IE浏览器识别，所以前者作为浏览器兼容方法存在。（下文为节省篇幅，以<code>insertRule</code>方法指代此两种方法。)<br>上面的代码看似简单一行，然而却不是每次都有效的。原因有以下几点：</p>
+<pre><code>1. `document.styleSheets`虽然按照`style`和`link`的顺序返回对应的`StyleSheetList`，然而第一个如果是`link`而不是`style`,前面讲过此时无法获取对应的`cssRules`，则`document.styleSheets[0].cssRules`为`null`，`insertRule`方法不起作用。（此情况只针对非IE浏览器，IE浏览器正常，但是定义的早往往意味着被后面的样式覆盖，所以意义不大）
+2. 同上，如果页面内没有内嵌样式的`style`标签，则`insertRule`方法也无法发挥作用。
+3. `index`值不够大的话很有可能会早于css文件开始的定义位置，导致被覆盖。因此有个折衷办法就是给添加的样式增加`!important`，虽然我个人比较反感这么做。
+</code></pre></blockquote>
+<p>由此可见此方法的局限性，但是这种方法的优雅之处在于避免了直接写内嵌样式，而是通过css api来做更改。相比下面的方法来说，稍微好点。</p>
+<hr>
+<p>但是这种方法好像局限性有点大啊？</p>
+<h3 id="HEAD中添加style标签强制覆盖初始属性"><a href="#HEAD中添加style标签强制覆盖初始属性" class="headerlink" title="HEAD中添加style标签强制覆盖初始属性"></a><code>HEAD</code>中添加<code>style</code>标签强制覆盖初始属性</h3><p>这个方法是利用内部css样式的高优先级来覆盖外部css，好处是简单易理解，实现简单。坏处就是吃相太难看，过于粗暴。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> style=<span class="built_in">document</span>.createElement(<span class="string">'style'</span>);</div><div class="line">style.innerHTML=<span class="string">".test::before&#123;color:green&#125;"</span>;<span class="comment">//添加样式内容的话也可以用上面提到过的`insertRule`,相对例子里的硬编码会更优雅点。</span></div><div class="line"><span class="built_in">document</span>.head.appendChild(style);</div></pre></td></tr></table></figure></p>
+<p>看到这里可能有些人反应过来了，其实加<code>style</code>标签这种方法可以是<code>insertRule</code>实现方法的大前提——因为不是所有页面一开始都有内嵌的<code>style</code>样式的。这种方法虽然不是很好，但是有时候却又确确实实是必须的——比如“拖动滑块改变伪元素内文字大小”这个需求。</p>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><h3 id="功能需求"><a href="#功能需求" class="headerlink" title="功能需求"></a>功能需求</h3><ol>
+<li>拖动滑块改变伪元素内的文字大小</li>
+<li>且伪元素内随时显示当前字号</li>
+<li>通过一个按钮可以改变伪元素内文字颜色</li>
+</ol>
+<p>这个需求可以将本文前面提到的四种改变伪元素样式的方法都塞进去。具体实现参照DEMO，不再做具体分析：</p>
+<p></p><p data-height="268" data-theme-id="0" data-slug-hash="OVBJEw" data-default-tab="result" data-user="chitanda" class="codepen">See the Pen <a href="http://codepen.io/chitanda/pen/OVBJEw/" target="_blank" rel="external">js-edit-pseudo-element-stylesheet-rules</a> by chitanda (<a href="http://codepen.io/chitanda" target="_blank" rel="external">@chitanda</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+<hr>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
+<li><p>getComputedStyle()</p>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle" target="_blank" rel="external">Window.getComputedStyle()</a></li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/05/getcomputedstyle-js-getpropertyvalue-currentstyle/" target="_blank" rel="external">获取元素CSS值之getComputedStyle方法熟悉</a></li>
+</ol>
+</li>
+<li><p>attr-notation</p>
+<ol>
+<li><a href="http://www.w3.org/TR/css3-values/#attr-notation" target="_blank" rel="external">W3C CSS3-Attribute References: ‘attr()’</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/attr" target="_blank" rel="external">MDN ATTR()</a></li>
+</ol>
+</li>
+<li>CSSRules<ol>
+<li><a href="http://help.dottoro.com/ljdxvksd.php" target="_blank" rel="external">CSSRule object</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/insertRule" target="_blank" rel="external">MDN insertRule</a></li>
+<li><a href="http://www.w3.org/wiki/Dynamic_style_-_manipulating_CSS_with_JavaScript" target="_blank" rel="external">Dynamic style - manipulating CSS with JavaScript</a></li>
+<li><a href="http://davidwalsh.name/add-rules-stylesheets" target="_blank" rel="external">Add Rules to Stylesheets with JavaScript</a></li>
+<li><a href="http://pankajparashar.com/posts/modify-pseudo-elements-css/" target="_blank" rel="external">Modify pseudo element styles with JavaScript</a></li>
+<li><a href="https://gist.github.com/yckart/5563717" target="_blank" rel="external">Add css-rules to an existing stylesheet</a></li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag">#CSS</a>
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/前端/" rel="tag">#前端</a>
+          
+            <a href="/tags/伪元素/" rel="tag">#伪元素</a>
+          
+            <a href="/tags/W3C/" rel="tag">#W3C</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/07/04/the-implementation-about-CORS-achieved-by-server-and-broswer/" rel="next" title="浏览器和服务器实现跨域（CORS）判定的原理">
+                <i class="fa fa-chevron-left"></i> 浏览器和服务器实现跨域（CORS）判定的原理
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/08/21/the-trivia-of-js-date-function/" rel="prev" title="JS原生Date类型方法的一些冷知识">
+                JS原生Date类型方法的一些冷知识 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2015/07/15/get-and-modify-pseudo-elements-value-by-javascript/"
+     data-title="利用javascript获取并修改伪元素的值"
+     data-content=""
+     data-url="http://chitanda.me/2015/07/15/get-and-modify-pseudo-elements-value-by-javascript/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/07/15/get-and-modify-pseudo-elements-value-by-javascript/"
+           data-title="利用javascript获取并修改伪元素的值" data-url="http://chitanda.me/2015/07/15/get-and-modify-pseudo-elements-value-by-javascript/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Chitanda Akari" />
+          <p class="site-author-name" itemprop="name">Chitanda Akari</p>
+          <p class="site-description motion-element" itemprop="description">chitanda | 互联网 | 前端 | 宅 |动漫 | 京阿尼</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chitanda" target="_blank">
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3218616254" target="_blank">
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://segmentfault.com/u/chitanda" target="_blank">
+                  
+                  SegmentFault
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.v2ex.com/?r=TakanashiAzusa" target="_blank">
+                  
+                  V2EX
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取伪元素的属性值"><span class="nav-number">1.</span> <span class="nav-text">获取伪元素的属性值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#window-getComputedStyle"><span class="nav-number">1.1.</span> <span class="nav-text">window.getComputedStyle</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改伪元素的属性值"><span class="nav-number">2.</span> <span class="nav-text">更改伪元素的属性值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#利用DOM的data-属性来更改content的值"><span class="nav-number">2.1.</span> <span class="nav-text">利用DOM的data-*属性来更改content的值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更改class来实现伪元素样式的更改"><span class="nav-number">2.2.</span> <span class="nav-text">更改class来实现伪元素样式的更改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用CSSStyleSheet的insertRule方法来添加样式"><span class="nav-number">2.3.</span> <span class="nav-text">利用CSSStyleSheet的insertRule方法来添加样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HEAD中添加style标签强制覆盖初始属性"><span class="nav-number">2.4.</span> <span class="nav-text">HEAD中添加style标签强制覆盖初始属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">3.</span> <span class="nav-text">练习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#功能需求"><span class="nav-number">3.1.</span> <span class="nav-text">功能需求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chitanda Akari</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+    <script>
+      var OriginTitile=document.title;
+      var st;
+      document.addEventListener('visibilitychange',function(){
+      if(document.hidden){
+        document.title="(つェ⊂)我藏好了哦";
+        clearTimeout(st);
+        console.log('hide');
+      }else{
+        document.title='(*´∇｀*)  被你发现啦~ '+OriginTitile;
+        console.log('show');
+        st=setTimeout(function(){
+            document.title=OriginTitile;
+        },4000);
+        console.log('endChange=');
+      }
+      });
+      </script>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"chitanda"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,771 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="Zz69_TBO29kGWz1EwiPdoVvLE1hCqut6T9lcr5DYr6Y" />
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="debug,微信,fiddler," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我很好奇" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="场景假设一个手机页面，开发者对其做了限制，导致只能在微信客户端中打开。而众所周知手机上非常不利于调试页面，所以需要能在电脑上打开并进行调试。这里针对常见的三种页面做一下分析，一一绕过其限制，（当然不要拿去干坏事）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="绕过限制，在PC上调试微信手机页面">
+<meta property="og:url" content="http://chitanda.me/2015/06/29/debug-wechat-website-in-pc/index.html">
+<meta property="og:site_name" content="我很好奇">
+<meta property="og:description" content="场景假设一个手机页面，开发者对其做了限制，导致只能在微信客户端中打开。而众所周知手机上非常不利于调试页面，所以需要能在电脑上打开并进行调试。这里针对常见的三种页面做一下分析，一一绕过其限制，（当然不要拿去干坏事）">
+<meta property="og:image" content="http://7xiodk.com1.z0.glb.clouddn.com/static/images/no-limit.jpg">
+<meta property="og:image" content="http://7xiodk.com1.z0.glb.clouddn.com/static/images/emulate-touch-screen.jpg">
+<meta property="og:image" content="http://7xiodk.com1.z0.glb.clouddn.com/static/images/emulate-UA.jpg">
+<meta property="og:image" content="http://7xiodk.com1.z0.glb.clouddn.com/static/images/add-device.jpg">
+<meta property="og:image" content="http://7xiodk.com1.z0.glb.clouddn.com/static/images/switch-device.jpg">
+<meta property="og:image" content="http://7xiodk.com1.z0.glb.clouddn.com/static/images/open-in-wechat.jpg">
+<meta property="og:image" content="http://7xiodk.com1.z0.glb.clouddn.com/static/images/wxoauth.jpg">
+<meta property="og:image" content="http://7xiodk.com1.z0.glb.clouddn.com/static/images/copy-cookies-value.jpg">
+<meta property="og:image" content="http://7xiodk.com1.z0.glb.clouddn.com/static/images/delete-cookies-value-name.jpg">
+<meta property="og:image" content="http://7xiodk.com1.z0.glb.clouddn.com/static/images/success-pages.jpg">
+<meta property="og:updated_time" content="2016-08-25T15:36:06.472Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="绕过限制，在PC上调试微信手机页面">
+<meta name="twitter:description" content="场景假设一个手机页面，开发者对其做了限制，导致只能在微信客户端中打开。而众所周知手机上非常不利于调试页面，所以需要能在电脑上打开并进行调试。这里针对常见的三种页面做一下分析，一一绕过其限制，（当然不要拿去干坏事）">
+<meta name="twitter:image" content="http://7xiodk.com1.z0.glb.clouddn.com/static/images/no-limit.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 12157121,
+      author: 'ROOT'
+    }
+  };
+</script>
+
+  <title> 绕过限制，在PC上调试微信手机页面 | 我很好奇 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70297472-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6028e1891a3d164a9d7c5707a08908ca";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">我很好奇</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">千反田家的小院子</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                绕过限制，在PC上调试微信手机页面
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-06-29T16:31:07+08:00" content="2015-06-29">
+              2015-06-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/微信/" itemprop="url" rel="index">
+                    <span itemprop="name">微信</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/06/29/debug-wechat-website-in-pc/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/29/debug-wechat-website-in-pc/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>假设一个手机页面，开发者对其做了限制，导致只能在微信客户端中打开。而众所周知手机上非常不利于调试页面，所以需要能在电脑上打开并进行调试。这里针对常见的三种页面做一下分析，一一绕过其限制，（当然不要拿去干坏事）<br><a id="more"></a></p>
+<hr>
+<h3 id="工具准备"><a href="#工具准备" class="headerlink" title="工具准备"></a>工具准备</h3><ol>
+<li>方便调试的浏览器。个人喜欢<strong>Chrome</strong>，本文基于<strong>Chrome 43.0.2357.130 (正式版本) m （32 位）</strong>环境。</li>
+<li>抓包工具，推荐<strong>fiddler4</strong>,当然你比较喜欢Wireshark的话也可以，反正只要是能抓到cookies就都可以</li>
+<li>能编辑cookies的浏览器插件。Chrome下我推荐<strong><a href="https://chrome.google.com/webstore/detail/editthiscookie/fngmhnnpilhplaeedifhccceomclgfbg" target="_blank" rel="external">EditThisCookie</a></strong>,Firefox的话试用<strong>Firebug</strong>自带的编辑功能即可</li>
+</ol>
+<hr>
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><p>更新于2016-04-05，针对第三种要openid验证的页面<br>没想到这文竟然会是我blog的最大流量来源= =<br>由于时间进入2016年，调试工具已经大大升级，所以我更新下个人比较推荐的更具有普适性也更简单的方法：</p>
+<ol>
+<li>安装微信的<a href="http://weixin.qq.com/cgi-bin/readtemplate?uin=&amp;stype=&amp;promote=&amp;fr=&amp;lang=zh_CN&amp;ADTAG=&amp;check=false&amp;nav=download&amp;t=weixin_download_list&amp;loc=readtemplate,weixin,body,3" target="_blank" rel="external">PC版</a></li>
+<li>打开<code>fiddler</code>,然后在微信PC版里打开要调试的页面（一般会弹出授权窗口，确定即可），接着在fiddler里找到进入后的实际页面的cookies</li>
+<li>打开要调试页面的任意主页，如要调试<code>www.aaa.com/mobile/xxx.php</code>的页面的话，就跳转到<code>www.aaa.com</code>首页，然后按照第二步抓到的页面的cookies，一个个填给chrome即可。（<strong>之所以要跳到首页去填是因为该域名下没有其他更容易编辑cookies的页面了</strong>)</li>
+</ol>
+<p>PS:<strong>复制以及更改cookies</strong>的具体步骤可以参照下文<a href="#绕过方法-3">第三部分</a>的<code>第3-6</code>几个步骤（虽然有些人推荐<a href="https://mp.weixin.qq.com/wiki/10/e5f772f4521da17fa0d7304f68b97d7e.html" target="_blank" rel="external">微信官方调试工具</a>,但是个人认为对非开发者来说这个工具不是必须的，而微信的PC端、fiddler和chrome浏览器则是可以常备的。另外加上内置的chrome调试工具远低于正常版本，所以推荐度不如微信PC客户端）</p>
+<p><del>更新于2015-10-12，针对第三种要openid验证的页面：<br>除了原先上文提到的抓包取cookies方法外，现在其实还有更简单的办法，利用微信官方的tbs调试。<br>最简单的办法就是安装QQ浏览器最新版，然后利用内置的<a href="http://blog.qqbrowser.cc/wei-xin-gong-zhong-hao-ben-di-diao-shi/" target="_blank" rel="external">微信调试工具</a>，可以省掉很多麻烦。具体步骤省略。<br>不喜欢用QQ浏览器的话，可以利用官方的tbs插件加上本地inspect的办法，可以参考此文:<br><a href="http://bbs.mb.qq.com/thread-243399-1-1.html" target="_blank" rel="external">微信、手Q、Qzone之x5内核inspect调试解决方案</a><br>不过这个方法我个人并没有尝试过，因为感觉配置过程过于麻烦。</del></p>
+<hr>
+<h2 id="绕过方法"><a href="#绕过方法" class="headerlink" title="绕过方法"></a>绕过方法</h2><p>这里针对常见的三种限制方法做了分类（不过我感觉应该也没有第四类了），其绕过方法难度也是逐渐递增的。下文将从<code>确认限制方法</code>以及<code>绕过限制</code>两个角度一一分析。</p>
+<h3 id="未做明显限制"><a href="#未做明显限制" class="headerlink" title="未做明显限制"></a>未做明显限制</h3><p>例子：<a href="http://event.adsl.cn/index.php?s=/addon/rollover/Index/index/id/45.html&amp;from=singlemessage&amp;isappinstalled=0" target="_blank" rel="external">翻滚吧小洛克</a><br>这种页面最多，基本上就是相当于啥也没做。</p>
+<h4 id="检验方法"><a href="#检验方法" class="headerlink" title="检验方法"></a>检验方法</h4><blockquote>
+<p>手机里其他浏览器也可以打开页面并正常进行页面浏览<br> 这种页面在PC上调试<strong>只需要开Chrome的模拟器</strong>即可。</p>
+</blockquote>
+<h4 id="绕过方法-1"><a href="#绕过方法-1" class="headerlink" title="绕过方法"></a>绕过方法</h4><ol>
+<li><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>打开chrome的<code>开发者中心</code> </li>
+<li>点击开发者中心工具条右上角的手机小图标，如图：<img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/no-limit.jpg" alt="img"><br>3.如果发现不能模拟触屏，则是因为设置里没开，点击开发者中心工具条右上角的箭头小图标，然后<code>Emulation</code>&gt;<code>Sensors</code>&gt;<code>Emulate touch screen</code> ，将该选项勾上即可。如图所示：<img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/emulate-touch-screen.jpg" alt="img"></li>
+</ol>
+<p>轻松过关。</p>
+<hr>
+<h3 id="检查UA来限制"><a href="#检查UA来限制" class="headerlink" title="检查UA来限制"></a>检查UA来限制</h3><p>例子：<a href="http://resource.duopao.com/duopao/games1/doNotTouchWhite/doNotTouchWhite.html?game_code=g20140429164254538845&amp;cc=duopao" target="_blank" rel="external">多泡游戏-doNotTouchWhite</a><br>由于这个站点游戏需要登录，所以放个公共号测试用，勿滥用。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">user:duopaotestdada</div><div class="line">pwd：duopaotest</div></pre></td></tr></table></figure></p>
+<h4 id="检测方法"><a href="#检测方法" class="headerlink" title="检测方法"></a>检测方法</h4><blockquote>
+<p>手机浏览器打开后会跳转到开发者自己的其余页面，或者有弹窗提示，但是不会跳到<code>open.weixin.qq.com</code>域名去。</p>
+</blockquote>
+<p>看着这种就可以肯定十有八九是基于UA（UserAgent）检测了。所以破解方法很简单，模拟UA就好。chrome内置了这个功能。</p>
+<h4 id="绕过方法-2"><a href="#绕过方法-2" class="headerlink" title="绕过方法"></a>绕过方法</h4><ol>
+<li>开启浏览器的模拟器（方法见上）</li>
+<li><p>在模拟器右上角的<code>UA</code>处将以下UA贴进去并重新进入原页面（不直接刷新是因为有些页面会根据UA做跳转）</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Mozilla/5.0 (Linux; U; Android 4.1.2; zh-cn; Chitanda/Akari) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30 MicroMessenger/6.0.0.58_r884092.501 NetType/WIFI</div></pre></td></tr></table></figure>
+<blockquote>
+<p> 如图：<img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/emulate-UA.jpg" alt="img"><br> 以上是安卓手机微信的UA，另附一个iOS下的UA</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12A365   MicroMessenger/5.4.1 NetType/WIFI</div></pre></td></tr></table></figure>
+</code></pre><p> 一般情况下这两个用处都一样，没啥区别，实际上根据大部分前端的习惯，哪怕UA里只填一个<code>MicroMessenger</code>字段都是可以绕过去的。</p>
+</blockquote>
+</li>
+<li>上面的方法虽然可以绕过限制了，但是终究不方便，每次都要手动改一次UA。实际上较新版的Chrome浏览器是可以自定义<code>Device</code>的。点击开发者中心右上角的齿轮图标，然后<code>Devices</code>&gt;<code>Add custom device</code>,即可自行添加一个带微信UA的模拟器，然后之后在模拟器界面的<code>Device</code>里切换即可。如图：<br><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/add-device.jpg" alt="img"><br><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/switch-device.jpg" alt="img"></li>
+</ol>
+<hr>
+<h3 id="利用微信oauth做限制"><a href="#利用微信oauth做限制" class="headerlink" title="利用微信oauth做限制"></a>利用微信oauth做限制</h3><p><del>例子：<a href="http://wxoauth.wucai.com/taiping_normal" target="_blank" rel="external">拯救太平轮</a></del><br><strong> 由于上面的游戏链接已经失效，所以换个页面，类型一致，可供各位测试用：<a href="http://www.weijuju.com/mobile/game/miraclepan/pan.jsp?panId=2881&amp;wuid=243430" target="_blank" rel="external">幸运大转盘</a> </strong><br>上面两种都是比较常见而且简单就能绕过限制的，而有些对用户身份验证要求比较高的页面，则会利用微信的<code>OAUTH</code>来拉取<code>openid</code>做验证，这种就不仅仅是改UA这么容易绕过去了。好在也不是无解。因为身份验证一般都是存在<code>cookies</code>里的，所以我们可以直接给PC模拟器伪造cookies来让页面误以为我们是在微信内做的验证。</p>
+<p>PS：<br><strong>这里是通用方法，不过目前针对微信内的页面，微信官方有提供调试支持，可以查看<a href="#更新">更新</a>的内容</strong></p>
+<h4 id="检测方法-1"><a href="#检测方法-1" class="headerlink" title="检测方法"></a>检测方法</h4><p>手机浏览器打开后会跳转到<code>open.weixin.qq.com</code>域名，且页面提示<code>请在微信客户端打开链接</code>.<br>如图： <img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/open-in-wechat.jpg" alt="img"></p>
+<h4 id="绕过方法-3"><a href="#绕过方法-3" class="headerlink" title="绕过方法"></a>绕过方法</h4><ol>
+<li>将浏览器UA改为微信的，然后刷新页面，会发现这个时候不再提示<code>请在微信客户端打开链接</code>了，但是整个页面一片空白。</li>
+<li><p>打开fiddler，并设置手机wifi连接，确保手机数据都经过了fiddler。</p>
+<blockquote>
+<ol>
+<li>fiddler的配置可以参考<a href="http://www.cnblogs.com/findyou/p/3491014.html" target="_blank" rel="external">这篇文章</a>,https的两个配置必须要做，不然抓不了微信的包，另外如果确定手机连上了fiddler了但是微信的数据包都没被抓到，可以先把微信app强行关闭，然后重新开一下即可</li>
+<li>以上用手机操作虽然也还可以用，但是由于微信推出了官方PC客户端,加上手机连fiddler操作比较麻烦，从<strong>简单操作</strong>的角度考虑建议该步骤参考<a href="#更新">更新</a>内容，改为<strong>用微信PC段打开链接</strong>较好</li>
+</ol>
+</blockquote>
+</li>
+<li><p>在微信里点击页面链接，使其正常进入页面，然后fiddler上注意相关域名的记录，找到<code>Tunnel to open.weixin.qq.com</code>后面那条记录。会发现这时候原来的链接带上了<code>oauth</code>参数。复制这时候的链接<br>如图：<br><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/wxoauth.jpg" alt="img"></p>
+</li>
+<li><p>在浏览器中打开前面复制的链接，会发现还是白屏，然后右键页面，选择<code>EditThisCookies</code>，会发现这个页面下有两条cookies了。</p>
+<blockquote>
+<p>也可以在开发者工具的<code>Resources</code>&gt;<code>cookies</code>&gt;<code>wxoauth.wucai.com</code>里查看当前页面拥有的cookies数量。之所以前面不自己直接创建cookies就是因为cookies除了<code>Value</code>这个属性外，还有<code>Domain</code>、<code>Path</code>、<code>Expires/Max-Age</code>等等其余属性需要设置，而这些属性自己是摸不出来的，只能先依靠页面服务器创建，然后直接更改<code>Value</code>即可</p>
+</blockquote>
+</li>
+<li><p>回到fiddler，还是刚刚选择的链接，右边窗口选择<code>Headers</code>，然后会看到下面有两条cookies，以及对应的数值。选中一条，然后右键<code>Copy Value only</code>,将值复制到前面浏览器里打开的<code>EditThisCookies</code>页面中去。如图：<br><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/copy-cookies-value.jpg" alt="img"></p>
+<blockquote>
+<p>需要的注意的是，这里复制出来的是<code>cookies名称</code>+<code>cookies值</code>的方式，而<code>EditThisCookies</code>里只需要填cookies值即可，所以复制进去后记得将<code>cookies Name =</code>这一部分删掉。如下图所示，绿框里的<code>PHPSESSID=</code>是不需要的，删掉即可.如图：<img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/delete-cookies-value-name.jpg" alt="img"></p>
+</blockquote>
+</li>
+<li><p>重复第五步，将全部cookies值都改完之后，回到之前的浏览器页面，输入最初的主页链接，成功。</p>
+<blockquote>
+<p>在微信里的话，认证页面完成后一般是有跳转的，不过由于这里是手动更改的，所以没办法触发跳转，需要我们手动模拟一次。而前面的cookies在的缘故，页面服务器也会当我们已经认证过，所以就直接跳过了。最后成功的截图：<br><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/success-pages.jpg" alt="img"></p>
+</blockquote>
+</li>
+</ol>
+<p>完成，看起来很复杂，其实也很简单。个人感觉这个过程最麻烦的地方其实在于第2步：手机连fiddler需要先断开之前的无线，手动输一次代理设置到wifi，然后再连接下。所以我觉得现在最需要一个安卓下可以存储wifi代理链接设置的工具= =</p>
+<hr>
+<h2 id="某些小问题"><a href="#某些小问题" class="headerlink" title="某些小问题"></a>某些小问题</h2><h3 id="进去后有部分功能无法正常使用"><a href="#进去后有部分功能无法正常使用" class="headerlink" title="进去后有部分功能无法正常使用"></a>进去后有部分功能无法正常使用</h3><p>有时候会发现即使页面正常进去了，也有些功能不能触发，比如上传图片之类的，但是浏览器也没有报错。这种情况下一般多是由于对方使用了微信的jssdk内置方法（<code>wx.xx</code>之类的）。因为微信内置的方法不是纯webview可以完成的，很多功能都需要微信客户端的配合，因此达不到预期的效果也是很正常的。可以看微信jssdk的<a href="http://demo.open.weixin.qq.com/jssdk" target="_blank" rel="external">官方demo</a>，你会发现基本上没一个可以在PC上用。</p>
+<!-- ###完全按照教程来但是就是过不了验证###
+今天收到个求助说是有个页面按照教程来怎么也搞不定，后来看了下是这样的：（具体哪个页面我就不说啦，免得他们又改）
+这个页面进去的时候会依次请求两个api，第一次服务器返回一次`Set-Cookie`头，进行一次**伪cookies赋值**；然后之后利用**ajax**再次发送一个`GET`请求重新进行一次`Set-Cookie`操作并返回**真实的cookies值**来覆盖前面的cookies，这个操作在他们的页面跳转过程中来回反复——所以就会造成*你如果完全按照我这个教程从fiddler里看到的第一个相关域名来复制cookies的话只能复制到假的cookies值，会造成验证失败*，不过破解之法很简单：
+**多点几次页面让他进行跳转并观察cookies变化规律，然后找到真正的cookies**
+（当然这个可能稍微需要点web开发经验。~~另外感觉这么折腾的页面有点在钦点我这个教程的意思啊。我一个写教程的，怎么就被你们后台针对了呢~~）
+ -->
+<p>其他的，想到再补充吧。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/debug/" rel="tag">#debug</a>
+          
+            <a href="/tags/微信/" rel="tag">#微信</a>
+          
+            <a href="/tags/fiddler/" rel="tag">#fiddler</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/06/19/wechat-share-diy/" rel="next" title="微信分享自定义图片和摘要">
+                <i class="fa fa-chevron-left"></i> 微信分享自定义图片和摘要
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/07/03/transfer-big-file-by-digitalocean/" rel="prev" title="利用DigitalOcean中转大文件">
+                利用DigitalOcean中转大文件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2015/06/29/debug-wechat-website-in-pc/"
+     data-title="绕过限制，在PC上调试微信手机页面"
+     data-content=""
+     data-url="http://chitanda.me/2015/06/29/debug-wechat-website-in-pc/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/06/29/debug-wechat-website-in-pc/"
+           data-title="绕过限制，在PC上调试微信手机页面" data-url="http://chitanda.me/2015/06/29/debug-wechat-website-in-pc/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Chitanda Akari" />
+          <p class="site-author-name" itemprop="name">Chitanda Akari</p>
+          <p class="site-description motion-element" itemprop="description">chitanda | 互联网 | 前端 | 宅 |动漫 | 京阿尼</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chitanda" target="_blank">
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3218616254" target="_blank">
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://segmentfault.com/u/chitanda" target="_blank">
+                  
+                  SegmentFault
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.v2ex.com/?r=TakanashiAzusa" target="_blank">
+                  
+                  V2EX
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#场景"><span class="nav-number">1.</span> <span class="nav-text">场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#工具准备"><span class="nav-number">1.1.</span> <span class="nav-text">工具准备</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新"><span class="nav-number">2.</span> <span class="nav-text">更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绕过方法"><span class="nav-number">3.</span> <span class="nav-text">绕过方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#未做明显限制"><span class="nav-number">3.1.</span> <span class="nav-text">未做明显限制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#检验方法"><span class="nav-number">3.1.1.</span> <span class="nav-text">检验方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绕过方法-1"><span class="nav-number">3.1.2.</span> <span class="nav-text">绕过方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查UA来限制"><span class="nav-number">3.2.</span> <span class="nav-text">检查UA来限制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#检测方法"><span class="nav-number">3.2.1.</span> <span class="nav-text">检测方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绕过方法-2"><span class="nav-number">3.2.2.</span> <span class="nav-text">绕过方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用微信oauth做限制"><span class="nav-number">3.3.</span> <span class="nav-text">利用微信oauth做限制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#检测方法-1"><span class="nav-number">3.3.1.</span> <span class="nav-text">检测方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绕过方法-3"><span class="nav-number">3.3.2.</span> <span class="nav-text">绕过方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#某些小问题"><span class="nav-number">4.</span> <span class="nav-text">某些小问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进去后有部分功能无法正常使用"><span class="nav-number">4.1.</span> <span class="nav-text">进去后有部分功能无法正常使用</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chitanda Akari</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+    <script>
+      var OriginTitile=document.title;
+      var st;
+      document.addEventListener('visibilitychange',function(){
+      if(document.hidden){
+        document.title="(つェ⊂)我藏好了哦";
+        clearTimeout(st);
+        console.log('hide');
+      }else{
+        document.title='(*´∇｀*)  被你发现啦~ '+OriginTitile;
+        console.log('show');
+        st=setTimeout(function(){
+            document.title=OriginTitile;
+        },4000);
+        console.log('endChange=');
+      }
+      });
+      </script>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"chitanda"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

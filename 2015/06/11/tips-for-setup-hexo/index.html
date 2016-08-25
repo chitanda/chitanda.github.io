@@ -1,0 +1,813 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="Zz69_TBO29kGWz1EwiPdoVvLE1hCqut6T9lcr5DYr6Y" />
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="github,hexo," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我很好奇" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="之前的WP博客荒废了好久之后终于感觉该做点正事了，所以这几天花了点时间重新弄了下hexo，毕竟是比较符合前端的一个博客框架。比起wp来说，hexo轻量级的多，而且易部署（指速度优化方面），也不需要一个专门的服务器来放置（这个其实是我选择hexo的最终原因。手里虽然有vps，但是因为跑着ss加上国内ping值太高，最终肯定影响国内速度，所以就一直没用来放blog）当然没有后台也就意味着不能随时随地写">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo博客搭建时遇到的一些问题">
+<meta property="og:url" content="http://chitanda.me/2015/06/11/tips-for-setup-hexo/index.html">
+<meta property="og:site_name" content="我很好奇">
+<meta property="og:description" content="之前的WP博客荒废了好久之后终于感觉该做点正事了，所以这几天花了点时间重新弄了下hexo，毕竟是比较符合前端的一个博客框架。比起wp来说，hexo轻量级的多，而且易部署（指速度优化方面），也不需要一个专门的服务器来放置（这个其实是我选择hexo的最终原因。手里虽然有vps，但是因为跑着ss加上国内ping值太高，最终肯定影响国内速度，所以就一直没用来放blog）当然没有后台也就意味着不能随时随地写">
+<meta property="og:updated_time" content="2016-08-25T15:38:26.818Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hexo博客搭建时遇到的一些问题">
+<meta name="twitter:description" content="之前的WP博客荒废了好久之后终于感觉该做点正事了，所以这几天花了点时间重新弄了下hexo，毕竟是比较符合前端的一个博客框架。比起wp来说，hexo轻量级的多，而且易部署（指速度优化方面），也不需要一个专门的服务器来放置（这个其实是我选择hexo的最终原因。手里虽然有vps，但是因为跑着ss加上国内ping值太高，最终肯定影响国内速度，所以就一直没用来放blog）当然没有后台也就意味着不能随时随地写">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 12157121,
+      author: 'ROOT'
+    }
+  };
+</script>
+
+  <title> hexo博客搭建时遇到的一些问题 | 我很好奇 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70297472-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6028e1891a3d164a9d7c5707a08908ca";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">我很好奇</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">千反田家的小院子</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                hexo博客搭建时遇到的一些问题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-06-11T21:57:10+08:00" content="2015-06-11">
+              2015-06-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/blog/" itemprop="url" rel="index">
+                    <span itemprop="name">blog</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/06/11/tips-for-setup-hexo/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/11/tips-for-setup-hexo/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>之前的WP博客荒废了好久之后终于感觉该做点正事了，所以这几天花了点时间重新弄了下hexo，毕竟是比较符合前端的一个博客框架。比起wp来说，hexo轻量级的多，而且易部署（指速度优化方面），也不需要一个专门的服务器来放置（这个其实是我选择hexo的最终原因。手里虽然有vps，但是因为跑着ss加上国内ping值太高，最终肯定影响国内速度，所以就一直没用来放blog）当然没有后台也就意味着不能随时随地写了就发，这个相对WP来说是弱势，但我感觉还好，毕竟不会常常在外面跑，而且写博客基本都是在电脑前，再不济也可以先把MD文件写完后拷回去发布。<br><a id="more"></a></p>
+<hr>
+<p>先大概说下我目前blog的部署方式：</p>
+<ul>
+<li>github和coding双线路部署，国内线路解析到coding，国外线路解析到github。</li>
+<li>自己的域名且未备案（个人博客不建议备案）</li>
+<li>域名解析采用dnspod国际版（<strong>这个很重要，后面会解释</strong>）</li>
+<li>使用QQ的自定义域名邮箱</li>
+<li>图片采用七牛存储分流</li>
+<li>多说评论有一定优化（显UA以及自定义样式等）</li>
+</ul>
+<p>然后下面说下我部署过程中遇到的部分问题以及相应的解决方法,由于我自己是<code>Windows 7</code>环境，所以下面很多解决方法可能对*nix党不适用，还请注意。问题的排列按照最基础的node安装，git配置，域名配置，hexo安装，hexo优化美化的顺序来，不过会跳过很多可以直接百度到的内容，所以建议参考<a href="http://xuanwo.org/2014/08/14/hexo-usual-problem/" target="_blank" rel="external">Hexo常见问题解决方案</a>以及<a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">hexo你的博客</a>如果你遇到的问题我这里没提到的话，你可以去这两篇文章搜下解决方案。</p>
+<hr>
+<h2 id="npm安装hexo速度过慢"><a href="#npm安装hexo速度过慢" class="headerlink" title="npm安装hexo速度过慢"></a>npm安装hexo速度过慢</h2><p>由于某些大家都知道的缘故，npm官方源在国内的下载速度极其慢，用官网的<code>npm install hexo-cli -g</code>速度非常感人，所以不推荐这种方式。这里我推荐用淘宝的npm分流——<strong><a href="https://npm.taobao.org/" target="_blank" rel="external">cnpm</a></strong><br>安装过程很简单：<br><code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code><br>然后等着装完即可，之后的用法和npm一样，无非是把<code>npm install</code>改成<code>cnpm install</code>,但是速度比之前快了不止一个数量级(不过下文为了方便理解，还是会用默认的npm安装，如果你发现速度不好的话，请自行替换成’cnpm’)</p>
+<h3 id="npm安装tips"><a href="#npm安装tips" class="headerlink" title="npm安装tips"></a>npm安装tips</h3><ol>
+<li>npm安装的时候有时候会出各种错，而最常见的无非是权限问题、网络连接、包名输错。注意看cmd窗口的报错信息即可。<br><strong>windows党请注意安装的时候将cmd用管理员方式打开（这个是我见过报错最多的）</strong>，想必<code>npm ERR! Please try running this command again as root/Administrator.</code>各位也不是第一次见了</li>
+<li>hexo插件安装的时候先<code>cd</code>到blog根目录，并且安装参数不要带<code>-g</code>。 （即不要全局安装，因为全局安装的时候插件会被装到node的根目录下去，而不是blog目录），<strong>hexo的插件需要在blog目录下才能工作</strong></li>
+<li>有部分hexo插件用普通的<code>install</code>可能会出现安装完的版本和最新版本有区别，而且怎么也升级不上去的情况(<code>npm update</code>无效)，这种情况下请手动指定版本安装：<br>语法：<br><code>npm install [@&lt;scope&gt;/]&lt;name&gt;@&lt;version&gt;</code><br>例子：<br><code>npm install hexo@3.1.1 --save</code></li>
+</ol>
+<h2 id="git多网站ssh部署方案"><a href="#git多网站ssh部署方案" class="headerlink" title="git多网站ssh部署方案"></a>git多网站ssh部署方案</h2><p>因为是coding和github多线路部署，加上不想每次更新的时候都输帐号密码，所以https传输肯定不行了，只能是ssh传输。不过大部分教程都是单网站部署。所以特地把这个单独拿出来。建议参考coding的这篇部署<a href="https://coding.net/help/doc/git/ssh-key.html" target="_blank" rel="external">教程</a>，一般人看完应该就不需要看我这底下的内容了，我这里步骤都复制以上教程，仅对部分地方加点我个人感觉比较重要的注释<br>git客户端安装的时候可以选择要不要集成到cmd里，有些人可能和我一样没有集成，导致cmd对部分linux下的命令无法解析（比如<code>~</code>)<br><strong>强烈建议以下操作在git bash里进行。不要在cmd里敲git命令！</strong><br><strong>强烈建议以下操作在git bash里进行。不要在cmd里敲git命令！</strong>x2<br><strong>强烈建议以下操作在git bash里进行。不要在cmd里敲git命令！</strong>x3<br>因为很重要所以说三遍</p>
+<ol>
+<li><p>生成新的 SSH 秘钥<br>记得把以下命令中的 YOUR_EMAIL@YOUREMAIL.COM 改为你的 Email 地址<br><code>ssh-keygen -t rsa -C &quot;YOUR_EMAIL@YOUREMAIL.COM&quot; -f ~/.ssh/coding</code></p>
+<blockquote>
+<p><strong>上面最末尾的./ssh/coding中的’coding’即为存在本地的密钥文件名，所以这里是可以自定义的。</strong><br><strong>密钥文件本地存放路径为git的home参数对应路径下的.ssh文件夹，一般是”C:/Users/[username]/.ssh”，如果没有找到的话到git bash里输入<code>$HOME</code>回车然后自行去对应目录查找即可</strong></p>
+</blockquote>
+</li>
+<li><p>生成过程中会出现以下信息，按屏幕提示操作，并记得输入 passphrase 口令。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C <span class="string">"YOUR_EMAIL@YOUREMAIL.COM"</span> <span class="_">-f</span> ~/.ssh/coding</div><div class="line">Generating public/private rsa key pair.</div><div class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):</div><div class="line">Enter same passphrase again:</div><div class="line">Your identification has been saved <span class="keyword">in</span> /c/Users/username/.ssh/coding.</div><div class="line">Your public key has been saved <span class="keyword">in</span> /c/Users/username/.ssh/coding.pub.</div><div class="line">The key fingerprint is:</div><div class="line">15:81:d2:7a:c6:6c:0f:ec:b0:b6:d4:18:b8:d1:41:48 YOUR_EMAIL@YOUREMAIL.COM</div></pre></td></tr></table></figure>
+<p> 这将在 ~/.ssh/ 目录下生成 coding 和 coding.pub 文件，记住千万不要把私钥文件 coding 透露给任何人。</p>
+<blockquote>
+<p><strong>passphrase的作用是在密钥传输的过程中加一个解密钥的过程，使得即使密钥文件不小心泄露了，别人也不能直接利用密钥操作你的git帐号，但是由于我个人处理不了ssh-agent自动填充的问题，导致每次更新git都要输passphrase，所以我就没加了，上面的过程里是直接两次回车过去了。</strong></p>
+</blockquote>
+</li>
+<li><p>在 SSH 用户配置文件 ~/.ssh/config 中指定对应服务所使用的公秘钥名称(<strong>config文件的作用就是告诉git程序在同步认证的时候该使用哪个密钥</strong>），如果没有 config 文件的话就新建一个，并输入以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Host coding.net git.coding.net</div><div class="line">  IdentityFile ~/.ssh/coding</div></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>由于是coding和github双站，所以这里需要再参考上面的语法另外建立一个github的规则(贴下我个人的config文件内容供参考)</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Host coding.net</div><div class="line">IdentityFile ~/.ssh/coding</div><div class="line"></div><div class="line">Host github.com</div><div class="line">IdentityFile ~/.ssh/id_rsa</div><div class="line"></div><div class="line">Host git.oschina.net</div><div class="line">IdentityFile ~/.ssh/chitanda_osc</div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>添加 coding.pub 中的内容到 Coding 网站。<br> 具体请参考<a href="https://coding.net/help/doc/git/ssh-key.html#ssh-" target="_blank" rel="external">如何安装和设置 Git</a>中的第三节。</p>
+</li>
+<li><p>最后测试配置文件是否正常工作</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ssh -T git@git.coding.net</div></pre></td></tr></table></figure>
+<p> 如果连接成功的话，会出现以下信息。</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Hi USERNAME! You&apos;ve successfully authenticated, but Coding does not provide shell access.</div></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>对于这一步，我的建议是测试命令里再加个<code>-v</code>参数</strong>,即</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ssh -vT git@coding.net</div></pre></td></tr></table></figure>
+<p>因为比起”ssh -T”返回的模糊信息相比，”-v”会把整个传输过程中的操作都显示出来，哪一步出错很明显就可以看出来，利于出现问题的调试</p>
+</blockquote>
+</li>
+<li><p>完成<br> 测试通过后，你就可以使用独立的一套公秘钥来使用 Coding 了。Enjoy！</p>
+</li>
+</ol>
+<h2 id="单域名多线路解析"><a href="#单域名多线路解析" class="headerlink" title="单域名多线路解析"></a>单域名多线路解析</h2><p>这个解决方法来自<a href="http://v2ex.com/t/196256" target="_blank" rel="external">v2ex</a>的”wy315700”,感谢指点<br>由于网站未备案，所以不能直接放在七牛上（不过如果全部放在七牛，也就失去了双线路的部署意义，所以我个人感觉没必要全站七牛)<br>先科普一些域名相关的小知识：</p>
+<ol>
+<li>关于A解析和CNAME解析的区别：<blockquote>
+<p>A解析：只能填IP地址，IP地址如果换了的话就需要换解析记录<br>CNAME解析：解析到另一个域名，即使被指向的域名的ip发生变化，也不需要更改解析记录。CNAME优先级高于A解析（至少在DNSPOD是这样的）</p>
+</blockquote>
+</li>
+<li>域名的nameserver（一般简称”NS”）<blockquote>
+<p>nameserver的作用是指定域名的dns解析服务商，比如同时在万网和dnspod给”www.a.com”做了解析，那么哪个解析起作用，就是由NS来决定的。这个在域名注册商的域名管理的里可以更改。NS记录建议只写一个dns解析商的，多NS可能会有问题，可以参考<a href="http://wangye.org/blog/archives/196/" target="_blank" rel="external">这篇文章</a><br><strong>DNSPOD国内版本目前只对国内线路做细分，没有海外线路的选择，所以不推荐，建议用dnspod的<a href="http://www.dnspod.com" target="_blank" rel="external">国际版</a></strong></p>
+</blockquote>
+</li>
+</ol>
+<p>操作流程：</p>
+<ol>
+<li>注册dnspod国际帐号</li>
+<li><p>域名服务商那里更改ns记录为dnspod国际版的nameserver，默认为</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">a.dnspod.com.</div><div class="line">b.dnspod.com.</div><div class="line">c.dnspod.com.</div></pre></td></tr></table></figure>
+</li>
+<li><p>在dnspod添加域名解析：<br> 先加一条cname解析国内线路给coding，然后再加一条默认线路的cname给github即可完成双线路解析</p>
+</li>
+<li><p>github自定义域名需要在项目根目录下添加一个<code>CNAME</code>文件，文件内容为自定义域名。CNAME文件创建完之后扔到blog/source目录下即可 (不能直接扔到public下，理由见下文)<br>coding需要在项目做设置，具体参考<a href="https://coding.net/help/doc/pages/index.html#section" target="_blank" rel="external">官方wiki</a></p>
+</li>
+</ol>
+<h3 id="自定义域名邮箱"><a href="#自定义域名邮箱" class="headerlink" title="自定义域名邮箱"></a>自定义域名邮箱</h3><p>比如<code>i@chitanda.me</code>这种邮箱，目前我用的QQ的<a href="http://domain.mail.qq.com/" target="_blank" rel="external">域名邮箱</a>，免费，不过我这边会遇到有时候gmail丢件的问题，所以准备看看过段时间转zoho。<br>具体实现很简单，就是域名解析里加条mx记录，不做详细解释，可以参考QQ域名邮箱的帮助（由于通配的mx记录和cname会有语法冲突，有些dns解析商是不支持这种写法的，但是dnspod对语法要求不严格，可以这么写。所以这也是我推荐dnspod的另一个缘故）<br><em>另外有些域名服务商可能免费送了mail服务，也可以用自带的那个。我由于域名注册在name.com上，它们没送，所以只能另外想办法</em></p>
+<h2 id="hexo部署相关问题"><a href="#hexo部署相关问题" class="headerlink" title="hexo部署相关问题"></a>hexo部署相关问题</h2><p>首先需要明确一点，<strong>public目录下的文件每次’hexo -g’的时候就会被重新生成</strong>，所以不要往这里面放任何东西，不然每次都要另外加。<br>而blog/source和blog/theme/[theme-name]/source里的文件是不会被另外处理的，所以有些需要添加在网站根目录的文件（如favicon，谷歌百度的站点认证文件之类的）可以直接扔到这两个文件夹底下，具体选哪个路径要视情况而定</p>
+<h3 id="config-yml编译不通过"><a href="#config-yml编译不通过" class="headerlink" title="_config.yml编译不通过"></a>_config.yml编译不通过</h3><p>yml语法极度严格，不通过往往是空格问题，记得所有设置参数属性末尾都要加空格</p>
+<h3 id="给网站添加favicon"><a href="#给网站添加favicon" class="headerlink" title="给网站添加favicon"></a>给网站添加favicon</h3><p>这个和主题有关，默认可能没有，浏览器打开后根据开发者工具里可以看到当前主题下’favicon’的具体路径和要求文件格式，对应做一个就可以了。有时候是’png’但也有时候强制要求’.ico’，可以去<a href="http://www.bitbug.net/" target="_blank" rel="external">比特虫</a>d等网站在线制作。</p>
+<h3 id="github和coding双线路解析"><a href="#github和coding双线路解析" class="headerlink" title="github和coding双线路解析"></a>github和coding双线路解析</h3><p><strong>安装hexo-deployer-git的0.0.4版！</strong><br><strong>安装hexo-deployer-git的0.0.4版！</strong><br><strong>安装hexo-deployer-git的0.0.4版！</strong><br>很重要所以说三次。我之前安装的时候默认都是0.0.3版，哪怕其实0.0.4已经出来了。而即使是完全正常的配置，0.0.3版都会提示”fatal: Unable to create ‘XXXXXX/.git/index.lock’: File e<br>xists.”（固定版本安装办法可以看上文）<br>查看当前已安装版本：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm ls hexo-deployer-git</div></pre></td></tr></table></figure></p>
+<p>附正确配置：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git </div><div class="line">  message: &quot;xxxxx&quot;</div><div class="line">  repo: </div><div class="line">    github: git@github.com:chitanda/chitanda.github.io.git,master</div><div class="line">    coding: git@coding.net:chitanda/chitanda.git,coding-pages</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>跟在”,”后面的是分支名字。注意传输地址应该是ssh格式的，不要弄成了https的地址 </p>
+</blockquote>
+<h3 id="多说评论框自定义"><a href="#多说评论框自定义" class="headerlink" title="多说评论框自定义"></a>多说评论框自定义</h3><p>其实从评论质量来说的话，disqus可能更好点（毕竟是gfw认证网站，相比多说门槛稍微高一点，可以过滤部分人群），不过拖累网页加载速度，所以我就换成多说了。<br>多说样式可以后台自定义css，本站的多说css来自Next.Mist主题制作者的<a href="https://github.com/iissnan/hexo-theme-next/blob/master/source/css/_component/duoshuo.styl" target="_blank" rel="external">样式</a><br>显UA功能需要改多说的js，具体参考<a href="http://ssk.91txh.com/209" target="_blank" rel="external">此文</a><br>单说”Next”主题下改完embed.js后需要做的事情：<br>“Next”主题内嵌多说，所以需要更改主题文件:<br>打开<code>/themes/next/layout/_scripts/comments/duoshuo.swig</code>，更改”embed.js”的文件路径即可。这里我是把js扔到7牛上去了，你也可以直接放到主题里然后更新到gitpage上去。</p>
+<h3 id="图片资源利用七牛分流"><a href="#图片资源利用七牛分流" class="headerlink" title="图片资源利用七牛分流"></a>图片资源利用七牛分流</h3><p>由于git-page自带空间只有300M，看起来博客够用了，但是总觉得憋得慌，对于全图片直接扔上去这种事个人没太大信心，所以决定图片用七牛分流（虽然这样某种意义上对双线路部署的做法产生了消极影响，不过考虑到七牛的CDN速度以及资本主义国家的网速加上未雨绸缪的300M空间，最终还是决定图片传到七牛上去）</p>
+<blockquote>
+<p>我最初的办法是用hexo的一个插件(<a href="https://github.com/gyk001/hexo-qiniu-sync" target="_blank" rel="external">hexo-qiniu-sync</a>)<br>但是后来发现这个插件效率不高，一开整个hexo的反应都慢了，而且最主要一点是失去了MD文件的通用性，所以最终弃用该方法。<br>另外<strong>采用了一个本地同步文件到七牛的插件</strong>：<a href="https://github.com/wzyuliyang/qiniu4blog" target="_blank" rel="external">qiniu4blog</a>，使用很简单，具体可以看文档。</p>
+</blockquote>
+<h3 id="多PC的情况下blog备份问题"><a href="#多PC的情况下blog备份问题" class="headerlink" title="多PC的情况下blog备份问题"></a>多PC的情况下blog备份问题</h3><p><del>本来想用网盘的自动备份工具，但是考虑到blog的posts文件夹在写文章时的更新频率，我又放弃了这种做法。<br>另外由于”_config.yml”里有七牛的密钥数据，所以整个blog文件扔到git上也是不可取的。个人建议还是打个包直接另一台电脑解压吧(一般来说拷贝source文件夹，theme文件夹，静态资源文件夹以及站点配置文件即可)。</del><br>上面删除线内的是我对备份的最初想法，然后实际使用后发现有至少两个缺点：</p>
+<ol>
+<li>麻烦，每次另一台电脑上都要从百度云下载更新文件夹手动覆盖</li>
+<li><code>hexo s</code>开启本地服务器状态的时候，会对文件夹进行监视，动态编译生成的文件，而百度云的自动备份会在你每次保存文件的时候都生成一个.cfg文件，导致hexo编译失败，然后就会停止本地服务器解析，又要手动开启一次（写文章的时候随时顺手<kbd>CTRL</kbd>+<kbd>S</kbd>是个好习惯）</li>
+</ol>
+<p><strong>以上两个原因导致了”百度云备份”这个方案被否决，所以最终还是回到了git备份的路子</strong>。由于blog全站备份，所以建议放私有仓库，另外根目录下<code>_config.yml</code>尽量不要放上去（有些插件比如我现在在用的”hexo-qiniu-sync”就有七牛的key，所以不建议同步到git上）<br>这里写起来篇幅可能比较长，所以我另外写了一篇文章单独来讲同步：<br><a href="/2015/06/18/hexo-sync-in-multiple-pc/">hexo博客多PC间同步解决方案</a></p>
+<p>可以参考。</p>
+<p>需要注意的事，不管这台电脑上之前有没有安装过hexo，安装完成后都是不需要<code>hexo init</code>的——这个操作会把config初始化。。<br>直接在复制过来的blog文件里运行hexo的命令即可。不过hexo插件都需要重新安装下。</p>
+<h3 id="给github添加README"><a href="#给github添加README" class="headerlink" title="给github添加README"></a>给github添加README</h3><p>众所周知hexo会把文件夹内的所有md文件解析成html，而github的readme只支持MD格式。（所以想在这里直接插html绕过限制的就只能说残念了）<br>网上之前很多方法，不过都没有说到点子上，因为即使把README.MD文件放到source或者theme对应的source文件夹下，再加上<code>layout:false</code>，hexo还是会把文件解析掉。<br>另外有一种不怎么优雅的解决方法是<code>把&#39;README.MD&#39;的后缀去掉，改成&#39;README&#39;</code>,不过这样的话github只能支持部分解析，不会当做一个完整的MD文件来处理，样式上和期待值有差别</p>
+<p>正确的解决方法其实很简单：</p>
+<blockquote>
+<p>**把’README.MD’文件的后缀名改成”MDOWN”然后扔到blog/source文件夹下即可，这样hexo不会解析，github也会将其作为MD文件解析</p>
+</blockquote>
+<p>效果可参考我这个<a href="https://github.com/chitanda/chitanda.github.io" target="_blank" rel="external">github的主页</a></p>
+<h3 id="文章添加代码块有注释时的高亮"><a href="#文章添加代码块有注释时的高亮" class="headerlink" title="文章添加代码块有注释时的高亮"></a>文章添加代码块有注释时的高亮</h3><p>建议对应代码块语法选择相应的注释符号。比如<code>html</code>用<code>&lt;!-- --&gt;</code>,<code>css</code>用<code>/* */</code>，否则可能会出现代码不高亮或者高亮有问题的情况。</p>
+<h3 id="MarkDown里-table-的语法"><a href="#MarkDown里-table-的语法" class="headerlink" title="MarkDown里 table 的语法"></a>MarkDown里 <code>table</code> 的语法</h3><p>MD写法：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"></div><div class="line">| 链接 | 结果 | 原因 |</div><div class="line">|:-----|:---:|----------:|</div><div class="line">|文本内容| **`是`** |同协议同域名同端口|</div><div class="line">|文本内容| **`是`** |同协议同域名同端口|</div><div class="line">|文本内容| **`是`** |同协议同域名同端口|</div></pre></td></tr></table></figure></p>
+<blockquote>
+<ol>
+<li>最上面一行是表格第一列的值。<strong>第二行的冒号位置决定表格内文本的对齐方式</strong>。有<code>水平居中</code>、<code>水平靠左对齐</code>、<code>水平靠右对齐</code>三种.</li>
+<li><strong>切记表格要与上面的文本内容空一行。否则解析不出来</strong></li>
+<li>每列的宽度是根据对应列里最长的文本来决定的</li>
+</ol>
+</blockquote>
+<p>输出结果：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">链接</th>
+<th style="text-align:center">结果</th>
+<th style="text-align:right">原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">文本内容</td>
+<td style="text-align:center"><strong><code>是</code></strong></td>
+<td style="text-align:right">同协议同域名同端口</td>
+</tr>
+<tr>
+<td style="text-align:left">文本内容</td>
+<td style="text-align:center"><strong><code>是</code></strong></td>
+<td style="text-align:right">同协议同域名同端口</td>
+</tr>
+<tr>
+<td style="text-align:left">文本内容</td>
+<td style="text-align:center"><strong><code>是</code></strong></td>
+<td style="text-align:right">同协议同域名同端口</td>
+</tr>
+</tbody>
+</table>
+<p>以上是之前我之前部署的时候有遇到过的一些问题，后面会视情况再不定时更新下。希望对看到这篇文章的人有所帮助</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/github/" rel="tag">#github</a>
+          
+            <a href="/tags/hexo/" rel="tag">#hexo</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/06/08/chinese-webfont-solution/" rel="next" title="中文webfont解决方案">
+                <i class="fa fa-chevron-left"></i> 中文webfont解决方案
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/06/16/css3-checkbox-diy-without-js/" rel="prev" title="纯CSS+HTML自定义checkbox效果">
+                纯CSS+HTML自定义checkbox效果 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2015/06/11/tips-for-setup-hexo/"
+     data-title="hexo博客搭建时遇到的一些问题"
+     data-content=""
+     data-url="http://chitanda.me/2015/06/11/tips-for-setup-hexo/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/06/11/tips-for-setup-hexo/"
+           data-title="hexo博客搭建时遇到的一些问题" data-url="http://chitanda.me/2015/06/11/tips-for-setup-hexo/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Chitanda Akari" />
+          <p class="site-author-name" itemprop="name">Chitanda Akari</p>
+          <p class="site-description motion-element" itemprop="description">chitanda | 互联网 | 前端 | 宅 |动漫 | 京阿尼</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chitanda" target="_blank">
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3218616254" target="_blank">
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://segmentfault.com/u/chitanda" target="_blank">
+                  
+                  SegmentFault
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.v2ex.com/?r=TakanashiAzusa" target="_blank">
+                  
+                  V2EX
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#npm安装hexo速度过慢"><span class="nav-number">1.</span> <span class="nav-text">npm安装hexo速度过慢</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#npm安装tips"><span class="nav-number">1.1.</span> <span class="nav-text">npm安装tips</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git多网站ssh部署方案"><span class="nav-number">2.</span> <span class="nav-text">git多网站ssh部署方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单域名多线路解析"><span class="nav-number">3.</span> <span class="nav-text">单域名多线路解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义域名邮箱"><span class="nav-number">3.1.</span> <span class="nav-text">自定义域名邮箱</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo部署相关问题"><span class="nav-number">4.</span> <span class="nav-text">hexo部署相关问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#config-yml编译不通过"><span class="nav-number">4.1.</span> <span class="nav-text">_config.yml编译不通过</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#给网站添加favicon"><span class="nav-number">4.2.</span> <span class="nav-text">给网站添加favicon</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#github和coding双线路解析"><span class="nav-number">4.3.</span> <span class="nav-text">github和coding双线路解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多说评论框自定义"><span class="nav-number">4.4.</span> <span class="nav-text">多说评论框自定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片资源利用七牛分流"><span class="nav-number">4.5.</span> <span class="nav-text">图片资源利用七牛分流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多PC的情况下blog备份问题"><span class="nav-number">4.6.</span> <span class="nav-text">多PC的情况下blog备份问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#给github添加README"><span class="nav-number">4.7.</span> <span class="nav-text">给github添加README</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文章添加代码块有注释时的高亮"><span class="nav-number">4.8.</span> <span class="nav-text">文章添加代码块有注释时的高亮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MarkDown里-table-的语法"><span class="nav-number">4.9.</span> <span class="nav-text">MarkDown里 table 的语法</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chitanda Akari</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+    <script>
+      var OriginTitile=document.title;
+      var st;
+      document.addEventListener('visibilitychange',function(){
+      if(document.hidden){
+        document.title="(つェ⊂)我藏好了哦";
+        clearTimeout(st);
+        console.log('hide');
+      }else{
+        document.title='(*´∇｀*)  被你发现啦~ '+OriginTitile;
+        console.log('show');
+        st=setTimeout(function(){
+            document.title=OriginTitile;
+        },4000);
+        console.log('endChange=');
+      }
+      });
+      </script>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"chitanda"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

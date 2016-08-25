@@ -1,0 +1,745 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="Zz69_TBO29kGWz1EwiPdoVvLE1hCqut6T9lcr5DYr6Y" />
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="github,hexo,博客," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我很好奇" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="好久没更新文章了，这边都快成荒地了。今天想到一个比较简单的问题，所以先处理了写篇文章上来，好给blog加点生机（其实post里躺着不少草稿，不过一直没办法写完╮(╯▽╰)╭）
+很早之前我就记得某篇讲hexo的文章里提到每个GitHub只能拥有一个GitHub Pages页面，所以后来一直不敢在自己的帐号底下添加除blog外的其他GitHub Pages项目。直到今天仔细研究了下GitHub的规则，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单个GitHub帐号下添加多个GitHub Pages的相关问题">
+<meta property="og:url" content="http://chitanda.me/2015/11/03/multiple-git-pages-in-one-github-account/index.html">
+<meta property="og:site_name" content="我很好奇">
+<meta property="og:description" content="好久没更新文章了，这边都快成荒地了。今天想到一个比较简单的问题，所以先处理了写篇文章上来，好给blog加点生机（其实post里躺着不少草稿，不过一直没办法写完╮(╯▽╰)╭）
+很早之前我就记得某篇讲hexo的文章里提到每个GitHub只能拥有一个GitHub Pages页面，所以后来一直不敢在自己的帐号底下添加除blog外的其他GitHub Pages项目。直到今天仔细研究了下GitHub的规则，">
+<meta property="og:updated_time" content="2016-08-25T15:36:56.989Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="单个GitHub帐号下添加多个GitHub Pages的相关问题">
+<meta name="twitter:description" content="好久没更新文章了，这边都快成荒地了。今天想到一个比较简单的问题，所以先处理了写篇文章上来，好给blog加点生机（其实post里躺着不少草稿，不过一直没办法写完╮(╯▽╰)╭）
+很早之前我就记得某篇讲hexo的文章里提到每个GitHub只能拥有一个GitHub Pages页面，所以后来一直不敢在自己的帐号底下添加除blog外的其他GitHub Pages项目。直到今天仔细研究了下GitHub的规则，">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 12157121,
+      author: 'ROOT'
+    }
+  };
+</script>
+
+  <title> 单个GitHub帐号下添加多个GitHub Pages的相关问题 | 我很好奇 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70297472-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6028e1891a3d164a9d7c5707a08908ca";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">我很好奇</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">千反田家的小院子</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                单个GitHub帐号下添加多个GitHub Pages的相关问题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-11-03T16:06:55+08:00" content="2015-11-03">
+              2015-11-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/blog/" itemprop="url" rel="index">
+                    <span itemprop="name">blog</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/03/multiple-git-pages-in-one-github-account/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/03/multiple-git-pages-in-one-github-account/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>好久没更新文章了，这边都快成荒地了。今天想到一个比较简单的问题，所以先处理了写篇文章上来，好给blog加点生机（<del>其实post里躺着不少草稿，不过一直没办法写完╮(╯▽╰)╭</del>）</p>
+<p>很早之前我就记得某篇讲hexo的文章里提到<strong>每个GitHub只能拥有一个GitHub Pages页面</strong>，所以后来一直不敢在自己的帐号底下添加除blog外的其他GitHub Pages项目。直到今天仔细研究了下GitHub的规则，才发现上面那句话有很大的问题。</p>
+<p>这篇文章主要是讲github下多个GitHub Pages项目相关以及自定义域名访问的问题，没太多技术上的东西，基本上都是属于GitHub的文档意译和解释，英语好的可以直接看这官网这两篇FAQ：</p>
+<ol>
+<li><a href="https://help.github.com/articles/about-custom-domains-for-github-pages-sites/" target="_blank" rel="external">About custom domains for GitHub Pages sites</a></li>
+<li><a href="https://help.github.com/articles/user-organization-and-project-pages/" target="_blank" rel="external">User, Organization, and Project Pages</a></li>
+</ol>
+<a id="more"></a>
+<hr>
+<blockquote>
+<p>注：虽然全文基本上都在讲GitHub Pages，<strong>但我个人亲测这些规则也都适用于GitCafe Pages,两者没有本质区别。</strong> 所以像我一样双线部署blog的可以安心地把GitHub的东西搬到GitCafe来。不过为了行文方便，下文不再特意强调GitCafe Page，均以<code>GitHub Pages</code>代指(“Coding”的是否也如此并不清楚，有心人可以自测)</p>
+</blockquote>
+<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>以我个人为例，我在GitHub上已经有了一个和用户名同名的<a href="https://github.com/chitanda/chitanda.github.io" target="_blank" rel="external">GitHub Pages项目</a>当作个人主页(<a href="http://chitanda.github.io" target="_blank" rel="external">chitanda.github.io</a>),但是我现在又有了几个想法:</p>
+<ol>
+<li>再在GitHub上弄一个GitHub Pages项目当作我的demo页面展示,而不是在原先的blog项目下加子目录(一来访问url不好看，二来很多主题会强制对所有项目内的文件添加样式，影响展示效果)</li>
+<li>同时demo页面的访问链接是我自定义的一个域名(如：是<code>demo.chitanda.me</code>或者<code>demo.chitanda.github.io</code>而不是<code>chitanda.github.io/demo</code>)</li>
+</ol>
+<p>那么上面两个要求，GitHub能否都满足呢？卖个关子先，结论放在<a href="#总结">下文</a>。</p>
+<h2 id="GitHub-Pages的分类及区别"><a href="#GitHub-Pages的分类及区别" class="headerlink" title="GitHub Pages的分类及区别"></a>GitHub Pages的分类及区别</h2><p>根据<a href="https://help.github.com/articles/user-organization-and-project-pages/" target="_blank" rel="external">官方文档</a>，GitHub Pages分为两类:<strong>个人/组织主页</strong>以及<strong>项目主页</strong>，两者基本上没啥区别，但是有以下几点不同:（该文场景下个人和组织帐号没什么区别，所以下文为了行文方便将统一用<strong>个人主页</strong>代指）</p>
+<ol>
+<li><strong>个人主页</strong>必须要和用户的GitHub帐号同名，所以每个用户有且只能有一个repo作为个人主页，且必须是<code>&lt;username&gt;/&lt;username&gt;.github.io</code>的形式；而<strong>项目主页</strong>的命名则没有这种限制，且数量有任意多个。</li>
+<li>不考虑绑定的自定义域名的前提下，<strong>个人主页</strong>的GitHub二级域名为<code>&lt;username&gt;.github.io</code>;<strong>项目主页</strong>的GitHub二级域名为<code>&lt;username&gt;.github.io/&lt;projectname&gt;</code>,没有<code>&lt;projectname&gt;.&lt;username&gt;.github.io</code>这种方式</li>
+<li><strong>个人主页</strong>的展示内容以<code>master</code>分支里的文件为准；而<strong>项目主页</strong>的展示内容以<code>gh-pages</code>分支内的文件为准</li>
+</ol>
+<blockquote>
+<p>从上面的分析可以发现两个问题已经解决掉一个半了。那么剩下来的问题就是如何配置一个项目主页并绑定自定义域名了。</p>
+</blockquote>
+<h2 id="项目主页的建立和自定义域名配置"><a href="#项目主页的建立和自定义域名配置" class="headerlink" title="项目主页的建立和自定义域名配置"></a>项目主页的建立和自定义域名配置</h2><p><strong>注：配置过程和个人主页一模一样，如果之前配置过个人主页的，可以跳过这部分内容了</strong></p>
+<h3 id="建立项目主页"><a href="#建立项目主页" class="headerlink" title="建立项目主页"></a>建立项目主页</h3><ol>
+<li>新建一个repo，repo名字随意。</li>
+<li>点进repo主页然后点击右面的<code>Settings</code>，页面往下拉到<strong>GitHub Pages</strong>部分，选择<code>Launch automatic page generator</code>&gt;<code>Continue to layouts</code>&gt;<code>Publish page</code>即可.（由于大部分情况下并不用默认的页面和样式，所以这里不需要太纠结于内容编辑）</li>
+</ol>
+<blockquote>
+<p>这样一个项目主页就建立完成了，此时可以用<code>&lt;username&gt;.github.io/&lt;projectname&gt;</code>访问到了。</p>
+</blockquote>
+<h3 id="绑定自定义域名"><a href="#绑定自定义域名" class="headerlink" title="绑定自定义域名"></a>绑定自定义域名</h3><ol>
+<li>在项目的repo里新建一个<code>CNAME</code>文件，并将不带协议名的裸域名写进去(<code>demo.chitanda.me</code>而不是<code>http://demo.chitanda.me/</code>)<blockquote>
+<p>这一步可以参考<a href="https://help.github.com/articles/adding-a-cname-file-to-your-repository/" target="_blank" rel="external">官方文档</a></p>
+</blockquote>
+</li>
+<li>到你域名的DNS服务商里给对应的二级域名添加<code>CNAME</code>解析到<code>&lt;username&gt;.github.io</code>(和个人主页的配置相同)</li>
+<li>等待DNS生效，具体时间和服务商有关（十几分钟到几小时都有可能）。<blockquote>
+<p>如果不确定自己的解析是否生效了，可以在linux系统下用<code>dig</code>命令来检测.参考<a href="https://help.github.com/articles/tips-for-configuring-a-cname-record-with-your-dns-provider/#configuring-a-custom-subdomain-with-your-dns-provider" target="_blank" rel="external">官方文档</a></p>
+</blockquote>
+</li>
+</ol>
+<h2 id="GitHub和GitCafe双线部署的小tips"><a href="#GitHub和GitCafe双线部署的小tips" class="headerlink" title="GitHub和GitCafe双线部署的小tips"></a>GitHub和GitCafe双线部署的小tips</h2><p>上面的配置对于单线部署的来说已经完成了，不过对于双线部署的用户而言，有几个小问题需要注意下</p>
+<ol>
+<li>DNS服务商里要按照来源对对应的二级域名做分流配置。（具体过程可以参考<a href="/2015/06/11/tips-for-setup-hexo/#单域名多线路解析">此处</a></li>
+<li>如果想要所有用户都可以用<code>example.com/project</code>的方式访问到repo，GitHub和GitCafe的repo名字必须相同，否则会导致有一边跳404<blockquote>
+<p>可以参考我这里的例子:GitHub上的<a href="https://github.com/chitanda/demo" target="_blank" rel="external">项目主页</a>名字为<code>demo</code>,GitCafe上的<a href="https://gitcafe.com/chitanda/demos" target="_blank" rel="external">项目主页</a>名字为<code>demos</code>,则不翻墙的情况下国内用户访问<a href="http://chitanda.me/demo/">chitanda.me/demo</a>会跳404,而用<a href="http://demo.chitanda.me/" target="_blank" rel="external">demo.chitanda.me</a>则正常(另外同个链接在翻墙和不翻墙的情况下看到的页面不同，也是分线部署的功劳)</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>聊胜于无的总结。对于上面提到的几个问题，也有了答案：</p>
+<ol>
+<li>每个GitHub帐号下只能有<code>1</code>个<strong>个人主页</strong>repo，但是可以有<code>不限数量</code>的<strong>项目主页</strong>repo。</li>
+<li>没有自定义域名的情况下，<strong>项目主页</strong>的访问链接只能是<code>&lt;username&gt;.github.io/&lt;projectname&gt;</code>而不是<code>&lt;projectname&gt;.&lt;username&gt;.github.io</code></li>
+<li>GitCafe添加GitHub Pages后必须要自己本地同步文件上去，而不能像GitHub那样一键建站，GitCafe每个repo初始化页面的代码是有步骤略过去的，新手的话一开始可能同步不了。建议看他们的<a href="https://gitcafe.com/GitCafe/Help/wiki/Pages-%E7%9B%B8%E5%85%B3%E5%B8%AE%E5%8A%A9#wiki" target="_blank" rel="external">帮助</a></li>
+</ol>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
+<li><a href="https://help.github.com/articles/about-custom-domains-for-github-pages-sites/" target="_blank" rel="external">About custom domains for GitHub Pages sites</a></li>
+<li><a href="https://help.github.com/articles/user-organization-and-project-pages/" target="_blank" rel="external">User, Organization, and Project Pages</a></li>
+<li><a href="https://help.github.com/articles/adding-a-cname-file-to-your-repository/" target="_blank" rel="external">Adding a CNAME file to your repository</a></li>
+<li><a href="https://help.github.com/articles/tips-for-configuring-a-cname-record-with-your-dns-provider/#configuring-a-custom-subdomain-with-your-dns-provider" target="_blank" rel="external">Tips for configuring a CNAME record with your DNS provider</a></li>
+<li><a href="https://gitcafe.com/GitCafe/Help/wiki/Pages-%E7%9B%B8%E5%85%B3%E5%B8%AE%E5%8A%A9" target="_blank" rel="external">GitCage Pages-相关帮助</a></li>
+<li><a href="/2015/06/11/tips-for-setup-hexo/#单域名多线路解析">单域名多线路解析</a></li>
+</ol>
+<hr>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/github/" rel="tag">#github</a>
+          
+            <a href="/tags/hexo/" rel="tag">#hexo</a>
+          
+            <a href="/tags/博客/" rel="tag">#博客</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/21/the-trivia-of-js-date-function/" rel="next" title="JS原生Date类型方法的一些冷知识">
+                <i class="fa fa-chevron-left"></i> JS原生Date类型方法的一些冷知识
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/07/use-common-software-in-PC/" rel="prev" title="个人常用一些PC软件（windows系统）">
+                个人常用一些PC软件（windows系统） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2015/11/03/multiple-git-pages-in-one-github-account/"
+     data-title="单个GitHub帐号下添加多个GitHub Pages的相关问题"
+     data-content=""
+     data-url="http://chitanda.me/2015/11/03/multiple-git-pages-in-one-github-account/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/11/03/multiple-git-pages-in-one-github-account/"
+           data-title="单个GitHub帐号下添加多个GitHub Pages的相关问题" data-url="http://chitanda.me/2015/11/03/multiple-git-pages-in-one-github-account/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Chitanda Akari" />
+          <p class="site-author-name" itemprop="name">Chitanda Akari</p>
+          <p class="site-description motion-element" itemprop="description">chitanda | 互联网 | 前端 | 宅 |动漫 | 京阿尼</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chitanda" target="_blank">
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3218616254" target="_blank">
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://segmentfault.com/u/chitanda" target="_blank">
+                  
+                  SegmentFault
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.v2ex.com/?r=TakanashiAzusa" target="_blank">
+                  
+                  V2EX
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#场景"><span class="nav-number">1.</span> <span class="nav-text">场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub-Pages的分类及区别"><span class="nav-number">2.</span> <span class="nav-text">GitHub Pages的分类及区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目主页的建立和自定义域名配置"><span class="nav-number">3.</span> <span class="nav-text">项目主页的建立和自定义域名配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#建立项目主页"><span class="nav-number">3.1.</span> <span class="nav-text">建立项目主页</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绑定自定义域名"><span class="nav-number">3.2.</span> <span class="nav-text">绑定自定义域名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub和GitCafe双线部署的小tips"><span class="nav-number">4.</span> <span class="nav-text">GitHub和GitCafe双线部署的小tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">6.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chitanda Akari</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+    <script>
+      var OriginTitile=document.title;
+      var st;
+      document.addEventListener('visibilitychange',function(){
+      if(document.hidden){
+        document.title="(つェ⊂)我藏好了哦";
+        clearTimeout(st);
+        console.log('hide');
+      }else{
+        document.title='(*´∇｀*)  被你发现啦~ '+OriginTitile;
+        console.log('show');
+        st=setTimeout(function(){
+            document.title=OriginTitile;
+        },4000);
+        console.log('endChange=');
+      }
+      });
+      </script>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"chitanda"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
