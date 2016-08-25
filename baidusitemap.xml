@@ -11,9 +11,9 @@
         <title>JS原生Date类型方法的一些冷知识</title>
         <pubTime>2015-08-21T06:49:08.000Z</pubTime>
         
-        <tag>CSS</tag>
-         
         <tag>javascript</tag>
+         
+        <tag>CSS</tag>
          
         <tag>前端</tag>
          
@@ -201,9 +201,9 @@
         <title>利用javascript获取并修改伪元素的值</title>
         <pubTime>2015-07-15T07:22:16.000Z</pubTime>
         
-        <tag>CSS</tag>
-         
         <tag>javascript</tag>
+         
+        <tag>CSS</tag>
          
         <tag>前端</tag>
          
@@ -288,6 +288,56 @@
 
     
   <url>
+    <loc>http://chitanda.me/2015/06/01/Centos-setup-nginx-and-php/</loc>
+    <lastmod>2016-08-25T15:35:49.112Z</lastmod>
+    <data>
+        <display>
+        <title>Centos下配置nginx和php环境</title>
+        <pubTime>2015-06-01T06:00:57.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>运维</tag>
+         
+        <tag>nginx</tag>
+         
+        <tag>php</tag>
+         
+         
+           
+             
+              <breadCrumb title="运维" url="http://chitanda.me/categories/%E8%BF%90%E7%BB%B4/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://chitanda.me/2015/06/08/chinese-webfont-solution/</loc>
+    <lastmod>2016-08-25T15:35:47.143Z</lastmod>
+    <data>
+        <display>
+        <title>中文webfont解决方案</title>
+        <pubTime>2015-06-08T09:17:57.000Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+        <tag>CSS</tag>
+         
+        <tag>webfont</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://chitanda.me/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://chitanda.me/2015/06/16/css3-checkbox-diy-without-js/</loc>
     <lastmod>2016-08-25T15:35:44.932Z</lastmod>
     <data>
@@ -295,9 +345,9 @@
         <title>纯CSS+HTML自定义checkbox效果</title>
         <pubTime>2015-06-16T06:03:46.000Z</pubTime>
         
-        <tag>html</tag>
-         
         <tag>CSS</tag>
+         
+        <tag>html</tag>
          
         <tag>demo</tag>
          
@@ -330,56 +380,6 @@
          
          
            
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://chitanda.me/2015/06/08/chinese-webfont-solution/</loc>
-    <lastmod>2016-08-25T11:22:55.459Z</lastmod>
-    <data>
-        <display>
-        <title>中文webfont解决方案</title>
-        <pubTime>2015-06-08T09:17:57.000Z</pubTime>
-        
-        <tag>CSS</tag>
-         
-        <tag>javascript</tag>
-         
-        <tag>webfont</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端" url="http://chitanda.me/categories/%E5%89%8D%E7%AB%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://chitanda.me/2015/06/01/Centos-setup-nginx-and-php/</loc>
-    <lastmod>2016-08-25T11:22:55.447Z</lastmod>
-    <data>
-        <display>
-        <title>Centos下配置nginx和php环境</title>
-        <pubTime>2015-06-01T06:00:57.000Z</pubTime>
-        
-        <tag>linux</tag>
-         
-        <tag>运维</tag>
-         
-        <tag>nginx</tag>
-         
-        <tag>php</tag>
-         
-         
-           
-             
-              <breadCrumb title="运维" url="http://chitanda.me/categories/%E8%BF%90%E7%BB%B4/"/>
-          
         </display>
     </data>
     </url>
