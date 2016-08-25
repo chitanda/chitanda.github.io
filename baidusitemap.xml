@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://chitanda.me/2016/08/19/difference-between-deepwep-and-darkweb/</loc>
+    <lastmod>2016-08-25T15:55:37.496Z</lastmod>
+    <data>
+        <display>
+        <title>“深网”和“暗网”的区别及基础扫盲</title>
+        <pubTime>2016-08-19T12:00:00.000Z</pubTime>
+        
+        <tag>科普</tag>
+         
+         
+           
+             
+              <breadCrumb title="科普" url="http://chitanda.me/categories/%E7%A7%91%E6%99%AE/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://chitanda.me/2015/08/21/the-trivia-of-js-date-function/</loc>
     <lastmod>2016-08-25T15:41:00.307Z</lastmod>
     <data>
@@ -11,9 +31,9 @@
         <title>JS原生Date类型方法的一些冷知识</title>
         <pubTime>2015-08-21T06:49:08.000Z</pubTime>
         
-        <tag>javascript</tag>
-         
         <tag>CSS</tag>
+         
+        <tag>javascript</tag>
          
         <tag>前端</tag>
          
@@ -201,9 +221,9 @@
         <title>利用javascript获取并修改伪元素的值</title>
         <pubTime>2015-07-15T07:22:16.000Z</pubTime>
         
-        <tag>javascript</tag>
-         
         <tag>CSS</tag>
+         
+        <tag>javascript</tag>
          
         <tag>前端</tag>
          
@@ -237,26 +257,6 @@
            
              
               <breadCrumb title="折腾" url="http://chitanda.me/categories/%E6%8A%98%E8%85%BE/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://chitanda.me/2016/08/19/difference-between-deepwep-and-darkweb/</loc>
-    <lastmod>2016-08-25T15:36:08.295Z</lastmod>
-    <data>
-        <display>
-        <title>“深网”和“暗网”的区别及基础扫盲</title>
-        <pubTime>2016-08-19T12:00:00.000Z</pubTime>
-        
-        <tag>科普</tag>
-         
-         
-           
-             
-              <breadCrumb title="科普" url="http://chitanda.me/categories/%E7%A7%91%E6%99%AE/"/>
           
         </display>
     </data>
@@ -321,9 +321,9 @@
         <title>中文webfont解决方案</title>
         <pubTime>2015-06-08T09:17:57.000Z</pubTime>
         
-        <tag>javascript</tag>
-         
         <tag>CSS</tag>
+         
+        <tag>javascript</tag>
          
         <tag>webfont</tag>
          
@@ -345,9 +345,9 @@
         <title>纯CSS+HTML自定义checkbox效果</title>
         <pubTime>2015-06-16T06:03:46.000Z</pubTime>
         
-        <tag>CSS</tag>
-         
         <tag>html</tag>
+         
+        <tag>CSS</tag>
          
         <tag>demo</tag>
          
