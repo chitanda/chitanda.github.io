@@ -587,11 +587,11 @@
       <category term="前端" scheme="http://chitanda.me/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
+      <category term="前端" scheme="http://chitanda.me/tags/%E5%89%8D%E7%AB%AF/"/>
+    
       <category term="javascript" scheme="http://chitanda.me/tags/javascript/"/>
     
       <category term="CSS" scheme="http://chitanda.me/tags/CSS/"/>
-    
-      <category term="前端" scheme="http://chitanda.me/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="Date" scheme="http://chitanda.me/tags/Date/"/>
     
@@ -693,11 +693,11 @@
       <category term="前端" scheme="http://chitanda.me/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
+      <category term="前端" scheme="http://chitanda.me/tags/%E5%89%8D%E7%AB%AF/"/>
+    
       <category term="javascript" scheme="http://chitanda.me/tags/javascript/"/>
     
       <category term="CSS" scheme="http://chitanda.me/tags/CSS/"/>
-    
-      <category term="前端" scheme="http://chitanda.me/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="伪元素" scheme="http://chitanda.me/tags/%E4%BC%AA%E5%85%83%E7%B4%A0/"/>
     
@@ -1610,9 +1610,9 @@ location ~ \.php$ {
       <category term="运维" scheme="http://chitanda.me/categories/%E8%BF%90%E7%BB%B4/"/>
     
     
-      <category term="运维" scheme="http://chitanda.me/tags/%E8%BF%90%E7%BB%B4/"/>
-    
       <category term="linux" scheme="http://chitanda.me/tags/linux/"/>
+    
+      <category term="运维" scheme="http://chitanda.me/tags/%E8%BF%90%E7%BB%B4/"/>
     
       <category term="nginx" scheme="http://chitanda.me/tags/nginx/"/>
     

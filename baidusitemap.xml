@@ -3,6 +3,7 @@
 
 
     
+    
   <url>
     <loc>http://chitanda.me/2015/06/11/tips-for-setup-hexo/</loc>
     <lastmod>2016-08-26T03:15:48.111Z</lastmod>
@@ -53,11 +54,11 @@
         <title>JS原生Date类型方法的一些冷知识</title>
         <pubTime>2015-08-21T06:49:08.000Z</pubTime>
         
+        <tag>前端</tag>
+         
         <tag>javascript</tag>
          
         <tag>CSS</tag>
-         
-        <tag>前端</tag>
          
         <tag>Date</tag>
          
@@ -221,11 +222,11 @@
         <title>利用javascript获取并修改伪元素的值</title>
         <pubTime>2015-07-15T07:22:16.000Z</pubTime>
         
+        <tag>前端</tag>
+         
         <tag>javascript</tag>
          
         <tag>CSS</tag>
-         
-        <tag>前端</tag>
          
         <tag>伪元素</tag>
          
@@ -295,9 +296,9 @@
         <title>Centos下配置nginx和php环境</title>
         <pubTime>2015-06-01T06:00:57.000Z</pubTime>
         
-        <tag>运维</tag>
-         
         <tag>linux</tag>
+         
+        <tag>运维</tag>
          
         <tag>nginx</tag>
          
@@ -360,7 +361,6 @@
     </data>
     </url>
 
-    
     
     
     

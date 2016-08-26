@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://chitanda.me/about/index.html</loc>
+    
+    <lastmod>2016-08-26T11:28:18.008Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://chitanda.me/2015/06/11/tips-for-setup-hexo/</loc>
     
     <lastmod>2016-08-26T03:15:48.111Z</lastmod>
@@ -145,13 +152,6 @@
     <loc>http://chitanda.me/demos/efficiency-of-time-format-function.html</loc>
     
     <lastmod>2016-08-25T11:22:55.626Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chitanda.me/about/index.html</loc>
-    
-    <lastmod>2016-08-25T11:22:55.622Z</lastmod>
     
   </url>
   
