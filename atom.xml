@@ -1320,7 +1320,7 @@
     <link href="http://chitanda.me/2015/06/11/tips-for-setup-hexo/"/>
     <id>http://chitanda.me/2015/06/11/tips-for-setup-hexo/</id>
     <published>2015-06-11T13:57:10.000Z</published>
-    <updated>2016-08-25T15:38:26.818Z</updated>
+    <updated>2016-08-26T03:15:48.111Z</updated>
     
     <content type="html"><![CDATA[<p>之前的WP博客荒废了好久之后终于感觉该做点正事了，所以这几天花了点时间重新弄了下hexo，毕竟是比较符合前端的一个博客框架。比起wp来说，hexo轻量级的多，而且易部署（指速度优化方面），也不需要一个专门的服务器来放置（这个其实是我选择hexo的最终原因。手里虽然有vps，但是因为跑着ss加上国内ping值太高，最终肯定影响国内速度，所以就一直没用来放blog）当然没有后台也就意味着不能随时随地写了就发，这个相对WP来说是弱势，但我感觉还好，毕竟不会常常在外面跑，而且写博客基本都是在电脑前，再不济也可以先把MD文件写完后拷回去发布。<br><a id="more"></a></p>
 <hr>
@@ -1370,7 +1370,7 @@
  <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Hi USERNAME! You&apos;ve successfully authenticated, but Coding does not provide shell access.</div></pre></td></tr></table></figure>
 <blockquote>
 <p><strong>对于这一步，我的建议是测试命令里再加个<code>-v</code>参数</strong>,即</p>
- <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ssh -vT git@coding.net</div></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ssh -vT git@git.coding.net</div></pre></td></tr></table></figure>
 <p>因为比起”ssh -T”返回的模糊信息相比，”-v”会把整个传输过程中的操作都显示出来，哪一步出错很明显就可以看出来，利于出现问题的调试</p>
 </blockquote>
 </li>
@@ -1610,9 +1610,9 @@ location ~ \.php$ {
       <category term="运维" scheme="http://chitanda.me/categories/%E8%BF%90%E7%BB%B4/"/>
     
     
-      <category term="linux" scheme="http://chitanda.me/tags/linux/"/>
-    
       <category term="运维" scheme="http://chitanda.me/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="linux" scheme="http://chitanda.me/tags/linux/"/>
     
       <category term="nginx" scheme="http://chitanda.me/tags/nginx/"/>
     

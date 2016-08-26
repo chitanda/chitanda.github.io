@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://chitanda.me/2015/06/11/tips-for-setup-hexo/</loc>
+    
+    <lastmod>2016-08-26T03:15:48.111Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://chitanda.me/2016/08/19/difference-between-deepweb-and-darkweb/</loc>
     
     <lastmod>2016-08-25T16:18:43.024Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>http://chitanda.me/2015/07/03/transfer-big-file-by-digitalocean/</loc>
     
     <lastmod>2016-08-25T15:39:09.660Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chitanda.me/2015/06/11/tips-for-setup-hexo/</loc>
-    
-    <lastmod>2016-08-25T15:38:26.818Z</lastmod>
     
   </url>
   
