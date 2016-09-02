@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://chitanda.me/2016/02/13/Initial-Server-Secure-Settings-with-CentOS-6-5/</loc>
+    
+    <lastmod>2016-09-02T12:36:05.974Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://chitanda.me/about/index.html</loc>
     
     <lastmod>2016-08-26T11:28:18.008Z</lastmod>
@@ -54,13 +61,6 @@
     <loc>http://chitanda.me/2015/11/03/multiple-git-pages-in-one-github-account/</loc>
     
     <lastmod>2016-08-25T15:36:56.989Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chitanda.me/2016/02/13/Initial-Server-Secure-Settings-with-CentOS-6-5/</loc>
-    
-    <lastmod>2016-08-25T15:36:41.530Z</lastmod>
     
   </url>
   

@@ -3,6 +3,28 @@
 
 
     
+  <url>
+    <loc>http://chitanda.me/2016/02/13/Initial-Server-Secure-Settings-with-CentOS-6-5/</loc>
+    <lastmod>2016-09-02T12:36:05.974Z</lastmod>
+    <data>
+        <display>
+        <title>服务器初始安全设置（CentOS 6.5）</title>
+        <pubTime>2016-02-12T19:43:03.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>vps</tag>
+         
+         
+           
+             
+              <breadCrumb title="运维" url="http://chitanda.me/categories/%E8%BF%90%E7%BB%B4/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>http://chitanda.me/2015/06/11/tips-for-setup-hexo/</loc>
@@ -162,28 +184,6 @@
            
              
               <breadCrumb title="blog" url="http://chitanda.me/categories/blog/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://chitanda.me/2016/02/13/Initial-Server-Secure-Settings-with-CentOS-6-5/</loc>
-    <lastmod>2016-08-25T15:36:41.530Z</lastmod>
-    <data>
-        <display>
-        <title>服务器初始安全设置（CentOS 6.5）</title>
-        <pubTime>2016-02-12T19:43:03.000Z</pubTime>
-        
-        <tag>运维</tag>
-         
-        <tag>vps</tag>
-         
-         
-           
-             
-              <breadCrumb title="运维" url="http://chitanda.me/categories/%E8%BF%90%E7%BB%B4/"/>
           
         </display>
     </data>
