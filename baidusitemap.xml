@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://chitanda.me/2015/06/29/debug-wechat-website-in-pc/</loc>
+    <lastmod>2017-01-10T11:15:34.281Z</lastmod>
+    <data>
+        <display>
+        <title>绕过限制，在PC上调试微信手机页面</title>
+        <pubTime>2015-06-29T08:31:07.000Z</pubTime>
+        
+        <tag>debug</tag>
+         
+        <tag>微信</tag>
+         
+        <tag>fiddler</tag>
+         
+         
+           
+             
+              <breadCrumb title="微信" url="http://chitanda.me/categories/%E5%BE%AE%E4%BF%A1/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://chitanda.me/2016/02/13/Initial-Server-Secure-Settings-with-CentOS-6-5/</loc>
     <lastmod>2016-09-02T12:36:05.974Z</lastmod>
     <data>
@@ -76,11 +100,11 @@
         <title>JS原生Date类型方法的一些冷知识</title>
         <pubTime>2015-08-21T06:49:08.000Z</pubTime>
         
-        <tag>前端</tag>
+        <tag>CSS</tag>
          
         <tag>javascript</tag>
          
-        <tag>CSS</tag>
+        <tag>前端</tag>
          
         <tag>Date</tag>
          
@@ -222,11 +246,11 @@
         <title>利用javascript获取并修改伪元素的值</title>
         <pubTime>2015-07-15T07:22:16.000Z</pubTime>
         
-        <tag>前端</tag>
+        <tag>CSS</tag>
          
         <tag>javascript</tag>
          
-        <tag>CSS</tag>
+        <tag>前端</tag>
          
         <tag>伪元素</tag>
          
@@ -258,30 +282,6 @@
            
              
               <breadCrumb title="折腾" url="http://chitanda.me/categories/%E6%8A%98%E8%85%BE/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://chitanda.me/2015/06/29/debug-wechat-website-in-pc/</loc>
-    <lastmod>2016-08-25T15:36:06.472Z</lastmod>
-    <data>
-        <display>
-        <title>绕过限制，在PC上调试微信手机页面</title>
-        <pubTime>2015-06-29T08:31:07.000Z</pubTime>
-        
-        <tag>debug</tag>
-         
-        <tag>微信</tag>
-         
-        <tag>fiddler</tag>
-         
-         
-           
-             
-              <breadCrumb title="微信" url="http://chitanda.me/categories/%E5%BE%AE%E4%BF%A1/"/>
           
         </display>
     </data>
@@ -322,9 +322,9 @@
         <title>中文webfont解决方案</title>
         <pubTime>2015-06-08T09:17:57.000Z</pubTime>
         
-        <tag>javascript</tag>
-         
         <tag>CSS</tag>
+         
+        <tag>javascript</tag>
          
         <tag>webfont</tag>
          
@@ -346,9 +346,9 @@
         <title>纯CSS+HTML自定义checkbox效果</title>
         <pubTime>2015-06-16T06:03:46.000Z</pubTime>
         
-        <tag>CSS</tag>
-         
         <tag>html</tag>
+         
+        <tag>CSS</tag>
          
         <tag>demo</tag>
          

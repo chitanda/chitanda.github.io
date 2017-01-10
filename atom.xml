@@ -590,11 +590,11 @@
       <category term="前端" scheme="http://chitanda.me/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="前端" scheme="http://chitanda.me/tags/%E5%89%8D%E7%AB%AF/"/>
+      <category term="CSS" scheme="http://chitanda.me/tags/CSS/"/>
     
       <category term="javascript" scheme="http://chitanda.me/tags/javascript/"/>
     
-      <category term="CSS" scheme="http://chitanda.me/tags/CSS/"/>
+      <category term="前端" scheme="http://chitanda.me/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="Date" scheme="http://chitanda.me/tags/Date/"/>
     
@@ -696,11 +696,11 @@
       <category term="前端" scheme="http://chitanda.me/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="前端" scheme="http://chitanda.me/tags/%E5%89%8D%E7%AB%AF/"/>
+      <category term="CSS" scheme="http://chitanda.me/tags/CSS/"/>
     
       <category term="javascript" scheme="http://chitanda.me/tags/javascript/"/>
     
-      <category term="CSS" scheme="http://chitanda.me/tags/CSS/"/>
+      <category term="前端" scheme="http://chitanda.me/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="伪元素" scheme="http://chitanda.me/tags/%E4%BC%AA%E5%85%83%E7%B4%A0/"/>
     
@@ -979,7 +979,7 @@
     <link href="http://chitanda.me/2015/06/29/debug-wechat-website-in-pc/"/>
     <id>http://chitanda.me/2015/06/29/debug-wechat-website-in-pc/</id>
     <published>2015-06-29T08:31:07.000Z</published>
-    <updated>2016-08-25T15:36:06.472Z</updated>
+    <updated>2017-01-10T11:15:34.281Z</updated>
     
     <content type="html"><![CDATA[<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>假设一个手机页面，开发者对其做了限制，导致只能在微信客户端中打开。而众所周知手机上非常不利于调试页面，所以需要能在电脑上打开并进行调试。这里针对常见的三种页面做一下分析，一一绕过其限制，（当然不要拿去干坏事）<br><a id="more"></a></p>
 <hr>
@@ -1041,6 +1041,9 @@
 </blockquote>
 </li>
 <li><p>在微信里点击页面链接，使其正常进入页面，然后fiddler上注意相关域名的记录，找到<code>Tunnel to open.weixin.qq.com</code>后面那条记录。会发现这时候原来的链接带上了<code>oauth</code>参数。复制这时候的链接<br>如图：<br><img src="http://7xiodk.com1.z0.glb.clouddn.com/static/images/wxoauth.jpg" alt="img"></p>
+<blockquote>
+<p>发现我教程没写好导致这步卡了很多人——<code>Tunnel to open.weixin.qq.com</code>这条记录其实不是必须的，之所以强调这条是因为这是能找到的第一个带cookies的页面，而由于微信的认证机制有时候会改变加上部分页面请求的微信权限较多，这条请求有时候会被转移到别的url去，因此更准确的描述是<code>找到打开后的页面，从中选取cookies即可</code></p>
+</blockquote>
 </li>
 <li><p>在浏览器中打开前面复制的链接，会发现还是白屏，然后右键页面，选择<code>EditThisCookies</code>，会发现这个页面下有两条cookies了。</p>
 <blockquote>
@@ -1310,9 +1313,9 @@
       <category term="前端" scheme="http://chitanda.me/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="CSS" scheme="http://chitanda.me/tags/CSS/"/>
-    
       <category term="html" scheme="http://chitanda.me/tags/html/"/>
+    
+      <category term="CSS" scheme="http://chitanda.me/tags/CSS/"/>
     
       <category term="demo" scheme="http://chitanda.me/tags/demo/"/>
     
@@ -1567,9 +1570,9 @@
       <category term="前端" scheme="http://chitanda.me/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="javascript" scheme="http://chitanda.me/tags/javascript/"/>
-    
       <category term="CSS" scheme="http://chitanda.me/tags/CSS/"/>
+    
+      <category term="javascript" scheme="http://chitanda.me/tags/javascript/"/>
     
       <category term="webfont" scheme="http://chitanda.me/tags/webfont/"/>
     
